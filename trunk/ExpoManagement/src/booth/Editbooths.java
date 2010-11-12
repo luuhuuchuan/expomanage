@@ -38,21 +38,17 @@ public class Editbooths extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnYes = new javax.swing.JRadioButton();
         txtBmoney = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         txtBname = new javax.swing.JTextField();
         btnStaff = new javax.swing.JComboBox();
         btnContact = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         btnReset = new javax.swing.JButton();
-        txtBlength = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         txtBdate = new javax.swing.JTextField();
         btnNo = new javax.swing.JRadioButton();
         btnBoothType = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
-        txtBremain = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -67,16 +63,16 @@ public class Editbooths extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jLabel10)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
-                .add(jLabel10)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jLabel10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLabel3.setText("BoothType :");
@@ -89,8 +85,6 @@ public class Editbooths extends javax.swing.JFrame {
         btnYes.setSelected(true);
         btnYes.setText("Yes");
 
-        jLabel9.setText("Booth Length :");
-
         btnStaff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -98,8 +92,6 @@ public class Editbooths extends javax.swing.JFrame {
         jLabel11.setText("Booth Booker :");
 
         btnReset.setText("Reset");
-
-        jLabel8.setText("Booth Remain :");
 
         btnNo.setText("No");
 
@@ -126,72 +118,68 @@ public class Editbooths extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(28, 28, 28)
+                .add(55, 55, 55)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 250, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(btnClose))
+                    .add(layout.createSequentialGroup()
+                        .add(jLabel11)
+                        .addContainerGap())
                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                         .add(layout.createSequentialGroup()
-                            .add(jLabel3)
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 265, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(layout.createSequentialGroup()
-                                .add(jLabel5)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 279, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(jLabel1)
+                            .addContainerGap())
+                        .add(layout.createSequentialGroup()
                             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                 .add(layout.createSequentialGroup()
-                                    .add(jLabel2)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 290, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                    .add(jLabel3)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(layout.createSequentialGroup()
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(layout.createSequentialGroup()
-                                                .add(39, 39, 39)
-                                                .add(btnAdd))
-                                            .add(jLabel8)
-                                            .add(jLabel6)
-                                            .add(jLabel7)
-                                            .add(jLabel9))
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(layout.createSequentialGroup()
-                                                .add(26, 26, 26)
-                                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(txtBname, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                                    .add(txtBdate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                                    .add(txtBmoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                    .add(btnStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                    .add(btnContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                    .add(btnBoothType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                    .add(layout.createSequentialGroup()
-                                                        .add(btnYes)
-                                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                                        .add(btnNo))
-                                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                                        .add(org.jdesktop.layout.GroupLayout.LEADING, txtBremain)
-                                                        .add(org.jdesktop.layout.GroupLayout.LEADING, txtBlength, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)))
-                                                .add(5, 5, 5))
-                                            .add(layout.createSequentialGroup()
-                                                .add(40, 40, 40)
-                                                .add(btnReset)
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 113, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                                    .add(layout.createSequentialGroup()
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                            .add(jLabel11)
-                                            .add(jLabel1))
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 253, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))))
-                .add(43, 43, 43))
+                                        .add(jLabel5)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 259, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(layout.createSequentialGroup()
+                                            .add(jLabel2)
+                                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 270, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                        .add(layout.createSequentialGroup()
+                                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                                .add(jLabel6)
+                                                .add(jLabel7))
+                                            .add(26, 26, 26)
+                                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                                .add(btnStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(btnContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(btnBoothType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(txtBmoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .add(layout.createSequentialGroup()
+                                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                                        .add(btnReset)
+                                                        .add(layout.createSequentialGroup()
+                                                            .add(btnYes)
+                                                            .add(10, 10, 10)
+                                                            .add(btnNo)))
+                                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 42, Short.MAX_VALUE)
+                                                    .add(btnClose)
+                                                    .add(20, 20, 20))
+                                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtBdate)
+                                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtBname, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                                            .add(5, 5, 5)))))
+                            .add(43, 43, 43)))))
             .add(layout.createSequentialGroup()
-                .add(125, 125, 125)
+                .add(81, 81, 81)
+                .add(btnAdd)
+                .addContainerGap(287, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(139, 139, 139)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(19, 19, 19)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 47, Short.MAX_VALUE)
+                .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
                     .add(btnStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -207,36 +195,26 @@ public class Editbooths extends javax.swing.JFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(txtBname, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel6))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(44, 44, 44)
-                        .add(jLabel8))
-                    .add(layout.createSequentialGroup()
-                        .add(12, 12, 12)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(txtBdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel7))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(txtBremain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel9)
-                    .add(txtBlength, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(14, 14, 14)
+                .add(17, 17, 17)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel7)
+                    .add(txtBdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(33, 33, 33)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
                     .add(txtBmoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
+                .add(29, 29, 29)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel11)
                     .add(btnYes)
                     .add(btnNo))
-                .add(28, 28, 28)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnClose)
+                .add(18, 18, 18)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(btnAdd)
-                    .add(btnReset)))
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(btnReset)
+                        .add(btnClose)))
+                .add(61, 61, 61))
         );
 
         pack();
@@ -275,14 +253,10 @@ public class Editbooths extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtBdate;
-    private javax.swing.JTextField txtBlength;
     private javax.swing.JTextField txtBmoney;
     private javax.swing.JTextField txtBname;
-    private javax.swing.JTextField txtBremain;
     // End of variables declaration//GEN-END:variables
 
 }
