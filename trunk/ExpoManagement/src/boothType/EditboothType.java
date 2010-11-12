@@ -51,6 +51,7 @@ public class EditboothType extends javax.swing.JFrame {
 
         jLabel3.setText("BoothType ID :");
 
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEdit.setText("Edit");
 
         btnReset.setText("Reset");
@@ -59,6 +60,7 @@ public class EditboothType extends javax.swing.JFrame {
 
         jLabel6.setText("BoothType Width :");
 
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +74,7 @@ public class EditboothType extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
 
-        jLabel7.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Monospaced", 0, 18));
         jLabel7.setText("Edit BoothType");
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
@@ -128,7 +130,7 @@ public class EditboothType extends javax.swing.JFrame {
                     .add(layout.createSequentialGroup()
                         .add(107, 107, 107)
                         .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -160,7 +162,7 @@ public class EditboothType extends javax.swing.JFrame {
                     .add(btnEdit)
                     .add(btnReset)
                     .add(btnClose))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();

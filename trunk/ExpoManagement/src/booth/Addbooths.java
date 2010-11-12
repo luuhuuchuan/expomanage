@@ -61,6 +61,7 @@ public class Addbooths extends javax.swing.JFrame {
 
         jLabel3.setText("BoothType ID :");
 
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAdd.setText("Add");
 
         btnReset.setText("Reset");
@@ -69,6 +70,7 @@ public class Addbooths extends javax.swing.JFrame {
 
         jLabel6.setText("Booth Name :");
 
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,11 +118,11 @@ public class Addbooths extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(270, Short.MAX_VALUE)
+                .addContainerGap(260, Short.MAX_VALUE)
                 .add(btnClose)
                 .add(71, 71, 71))
             .add(layout.createSequentialGroup()
-                .add(156, 156, 156)
+                .add(166, 166, 166)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(125, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
