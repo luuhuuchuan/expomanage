@@ -66,15 +66,17 @@
                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtBname" alignment="0" pref="188" max="32767" attributes="1"/>
-                                          <Component id="txtBdate" alignment="0" pref="188" max="32767" attributes="0"/>
                                           <Component id="btnStaff" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnContact" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnBoothType" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtBmoney" alignment="0" min="-2" pref="114" max="-2" attributes="1"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="btnYes" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="btnNo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="txtBdate" alignment="0" max="32767" attributes="1"/>
+                                              <Component id="txtBmoney" alignment="0" pref="114" max="32767" attributes="1"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
