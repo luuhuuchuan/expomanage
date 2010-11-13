@@ -189,14 +189,35 @@ public class AddExpo extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        try {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
         String storeName = "{call getAllExpo }";
-        try {
-            db.getCallAble(storeName).executeQuery();
-        } catch (SQLException ex) {
-            Logger.getLogger(AddExpo.class.getName()).log(Level.SEVERE, null, ex);
+        db.getCallAble(storeName).executeQuery();
+        //tao giao dien de thuc thi store
+            //CallableStatement cs = db.getConnection().prepareCall("{call ADDNEWSTUDENT(?,?,?,?)}");
+            //truyen tham so cho store
+            //cs.setString(1, rollno);
+            //cs.setString(2, fullname);
+            //cs.setInt(3, gender);
+            //dang ky tham so thu 4 la tham so ra
+            //cs.registerOutParameter(4, java.sql.Types.INTEGER);
+            //thuc thi store
+            //cs.execute();
+            //lay gia tri tham so ra
+            /*int s = cs.getInt(4);
+            if(s == 1){
+            JOptionPane.showMessageDialog(null, "duplicated Primary key","Add new student",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(s == 2){
+            JOptionPane.showMessageDialog(null, "Rollno can not be empty","Add new student",JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+            JOptionPane.showMessageDialog(null, "One(s) record has been added","Add new student",JOptionPane.INFORMATION_MESSAGE);
+            }*/
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
