@@ -17,8 +17,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Cuongnvgc00064
  */
 public class OperationExhibitor {
+    
     DBHelper db = null;
-
     DefaultTableModel ExhibitorModel = null;
     public void loadAllExhibitor(JTable jTable1){
         jTable1.setModel(ExhibitorModel = new DefaultTableModel());
