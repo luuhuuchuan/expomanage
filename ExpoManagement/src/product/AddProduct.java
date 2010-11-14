@@ -192,7 +192,7 @@ public class AddProduct extends javax.swing.JDialog {
         String date = txtDate.getText().trim();
 
         //tao giao dien de thuc thi store
-           CallableStatement cs = db.getConnection().prepareCall("{call AddProducts(?,?,?,?,?,?,?,?)}");
+           CallableStatement cs = db.getConnection().prepareCall("{call AddProducts(?,?,?,?,?)}");
         //truyen tham so cho store
         cs.setString(1, name);
         cs.setFloat(2, price);
@@ -200,19 +200,12 @@ public class AddProduct extends javax.swing.JDialog {
         cs.setString(4, description);
         cs.setString(5,date);
 
-        //dang ky tham so thu 7 la tham so ra
-        cs.registerOutParameter(8, java.sql.Types.INTEGER);
         //thuc thi store
         cs.execute();
-        //lay gia tri tham so ra
-        int s = cs.getInt(8);
-        if(s == 1){
-        JOptionPane.showMessageDialog(null, "One new Product has been added","New Product",JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-        JOptionPane.showMessageDialog(null, "An error occurred during execution","New Product",JOptionPane.ERROR_MESSAGE);
-        }
+        JOptionPane.showMessageDialog(null, "One new Product has been added !","New Product",JOptionPane.INFORMATION_MESSAGE);
+
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Product",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnAddActionPerformed
