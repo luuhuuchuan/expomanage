@@ -198,8 +198,8 @@ public class AddExpo extends javax.swing.JFrame {
         int numBooth = Integer.parseInt(txtNumBooth.getText().trim());
         float cost = Float.parseFloat(txtCost.getText().trim());
         String description = txtDescription.getText();
-        Date dateStart = Date.valueOf(txtDateEnd.getText().trim());
-        Date dateEnd = Date.valueOf(txtDateEnd.getText().trim());
+        String dateStart = txtDateEnd.getText().trim();
+        String dateEnd = txtDateEnd.getText().trim();
         
         //tao giao dien de thuc thi store
         CallableStatement cs = db.getConnection().prepareCall("{call AddExpo(?,?,?,?,?,?,?)}");
@@ -208,8 +208,8 @@ public class AddExpo extends javax.swing.JFrame {
         cs.setInt(2, numBooth);
         cs.setFloat(3, cost);
         cs.setString(4, description);
-        cs.setDate(5,dateStart);
-        cs.setDate(6,dateEnd);
+        cs.setString(5,dateStart);
+        cs.setString(6,dateEnd);
 
         //dang ky tham so thu 7 la tham so ra
         cs.registerOutParameter(7, java.sql.Types.INTEGER);
