@@ -125,7 +125,7 @@ public class Main extends javax.swing.JFrame {
         txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24));
         txtTitle.setText("Expo Managenment System");
 
-        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14));
+        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
@@ -350,11 +350,6 @@ public class Main extends javax.swing.JFrame {
         btnFindEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
         btnFindEx.setText("Find");
         btnFindEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
-        btnFindEx.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFindExActionPerformed(evt);
-            }
-        });
 
         org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -698,15 +693,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         new EditExhibitor(this,true).setVisible(true);
     }//GEN-LAST:event_btnEditExActionPerformed
-
-    private void btnFindExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindExActionPerformed
-        try {
-            // TODO add your handling code here:
-            oex.getResult();
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnFindExActionPerformed
 
     /**
     * @param args the command line arguments

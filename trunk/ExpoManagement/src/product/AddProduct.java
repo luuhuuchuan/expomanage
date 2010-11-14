@@ -12,9 +12,6 @@
 package product;
 
 import dataLayer.DBHelper;
-import java.awt.Frame;
-import java.sql.PreparedStatement;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,18 +20,11 @@ import javax.swing.JOptionPane;
 public class AddProduct extends javax.swing.JDialog {
 
     /** Creates new form AddProduct */
-//    private DBHelper db = null;
-//    Frame parentFrame = null;
+    //Frame parentFrame = null;
     public AddProduct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-//        this.parentFrame = parent;
-//        db = new DBHelper();
-//        //if can not open the connection
-//        if(!db.openConnection()){
-//            this.btnAdd.setEnabled(false);
-//            this.btnClose.setEnabled(false);
-//        }
+        //this.parentFrame = parent;
     }
 
     /** This method is called from within the constructor to
@@ -212,29 +202,6 @@ public class AddProduct extends javax.swing.JDialog {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-//        try{
-//        //lay dl tu form
-//        String PName = txtName.getText().trim();
-//        String PPrice = txtPrice.getText().trim();
-//        String PNumber = txtNumber.getText().trim();
-//        String PDescription = txtDescription.getText().trim();
-//        String PDate = txtDate.getText().trim();
-//
-//        String sqlCmd = "insert into Products values(?,?,?,?,?)";
-//        PreparedStatement ps = db.getConnection().prepareStatement(sqlCmd);
-//        ps.setString(1, PName);
-//        ps.setString(2, PPrice);
-//        ps.setString(3, PNumber);
-//        ps.setString(4, PDescription);
-//        ps.setString(5, PDate);
-//        ps.execute();
-//        JOptionPane.showMessageDialog(null, "New Product has been added","New Product",JOptionPane.INFORMATION_MESSAGE);
-//        //((TabProduct)parentFrame).loadAll();
-//    }
-//    catch(Exception ex){
-//        ex.printStackTrace();
-//        JOptionPane.showMessageDialog(null, "Adding a new Product failed","New Product",JOptionPane.INFORMATION_MESSAGE);
-//    }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
