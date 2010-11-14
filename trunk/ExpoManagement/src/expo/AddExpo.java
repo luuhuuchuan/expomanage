@@ -214,6 +214,7 @@ public class AddExpo extends javax.swing.JFrame {
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Expo has been added !","Add new Expo",JOptionPane.INFORMATION_MESSAGE);
+        dispose();
         
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new Expo",JOptionPane.ERROR_MESSAGE);

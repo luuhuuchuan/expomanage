@@ -26,12 +26,16 @@ CREATE PROC AddExpo
 @Cost float,
 @Description ntext,
 @DateStart SMALLDATETIME,
-@DateEnd SMALLDATETIME
+@DateEnd SMALLDATETIME,
+@FLAG INT OUTPUT
 AS
-INSERT INTO Expo (ExName, ExNumBooth, ExMoney, ExDescription, ExDateStart, ExDateEnd)
-	VALUES(@Name,@NumBooth,@Cost,@Description,@DateStart,@DateEnd)
-
+BEGIN
+	INSERT INTO Expo (ExName, ExNumBooth, ExMoney, ExDescription, ExDateStart, ExDateEnd)
+		VALUES(@Name,@NumBooth,@Cost,@Description,@DateStart,@DateEnd)
+	SET	@FLAG = 1;
+	SELECT @FLAG
+END
 
 -- Chay thu Store
 --DECLARE @F INT
---exec addExpo 'Hoi Sung',100,6000000,'Trien lam cac loai sung','11/10/2010','12/9/2010'
+--exec addExpo 'Hoi Sung',100,6000000,'Trien lam cac loai sung','11/10/2010','12/9/2010',@F OUTPUT
