@@ -25,9 +25,9 @@ public class DBHelper {
     public boolean openConnection(){
         try{
             //load the driver (type 1)
-            Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+            //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
             //load the driver (type 4)
-            //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Error when resgistering a bridge","Load the driver",JOptionPane.ERROR_MESSAGE);
@@ -35,9 +35,9 @@ public class DBHelper {
         }
         try{
             //open the connection (type 1)
-            conn = DriverManager.getConnection("jdbc:odbc:Expo");
+            //conn = DriverManager.getConnection("jdbc:odbc:Expo");
             //(type 4)
-            //conn = DriverManager.getConnection("jdbc:sqlserver://localhost;DatabaseName=Expo","user=sa","password=123456");
+            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;user=sa;password=123456;database=Expo");
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Can not open the connection"+ex,"Open the connection",JOptionPane.ERROR_MESSAGE);
