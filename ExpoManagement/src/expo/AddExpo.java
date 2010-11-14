@@ -202,7 +202,7 @@ public class AddExpo extends javax.swing.JFrame {
         String dateEnd = txtDateEnd.getText().trim();
         
         //tao giao dien de thuc thi store
-        CallableStatement cs = db.getConnection().prepareCall("{call AddExpo(?,?,?,?,?,?,?)}");
+        CallableStatement cs = db.getConnection().prepareCall("{call AddExpo(?,?,?,?,?,?)}");
         //truyen tham so cho store
         cs.setString(1, name);
         cs.setInt(2, numBooth);
@@ -211,19 +211,12 @@ public class AddExpo extends javax.swing.JFrame {
         cs.setString(5,dateStart);
         cs.setString(6,dateEnd);
 
-        //dang ky tham so thu 7 la tham so ra
-        cs.registerOutParameter(7, java.sql.Types.INTEGER);
         //thuc thi store
         cs.execute();
-        //lay gia tri tham so ra
-        int s = cs.getInt(7);
-        if(s == 1){
-        JOptionPane.showMessageDialog(null, "One new Expo has been added","Add new Expo",JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-        JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Expo",JOptionPane.ERROR_MESSAGE);
-        }
+        JOptionPane.showMessageDialog(null, "One new Expo has been added !","Add new Expo",JOptionPane.INFORMATION_MESSAGE);
+        
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new Expo",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnAddActionPerformed
