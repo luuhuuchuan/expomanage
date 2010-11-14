@@ -12,9 +12,12 @@
 package expo;
 
 import dataLayer.DBHelper;
+import java.sql.CallableStatement;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -57,7 +60,7 @@ public class AddExpo extends javax.swing.JFrame {
         txtNumBooth = new javax.swing.JTextField();
         txtDateStart = new javax.swing.JTextField();
         txtCost = new javax.swing.JTextField();
-        txtDatEnd = new javax.swing.JTextField();
+        txtDateEnd = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
         btnAdd = new javax.swing.JButton();
@@ -84,7 +87,7 @@ public class AddExpo extends javax.swing.JFrame {
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
-        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +97,7 @@ public class AddExpo extends javax.swing.JFrame {
         });
 
         BtnClose.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/56.png"))); // NOI18N
+        BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         BtnClose.setText("Close");
         BtnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +128,7 @@ public class AddExpo extends javax.swing.JFrame {
                     .add(txtCost, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                     .add(txtNumBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                     .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .add(txtDatEnd, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .add(txtDateEnd, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -154,7 +157,7 @@ public class AddExpo extends javax.swing.JFrame {
                             .add(txtDateStart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel5))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(txtDatEnd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(txtDateEnd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel4)
@@ -182,8 +185,6 @@ public class AddExpo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getAccessibleContext().setAccessibleName("Add New Expo");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -193,29 +194,35 @@ public class AddExpo extends javax.swing.JFrame {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
-        String storeName = "{call getAllExpo }";
-        db.getCallAble(storeName).executeQuery();
+        String name = txtName.getText().trim();
+        int numBooth = Integer.parseInt(txtNumBooth.getText().trim());
+        float cost = Float.parseFloat(txtCost.getText().trim());
+        String description = txtDescription.getText();
+        Date dateStart = Date.valueOf(txtDateEnd.getText().trim());
+        Date dateEnd = Date.valueOf(txtDateEnd.getText().trim());
+        
         //tao giao dien de thuc thi store
-            //CallableStatement cs = db.getConnection().prepareCall("{call ADDNEWSTUDENT(?,?,?,?)}");
-            //truyen tham so cho store
-            //cs.setString(1, rollno);
-            //cs.setString(2, fullname);
-            //cs.setInt(3, gender);
-            //dang ky tham so thu 4 la tham so ra
-            //cs.registerOutParameter(4, java.sql.Types.INTEGER);
-            //thuc thi store
-            //cs.execute();
-            //lay gia tri tham so ra
-            /*int s = cs.getInt(4);
-            if(s == 1){
-            JOptionPane.showMessageDialog(null, "duplicated Primary key","Add new student",JOptionPane.ERROR_MESSAGE);
-            }
-            else if(s == 2){
-            JOptionPane.showMessageDialog(null, "Rollno can not be empty","Add new student",JOptionPane.ERROR_MESSAGE);
-            }
-            else{
-            JOptionPane.showMessageDialog(null, "One(s) record has been added","Add new student",JOptionPane.INFORMATION_MESSAGE);
-            }*/
+        CallableStatement cs = db.getConnection().prepareCall("{call AddExpo(?,?,?,?,?,?,?)}");
+        //truyen tham so cho store
+        cs.setString(1, name);
+        cs.setInt(2, numBooth);
+        cs.setFloat(3, cost);
+        cs.setString(4, description);
+        cs.setDate(5,dateStart);
+        cs.setDate(6,dateEnd);
+
+        //dang ky tham so thu 7 la tham so ra
+        cs.registerOutParameter(7, java.sql.Types.INTEGER);
+        //thuc thi store
+        cs.execute();
+        //lay gia tri tham so ra
+        int s = cs.getInt(7);
+        if(s == 1){
+        JOptionPane.showMessageDialog(null, "One new Expo has been added","Add new Expo",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Expo",JOptionPane.ERROR_MESSAGE);
+        }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -249,7 +256,7 @@ public class AddExpo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtCost;
-    private javax.swing.JTextField txtDatEnd;
+    private javax.swing.JTextField txtDateEnd;
     private javax.swing.JTextField txtDateStart;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtName;
