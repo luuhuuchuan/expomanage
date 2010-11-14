@@ -14,6 +14,7 @@ package expomanagement;
 import dataLayer.DBHelper;
 import exhibitor.AddExhibitor;
 import exhibitor.EditExhibitor;
+import exhibitor.OperationExhibitor;
 import expo.AddExpo;
 import expo.OperationExpo;
 import java.sql.ResultSet;
@@ -24,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import product.AddProduct;
+import product.OperationProduct;
 
 /**
  *
@@ -33,6 +35,8 @@ public class Main extends javax.swing.JFrame {
 
     /** Creates new form Main */
     OperationExpo oe = new OperationExpo();
+    OperationExhibitor oex = new OperationExhibitor();
+    OperationProduct op = new OperationProduct();
     public Main() {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -42,6 +46,9 @@ public class Main extends javax.swing.JFrame {
         }
         initComponents();
         oe.loadAllExpo(tblExpo);
+        oex.loadAllExhibitor(tblExhibitor);
+        op.loadAllProduct(tblProducts);
+
     }
 
     /** This method is called from within the constructor to
@@ -87,7 +94,7 @@ public class Main extends javax.swing.JFrame {
         btnFindEx = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblExpo1 = new javax.swing.JTable();
+        tblExhibitor = new javax.swing.JTable();
         TabExhibitor = new javax.swing.JPanel();
         SubTabExhibitor = new javax.swing.JTabbedPane();
         TabSponsor = new javax.swing.JPanel();
@@ -103,7 +110,7 @@ public class Main extends javax.swing.JFrame {
         btnFindP = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tblProducts = new javax.swing.JTable();
         TabContact = new javax.swing.JPanel();
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
@@ -154,7 +161,7 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/home.png")), TabHome); // NOI18N
 
         SubTabManager.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 14));
+        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
@@ -384,7 +391,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Expo List"));
 
-        tblExpo1.setModel(new javax.swing.table.DefaultTableModel(
+        tblExhibitor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -403,7 +410,7 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(tblExpo1);
+        jScrollPane4.setViewportView(tblExhibitor);
 
         org.jdesktop.layout.GroupLayout jPanel7Layout = new org.jdesktop.layout.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -461,7 +468,7 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Manager", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/administrator.png")), TabManager); // NOI18N
 
         SubTabExhibitor.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabExhibitor.setFont(new java.awt.Font("Tahoma", 0, 14));
+        SubTabExhibitor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         org.jdesktop.layout.GroupLayout TabSponsorLayout = new org.jdesktop.layout.GroupLayout(TabSponsor);
         TabSponsor.setLayout(TabSponsorLayout);
@@ -555,7 +562,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Product List"));
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tblProducts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -574,7 +581,7 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(table);
+        jScrollPane3.setViewportView(tblProducts);
 
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -749,9 +756,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTabbedPane mainTab;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tblExhibitor;
     private javax.swing.JTable tblExpo;
-    private javax.swing.JTable tblExpo1;
+    private javax.swing.JTable tblProducts;
     private javax.swing.JTextField txtFind;
     private javax.swing.JTextField txtKeyword;
     private javax.swing.JTextField txtPKeyword;
