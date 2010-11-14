@@ -694,6 +694,12 @@ public class Main extends javax.swing.JFrame {
         new EditExhibitor(this,true).setVisible(true);
     }//GEN-LAST:event_btnEditExActionPerformed
 
+
+    private void btnFindExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindExActionPerformed
+
+    }//GEN-LAST:event_btnFindExActionPerformed
+
+
     /**
     * @param args the command line arguments
     */
