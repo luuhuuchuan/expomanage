@@ -21,16 +21,20 @@ select * from Exhibitor
 
 CREATE PROC AddExhibitor
 @Name nvarchar(100),
-@Fax float,
-@Phone int,
+@Fax varchar(30),
+@Phone varchar(30),
 @Address ntext,
-@Website SMALLDATETIME
+@Website varchar(100),
+@Flag int output
 AS
-INSERT INTO Exhibitor (EName, EFax, EPhone, EAddress, EWebsite)
-VALUES(@Name,@Fax,@Phone,@Address,@Website)
-PRINT '1 BAN GHI VUA DUOC THEM'
+BEGIN
+	INSERT INTO Exhibitor (EName, EFax, EPhone, EAddress, EWebsite)
+	VALUES(@Name,@Fax,@Phone,@Address,@Website)
+	SET @Flag = 1;
+	SELECT @Flag
+END
 
---Tao Store tim kiem Exhibitor
-Create proc findExhibitorbyName
-as
-Select * from Exhibitor where EName like '%"+pattern+"%'
+----Tao Store tim kiem Exhibitor
+--Create proc findExhibitorbyName
+--as
+--Select * from Exhibitor where EName like '%"+pattern+"%'

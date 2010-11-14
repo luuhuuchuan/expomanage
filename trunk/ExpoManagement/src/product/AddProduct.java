@@ -12,7 +12,13 @@
 package product;
 
 import dataLayer.DBHelper;
-
+import java.sql.CallableStatement;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 /**
  *
  * @author Cuongnvgc00064
@@ -178,27 +184,34 @@ public class AddProduct extends javax.swing.JDialog {
         db.openConnection();
         String storeName = "{call getAllProducts }";
         db.getCallAble(storeName).executeQuery();
+
+        String name = txtName.getText().trim();
+        float price = Float.parseFloat(txtPrice.getText().trim());
+        int number = Integer.parseInt(txtNumber.getText().trim());
+        String description = txtDescription.getText();
+        Date datep = Date.valueOf(txtDate.getText().trim());
+
         //tao giao dien de thuc thi store
-            //CallableStatement cs = db.getConnection().prepareCall("{call ADDNEWSTUDENT(?,?,?,?)}");
-            //truyen tham so cho store
-            //cs.setString(1, rollno);
-            //cs.setString(2, fullname);
-            //cs.setInt(3, gender);
-            //dang ky tham so thu 4 la tham so ra
-            //cs.registerOutParameter(4, java.sql.Types.INTEGER);
-            //thuc thi store
-            //cs.execute();
-            //lay gia tri tham so ra
-            /*int s = cs.getInt(4);
-            if(s == 1){
-            JOptionPane.showMessageDialog(null, "duplicated Primary key","Add new student",JOptionPane.ERROR_MESSAGE);
-            }
-            else if(s == 2){
-            JOptionPane.showMessageDialog(null, "Rollno can not be empty","Add new student",JOptionPane.ERROR_MESSAGE);
-            }
-            else{
-            JOptionPane.showMessageDialog(null, "One(s) record has been added","Add new student",JOptionPane.INFORMATION_MESSAGE);
-            }*/
+           CallableStatement cs = db.getConnection().prepareCall("{call AddExpo(?,?,?,?,?,?,?,?)}");
+        //truyen tham so cho store
+        cs.setString(1, name);
+        cs.setFloat(2, price);
+        cs.setInt(3, number);
+        cs.setString(4, description);
+        cs.setDate(5, (java.sql.Date) datep);
+
+        //dang ky tham so thu 7 la tham so ra
+        cs.registerOutParameter(8, java.sql.Types.INTEGER);
+        //thuc thi store
+        cs.execute();
+        //lay gia tri tham so ra
+        int s = cs.getInt(8);
+        if(s == 1){
+        JOptionPane.showMessageDialog(null, "One new Product has been added","New Product",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "An error occurred during execution","New Product",JOptionPane.ERROR_MESSAGE);
+        }
         } catch (Exception ex) {
             ex.printStackTrace();
         }

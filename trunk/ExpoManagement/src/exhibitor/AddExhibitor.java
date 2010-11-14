@@ -12,6 +12,8 @@
 package exhibitor;
 
 import dataLayer.DBHelper;
+import java.sql.CallableStatement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -176,8 +178,34 @@ public class AddExhibitor extends javax.swing.JDialog {
         db.openConnection();
         String storeName = "{call getAllExhibitor }";
         db.getCallAble(storeName).executeQuery();
+
+        String name = txtName.getText().trim();
+        String fax = txtFax.getText().trim();
+        String phone = txtPhone.getText().trim();
+        String address = txtAddress.getText();
+        String website = txtWebsite.getText().trim();
+
         //tao giao dien de thuc thi store
-            
+        CallableStatement cs = db.getConnection().prepareCall("{call AddExhibitor(?,?,?,?,?,?)}");
+        //truyen tham so cho store
+        cs.setString(1, name);
+        cs.setString(2, fax);
+        cs.setString(3, phone);
+        cs.setString(4, address);
+        cs.setString(5,website);
+
+        //dang ky tham so thu 7 la tham so ra
+        cs.registerOutParameter(6, java.sql.Types.INTEGER);
+        //thuc thi store
+        cs.execute();
+        //lay gia tri tham so ra
+        int s = cs.getInt(6);
+        if(s == 1){
+        JOptionPane.showMessageDialog(null, "One new Exhibitor has been added","New Exhibitor",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "An error occurred during execution","New Exhibitor",JOptionPane.ERROR_MESSAGE);
+        }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
