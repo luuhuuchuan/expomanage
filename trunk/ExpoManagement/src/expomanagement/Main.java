@@ -11,19 +11,15 @@
 
 package expomanagement;
 
-import dataLayer.DBHelper;
 import exhibitor.AddExhibitor;
 import exhibitor.EditExhibitor;
 import exhibitor.OperationExhibitor;
 import expo.AddExpo;
 import expo.OperationExpo;
-import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import product.AddProduct;
 import product.OperationProduct;
 
@@ -48,7 +44,6 @@ public class Main extends javax.swing.JFrame {
         oe.loadAllExpo(tblExpo);
         oex.loadAllExhibitor(tblExhibitor);
         op.loadAllProduct(tblProducts);
-
     }
 
     /** This method is called from within the constructor to
@@ -342,7 +337,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnDeleteEx.setText("Delete");
         btnDeleteEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -355,6 +350,11 @@ public class Main extends javax.swing.JFrame {
         btnFindEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
         btnFindEx.setText("Find");
         btnFindEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnFindEx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindExActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -698,6 +698,15 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         new EditExhibitor(this,true).setVisible(true);
     }//GEN-LAST:event_btnEditExActionPerformed
+
+    private void btnFindExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindExActionPerformed
+        try {
+            // TODO add your handling code here:
+            oex.getResult();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnFindExActionPerformed
 
     /**
     * @param args the command line arguments
