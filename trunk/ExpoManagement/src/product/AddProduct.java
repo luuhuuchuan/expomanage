@@ -49,13 +49,13 @@ public class AddProduct extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         txtNumber = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtDescription = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        txtDescription = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Product");
@@ -94,7 +94,7 @@ public class AddProduct extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24));
         jLabel6.setForeground(new java.awt.Color(102, 102, 255));
         jLabel6.setText("Add Product");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -106,34 +106,33 @@ public class AddProduct extends javax.swing.JDialog {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(15, 15, 15)
+                        .add(25, 25, 25)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jLabel2)
-                            .add(jLabel1)
-                            .add(jLabel3)
-                            .add(jLabel4)
-                            .add(jLabel5)))
+                            .add(layout.createSequentialGroup()
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(jLabel2)
+                                    .add(jLabel1)
+                                    .add(jLabel3)
+                                    .add(jLabel4))
+                                .add(20, 20, 20))
+                            .add(layout.createSequentialGroup()
+                                .add(jLabel5)
+                                .add(18, 18, 18)))
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(txtName)
+                            .add(txtPrice)
+                            .add(txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .add(jLabel6)
+                            .add(layout.createSequentialGroup()
+                                .add(btnReset)
+                                .add(18, 18, 18)
+                                .add(btnClose))
+                            .add(txtDate)
+                            .add(txtDescription)))
                     .add(layout.createSequentialGroup()
-                        .add(29, 29, 29)
+                        .add(27, 27, 27)
                         .add(btnAdd)))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(10, 10, 10)
-                        .add(btnReset)
-                        .add(24, 24, 24)
-                        .add(btnClose)
-                        .add(28, 28, 28))
-                    .add(layout.createSequentialGroup()
-                        .add(2, 2, 2)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtName)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtPrice)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtDate)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtDescription)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel6))
-                        .addContainerGap(76, Short.MAX_VALUE))))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -152,20 +151,23 @@ public class AddProduct extends javax.swing.JDialog {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(txtNumber, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel3))
-                .add(26, 26, 26)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtDescription, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel4))
-                .add(18, 18, 18)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(26, 26, 26)
+                        .add(jLabel4))
+                    .add(layout.createSequentialGroup()
+                        .add(21, 21, 21)
+                        .add(txtDescription, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 55, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(txtDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel5))
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnClose)
                     .add(btnAdd)
-                    .add(btnReset))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .add(btnReset)
+                    .add(btnClose))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
