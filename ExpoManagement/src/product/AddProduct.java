@@ -189,7 +189,7 @@ public class AddProduct extends javax.swing.JDialog {
         float price = Float.parseFloat(txtPrice.getText().trim());
         int number = Integer.parseInt(txtNumber.getText().trim());
         String description = txtDescription.getText();
-        Date date = Date.valueOf(txtDate.getText().trim());
+        String date = txtDate.getText().trim();
 
         //tao giao dien de thuc thi store
            CallableStatement cs = db.getConnection().prepareCall("{call AddProducts(?,?,?,?,?,?,?,?)}");
@@ -198,7 +198,7 @@ public class AddProduct extends javax.swing.JDialog {
         cs.setFloat(2, price);
         cs.setInt(3, number);
         cs.setString(4, description);
-        cs.setDate(5, (java.sql.Date) date);
+        cs.setString(5,date);
 
         //dang ky tham so thu 7 la tham so ra
         cs.registerOutParameter(8, java.sql.Types.INTEGER);
