@@ -190,7 +190,7 @@ public class EditProduct extends javax.swing.JDialog {
         String PDescription = txtDescription.getText().trim();
         String PDate = txtDate.getText().trim();
 
-        String sqlCmd = "insert into contact values(?,?,?,?,?)";
+        String sqlCmd = "Insert Into Products values(?,?,?,?,?)";
         PreparedStatement ps = db.getConnection().prepareStatement(sqlCmd);
         ps.setString(1, PName);
         ps.setString(2, PPrice);

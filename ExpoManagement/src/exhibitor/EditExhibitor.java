@@ -190,7 +190,7 @@ public class EditExhibitor extends javax.swing.JDialog {
         String address = txtAddress.getText().trim();
         String website = txtWebsite.getText().trim();
 
-        String sqlCmd = "insert into contact values(?,?,?,?,?)";
+        String sqlCmd = "Insert Into Exhibitor values(?,?,?,?,?)";
         PreparedStatement ps = db.getConnection().prepareStatement(sqlCmd);
         ps.setString(1, name);
         ps.setString(2, fax);
