@@ -23,18 +23,18 @@ import javax.swing.JOptionPane;
 public class AddProduct extends javax.swing.JDialog {
 
     /** Creates new form AddProduct */
-    private DBHelper db = null;
-    Frame parentFrame = null;
+//    private DBHelper db = null;
+//    Frame parentFrame = null;
     public AddProduct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.parentFrame = parent;
-        db = new DBHelper();
-        //if can not open the connection
-        if(!db.openConnection()){
-            this.btnAdd.setEnabled(false);
-            this.btnClose.setEnabled(false);
-        }
+//        this.parentFrame = parent;
+//        db = new DBHelper();
+//        //if can not open the connection
+//        if(!db.openConnection()){
+//            this.btnAdd.setEnabled(false);
+//            this.btnClose.setEnabled(false);
+//        }
     }
 
     /** This method is called from within the constructor to
@@ -182,29 +182,59 @@ public class AddProduct extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        try{
-        //lay dl tu form
-        String PName = txtName.getText().trim();
-        String PPrice = txtPrice.getText().trim();
-        String PNumber = txtNumber.getText().trim();
-        String PDescription = txtDescription.getText().trim();
-        String PDate = txtDate.getText().trim();
-
-        String sqlCmd = "insert into Products values(?,?,?,?,?)";
-        PreparedStatement ps = db.getConnection().prepareStatement(sqlCmd);
-        ps.setString(1, PName);
-        ps.setString(2, PPrice);
-        ps.setString(3, PNumber);
-        ps.setString(4, PDescription);
-        ps.setString(5, PDate);
-        ps.execute();
-        JOptionPane.showMessageDialog(null, "New Product has been added","New Product",JOptionPane.INFORMATION_MESSAGE);
-        //((TabProduct)parentFrame).loadAll();
-    }
-    catch(Exception ex){
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Adding a new Product failed","New Product",JOptionPane.INFORMATION_MESSAGE);
-    }
+        try {
+        DBHelper db = null;
+        db = new DBHelper();
+        db.openConnection();
+        String storeName = "{call getAllProducts }";
+        db.getCallAble(storeName).executeQuery();
+        //tao giao dien de thuc thi store
+            //CallableStatement cs = db.getConnection().prepareCall("{call ADDNEWSTUDENT(?,?,?,?)}");
+            //truyen tham so cho store
+            //cs.setString(1, rollno);
+            //cs.setString(2, fullname);
+            //cs.setInt(3, gender);
+            //dang ky tham so thu 4 la tham so ra
+            //cs.registerOutParameter(4, java.sql.Types.INTEGER);
+            //thuc thi store
+            //cs.execute();
+            //lay gia tri tham so ra
+            /*int s = cs.getInt(4);
+            if(s == 1){
+            JOptionPane.showMessageDialog(null, "duplicated Primary key","Add new student",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(s == 2){
+            JOptionPane.showMessageDialog(null, "Rollno can not be empty","Add new student",JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+            JOptionPane.showMessageDialog(null, "One(s) record has been added","Add new student",JOptionPane.INFORMATION_MESSAGE);
+            }*/
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+//        try{
+//        //lay dl tu form
+//        String PName = txtName.getText().trim();
+//        String PPrice = txtPrice.getText().trim();
+//        String PNumber = txtNumber.getText().trim();
+//        String PDescription = txtDescription.getText().trim();
+//        String PDate = txtDate.getText().trim();
+//
+//        String sqlCmd = "insert into Products values(?,?,?,?,?)";
+//        PreparedStatement ps = db.getConnection().prepareStatement(sqlCmd);
+//        ps.setString(1, PName);
+//        ps.setString(2, PPrice);
+//        ps.setString(3, PNumber);
+//        ps.setString(4, PDescription);
+//        ps.setString(5, PDate);
+//        ps.execute();
+//        JOptionPane.showMessageDialog(null, "New Product has been added","New Product",JOptionPane.INFORMATION_MESSAGE);
+//        //((TabProduct)parentFrame).loadAll();
+//    }
+//    catch(Exception ex){
+//        ex.printStackTrace();
+//        JOptionPane.showMessageDialog(null, "Adding a new Product failed","New Product",JOptionPane.INFORMATION_MESSAGE);
+//    }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
