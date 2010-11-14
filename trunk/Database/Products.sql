@@ -26,6 +26,7 @@ CREATE PROC AddProducts
 @Description ntext,
 @Date SMALLDATETIME
 AS
-INSERT INTO Products (PName, PPrice, PNumber, PDescription, PDate)
-VALUES(@Name,@Price,@Number,@Description,@Date)
-PRINT '1 BAN GHI VUA DUOC THEM'
+BEGIN
+	INSERT INTO Products (PName, PPrice, PNumber, PDescription, PDate)
+	VALUES(@Name,@Price,@Number,@Description,@Date)
+END
