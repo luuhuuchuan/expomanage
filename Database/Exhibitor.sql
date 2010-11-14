@@ -24,14 +24,11 @@ CREATE PROC AddExhibitor
 @Fax varchar(30),
 @Phone varchar(30),
 @Address ntext,
-@Website varchar(100),
-@Flag int output
+@Website varchar(100)
 AS
 BEGIN
 	INSERT INTO Exhibitor (EName, EFax, EPhone, EAddress, EWebsite)
 	VALUES(@Name,@Fax,@Phone,@Address,@Website)
-	SET @Flag = 1;
-	SELECT @Flag
 END
 
 ----Tao Store tim kiem Exhibitor
