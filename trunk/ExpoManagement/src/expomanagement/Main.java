@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import product.AddProduct;
 import product.OperationProduct;
+import sponsor.OperationSponsor;
 
 /**
  *
@@ -36,6 +37,7 @@ public class Main extends javax.swing.JFrame {
     OperationExhibitor oex = new OperationExhibitor();
     OperationProduct op = new OperationProduct();
     OperationBoothType obt = new OperationBoothType();
+    OperationSponsor os = new OperationSponsor();
     public Main() {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -48,7 +50,9 @@ public class Main extends javax.swing.JFrame {
         oex.loadAllExhibitor(tblExhibitor);
         op.loadAllProduct(tblProducts);
 
+
         obt.loadAllBoothType(tblBoothType);
+        os.loadAllSponsor(tblSponsor);
     }
 
     /** This method is called from within the constructor to
@@ -117,6 +121,17 @@ public class Main extends javax.swing.JFrame {
         TabExhibitor = new javax.swing.JPanel();
         SubTabExhibitor = new javax.swing.JTabbedPane();
         TabSponsor = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        btnAddS = new javax.swing.JButton();
+        btnEditS = new javax.swing.JButton();
+        btnDeleteS = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        cbWhereP1 = new javax.swing.JComboBox();
+        txtPKeyword1 = new javax.swing.JTextField();
+        btnFindS = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblSponsor = new javax.swing.JTable();
         TabStaff = new javax.swing.JPanel();
         TabProduct = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -149,11 +164,11 @@ public class Main extends javax.swing.JFrame {
         txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24));
         txtTitle.setText("Expo Managenment System");
 
-        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18));
         jTextArea1.setRows(5);
         jTextArea1.setText("\n Welcome come !\n You using software of Team 1 - GC0501 - FPT GreenWich.\n Wish you to work efficiently.\n Thank you for using our software.");
         jTextArea1.setAutoscrolls(false);
@@ -233,7 +248,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhere, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFind))
         );
@@ -351,7 +366,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereEx1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtFind1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx1))
         );
@@ -482,7 +497,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereEx2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtFind2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx2))
         );
@@ -583,7 +598,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtFind, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx))
         );
@@ -678,15 +693,117 @@ public class Main extends javax.swing.JFrame {
         SubTabExhibitor.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         SubTabExhibitor.setFont(new java.awt.Font("Tahoma", 0, 14));
 
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
+
+        btnAddS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAddS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
+        btnAddS.setText("Add");
+        btnAddS.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnAddS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddSActionPerformed(evt);
+            }
+        });
+
+        btnEditS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
+        btnEditS.setText("Edit");
+        btnEditS.setMargin(new java.awt.Insets(2, 4, 2, 4));
+
+        btnDeleteS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteS.setText("Delete");
+        btnDeleteS.setMargin(new java.awt.Insets(2, 4, 2, 4));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setText("Filter");
+
+        cbWhereP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnFindS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
+        btnFindS.setText("Find");
+        btnFindS.setMargin(new java.awt.Insets(2, 4, 2, 4));
+
+        org.jdesktop.layout.GroupLayout jPanel11Layout = new org.jdesktop.layout.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel11Layout.createSequentialGroup()
+                .add(btnAddS)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnEditS)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnDeleteS)
+                .add(18, 18, 18)
+                .add(jLabel6)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(cbWhereP1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(txtPKeyword1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnFindS))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel11Layout.createSequentialGroup()
+                .add(jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnAddS)
+                    .add(btnEditS)
+                    .add(btnDeleteS)
+                    .add(jLabel6)
+                    .add(cbWhereP1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtPKeyword1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnFindS))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Sponsor List"));
+
+        tblSponsor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(tblSponsor);
+
+        org.jdesktop.layout.GroupLayout jPanel12Layout = new org.jdesktop.layout.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        );
+
         org.jdesktop.layout.GroupLayout TabSponsorLayout = new org.jdesktop.layout.GroupLayout(TabSponsor);
         TabSponsor.setLayout(TabSponsorLayout);
         TabSponsorLayout.setHorizontalGroup(
             TabSponsorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 552, Short.MAX_VALUE)
+            .add(TabSponsorLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .add(TabSponsorLayout.createSequentialGroup()
+                .add(22, 22, 22)
+                .add(jPanel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(27, 27, 27))
         );
         TabSponsorLayout.setVerticalGroup(
             TabSponsorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 375, Short.MAX_VALUE)
+            .add(TabSponsorLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
+                .add(jPanel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(15, 15, 15))
         );
 
         SubTabExhibitor.addTab("Sponsor", TabSponsor);
@@ -930,6 +1047,10 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditEx2ActionPerformed
 
+    private void btnAddSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddSActionPerformed
+
 
     /**
     * @param args the command line arguments
@@ -962,33 +1083,41 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnAddEx1;
     private javax.swing.JButton btnAddEx2;
     private javax.swing.JButton btnAddP;
+    private javax.swing.JButton btnAddS;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDeleteEx;
     private javax.swing.JButton btnDeleteEx1;
     private javax.swing.JButton btnDeleteEx2;
     private javax.swing.JButton btnDeleteP;
+    private javax.swing.JButton btnDeleteS;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditEx;
     private javax.swing.JButton btnEditEx1;
     private javax.swing.JButton btnEditEx2;
     private javax.swing.JButton btnEditP;
+    private javax.swing.JButton btnEditS;
     private javax.swing.JButton btnFind;
     private javax.swing.JButton btnFindEx;
     private javax.swing.JButton btnFindEx1;
     private javax.swing.JButton btnFindEx2;
     private javax.swing.JButton btnFindP;
+    private javax.swing.JButton btnFindS;
     private javax.swing.JComboBox cbWhere;
     private javax.swing.JComboBox cbWhereEx;
     private javax.swing.JComboBox cbWhereEx1;
     private javax.swing.JComboBox cbWhereEx2;
     private javax.swing.JComboBox cbWhereP;
+    private javax.swing.JComboBox cbWhereP1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1002,17 +1131,20 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTabbedPane mainTab;
     private javax.swing.JTable tblBoothType;
     private javax.swing.JTable tblExhibitor;
     private javax.swing.JTable tblExpo;
     private javax.swing.JTable tblProducts;
+    private javax.swing.JTable tblSponsor;
     private javax.swing.JTextField txtFind;
     private javax.swing.JTextField txtFind1;
     private javax.swing.JTextField txtFind2;
     private javax.swing.JTextField txtKeyword;
     private javax.swing.JTextField txtPKeyword;
+    private javax.swing.JTextField txtPKeyword1;
     private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
 
