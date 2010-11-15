@@ -20,10 +20,10 @@ public class OperationBooths {
 
     DBHelper db = null;
     DefaultTableModel BoothsModel = null;
-    public void loadAllBoothType(JTable jTable1){
+    public void loadAllBooths(JTable jTable1){
         jTable1.setModel(BoothsModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"BTID","BT Name","Expo ID","BT Height","BT Width","BoothRemain","BoothLength"};
+        String [] heading = {"Contact ID","Book ID","BoothType Name","Staff Name","Booth Name","Booth Date","Booth Money","Booth Booker"};
         for(String s : heading)
             v.add(s);
         BoothsModel.setColumnIdentifiers(v);
@@ -31,13 +31,15 @@ public class OperationBooths {
             ResultSet rs = getAllBooths();
             while(rs.next()){
                 v = new Vector();
-                v.add(rs.getInt(1));
-                v.add(rs.getString(2));
-                v.add(rs.getInt(3));
-                v.add(rs.getFloat(4));
-                v.add(rs.getFloat(5));
-                v.add(rs.getInt(6));
-                v.add(rs.getInt(7));
+                v.add(rs.getString(1));
+                v.add(rs.getInt(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getDate(6));
+                v.add(rs.getFloat(7));
+                v.add(rs.getBoolean(8));
+                //v.add(rs.get(7));
                 BoothsModel.addRow(v);
             }
             rs.close();
