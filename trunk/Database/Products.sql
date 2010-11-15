@@ -20,7 +20,7 @@ select * from Products
 -- Tao Store co tham so de tao Products
 
 CREATE PROC AddProducts
-@EID int,m
+@EID int,
 @CID char(10),
 @Name nvarchar(100),
 @Price float,
