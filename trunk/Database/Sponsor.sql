@@ -16,7 +16,10 @@ insert into Sponsors( ExID, SpName, SpMoney, SpDescription)
 -- Tao Store goi ra tat ca expo
 create proc getAllSponsors
 as
-select * from Sponsors
+select S.SpID,S.SpName,E.ExName,S.SpMoney,S.SpDescription 
+from Sponsors as S join Expo as E
+on S.ExID = E.ExID 
+
 
 -- Tao Store co tham so de tao Expo
 
