@@ -25,6 +25,8 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import product.AddProduct;
 import product.OperationProduct;
+import sponsor.AddSponsor;
+import sponsor.EditSponsor;
 import sponsor.OperationSponsor;
 
 /**
@@ -745,6 +747,11 @@ public class Main extends javax.swing.JFrame {
         btnEditS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditS.setText("Edit");
         btnEditS.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnEditS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditSActionPerformed(evt);
+            }
+        });
 
         btnDeleteS.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
@@ -1085,7 +1092,13 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAddSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSActionPerformed
         // TODO add your handling code here:
+           new AddSponsor(this,true).setVisible(true);
     }//GEN-LAST:event_btnAddSActionPerformed
+
+    private void btnEditSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSActionPerformed
+        // TODO add your handling code here:
+        new EditSponsor(this,true).setVisible(true);
+    }//GEN-LAST:event_btnEditSActionPerformed
 
 
     /**
