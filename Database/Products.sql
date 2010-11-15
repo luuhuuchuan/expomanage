@@ -20,6 +20,8 @@ select * from Products
 -- Tao Store co tham so de tao Products
 
 CREATE PROC AddProducts
+@EID int,m
+@CID char(10),
 @Name nvarchar(100),
 @Price float,
 @Number int,
@@ -27,6 +29,7 @@ CREATE PROC AddProducts
 @Date SMALLDATETIME
 AS
 BEGIN
-	INSERT INTO Products (PName, PPrice, PNumber, PDescription, PDate)
-	VALUES(@Name,@Price,@Number,@Description,@Date)
+	INSERT INTO Products (EID,CID,PName, PPrice, PNumber, PDescription, PDate)
+	VALUES(@EID,@CID,@Name,@Price,@Number,@Description,@Date)
 END
+

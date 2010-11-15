@@ -12,7 +12,6 @@
 package exhibitor;
 
 import dataLayer.DBHelper;
-import java.awt.Frame;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
@@ -20,15 +19,12 @@ import javax.swing.JOptionPane;
  *
  * @author Cuongnvgc00064
  */
-public class EditExhibitor extends javax.swing.JDialog {
+public class EditExhibitor extends javax.swing.JFrame {
 
     /** Creates new form AddExhibitor */
     private DBHelper db = null;
-    Frame parentFrame = null;
-    public EditExhibitor(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public EditExhibitor() {
         initComponents();
-        this.parentFrame = parent;
         db = new DBHelper();
         //if can not open the connection
         if(!db.openConnection()){
@@ -227,13 +223,7 @@ public class EditExhibitor extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AddExhibitor dialog = new AddExhibitor(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new EditExhibitor().setVisible(true);
             }
         });
     }
