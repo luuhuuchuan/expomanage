@@ -1054,17 +1054,20 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAddPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPActionPerformed
         // TODO add your handling code here:
-        new AddProduct(this, true).setVisible(true);
+        AddProduct ap = new AddProduct();
+        ap.setVisible(true);
     }//GEN-LAST:event_btnAddPActionPerformed
 
     private void btnAddExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddExActionPerformed
         // TODO add your handling code here:
-        new AddExhibitor(this,true).setVisible(true);
+        AddExhibitor aex = new AddExhibitor();
+        aex.setVisible(true);
     }//GEN-LAST:event_btnAddExActionPerformed
 
     private void btnEditExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditExActionPerformed
         // TODO add your handling code here:
-        new EditExhibitor(this,true).setVisible(true);
+        EditExhibitor ex =new  EditExhibitor();
+        ex.setVisible(true);
     }//GEN-LAST:event_btnEditExActionPerformed
 
 

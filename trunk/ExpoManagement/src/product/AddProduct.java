@@ -23,14 +23,18 @@ import javax.swing.UIManager;
  *
  * @author Cuongnvgc00064
  */
-public class AddProduct extends javax.swing.JDialog {
+public class AddProduct extends javax.swing.JFrame {
 
     /** Creates new form AddProduct */
     //Frame parentFrame = null;
-    public AddProduct(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public AddProduct() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
         initComponents();
-        //this.parentFrame = parent;
     }
 
     /** This method is called from within the constructor to
@@ -55,7 +59,12 @@ public class AddProduct extends javax.swing.JDialog {
         btnClose = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txtDescription = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescription = new javax.swing.JTextArea();
+        txtCID = new javax.swing.JTextField();
+        txtEID = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Product");
@@ -94,80 +103,102 @@ public class AddProduct extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24));
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 255));
         jLabel6.setText("Add Product");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        txtDescription.setColumns(20);
+        txtDescription.setRows(5);
+        jScrollPane1.setViewportView(txtDescription);
+
+        jLabel7.setText("Exhibitor ID");
+
+        jLabel8.setText("Contact ID");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
+                .add(46, 46, 46)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel5)
+                    .add(jLabel4)
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel1)
+                            .add(jLabel2)
+                            .add(jLabel8)
+                            .add(jLabel7))
+                        .add(3, 3, 3))
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(btnAdd)
+                        .add(jLabel3)))
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(25, 25, 25)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 22, Short.MAX_VALUE)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(jLabel2)
-                                    .add(jLabel1)
-                                    .add(jLabel3)
-                                    .add(jLabel4))
-                                .add(20, 20, 20))
-                            .add(layout.createSequentialGroup()
-                                .add(jLabel5)
-                                .add(18, 18, 18)))
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(txtName)
-                            .add(txtPrice)
-                            .add(txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .add(jLabel6)
-                            .add(layout.createSequentialGroup()
-                                .add(btnReset)
-                                .add(18, 18, 18)
-                                .add(btnClose))
-                            .add(txtDate)
-                            .add(txtDescription)))
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtCID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .add(txtDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtPrice, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .add(txtEID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
+                                .add(72, 72, 72))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                                .add(jLabel6)
+                                .add(133, 133, 133))))
                     .add(layout.createSequentialGroup()
-                        .add(27, 27, 27)
-                        .add(btnAdd)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .add(44, 44, 44)
+                        .add(btnReset)
+                        .add(45, 45, 45)
+                        .add(btnClose)
+                        .add(38, 38, 38))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel6)
-                .add(24, 24, 24)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(28, 28, 28)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(txtEID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel7))
+                        .add(18, 18, 18)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(txtCID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel8))
+                        .add(18, 18, 18)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel1))
+                        .add(18, 18, 18)
+                        .add(txtPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jLabel2))
-                .add(26, 26, 26)
+                .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(txtNumber, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel3))
+                .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(26, 26, 26)
-                        .add(jLabel4))
-                    .add(layout.createSequentialGroup()
-                        .add(21, 21, 21)
-                        .add(txtDescription, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 55, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                    .add(jLabel4)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 91, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(23, 23, 23)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(txtDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel5))
-                .add(18, 18, 18)
+                .add(22, 22, 22)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnClose)
                     .add(btnAdd)
-                    .add(btnReset)
-                    .add(btnClose))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .add(btnReset))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -184,9 +215,10 @@ public class AddProduct extends javax.swing.JDialog {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
-        String storeName = "{call getAllProducts }";
-        db.getCallAble(storeName).executeQuery();
-
+//        String storeName = "{call getAllProducts }";
+//        db.getCallAble(storeName).executeQuery();
+        int EID = Integer.parseInt(txtEID.getText().trim());
+        String CID = txtCID.getText().trim();
         String name = txtName.getText().trim();
         float price = Float.parseFloat(txtPrice.getText().trim());
         int number = Integer.parseInt(txtNumber.getText().trim());
@@ -194,18 +226,20 @@ public class AddProduct extends javax.swing.JDialog {
         String date = txtDate.getText().trim();
 
         //tao giao dien de thuc thi store
-           CallableStatement cs = db.getConnection().prepareCall("{call AddProducts(?,?,?,?,?)}");
+        CallableStatement cs = db.getConnection().prepareCall("{call AddProducts(?,?,?,?,?,?,?)}");
         //truyen tham so cho store
-        cs.setString(1, name);
-        cs.setFloat(2, price);
-        cs.setInt(3, number);
-        cs.setString(4, description);
-        cs.setString(5,date);
+        cs.setInt(1, EID);
+        cs.setString(2,CID);
+        cs.setString(3, name);
+        cs.setFloat(4, price);
+        cs.setInt(5, number);
+        cs.setString(6, description);
+        cs.setString(7,date);
 
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Product has been added !","New Product",JOptionPane.INFORMATION_MESSAGE);
-
+        dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Product",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -214,6 +248,8 @@ public class AddProduct extends javax.swing.JDialog {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        txtEID.setText(null);
+        txtCID.setText(null);
         txtName.setText(null);
         txtPrice.setText(null);
         txtNumber.setText(null);
@@ -228,13 +264,7 @@ public class AddProduct extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AddProduct dialog = new AddProduct(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new AddProduct().setVisible(true);
             }
         });
     }
@@ -249,8 +279,13 @@ public class AddProduct extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtCID;
     private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtDescription;
+    private javax.swing.JTextArea txtDescription;
+    private javax.swing.JTextField txtEID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNumber;
     private javax.swing.JTextField txtPrice;

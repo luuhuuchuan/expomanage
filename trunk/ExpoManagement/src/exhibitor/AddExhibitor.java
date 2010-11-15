@@ -14,16 +14,22 @@ package exhibitor;
 import dataLayer.DBHelper;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
  * @author Cuongnvgc00064
  */
-public class AddExhibitor extends javax.swing.JDialog {
+public class AddExhibitor extends javax.swing.JFrame {
 
     /** Creates new form AddExhibitor */
-    public AddExhibitor(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public AddExhibitor() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
         initComponents();
     }
 
@@ -52,7 +58,7 @@ public class AddExhibitor extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Add Product");
+        setTitle("Add Exhibitor");
 
         jLabel1.setText("Exhibitor Name");
 
@@ -88,7 +94,7 @@ public class AddExhibitor extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24));
         jLabel6.setForeground(new java.awt.Color(102, 102, 255));
         jLabel6.setText("Add Exhibitor");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -176,9 +182,8 @@ public class AddExhibitor extends javax.swing.JDialog {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
-        String storeName = "{call getAllExhibitor }";
-        db.getCallAble(storeName).executeQuery();
-
+//        String storeName = "{call getAllExhibitor }";
+//        db.getCallAble(storeName).executeQuery();
         String name = txtName.getText().trim();
         String fax = txtFax.getText().trim();
         String phone = txtPhone.getText().trim();
@@ -197,7 +202,7 @@ public class AddExhibitor extends javax.swing.JDialog {
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Exhibitor has been added !","New Exhibitor",JOptionPane.INFORMATION_MESSAGE);
-
+        dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Exhibitor",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -220,13 +225,7 @@ public class AddExhibitor extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AddExhibitor dialog = new AddExhibitor(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new AddExhibitor().setVisible(true);
             }
         });
     }
