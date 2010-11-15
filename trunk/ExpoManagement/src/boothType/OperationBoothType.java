@@ -23,7 +23,7 @@ public class OperationBoothType {
     public void loadAllBoothType(JTable jTable1){
         jTable1.setModel(BoothTypeModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"BTID","BT Name","Expo ID","BT Height","BT Width","BoothRemain","BoothLength"};
+        String [] heading = {"BoothType Name","Expo Name" ,"Booth Height","Booth Width","Booth Remain","Booth Length"};
         for(String s : heading)
             v.add(s);
         BoothTypeModel.setColumnIdentifiers(v);
@@ -31,13 +31,13 @@ public class OperationBoothType {
             ResultSet rs = getAllBoothType();
             while(rs.next()){
                 v = new Vector();
-                v.add(rs.getInt(1));
+                v.add(rs.getString(1));
                 v.add(rs.getString(2));
-                v.add(rs.getInt(3));
+                v.add(rs.getFloat(3));
                 v.add(rs.getFloat(4));
-                v.add(rs.getFloat(5));
+                v.add(rs.getInt(5));
                 v.add(rs.getInt(6));
-                v.add(rs.getInt(7));
+                
                 BoothTypeModel.addRow(v);
             }
             rs.close();
