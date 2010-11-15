@@ -11,6 +11,8 @@
 
 package expomanagement;
 
+import boothType.AddboothType;
+import boothType.OperationBoothType;
 import exhibitor.AddExhibitor;
 import exhibitor.EditExhibitor;
 import exhibitor.OperationExhibitor;
@@ -33,6 +35,7 @@ public class Main extends javax.swing.JFrame {
     OperationExpo oe = new OperationExpo();
     OperationExhibitor oex = new OperationExhibitor();
     OperationProduct op = new OperationProduct();
+    OperationBoothType obt = new OperationBoothType();
     public Main() {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -44,6 +47,8 @@ public class Main extends javax.swing.JFrame {
         oe.loadAllExpo(tblExpo);
         oex.loadAllExhibitor(tblExhibitor);
         op.loadAllProduct(tblProducts);
+
+        obt.loadAllBoothType(tblBoothType);
     }
 
     /** This method is called from within the constructor to
@@ -76,7 +81,26 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblExpo = new javax.swing.JTable();
         TabBoothType = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        btnAddEx1 = new javax.swing.JButton();
+        btnEditEx1 = new javax.swing.JButton();
+        btnDeleteEx1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        cbWhereEx1 = new javax.swing.JComboBox();
+        txtFind1 = new javax.swing.JTextField();
+        btnFindEx1 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblBoothType = new javax.swing.JTable();
         TabBooth = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        btnAddEx2 = new javax.swing.JButton();
+        btnEditEx2 = new javax.swing.JButton();
+        btnDeleteEx2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        cbWhereEx2 = new javax.swing.JComboBox();
+        txtFind2 = new javax.swing.JTextField();
+        btnFindEx2 = new javax.swing.JButton();
         TabAccount = new javax.swing.JPanel();
         STabExhibitor = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -125,7 +149,7 @@ public class Main extends javax.swing.JFrame {
         txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24));
         txtTitle.setText("Expo Managenment System");
 
-        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
@@ -156,7 +180,7 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/home.png")), TabHome); // NOI18N
 
         SubTabManager.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
@@ -209,7 +233,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhere, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFind))
         );
@@ -246,11 +270,11 @@ public class Main extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabExpoLayout = new org.jdesktop.layout.GroupLayout(TabExpo);
@@ -276,28 +300,221 @@ public class Main extends javax.swing.JFrame {
 
         SubTabManager.addTab("Expo", TabExpo);
 
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
+
+        btnAddEx1.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnAddEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
+        btnAddEx1.setText("Add");
+        btnAddEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnAddEx1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEx1ActionPerformed(evt);
+            }
+        });
+
+        btnEditEx1.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEditEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
+        btnEditEx1.setText("Edit");
+        btnEditEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnEditEx1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditEx1ActionPerformed(evt);
+            }
+        });
+
+        btnDeleteEx1.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteEx1.setText("Delete");
+        btnDeleteEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel4.setText("Filter");
+
+        cbWhereEx1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnFindEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
+        btnFindEx1.setText("Find");
+        btnFindEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
+
+        org.jdesktop.layout.GroupLayout jPanel8Layout = new org.jdesktop.layout.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel8Layout.createSequentialGroup()
+                .add(btnAddEx1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnEditEx1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnDeleteEx1)
+                .add(18, 18, 18)
+                .add(jLabel4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(cbWhereEx1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(txtFind1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnFindEx1))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel8Layout.createSequentialGroup()
+                .add(jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnAddEx1)
+                    .add(btnEditEx1)
+                    .add(btnDeleteEx1)
+                    .add(jLabel4)
+                    .add(cbWhereEx1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtFind1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnFindEx1))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Expo List"));
+
+        org.jdesktop.layout.GroupLayout jPanel9Layout = new org.jdesktop.layout.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 487, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 234, Short.MAX_VALUE)
+        );
+
+        tblBoothType.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tblBoothType);
+
         org.jdesktop.layout.GroupLayout TabBoothTypeLayout = new org.jdesktop.layout.GroupLayout(TabBoothType);
         TabBoothType.setLayout(TabBoothTypeLayout);
         TabBoothTypeLayout.setHorizontalGroup(
             TabBoothTypeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 523, Short.MAX_VALUE)
+            .add(TabBoothTypeLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(TabBoothTypeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(TabBoothTypeLayout.createSequentialGroup()
+                        .add(jPanel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .add(TabBoothTypeLayout.createSequentialGroup()
+                        .add(jScrollPane5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+                        .add(26, 26, 26))))
+            .add(TabBoothTypeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(TabBoothTypeLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         TabBoothTypeLayout.setVerticalGroup(
             TabBoothTypeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 364, Short.MAX_VALUE)
+            .add(TabBoothTypeLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
+                .add(jScrollPane5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .add(34, 34, 34))
+            .add(TabBoothTypeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(TabBoothTypeLayout.createSequentialGroup()
+                    .add(50, 50, 50)
+                    .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(50, 50, 50)))
         );
 
         SubTabManager.addTab("Booth Type", TabBoothType);
+
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
+
+        btnAddEx2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnAddEx2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
+        btnAddEx2.setText("Add");
+        btnAddEx2.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnAddEx2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEx2ActionPerformed(evt);
+            }
+        });
+
+        btnEditEx2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEditEx2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
+        btnEditEx2.setText("Edit");
+        btnEditEx2.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnEditEx2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditEx2ActionPerformed(evt);
+            }
+        });
+
+        btnDeleteEx2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteEx2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteEx2.setText("Delete");
+        btnDeleteEx2.setMargin(new java.awt.Insets(2, 4, 2, 4));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel5.setText("Filter");
+
+        cbWhereEx2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnFindEx2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
+        btnFindEx2.setText("Find");
+        btnFindEx2.setMargin(new java.awt.Insets(2, 4, 2, 4));
+
+        org.jdesktop.layout.GroupLayout jPanel10Layout = new org.jdesktop.layout.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel10Layout.createSequentialGroup()
+                .add(btnAddEx2)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnEditEx2)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnDeleteEx2)
+                .add(18, 18, 18)
+                .add(jLabel5)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(cbWhereEx2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(txtFind2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnFindEx2))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel10Layout.createSequentialGroup()
+                .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnAddEx2)
+                    .add(btnEditEx2)
+                    .add(btnDeleteEx2)
+                    .add(jLabel5)
+                    .add(cbWhereEx2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtFind2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnFindEx2))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         org.jdesktop.layout.GroupLayout TabBoothLayout = new org.jdesktop.layout.GroupLayout(TabBooth);
         TabBooth.setLayout(TabBoothLayout);
         TabBoothLayout.setHorizontalGroup(
             TabBoothLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 523, Short.MAX_VALUE)
+            .add(TabBoothLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         TabBoothLayout.setVerticalGroup(
             TabBoothLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 364, Short.MAX_VALUE)
+            .add(TabBoothLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(286, Short.MAX_VALUE))
         );
 
         SubTabManager.addTab("Booth", TabBooth);
@@ -317,7 +534,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAddEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAddEx.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAddEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAddEx.setText("Add");
         btnAddEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -327,7 +544,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditEx.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditEx.setText("Edit");
         btnEditEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -337,7 +554,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnDeleteEx.setText("Delete");
         btnDeleteEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -366,7 +583,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtFind, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx))
         );
@@ -411,11 +628,11 @@ public class Main extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout STabExhibitorLayout = new org.jdesktop.layout.GroupLayout(STabExhibitor);
@@ -445,25 +662,21 @@ public class Main extends javax.swing.JFrame {
         TabManager.setLayout(TabManagerLayout);
         TabManagerLayout.setHorizontalGroup(
             TabManagerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 626, Short.MAX_VALUE)
-            .add(TabManagerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(TabManagerLayout.createSequentialGroup()
-                    .add(SubTabManager, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .add(TabManagerLayout.createSequentialGroup()
+                .add(SubTabManager, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                .addContainerGap())
         );
         TabManagerLayout.setVerticalGroup(
             TabManagerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 380, Short.MAX_VALUE)
-            .add(TabManagerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(TabManagerLayout.createSequentialGroup()
-                    .add(SubTabManager, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .add(TabManagerLayout.createSequentialGroup()
+                .add(SubTabManager, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         mainTab.addTab("Manager", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/administrator.png")), TabManager); // NOI18N
 
         SubTabExhibitor.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabExhibitor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SubTabExhibitor.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         org.jdesktop.layout.GroupLayout TabSponsorLayout = new org.jdesktop.layout.GroupLayout(TabSponsor);
         TabSponsor.setLayout(TabSponsorLayout);
@@ -493,7 +706,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAddP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAddP.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAddP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAddP.setText("Add");
         btnAddP.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -503,12 +716,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditP.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditP.setText("Edit");
         btnEditP.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
-        btnDeleteP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteP.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnDeleteP.setText("Delete");
         btnDeleteP.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -584,11 +797,11 @@ public class Main extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel5Layout.createSequentialGroup()
                 .add(jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 531, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabProductLayout = new org.jdesktop.layout.GroupLayout(TabProduct);
@@ -699,6 +912,24 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnFindExActionPerformed
 
+    private void btnAddEx1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEx1ActionPerformed
+        // TODO add your handling code here:
+        AddboothType ae = new AddboothType();
+        ae.setVisible(true);
+    }//GEN-LAST:event_btnAddEx1ActionPerformed
+
+    private void btnEditEx1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditEx1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditEx1ActionPerformed
+
+    private void btnAddEx2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEx2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddEx2ActionPerformed
+
+    private void btnEditEx2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditEx2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditEx2ActionPerformed
+
 
     /**
     * @param args the command line arguments
@@ -728,39 +959,58 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel TabStaff;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddEx;
+    private javax.swing.JButton btnAddEx1;
+    private javax.swing.JButton btnAddEx2;
     private javax.swing.JButton btnAddP;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDeleteEx;
+    private javax.swing.JButton btnDeleteEx1;
+    private javax.swing.JButton btnDeleteEx2;
     private javax.swing.JButton btnDeleteP;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditEx;
+    private javax.swing.JButton btnEditEx1;
+    private javax.swing.JButton btnEditEx2;
     private javax.swing.JButton btnEditP;
     private javax.swing.JButton btnFind;
     private javax.swing.JButton btnFindEx;
+    private javax.swing.JButton btnFindEx1;
+    private javax.swing.JButton btnFindEx2;
     private javax.swing.JButton btnFindP;
     private javax.swing.JComboBox cbWhere;
     private javax.swing.JComboBox cbWhereEx;
+    private javax.swing.JComboBox cbWhereEx1;
+    private javax.swing.JComboBox cbWhereEx2;
     private javax.swing.JComboBox cbWhereP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTabbedPane mainTab;
+    private javax.swing.JTable tblBoothType;
     private javax.swing.JTable tblExhibitor;
     private javax.swing.JTable tblExpo;
     private javax.swing.JTable tblProducts;
     private javax.swing.JTextField txtFind;
+    private javax.swing.JTextField txtFind1;
+    private javax.swing.JTextField txtFind2;
     private javax.swing.JTextField txtKeyword;
     private javax.swing.JTextField txtPKeyword;
     private javax.swing.JLabel txtTitle;
