@@ -15,7 +15,7 @@ insert into [User] (UName, UPass, UTypeUser, UEmail, EID)
 -- Tao Store goi ra tat ca Staff
 create proc getAllUser
 as
-select * from User
+select * from [User]
 
 -- Tao Store co tham so de tao Staff
 
@@ -26,5 +26,5 @@ CREATE PROC AddUser
 @Email varchar(100),
 @EID int
 AS
-INSERT INTO Users (UName, UPass, UTypeUser, UEmail, EID)
+INSERT INTO [User] (UName, UPass, UTypeUser, UEmail, EID)
 	VALUES(@Name,@Pass,@TypeUser,@Email,@EID)
