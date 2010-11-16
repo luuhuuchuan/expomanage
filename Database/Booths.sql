@@ -12,7 +12,6 @@ insert into Booths (BTID,SID,CID,BName, BDate, BMoney,BBooker)
 
 
 
-
 -- Tao Store goi ra tat ca expo
 create proc getAllBooths
 as
@@ -20,16 +19,37 @@ select B.CID,B.BID,BT.BTName,S.SName,B.BName,B.BDate, B.BMoney,B.BBooker
 from Booths B ,BoothType BT ,Staff S
 where B.BTID = BT.BTID and B.SID = S.SID
 
--- Tao Store co tham so de tao Expo
+-- Tao Store goi ra cac DL
+create proc get_Sname
+as
+select SName, SID
+from Staff
+--
+create proc get_CID
+as
+select CID
+from Contact
+--
+create proc get_BoothType
+as
+select BTName , BTID
+from BoothType
 
+
+
+-- Tao Store co tham so de tao Expo
 CREATE PROC AddBooths
+@BTID int,
+@SID nvarchar(20),
+@CID int,
 @Name nvarchar(100),
 @Date smalldatetime,
 @money float,
-@bit bit
+@booker bit
 AS
-INSERT INTO Booths (BTID,SID,CID,BName, BDate, BMoney,BBooker)
-VALUES('1','11','A001',@Name,@Date,@money,@bit)
+INSERT INTO Booths (BTID, SID, CID, BName, BDate, BMoney, BBooker)
+VALUES(@BTID,@SID,@CID,@Name,@Date,@money,@booker)
+
 --Tao Store tim kiem Exhibitor
 Create proc findExhibitorbyName
 as

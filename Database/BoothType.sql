@@ -12,6 +12,7 @@ insert into BoothType (BTName,ExID , BTHeight, BTWidth, BoothRemain, BoothLength
 insert into BoothType (BTName,ExID , BTHeight, BTWidth, BoothRemain, BoothLength)
 	values ('Thuc pham',4,100,200,20,50)
 
+
 -- Tao Store goi ra tat ca expo
 create proc getAllBoothType
 as
@@ -19,17 +20,27 @@ select BT.BTName,E.ExName,BT.BTHeight, BT.BTWidth, BT.BoothRemain, BT.BoothLengt
 from BoothType BT join Expo E
 on BT.ExID = E.ExID
 
+
+-- Tao Store goi ra ten va id tat ca expo
+create proc getID_Name_Of_Expo2
+as
+select ExName, ExID
+from Expo
+
+exec getID_Name_Of_Expo2
+
 -- Tao Store co tham so de tao Expo
 
 CREATE PROC AddBoothType
 @Name nvarchar(100),
+@ExID int,
 @Height float,
 @Width float,
 @BoothRemain int,
 @BoothLength int
 AS
-INSERT INTO BoothType (BTName, BTHeight, BTWidth, BoothRemain, BoothLength)
-VALUES(@Name,@Height,@Width,@BoothRemain,@BoothLength)
+INSERT INTO BoothType (BTName,ExID, BTHeight, BTWidth, BoothRemain, BoothLength)
+VALUES(@Name,@ExID,@Height,@Width,@BoothRemain,@BoothLength)
 
 --Tao Store tim kiem Exhibitor
 Create proc findExhibitorbyName

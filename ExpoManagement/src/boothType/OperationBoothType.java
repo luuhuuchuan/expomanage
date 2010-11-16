@@ -54,4 +54,8 @@ public class OperationBoothType {
         String storeName = "{call getAllBoothType }";
         return db.getCallAble(storeName).executeQuery();
     }
+    public ResultSet getAllExpo()throws SQLException{
+        String storeName = "{call getID_Name_Of_Expo2 }";
+        return db.getCallAble(storeName).executeQuery();
+    }
 }
