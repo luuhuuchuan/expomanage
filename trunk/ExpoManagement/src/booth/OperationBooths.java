@@ -56,5 +56,17 @@ public class OperationBooths {
         String storeName = "{call getAllBooths }";
         return db.getCallAble(storeName).executeQuery();
     }
+    public ResultSet getAllCID()throws SQLException{
+        String storeName = "{call get_CID }";
+        return db.getCallAble(storeName).executeQuery();
+    }
+    public ResultSet getAllStaff()throws SQLException{
+        String storeName = "{call get_Sname }";
+        return db.getCallAble(storeName).executeQuery();
+    }
+    public ResultSet getAllBoothType()throws SQLException{
+        String storeName = "{call get_BoothType }";
+        return db.getCallAble(storeName).executeQuery();
+    }
 
 }

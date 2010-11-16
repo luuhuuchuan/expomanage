@@ -160,7 +160,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="SubTabManager" pref="391" max="32767" attributes="0"/>
+                      <Component id="SubTabManager" pref="369" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -243,7 +243,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhere" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtKeyword" pref="134" max="32767" attributes="0"/>
+                                  <Component id="txtKeyword" pref="130" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFind" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -362,12 +362,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="0" pref="491" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" pref="487" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="0" pref="245" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" pref="217" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -482,7 +482,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind1" pref="134" max="32767" attributes="0"/>
+                                  <Component id="txtFind1" pref="130" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -601,12 +601,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane8" alignment="0" pref="491" max="32767" attributes="0"/>
+                              <Component id="jScrollPane8" alignment="0" pref="487" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane8" alignment="0" pref="267" max="32767" attributes="0"/>
+                              <Component id="jScrollPane8" alignment="0" pref="239" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -721,7 +721,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind2" pref="134" max="32767" attributes="0"/>
+                                  <Component id="txtFind2" pref="130" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx2" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -840,12 +840,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane7" alignment="0" pref="491" max="32767" attributes="0"/>
+                              <Component id="jScrollPane7" alignment="0" pref="487" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane7" alignment="0" pref="267" max="32767" attributes="0"/>
+                              <Component id="jScrollPane7" alignment="0" pref="239" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -960,7 +960,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind3" pref="134" max="32767" attributes="0"/>
+                                  <Component id="txtFind3" pref="130" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1075,19 +1075,16 @@
                           </Border>
                         </Property>
                       </Properties>
-                      <AccessibilityProperties>
-                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Account List"/>
-                      </AccessibilityProperties>
 
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" alignment="0" pref="491" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="0" pref="487" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" alignment="0" pref="267" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="0" pref="234" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -1202,7 +1199,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind" pref="134" max="32767" attributes="0"/>
+                                  <Component id="txtFind" pref="130" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1317,21 +1314,16 @@
                           </Border>
                         </Property>
                       </Properties>
-                      <AccessibilityProperties>
-                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Exhibitor List"/>
-                      </AccessibilityProperties>
 
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="491" max="32767" attributes="0"/>
-                              <Component id="jScrollPane4" alignment="0" pref="491" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="487" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="267" max="32767" attributes="0"/>
-                              <Component id="jScrollPane4" alignment="0" pref="267" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="212" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -1618,7 +1610,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane6" alignment="0" pref="256" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" alignment="0" pref="250" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -1733,7 +1725,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword2" pref="163" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword2" pref="159" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1845,21 +1837,16 @@
                           </Border>
                         </Property>
                       </Properties>
-                      <AccessibilityProperties>
-                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Staff List"/>
-                      </AccessibilityProperties>
 
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="520" max="32767" attributes="0"/>
-                              <Component id="jScrollPane12" alignment="0" pref="520" max="32767" attributes="0"/>
+                              <Component id="jScrollPane12" alignment="0" pref="516" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="256" max="32767" attributes="0"/>
-                              <Component id="jScrollPane12" alignment="0" pref="256" max="32767" attributes="0"/>
+                              <Component id="jScrollPane12" alignment="0" pref="238" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -2095,7 +2082,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tblProduct" alignment="0" pref="244" max="32767" attributes="0"/>
+                              <Component id="tblProduct" alignment="0" pref="238" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>

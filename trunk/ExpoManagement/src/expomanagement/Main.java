@@ -48,7 +48,8 @@ public class Main extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         initComponents();
-        
+
+        oe.loadAllExpo(tblExpo);
         oex.loadAllExhibitor(tblExhibitor);
         op.loadAllProduct(tblProducts);
         obt.loadAllBoothType(tblBoothType);
