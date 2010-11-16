@@ -11,6 +11,14 @@
 
 package sponsor;
 
+import dataLayer.DBHelper;
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
+import java.util.HashMap;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
 /**
  *
  * @author Admin
@@ -18,9 +26,37 @@ package sponsor;
 public class AddSponsor extends javax.swing.JDialog {
 
     /** Creates new form AddSponsor */
+    OperationSponsor os  = new OperationSponsor();
+    DefaultComboBoxModel CbExpoModel = null;
+    HashMap hm = new HashMap();
+
     public AddSponsor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        try{
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
         initComponents();
+                
+        cbExpo.setModel(CbExpoModel = new DefaultComboBoxModel());
+        CbExpoModel.addElement("-- Choose Expo --");
+        try{
+            ResultSet rs = os.getAllExpo();
+            while(rs.next()){
+                String name = rs.getString(1);
+                String id = String.valueOf(rs.getInt(2));
+                hm.put(name,id);
+                CbExpoModel.addElement(name);
+            }
+            rs.close();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+
     }
 
     /** This method is called from within the constructor to
@@ -32,34 +68,29 @@ public class AddSponsor extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtSpName = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtSpMoney = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtSpDes = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        jPanel1 = new javax.swing.JPanel();
+        txtSpMoney = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtSpName = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtSpDes = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cbExpo = new javax.swing.JComboBox();
+        btnReset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18));
-        jLabel1.setForeground(new java.awt.Color(51, 0, 204));
-        jLabel1.setText("Add Sponsor");
-
-        jLabel2.setText("Expo:");
-
-        jLabel3.setText("Sponsor Name:");
-
-        jLabel4.setText("Sponsor Money");
-
-        jLabel5.setText("Sponsor Description:");
-
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnClose.setText("Close");
@@ -69,7 +100,71 @@ public class AddSponsor extends javax.swing.JDialog {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Sponsor"));
+
+        jLabel2.setText("Expo:");
+
+        txtSpDes.setColumns(20);
+        txtSpDes.setRows(5);
+        jScrollPane1.setViewportView(txtSpDes);
+
+        jLabel4.setText("Sponsor Money:");
+
+        jLabel5.setText("Sponsor Description:");
+
+        jLabel3.setText("Sponsor Name:");
+
+        cbExpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel2)
+                    .add(jLabel3)
+                    .add(jLabel4)
+                    .add(jLabel5))
+                .add(9, 9, 9)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(jScrollPane1)
+                        .add(txtSpMoney)
+                        .add(txtSpName))
+                    .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(31, 31, 31)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(txtSpName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(26, 26, 26)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel4)
+                    .add(txtSpMoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(33, 33, 33)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel5)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,54 +173,28 @@ public class AddSponsor extends javax.swing.JDialog {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(64, 64, 64)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(jLabel3)
-                            .add(jLabel4)
-                            .add(jLabel5))
-                        .add(44, 44, 44)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(txtSpMoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                            .add(txtSpDes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                            .add(txtSpName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
-                    .add(layout.createSequentialGroup()
-                        .add(151, 151, 151)
-                        .add(jLabel1))
-                    .add(layout.createSequentialGroup()
-                        .add(109, 109, 109)
+                        .add(65, 65, 65)
                         .add(btnAdd)
-                        .add(66, 66, 66)
-                        .add(btnClose)))
-                .addContainerGap())
+                        .add(18, 18, 18)
+                        .add(btnReset)
+                        .add(18, 18, 18)
+                        .add(btnClose))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(26, 26, 26)
-                .add(jLabel1)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel3)
-                    .add(txtSpName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtSpMoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel4))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(txtSpDes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 38, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnReset)
                     .add(btnAdd)
                     .add(btnClose))
-                .add(38, 38, 38))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,6 +205,46 @@ public class AddSponsor extends javax.swing.JDialog {
         dispose();
 }//GEN-LAST:event_btnCloseActionPerformed
 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        try {
+        DBHelper db = null;
+        db = new DBHelper();
+        db.openConnection();
+
+        int EID = Integer.parseInt(hm.get(cbExpo.getSelectedItem().toString().trim()).toString());
+        String name = txtSpName.getText().trim();
+        float money = Float.parseFloat(txtSpMoney.getText().trim());
+        String description = txtSpDes.getText().trim();
+
+
+        //tao giao dien de thuc thi store
+        CallableStatement cs = db.getConnection().prepareCall("{call AddSponsor(?,?,?,?)}");
+        //truyen tham so cho store
+        cs.setInt(1, EID);
+        cs.setString(2, name);
+        cs.setFloat(3, money);
+        cs.setString(4, description);
+
+        //thuc thi store
+        cs.execute();
+        JOptionPane.showMessageDialog(null, "One new Sponsor has been added !","Add new Sponsor",JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new Sponsor",JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        cbExpo.setSelectedIndex(0);
+        txtSpName.setText(null);
+        txtSpMoney.setText(null);
+        txtSpDes.setText(null);
+    }//GEN-LAST:event_btnResetActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -144,6 +253,7 @@ public class AddSponsor extends javax.swing.JDialog {
             public void run() {
                 AddSponsor dialog = new AddSponsor(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
@@ -156,13 +266,15 @@ public class AddSponsor extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JComboBox cbExpo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField txtSpDes;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtSpDes;
     private javax.swing.JTextField txtSpMoney;
     private javax.swing.JTextField txtSpName;
     // End of variables declaration//GEN-END:variables

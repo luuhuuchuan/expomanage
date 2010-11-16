@@ -194,6 +194,7 @@ public class AddExpo extends javax.swing.JFrame {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
+
         String name = txtName.getText().trim();
         int numBooth = Integer.parseInt(txtNumBooth.getText().trim());
         float cost = Float.parseFloat(txtCost.getText().trim());

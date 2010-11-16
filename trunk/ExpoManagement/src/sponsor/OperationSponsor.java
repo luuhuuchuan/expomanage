@@ -8,7 +8,10 @@ package sponsor;
 import dataLayer.DBHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,6 +53,10 @@ public class OperationSponsor {
     }
     public ResultSet getAllSponsor()throws SQLException{
         String storeName = "{call getAllSponsors }";
+        return db.getCallAble(storeName).executeQuery();
+    }
+    public ResultSet getAllExpo()throws SQLException{
+        String storeName = "{call getID_Name_Of_Expo }";
         return db.getCallAble(storeName).executeQuery();
     }
 
