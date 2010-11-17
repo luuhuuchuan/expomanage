@@ -230,11 +230,9 @@ public class AddProduct extends javax.swing.JDialog {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
-        Date today;
-        SimpleDateFormat formatter;
-        formatter = new SimpleDateFormat("mm/dd/yyyy");
-        today = new Date();
-        java.sql.Date DateP = java.sql.Date.valueOf(formatter.format(today));
+        Date today = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        String DateP = sdf.format(today);
         
         int EID = Integer.parseInt(txtEID.getText().trim());
         String CID = cbContact.getSelectedItem().toString().trim();
@@ -252,7 +250,7 @@ public class AddProduct extends javax.swing.JDialog {
         cs.setFloat(4, price);
         cs.setInt(5, number);
         cs.setString(6, description);
-        cs.setDate(7,DateP);
+        cs.setString(7,DateP);
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Product has been added !","New Product",JOptionPane.INFORMATION_MESSAGE);
