@@ -33,7 +33,10 @@ public class OperationUser {
                 v = new Vector();
                 v.add(rs.getString(1));
                 v.add(rs.getString(2));
-                v.add(rs.getInt(3));
+                if (rs.getInt(3) == 1)
+                    v.add("Manager");
+                else if(rs.getInt(3) == 2)
+                    v.add("User");
                 v.add(rs.getString(4));
                 UserModel.addRow(v);
             }

@@ -166,7 +166,7 @@ public class EditUser extends javax.swing.JFrame {
         String typeUser = txtTypeUser.getText().trim();
         String email = txtEmail.getText().trim();
 
-        String sqlCmd = "Insert Into User values(?,?,?,?)";
+        String sqlCmd = "Insert Into User values(?,?,?,?,?)";
         PreparedStatement ps = db.getConnection().prepareStatement(sqlCmd);
         ps.setString(1, name);
         ps.setString(2, pass);
