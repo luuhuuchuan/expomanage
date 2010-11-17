@@ -26,6 +26,7 @@ import javax.swing.UIManager;
 public class Addbooths extends javax.swing.JFrame {
 
     OperationBooths ob  = new OperationBooths();
+
     DefaultComboBoxModel CbContactModel = null;
     DefaultComboBoxModel CbStaffModel = null;
     HashMap hm = new HashMap();
@@ -107,7 +108,7 @@ public class Addbooths extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        BgBooker = new javax.swing.ButtonGroup();
         btnAdd = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
@@ -177,11 +178,11 @@ public class Addbooths extends javax.swing.JFrame {
 
         jLabel11.setText("Booth Booker :");
 
-        buttonGroup1.add(btnYes);
+        BgBooker.add(btnYes);
         btnYes.setSelected(true);
         btnYes.setText("Yes");
 
-        buttonGroup1.add(btnNo);
+        BgBooker.add(btnNo);
         btnNo.setText("No");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
@@ -224,7 +225,7 @@ public class Addbooths extends javax.swing.JFrame {
                                     .add(org.jdesktop.layout.GroupLayout.TRAILING, cbContact, 0, 187, Short.MAX_VALUE)
                                     .add(cbStaff, 0, 187, Short.MAX_VALUE)
                                     .add(org.jdesktop.layout.GroupLayout.TRAILING, cbBoothType, 0, 187, Short.MAX_VALUE))))
-                        .add(45, 45, 45))))
+                        .add(49, 49, 49))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -267,7 +268,7 @@ public class Addbooths extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .add(36, 36, 36)
                 .add(btnAdd)
@@ -309,9 +310,9 @@ public class Addbooths extends javax.swing.JFrame {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
-        int BTID = Integer.parseInt(hm.get(cbBoothType.getSelectedItem().toString().trim()).toString());
+        int BTID = Integer.parseInt(hm2.get(cbBoothType.getSelectedItem().toString().trim()).toString());
         int SID = Integer.parseInt(hm.get(cbStaff.getSelectedItem().toString().trim()).toString());
-        int CID = Integer.parseInt(cbContact.getSelectedItem().toString().trim().toString());
+        String CID = cbContact.getSelectedItem().toString();
         String name = txtBname.getText().trim();
         String bdate = txtBdate.getText().trim();
         float money = Float.parseFloat(txtBmoney.getText().trim());
@@ -322,11 +323,14 @@ public class Addbooths extends javax.swing.JFrame {
         //truyen tham so cho store
         cs.setInt(1, BTID);
         cs.setInt(2, SID);
-        cs.setInt(3, CID);
+        cs.setString(3, CID);
         cs.setString(4, name);
         cs.setString(5, bdate);
         cs.setFloat(6, money);
-
+        if(btnYes.isSelected())
+            cs.setBoolean(7, true);
+        if(btnNo.isSelected())
+            cs.setBoolean(7, false);
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Expo has been added","Add new Expo",JOptionPane.INFORMATION_MESSAGE);
@@ -349,12 +353,12 @@ public class Addbooths extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup BgBooker;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
     private javax.swing.JRadioButton btnNo;
     private javax.swing.JButton btnReset;
     private javax.swing.JRadioButton btnYes;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbBoothType;
     private javax.swing.JComboBox cbContact;
     private javax.swing.JComboBox cbStaff;

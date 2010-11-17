@@ -199,7 +199,6 @@ public class AddSponsor extends javax.swing.JDialog {
         float money = Float.parseFloat(txtSpMoney.getText().trim());
         String description = txtSpDes.getText().trim();
 
-
         //tao giao dien de thuc thi store
         CallableStatement cs = db.getConnection().prepareCall("{call AddSponsor(?,?,?,?)}");
         //truyen tham so cho store
