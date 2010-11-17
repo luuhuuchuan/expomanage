@@ -20,15 +20,12 @@ import javax.swing.JOptionPane;
  *
  * @author SiaroKool
  */
-public class EditStaff extends javax.swing.JDialog {
+public class EditStaff extends javax.swing.JFrame {
 
     /** Creates new form EditStaff */
     private DBHelper db = null;
-    Frame parentFrame = null;
-    public EditStaff(java.awt.Frame parent, boolean modal){
-        super(parent, modal);
+    public EditStaff() {
         initComponents();
-        this.parentFrame = parent;
         db = new DBHelper();
         //if can not open the connection
         if(!db.openConnection()){
@@ -202,13 +199,7 @@ public class EditStaff extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AddStaff dialog = new AddStaff(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new EditStaff().setVisible(true);
             }
         });
     }
