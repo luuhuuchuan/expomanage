@@ -70,12 +70,12 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="BtnClose" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtDateStart" alignment="0" pref="249" max="32767" attributes="1"/>
                       <Component id="txtCost" alignment="0" pref="249" max="32767" attributes="1"/>
                       <Component id="txtNumBooth" alignment="0" pref="249" max="32767" attributes="1"/>
                       <Component id="txtName" alignment="0" pref="249" max="32767" attributes="1"/>
-                      <Component id="txtDateEnd" alignment="0" pref="249" max="32767" attributes="1"/>
                       <Component id="jScrollPane1" pref="249" max="32767" attributes="1"/>
+                      <Component id="txtDateStart" alignment="0" pref="249" max="32767" attributes="0"/>
+                      <Component id="txtDateEnd" alignment="0" pref="249" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -83,7 +83,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -101,25 +101,23 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtDateStart" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtDateStart" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="txtDateEnd" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="103" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="10" max="32767" attributes="0"/>
+                  <EmptySpace pref="11" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnAdd" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BtnClose" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -163,11 +161,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtNumBooth">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtDateStart">
-        </Component>
         <Component class="javax.swing.JTextField" name="txtCost">
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtDateEnd">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -211,6 +205,10 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCloseActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="txtDateStart">
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="txtDateEnd">
         </Component>
       </SubComponents>
     </Container>

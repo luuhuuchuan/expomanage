@@ -27,9 +27,8 @@ public class Addbooths extends javax.swing.JFrame {
 
     OperationBooths ob  = new OperationBooths();
     DefaultComboBoxModel CbContactModel = null;
-    HashMap hm = new HashMap();
     DefaultComboBoxModel CbStaffModel = null;
-    HashMap hm1 = new HashMap();
+    HashMap hm = new HashMap();
     DefaultComboBoxModel CbBoothTypeModel = null;
     HashMap hm2 = new HashMap();
     /** Creates new form Addbooths */
@@ -41,7 +40,7 @@ public class Addbooths extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         initComponents();
-        //-----------------------
+
         cbStaff.setModel(CbStaffModel = new DefaultComboBoxModel());
         CbStaffModel.addElement("-- Choose Staff --");
         try{
@@ -57,25 +56,21 @@ public class Addbooths extends javax.swing.JFrame {
         catch(Exception ex){
             ex.printStackTrace();
         }
-        //-----------------------
-        /*
+
         cbContact.setModel(CbContactModel = new DefaultComboBoxModel());
         CbContactModel.addElement("-- Choose Contact --");
         try{
             ResultSet rs = ob.getAllCID();
             while(rs.next()){
-                String name = rs.getString(1);
-                String id = String.valueOf(rs.getInt(2));
-                hm1.put(name,id);
-                CbContactModel.addElement(id);
+                String Cid = rs.getString(1);
+                CbContactModel.addElement(Cid);
             }
             rs.close();
         }
         catch(Exception ex){
             ex.printStackTrace();
         }
-         * */
-        //-----------------------
+
         cbBoothType.setModel(CbBoothTypeModel = new DefaultComboBoxModel());
         CbBoothTypeModel.addElement("-- Choose BoothType --");
         try{
@@ -94,9 +89,9 @@ public class Addbooths extends javax.swing.JFrame {
 
     }
     public void Reset(){
-        cbContact.setSelectedItem("-- Choose Contact --");
-        cbBoothType.setSelectedItem("-- Choose BoothType --");
-        cbStaff.setSelectedItem("-- Choose Staff --");
+        cbContact.setSelectedItem(0);
+        cbBoothType.setSelectedItem(0);
+        cbStaff.setSelectedItem(0);
         txtBname.setText("");
         txtBdate.setText("");
         txtBmoney.setText("");
@@ -134,6 +129,7 @@ public class Addbooths extends javax.swing.JFrame {
         btnNo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Add New Booth");
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAdd.setText("Add");
@@ -218,19 +214,16 @@ public class Addbooths extends javax.swing.JFrame {
                                         .add(18, 18, 18)
                                         .add(txtBmoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))))
                             .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel6)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jLabel2)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .add(cbStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                .add(jPanel1Layout.createSequentialGroup()
-                                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                        .add(jLabel3)
-                                        .add(jLabel5))
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 28, Short.MAX_VALUE)
-                                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                        .add(cbBoothType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .add(cbContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
+                                    .add(jLabel3)
+                                    .add(jLabel5))
+                                .add(28, 28, 28)
+                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, cbContact, 0, 187, Short.MAX_VALUE)
+                                    .add(cbStaff, 0, 187, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, cbBoothType, 0, 187, Short.MAX_VALUE))))
                         .add(45, 45, 45))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -274,7 +267,7 @@ public class Addbooths extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .add(36, 36, 36)
                 .add(btnAdd)
@@ -318,7 +311,7 @@ public class Addbooths extends javax.swing.JFrame {
         db.openConnection();
         int BTID = Integer.parseInt(hm.get(cbBoothType.getSelectedItem().toString().trim()).toString());
         int SID = Integer.parseInt(hm.get(cbStaff.getSelectedItem().toString().trim()).toString());
-        int CID = Integer.parseInt(hm.get(cbContact.getSelectedItem().toString().trim()).toString());
+        int CID = Integer.parseInt(cbContact.getSelectedItem().toString().trim().toString());
         String name = txtBname.getText().trim();
         String bdate = txtBdate.getText().trim();
         float money = Float.parseFloat(txtBmoney.getText().trim());

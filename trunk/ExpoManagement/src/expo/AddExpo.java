@@ -13,10 +13,6 @@ package expo;
 
 import dataLayer.DBHelper;
 import java.sql.CallableStatement;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -36,6 +32,8 @@ public class AddExpo extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         initComponents();
+        txtDateStart.setDateFormatString("mm/dd/yyyy");
+        txtDateEnd.setDateFormatString("mm/dd/yyyy");
     }
 
 
@@ -58,13 +56,13 @@ public class AddExpo extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtNumBooth = new javax.swing.JTextField();
-        txtDateStart = new javax.swing.JTextField();
         txtCost = new javax.swing.JTextField();
-        txtDateEnd = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
         btnAdd = new javax.swing.JButton();
         BtnClose = new javax.swing.JButton();
+        txtDateStart = new com.toedter.calendar.JDateChooser();
+        txtDateEnd = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add New Expo");
@@ -87,7 +85,7 @@ public class AddExpo extends javax.swing.JFrame {
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
-        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +94,7 @@ public class AddExpo extends javax.swing.JFrame {
             }
         });
 
-        BtnClose.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BtnClose.setFont(new java.awt.Font("Tahoma", 0, 12));
         BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         BtnClose.setText("Close");
         BtnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -124,12 +122,12 @@ public class AddExpo extends javax.swing.JFrame {
                         .add(btnAdd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(BtnClose))
-                    .add(txtDateStart, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                     .add(txtCost, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                     .add(txtNumBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                     .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .add(txtDateEnd, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .add(txtDateStart, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .add(txtDateEnd, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -152,17 +150,16 @@ public class AddExpo extends javax.swing.JFrame {
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(32, 32, 32)
                         .add(jLabel6))
+                    .add(jLabel5)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(txtDateStart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel5))
+                        .add(txtDateStart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(txtDateEnd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 26, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel4)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 103, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 11, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnAdd)
                     .add(BtnClose)))
@@ -199,8 +196,8 @@ public class AddExpo extends javax.swing.JFrame {
         int numBooth = Integer.parseInt(txtNumBooth.getText().trim());
         float cost = Float.parseFloat(txtCost.getText().trim());
         String description = txtDescription.getText();
-        String dateStart = txtDateEnd.getText().trim();
-        String dateEnd = txtDateEnd.getText().trim();
+        String dateStart = txtDateEnd.getDate().toString();
+        String dateEnd = txtDateEnd.getDate().toString();
         
         //tao giao dien de thuc thi store
         CallableStatement cs = db.getConnection().prepareCall("{call AddExpo(?,?,?,?,?,?)}");
@@ -251,8 +248,8 @@ public class AddExpo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtCost;
-    private javax.swing.JTextField txtDateEnd;
-    private javax.swing.JTextField txtDateStart;
+    private com.toedter.calendar.JDateChooser txtDateEnd;
+    private com.toedter.calendar.JDateChooser txtDateStart;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNumBooth;
