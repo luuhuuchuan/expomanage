@@ -13,10 +13,6 @@ package product;
 
 import dataLayer.DBHelper;
 import java.sql.CallableStatement;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 /**
@@ -235,11 +231,25 @@ public class AddProduct extends javax.swing.JFrame {
         cs.setInt(5, number);
         cs.setString(6, description);
         cs.setString(7,date);
-
+        if(txtEID.getText().equals(" "))
+        {
+           JOptionPane.showMessageDialog(null, "Please enter EID !","New Product",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(txtCID.getText().equals(" "))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter CID !","New Product",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(txtName.getText().equals(" "))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter name of product !","New Product",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Product has been added !","New Product",JOptionPane.INFORMATION_MESSAGE);
         dispose();
+        }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Product",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
