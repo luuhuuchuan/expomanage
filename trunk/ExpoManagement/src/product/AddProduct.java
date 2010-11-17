@@ -13,6 +13,8 @@ package product;
 
 import booth.OperationBooths;
 import dataLayer.DBHelper;
+import expomanagement.Main;
+import java.awt.Frame;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -24,13 +26,16 @@ import javax.swing.UIManager;
  *
  * @author Cuongnvgc00064
  */
-public class AddProduct extends javax.swing.JFrame {
+public class AddProduct extends javax.swing.JDialog {
 
     /** Creates new form AddProduct */
-    //Frame parentFrame = null;
+    Main m = null;
+    Frame parentFrame = null;
+    OperationProduct op = new OperationProduct();
     OperationBooths ob  = new OperationBooths();
     DefaultComboBoxModel CbContactModel = null;
-    public AddProduct() {
+    public AddProduct(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }
@@ -38,6 +43,8 @@ public class AddProduct extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         initComponents();
+        parentFrame = parent;
+
         cbContact.setModel(CbContactModel = new DefaultComboBoxModel());
         CbContactModel.addElement("-- Choose Contact --");
         try{
@@ -224,14 +231,13 @@ public class AddProduct extends javax.swing.JFrame {
         db = new DBHelper();
         db.openConnection();
         Date today;
-        String DateP;
         SimpleDateFormat formatter;
         formatter = new SimpleDateFormat("mm/dd/yyyy");
         today = new Date();
-        DateP = formatter.format(today);
+        java.sql.Date DateP = java.sql.Date.valueOf(formatter.format(today));
         
         int EID = Integer.parseInt(txtEID.getText().trim());
-        int CID = Integer.parseInt(cbContact.getSelectedItem().toString().trim().toString());
+        String CID = cbContact.getSelectedItem().toString().trim();
         String name = txtName.getText().trim();
         float price = Float.parseFloat(txtPrice.getText().trim());
         int number = Integer.parseInt(txtNumber.getText().trim());
@@ -241,17 +247,17 @@ public class AddProduct extends javax.swing.JFrame {
         CallableStatement cs = db.getConnection().prepareCall("{call AddProducts(?,?,?,?,?,?,?)}");
         //truyen tham so cho store
         cs.setInt(1, EID);
-        cs.setInt(2, CID);
+        cs.setString(2, CID);
         cs.setString(3, name);
         cs.setFloat(4, price);
         cs.setInt(5, number);
         cs.setString(6, description);
-        cs.setString(7,DateP);
+        cs.setDate(7,DateP);
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Product has been added !","New Product",JOptionPane.INFORMATION_MESSAGE);
+        ((Main)parentFrame).LoadProduct();
         dispose();
-        
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Product",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -275,7 +281,14 @@ public class AddProduct extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddProduct().setVisible(true);
+                AddProduct dialog = new AddProduct(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

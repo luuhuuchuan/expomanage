@@ -52,7 +52,10 @@ public class OperationProduct {
         String storeName = "{call getAllProducts }";
         return db.getCallAble(storeName).executeQuery();
     }
-
+    public ResultSet getAllCID()throws SQLException{
+        String storeName = "{call get_CID }";
+        return db.getCallAble(storeName).executeQuery();
+    }
 //    public ResultSet doSearch(String str)throws SQLException{
 //        //mo ket noi
 //        //tao van tin
