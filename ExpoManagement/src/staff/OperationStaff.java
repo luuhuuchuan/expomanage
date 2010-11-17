@@ -32,10 +32,10 @@ public class OperationStaff {
             ResultSet rs = getAllStaff();
             while(rs.next()){
                 v = new Vector();
-                v.add(rs.getString(1));
-                v.add(rs.getString(2));
-                v.add(rs.getInt(3));
+                v.add(rs.getString(3));
                 v.add(rs.getString(4));
+                v.add(rs.getInt(5));
+                v.add(rs.getString(6));
                 StaffModel.addRow(v);
             }
             rs.close();
