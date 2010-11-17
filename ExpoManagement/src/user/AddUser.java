@@ -12,16 +12,24 @@
 package user;
 
 import dataLayer.DBHelper;
+import java.sql.CallableStatement;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
  * @author SiaroKool
  */
-public class AddUser extends javax.swing.JDialog {
+public class AddUser extends javax.swing.JFrame {
 
     /** Creates new form AddUser */
-    public AddUser(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public AddUser() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
         initComponents();
     }
 
@@ -150,13 +158,30 @@ public class AddUser extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
-        String storeName = "{call getAllUser }";
-        db.getCallAble(storeName).executeQuery();
+
+        String name = txtName.getText().trim();
+        String pass = txtPass.getText().trim();
+        int typeUser = Integer.parseInt(txtTypeUser.getText().trim());
+        String email = txtEmail.getText().trim();
+
+        //tao giao dien de thuc thi store
+        CallableStatement cs = db.getConnection().prepareCall("{call AddUser(?,?,?,?)}");
+        //truyen tham so cho store
+        cs.setString(1, name);
+        cs.setString(2, pass);
+        cs.setInt(3, typeUser);
+        cs.setString(4, email);
+        //thuc thi store
+        cs.execute();
+        JOptionPane.showMessageDialog(null, "One new User has been added !","Add new User",JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new User",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnAddActionPerformed
@@ -181,13 +206,7 @@ public class AddUser extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AddUser dialog = new AddUser(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new AddUser().setVisible(true);
             }
         });
     }
