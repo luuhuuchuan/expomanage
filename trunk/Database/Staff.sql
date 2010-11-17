@@ -28,3 +28,4 @@ CREATE PROC AddStaff
 AS
 INSERT INTO Staff (SName, SEmail, SPhone, SAddress)
 	VALUES(@Name,@Email,@Phone,@Address)
+END

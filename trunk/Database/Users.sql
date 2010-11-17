@@ -28,3 +28,4 @@ CREATE PROC AddUser
 AS
 INSERT INTO [User] (UName, UPass, UTypeUser, UEmail, EID)
 	VALUES(@Name,@Pass,@TypeUser,@Email,@EID)
+END
