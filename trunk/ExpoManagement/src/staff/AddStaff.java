@@ -12,16 +12,24 @@
 package staff;
 
 import dataLayer.DBHelper;
+import java.sql.CallableStatement;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
  * @author SiaroKool
  */
-public class AddStaff extends javax.swing.JDialog {
+public class AddStaff extends javax.swing.JFrame {
 
     /** Creates new form AddStaff */
-    public AddStaff(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public AddStaff() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
         initComponents();
     }
 
@@ -168,9 +176,26 @@ public class AddStaff extends javax.swing.JDialog {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
-        String storeName = "{call getAllStaff }";
-        db.getCallAble(storeName).executeQuery();
+
+        String name = txtName.getText().trim();
+        String email = txtEmail.getText().trim();
+        int phone = Integer.parseInt(txtPhone.getText().trim());
+        String address = txtAddress.getText().trim();
+
+        //tao giao dien de thuc thi store
+        CallableStatement cs = db.getConnection().prepareCall("{call AddStaff(?,?,?,?)}");
+        //truyen tham so cho store
+        cs.setString(1, name);
+        cs.setString(2, email);
+        cs.setInt(3, phone);
+        cs.setString(4, address);
+        //thuc thi store
+        cs.execute();
+        JOptionPane.showMessageDialog(null, "One new Staff has been added !","Add new Staff",JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new Staff",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnAddActionPerformed
@@ -181,13 +206,7 @@ public class AddStaff extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AddStaff dialog = new AddStaff(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new AddStaff().setVisible(true);
             }
         });
     }
