@@ -52,12 +52,13 @@ public class OperationProduct {
         String storeName = "{call getAllProducts }";
         return db.getCallAble(storeName).executeQuery();
     }
+
 //    public ResultSet doSearch(String str)throws SQLException{
 //        //mo ket noi
 //        //tao van tin
 //    }
-//    public void delProducts(int id)throws SQLException{
-//        String storeName = "{call delProducts }";
-//        db.getCallAble(storeName).executeQuery();
-//    }
+    public void delProducts(int id)throws SQLException{
+        String storeName = "{call deleteProducts }";
+        db.getCallAble(storeName).executeQuery();
+    }
 }
