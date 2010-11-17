@@ -59,5 +59,30 @@ public class OperationSponsor {
         String storeName = "{call getID_Name_Of_Expo }";
         return db.getCallAble(storeName).executeQuery();
     }
+    DefaultComboBoxModel CbExpoModel = null;
+    HashMap hm = new HashMap();
+
+    public void buildCbExpo(JComboBox cbExpo)
+    {
+        cbExpo.setModel(CbExpoModel = new DefaultComboBoxModel());
+        CbExpoModel.addElement("-- Choose Expo --");
+        try{
+            ResultSet rs = getAllExpo();
+            while(rs.next()){
+                String name = rs.getString(1);
+                String id = String.valueOf(rs.getInt(2));
+                hm.put(name,id);
+                CbExpoModel.addElement(name);
+            }
+            rs.close();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public int returnIdExpo(JComboBox cbExpo)
+    {
+        return Integer.parseInt(hm.get(cbExpo.getSelectedItem().toString().trim()).toString());
+    }
 
 }

@@ -101,6 +101,7 @@ public class AddboothType extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Add New Booth Type");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Add BoothType"));
 
@@ -133,14 +134,12 @@ public class AddboothType extends javax.swing.JFrame {
                     .add(jLabel2))
                 .add(18, 18, 18)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 98, Short.MAX_VALUE))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, txtBTName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                     .add(txtBTHeight, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                     .add(txtBlength, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                     .add(txtBremain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .add(txtBTWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
+                    .add(txtBTWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                    .add(cbExpo, 0, 153, Short.MAX_VALUE))
                 .add(37, 37, 37))
         );
         jPanel3Layout.setVerticalGroup(
@@ -268,10 +267,11 @@ public class AddboothType extends javax.swing.JFrame {
 
         //thuc thi store
         cs.execute();
-        JOptionPane.showMessageDialog(null, "One new Expo has been added","Add new Expo",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "One new Booth Type has been added","Add new Booth Type",JOptionPane.INFORMATION_MESSAGE);
+        dispose();
         //lay gia tri tham so ra
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Expo",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth Type",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnAddActionPerformed

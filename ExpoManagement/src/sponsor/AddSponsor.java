@@ -13,9 +13,6 @@ package sponsor;
 
 import dataLayer.DBHelper;
 import java.sql.CallableStatement;
-import java.sql.ResultSet;
-import java.util.HashMap;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -27,8 +24,7 @@ public class AddSponsor extends javax.swing.JDialog {
 
     /** Creates new form AddSponsor */
     OperationSponsor os  = new OperationSponsor();
-    DefaultComboBoxModel CbExpoModel = null;
-    HashMap hm = new HashMap();
+
 
     public AddSponsor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -39,22 +35,8 @@ public class AddSponsor extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         initComponents();
-                
-        cbExpo.setModel(CbExpoModel = new DefaultComboBoxModel());
-        CbExpoModel.addElement("-- Choose Expo --");
-        try{
-            ResultSet rs = os.getAllExpo();
-            while(rs.next()){
-                String name = rs.getString(1);
-                String id = String.valueOf(rs.getInt(2));
-                hm.put(name,id);
-                CbExpoModel.addElement(name);
-            }
-            rs.close();
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
+        os.buildCbExpo(cbExpo);
+       
 
 
     }
@@ -212,7 +194,7 @@ public class AddSponsor extends javax.swing.JDialog {
         db = new DBHelper();
         db.openConnection();
 
-        int EID = Integer.parseInt(hm.get(cbExpo.getSelectedItem().toString().trim()).toString());
+        int EID = os.returnIdExpo(cbExpo);
         String name = txtSpName.getText().trim();
         float money = Float.parseFloat(txtSpMoney.getText().trim());
         String description = txtSpDes.getText().trim();

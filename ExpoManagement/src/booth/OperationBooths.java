@@ -39,7 +39,6 @@ public class OperationBooths {
                 v.add(rs.getDate(6));
                 v.add(rs.getFloat(7));
                 v.add(rs.getBoolean(8));
-                //v.add(rs.get(7));
                 BoothsModel.addRow(v);
             }
             rs.close();
