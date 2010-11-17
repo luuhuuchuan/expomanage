@@ -23,6 +23,7 @@ import javax.swing.UIManager;
 public class AddUser extends javax.swing.JFrame {
 
     /** Creates new form AddUser */
+    
     public AddUser() {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -48,16 +49,16 @@ public class AddUser extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtPass = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtTypeUser = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
+        cbTypeUser = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18));
         jLabel1.setText("Add User");
 
         jLabel2.setText("User Name:");
@@ -92,6 +93,8 @@ public class AddUser extends javax.swing.JFrame {
             }
         });
 
+        cbTypeUser.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,8 +117,8 @@ public class AddUser extends javax.swing.JFrame {
                             .add(jLabel5))
                         .add(43, 43, 43)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(cbTypeUser, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(txtEmail)
-                            .add(txtTypeUser)
                             .add(txtPass)
                             .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                         .addContainerGap(105, Short.MAX_VALUE))))
@@ -138,10 +141,10 @@ public class AddUser extends javax.swing.JFrame {
                     .add(jLabel3)
                     .add(txtPass, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel4)
-                    .add(txtTypeUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
+                    .add(cbTypeUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(23, 23, 23)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
                     .add(txtEmail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -150,7 +153,7 @@ public class AddUser extends javax.swing.JFrame {
                     .add(btnAdd)
                     .add(btnReset)
                     .add(btnClose))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,11 +168,11 @@ public class AddUser extends javax.swing.JFrame {
 
         String name = txtName.getText().trim();
         String pass = txtPass.getText().trim();
-        int typeUser = Integer.parseInt(txtTypeUser.getText().trim());
+        int typeUser = Integer.parseInt(cbTypeUser.getSelectedItem().);
         String email = txtEmail.getText().trim();
 
         //tao giao dien de thuc thi store
-        CallableStatement cs = db.getConnection().prepareCall("{call AddUser(?,?,?,?)}");
+        CallableStatement cs = db.getConnection().prepareCall("{call AddUser(?,?,?,?,?)}");
         //truyen tham so cho store
         cs.setString(1, name);
         cs.setString(2, pass);
@@ -215,6 +218,7 @@ public class AddUser extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReset;
+    private javax.swing.JComboBox cbTypeUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -223,7 +227,6 @@ public class AddUser extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPass;
-    private javax.swing.JTextField txtTypeUser;
     // End of variables declaration//GEN-END:variables
 
 }
