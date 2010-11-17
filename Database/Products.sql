@@ -33,3 +33,14 @@ BEGIN
 	VALUES(@EID,@CID,@Name,@Price,@Number,@Description,@Date)
 END
 
+
+--Tao Store de xoa Product
+CREATE PROC DeleteProducts
+@Name nvarchar(100)
+AS
+  BEGIN 
+        DECLARE @id int
+        SET @id=(SELECT id FROM Products WHERE PName = @Name)
+        -- Bat dau xoa
+        DELETE FROM Products WHERE PName = @Name
+  END
