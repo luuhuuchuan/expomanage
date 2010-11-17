@@ -26,6 +26,8 @@ import product.OperationProduct;
 import sponsor.AddSponsor;
 import sponsor.EditSponsor;
 import sponsor.OperationSponsor;
+import staff.OperationStaff;
+import user.OperationUser;
 
 /**
  *
@@ -40,6 +42,9 @@ public class Main extends javax.swing.JFrame {
     OperationBoothType obt = new OperationBoothType();
     OperationSponsor os = new OperationSponsor();
     OperationBooths ob = new OperationBooths();
+    OperationStaff ost = new OperationStaff();
+    OperationUser ou = new OperationUser();
+
     public Main() {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -55,6 +60,8 @@ public class Main extends javax.swing.JFrame {
         obt.loadAllBoothType(tblBoothType);
         os.loadAllSponsor(tblSponsor);
         ob.loadAllBooths(tblBooth);
+        ost.loadAllStaff(tblStaff);
+        ou.loadAllUser(tblAccount);
     }
 
     /** This method is called from within the constructor to
@@ -159,7 +166,7 @@ public class Main extends javax.swing.JFrame {
         btnFindP1 = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        TblStaff = new javax.swing.JTable();
+        tblStaff = new javax.swing.JTable();
         TabProduct = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         btnAddP = new javax.swing.JButton();
@@ -222,7 +229,7 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/home.png")), TabHome); // NOI18N
 
         SubTabManager.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         TabExpo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TabExpo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -323,7 +330,7 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabExpoLayout = new org.jdesktop.layout.GroupLayout(TabExpo);
@@ -441,7 +448,7 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabBoothTypeLayout = new org.jdesktop.layout.GroupLayout(TabBoothType);
@@ -559,7 +566,7 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabBoothLayout = new org.jdesktop.layout.GroupLayout(TabBooth);
@@ -677,7 +684,7 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabAccountLayout = new org.jdesktop.layout.GroupLayout(TabAccount);
@@ -700,8 +707,6 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(16, 16, 16))
         );
-
-        jPanel9.getAccessibleContext().setAccessibleName("Account List");
 
         SubTabManager.addTab("Account", TabAccount);
 
@@ -793,13 +798,11 @@ public class Main extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 491, Short.MAX_VALUE)
             .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 267, Short.MAX_VALUE)
-            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout STabExhibitorLayout = new org.jdesktop.layout.GroupLayout(STabExhibitor);
@@ -823,8 +826,6 @@ public class Main extends javax.swing.JFrame {
                 .add(38, 38, 38))
         );
 
-        jPanel7.getAccessibleContext().setAccessibleName("Exhibitor List");
-
         SubTabManager.addTab("Exhibitor", STabExhibitor);
 
         org.jdesktop.layout.GroupLayout TabManagerLayout = new org.jdesktop.layout.GroupLayout(TabManager);
@@ -838,7 +839,7 @@ public class Main extends javax.swing.JFrame {
         TabManagerLayout.setVerticalGroup(
             TabManagerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(TabManagerLayout.createSequentialGroup()
-                .add(SubTabManager, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .add(SubTabManager, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1031,7 +1032,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Staff List"));
 
-        TblStaff.setModel(new javax.swing.table.DefaultTableModel(
+        tblStaff.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1042,19 +1043,17 @@ public class Main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane12.setViewportView(TblStaff);
+        jScrollPane12.setViewportView(tblStaff);
 
         org.jdesktop.layout.GroupLayout jPanel19Layout = new org.jdesktop.layout.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 520, Short.MAX_VALUE)
             .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 256, Short.MAX_VALUE)
-            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabStaffLayout = new org.jdesktop.layout.GroupLayout(TabStaff);
@@ -1077,8 +1076,6 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel19, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(23, 23, 23))
         );
-
-        jPanel19.getAccessibleContext().setAccessibleName("Staff List");
 
         SubTabExhibitor.addTab("Staff", TabStaff);
 
@@ -1366,7 +1363,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel TabProduct;
     private javax.swing.JPanel TabSponsor;
     private javax.swing.JPanel TabStaff;
-    private javax.swing.JTable TblStaff;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddEx;
     private javax.swing.JButton btnAddEx1;
@@ -1423,8 +1419,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1435,8 +1429,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1444,7 +1436,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTabbedPane mainTab;
     private javax.swing.JTable tblAccount;
@@ -1454,9 +1445,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable tblExpo;
     private javax.swing.JScrollPane tblProduct;
     private javax.swing.JTable tblProducts;
-    private javax.swing.JTable tblProducts1;
-    private javax.swing.JTable tblProducts2;
     private javax.swing.JTable tblSponsor;
+    private javax.swing.JTable tblStaff;
     private javax.swing.JTextField txtFind;
     private javax.swing.JTextField txtFind1;
     private javax.swing.JTextField txtFind2;
