@@ -59,7 +59,6 @@ public class Main extends javax.swing.JFrame {
 
         oe.loadAllExpo(tblExpo);
         obt.loadAllBoothType(tblBoothType);
-        os.loadAllSponsor(tblSponsor);
         ob.loadAllBooths(tblBooth);
         ost.loadAllStaff(tblStaff);
         ou.loadAllUser(tblAccount);
@@ -1319,7 +1318,10 @@ public class Main extends javax.swing.JFrame {
     {
         oex.loadAllExhibitor(tblExhibitor);
     }
-
+    public void LoadSponsor()
+    {
+        os.loadAllSponsor(tblSponsor);
+    }
     /**
     * @param args the command line arguments
     */
