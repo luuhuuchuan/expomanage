@@ -11,16 +11,26 @@
 
 package sponsor;
 
+import dataLayer.DBHelper;
+import expomanagement.Main;
+import java.awt.Frame;
+import java.sql.CallableStatement;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
  */
 public class EditSponsor extends javax.swing.JDialog {
-
+    Main m = null;
+    Frame parentFrame = null;
     /** Creates new form EditSponsor */
     public EditSponsor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        int row = ((Main)parentFrame).getSponsorTable().getSelectedRow();
+        txtExpoID.setText(((Main)parentFrame).getSponsorTable().getValueAt(row, 0).toString());
     }
 
     /** This method is called from within the constructor to
@@ -46,7 +56,7 @@ public class EditSponsor extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18));
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("Edit Sponsor");
 
@@ -68,6 +78,11 @@ public class EditSponsor extends javax.swing.JDialog {
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,6 +150,41 @@ public class EditSponsor extends javax.swing.JDialog {
         // TODO add your handling code here:
         dispose();
 }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+
+
+        try{
+        DBHelper db = null;
+        db = new DBHelper();
+        db.openConnection();
+        //int row = ((Main)parentFrame).getSponsorTable().getSelectedRow();
+        //int id = Integer.parseInt(((Main)parentFrame).getSponsorTable().getValueAt(row, 0).toString());
+        String name = txtSpName.getText().trim();
+        Float money = Float.parseFloat(txtSpMoney.getText().trim());
+        String description = txtSpDes.getText().trim();
+        //tao giao dien de thuc thi store
+        CallableStatement cs = db.getConnection().prepareCall("{call EditSponsor(?,?,?,?)}");
+        //truyen tham so cho store
+        cs.setString(1, name);
+        cs.setFloat(2, money);
+        cs.setString(3, description);
+        //thuc thi store
+        cs.execute();
+        //confirm update request from client
+        if(JOptionPane.showConfirmDialog(null, "Do you want to update the record(s)",
+                "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        cs.execute();
+        ((Main)parentFrame).LoadSponsor();
+            JOptionPane.showMessageDialog(null, "The record(s) has been updated","Update Result",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        catch(Exception ex)
+        {
+
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
     * @param args the command line arguments
