@@ -533,9 +533,6 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditEx1ActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnDeleteEx1">
                           <Properties>
@@ -772,9 +769,6 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditEx2ActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnDeleteEx2">
                           <Properties>
@@ -994,9 +988,6 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddEx3ActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnEditEx3">
                           <Properties>
@@ -1011,9 +1002,6 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditEx3ActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnDeleteEx3">
                           <Properties>
@@ -1139,6 +1127,9 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="STabExhibitor">
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="STabExhibitorPropertyChange"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Exhibitor">
@@ -1762,9 +1753,6 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddP1ActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnEditP1">
                           <Properties>
@@ -2062,6 +2050,9 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindPActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
