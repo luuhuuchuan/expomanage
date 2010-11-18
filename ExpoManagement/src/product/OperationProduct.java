@@ -56,10 +56,10 @@ public class OperationProduct {
         String storeName = "{call get_CID }";
         return db.getCallAble(storeName).executeQuery();
     }
-//    public ResultSet doSearch(String str)throws SQLException{
-//        //mo ket noi
-//        //tao van tin
-//    }
+    public ResultSet doSearch(String str)throws SQLException{
+        String storeName = "{call findbyName }";
+        return db.getCallAble(storeName).executeQuery();
+    }
     public void delProducts(int id)throws SQLException{
         String storeName = "{call deleteProducts }";
         db.getCallAble(storeName).executeQuery();
