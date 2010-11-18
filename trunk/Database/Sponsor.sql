@@ -43,3 +43,15 @@ INSERT INTO Sponsors ( ExID, SpName, SpMoney, SpDescription)
 -- Chay thu Store
 --DECLARE @F INT
 --exec addExpo 'Hoi Sung',100,6000000,'Trien lam cac loai sung','11/10/2010','12/9/2010',@F OUTPUT
+
+
+----------edit
+create proc editSponsor
+@id int,
+@name nvarchar(100),
+@money float,
+@description ntext 
+as
+update Sponsors
+set SpName= @name,SpMoney = @money,SpDes = @description
+where SpID = @id

@@ -20,9 +20,11 @@ import exhibitor.EditExhibitor;
 import exhibitor.OperationExhibitor;
 import expo.AddExpo;
 import expo.OperationExpo;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 import product.AddProduct;
 import product.OperationProduct;
@@ -56,7 +58,7 @@ public class Main extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         initComponents();
-
+//        this.CreatePopup();
         oe.loadAllExpo(tblExpo);
         obt.loadAllBoothType(tblBoothType);
         ob.loadAllBooths(tblBooth);
@@ -198,11 +200,11 @@ public class Main extends javax.swing.JFrame {
         txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24));
         txtTitle.setText("Expo Managenment System");
 
-        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18));
         jTextArea1.setRows(5);
         jTextArea1.setText("\n Welcome !\n You using software of Team 1 - GC0501 - FPT GreenWich.\n Hope you work efficiently.\n Thank you for using our software.");
         jTextArea1.setAutoscrolls(false);
@@ -229,13 +231,13 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/home.png")), TabHome); // NOI18N
 
         SubTabManager.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         TabExpo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAdd.setText("Add");
         btnAdd.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -245,7 +247,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEdit.setText("Edit");
         btnEdit.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -284,7 +286,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhere, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFind))
         );
@@ -363,12 +365,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditEx1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditEx1.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditEx1.setText("Edit");
         btnEditEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
-        btnDeleteEx1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteEx1.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnDeleteEx1.setText("Delete");
         btnDeleteEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -397,7 +399,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereEx1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtFind1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx1))
         );
@@ -476,7 +478,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditEx2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditEx2.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditEx2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditEx2.setText("Edit");
         btnEditEx2.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -510,7 +512,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereEx2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtFind2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx2))
         );
@@ -579,17 +581,17 @@ public class Main extends javax.swing.JFrame {
 
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAddEx3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAddEx3.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAddEx3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAddEx3.setText("Add");
         btnAddEx3.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
-        btnEditEx3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditEx3.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditEx3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditEx3.setText("Edit");
         btnEditEx3.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
-        btnDeleteEx3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteEx3.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteEx3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnDeleteEx3.setText("Delete");
         btnDeleteEx3.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -618,7 +620,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereEx3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtFind3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx3))
         );
@@ -693,7 +695,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAddEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAddEx.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAddEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAddEx.setText("Add");
         btnAddEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -703,7 +705,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditEx.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditEx.setText("Edit");
         btnEditEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -742,7 +744,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .add(txtFind, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx))
         );
@@ -834,9 +836,15 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        TabSponsor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                TabSponsorPropertyChange(evt);
+            }
+        });
+
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAddS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAddS.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAddS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAddS.setText("Add");
         btnAddS.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -922,7 +930,7 @@ public class Main extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -954,17 +962,17 @@ public class Main extends javax.swing.JFrame {
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAddP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAddP1.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAddP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAddP1.setText("Add");
         btnAddP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
-        btnEditP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditP1.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditP1.setText("Edit");
         btnEditP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
-        btnDeleteP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteP1.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnDeleteP1.setText("Delete");
         btnDeleteP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -993,7 +1001,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereP2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                .add(txtPKeyword2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindP1))
         );
@@ -1156,7 +1164,7 @@ public class Main extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1288,6 +1296,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnEditSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSActionPerformed
         // TODO add your handling code here:
+
         new EditSponsor(this,true).setVisible(true);
     }//GEN-LAST:event_btnEditSActionPerformed
 
@@ -1310,6 +1319,11 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFindPActionPerformed
 
+    private void TabSponsorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabSponsorPropertyChange
+        // TODO add your handling code here:
+        LoadSponsor();
+    }//GEN-LAST:event_TabSponsorPropertyChange
+
     public void LoadProduct()
     {
         op.loadAllProduct(tblProducts);
@@ -1321,6 +1335,9 @@ public class Main extends javax.swing.JFrame {
     public void LoadSponsor()
     {
         os.loadAllSponsor(tblSponsor);
+    }
+    public JTable getSponsorTable(){
+        return tblSponsor;
     }
     /**
     * @param args the command line arguments
