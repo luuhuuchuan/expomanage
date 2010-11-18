@@ -17,6 +17,7 @@ create proc getAllUser
 as
 select * from [User]
 
+
 -- Tao Store co tham so de tao Staff
 
 CREATE PROC AddUser
