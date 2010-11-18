@@ -240,7 +240,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhere" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtKeyword" pref="137" max="32767" attributes="0"/>
+                                  <Component id="txtKeyword" pref="134" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFind" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -479,7 +479,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind1" pref="137" max="32767" attributes="0"/>
+                                  <Component id="txtFind1" pref="134" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -715,7 +715,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind2" pref="137" max="32767" attributes="0"/>
+                                  <Component id="txtFind2" pref="134" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx2" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -951,7 +951,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind3" pref="137" max="32767" attributes="0"/>
+                                  <Component id="txtFind3" pref="134" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1187,7 +1187,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind" pref="137" max="32767" attributes="0"/>
+                                  <Component id="txtFind" pref="134" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1596,7 +1596,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane6" alignment="0" pref="522" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" alignment="0" pref="525" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -1716,7 +1716,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword2" pref="166" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword2" pref="163" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2068,7 +2068,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane" alignment="0" pref="525" max="32767" attributes="0"/>
+                              <Component id="jScrollPane" alignment="0" pref="528" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
