@@ -168,7 +168,7 @@ public class AddUser extends javax.swing.JFrame {
 
         String name = txtName.getText().trim();
         String pass = txtPass.getText().trim();
-        int typeUser = Integer.parseInt(cbTypeUser.getSelectedItem().);
+        int typeUser = Integer.parseInt(cbTypeUser.getSelectedItem().toString());
         String email = txtEmail.getText().trim();
 
         //tao giao dien de thuc thi store
@@ -198,7 +198,7 @@ public class AddUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtName.setText(null);
         txtPass.setText(null);
-        txtTypeUser.setText(null);
+        cbTypeUser.setSelectedItem(null);
         txtEmail.setText(null);
         txtName.requestFocus();
     }//GEN-LAST:event_btnResetActionPerformed
