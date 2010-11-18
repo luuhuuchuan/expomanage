@@ -35,7 +35,7 @@ public class OperationUser {
                 v.add(rs.getString(2));
                 if (rs.getInt(3) == 1)
                     v.add("Manager");
-                else if(rs.getInt(3) == 2)
+                else 
                     v.add("User");
                 v.add(rs.getString(4));
                 UserModel.addRow(v);
