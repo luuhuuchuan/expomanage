@@ -40,7 +40,15 @@ CREATE PROC DeleteProducts
 AS
   BEGIN 
         DECLARE @id int
-        SET @id=(SELECT id FROM Products WHERE PName = @Name)
+        SET @id=(SELECT Pid FROM Products WHERE PName = @Name)
         -- Bat dau xoa
         DELETE FROM Products WHERE PName = @Name
   END
+
+--Tao Store de tim kiem Product theo ten
+CREATE PROC findbyName
+@Name nvarchar(100)
+AS
+BEGIN
+	SELECT * FROM Products WHERE PName = @Name
+END
