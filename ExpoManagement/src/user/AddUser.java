@@ -23,7 +23,8 @@ import javax.swing.UIManager;
 public class AddUser extends javax.swing.JFrame {
 
     /** Creates new form AddUser */
-    
+
+ 
     public AddUser() {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -32,6 +33,8 @@ public class AddUser extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         initComponents();
+
+
     }
 
     /** This method is called from within the constructor to
@@ -43,29 +46,24 @@ public class AddUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtPass = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
-        cbTypeUser = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18));
-        jLabel1.setText("Add User");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add New Manager"));
 
         jLabel2.setText("User Name:");
 
         jLabel3.setText("User Pass:");
-
-        jLabel4.setText("TypeUser:");
 
         jLabel5.setText("User Email:");
 
@@ -93,67 +91,74 @@ public class AddUser extends javax.swing.JFrame {
             }
         });
 
-        cbTypeUser.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                                .add(jLabel2)
+                                .add(36, 36, 36)
+                                .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel3)
+                                    .add(jLabel5))
+                                .add(39, 39, 39)
+                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                                    .add(txtPass, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(29, 29, 29)
+                        .add(btnAdd)
+                        .add(18, 18, 18)
+                        .add(btnReset)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 30, Short.MAX_VALUE)
+                        .add(btnClose)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(25, 25, 25)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(txtPass, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 19, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtEmail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel5))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 17, Short.MAX_VALUE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnAdd)
+                    .add(btnClose)
+                    .add(btnReset))
+                .add(26, 26, 26))
+        );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(37, 37, 37)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(btnAdd)
-                        .add(53, 53, 53)
-                        .add(btnReset)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 54, Short.MAX_VALUE)
-                        .add(btnClose)
-                        .add(25, 25, 25))
-                    .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(jLabel3)
-                            .add(jLabel4)
-                            .add(jLabel5))
-                        .add(43, 43, 43)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(cbTypeUser, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(txtEmail)
-                            .add(txtPass)
-                            .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
-                        .addContainerGap(105, Short.MAX_VALUE))))
-            .add(layout.createSequentialGroup()
-                .add(157, 157, 157)
-                .add(jLabel1)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(20, 20, 20)
-                .add(jLabel1)
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(txtPass, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel4)
-                    .add(cbTypeUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(23, 23, 23)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel5)
-                    .add(txtEmail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(40, 40, 40)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnAdd)
-                    .add(btnReset)
-                    .add(btnClose))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,24 +172,23 @@ public class AddUser extends javax.swing.JFrame {
         db.openConnection();
 
         String name = txtName.getText().trim();
-        String pass = txtPass.getText().trim();
-        int typeUser = Integer.parseInt(cbTypeUser.getSelectedItem().toString());
+        String pass = txtPass.getPassword().toString().trim();
         String email = txtEmail.getText().trim();
 
         //tao giao dien de thuc thi store
-        CallableStatement cs = db.getConnection().prepareCall("{call AddUser(?,?,?,?,?)}");
+        CallableStatement cs = db.getConnection().prepareCall("{call AddUser(?,?,?,?,null)}");
         //truyen tham so cho store
         cs.setString(1, name);
         cs.setString(2, pass);
-        cs.setInt(3, typeUser);
+        cs.setInt(3, 1);
         cs.setString(4, email);
         //thuc thi store
         cs.execute();
-        JOptionPane.showMessageDialog(null, "One new User has been added !","Add new User",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "One new User has been added !","Add new Manager",JOptionPane.INFORMATION_MESSAGE);
         dispose();
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new User",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new Manager",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnAddActionPerformed
@@ -198,7 +202,6 @@ public class AddUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtName.setText(null);
         txtPass.setText(null);
-        cbTypeUser.setSelectedItem(null);
         txtEmail.setText(null);
         txtName.requestFocus();
     }//GEN-LAST:event_btnResetActionPerformed
@@ -218,15 +221,13 @@ public class AddUser extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReset;
-    private javax.swing.JComboBox cbTypeUser;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField txtPass;
     // End of variables declaration//GEN-END:variables
 
 }
