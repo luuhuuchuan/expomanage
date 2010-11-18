@@ -56,7 +56,7 @@ public class OperationProduct {
         String storeName = "{call get_CID }";
         return db.getCallAble(storeName).executeQuery();
     }
-    public ResultSet doSearch(String str)throws SQLException{
+    public ResultSet doSearch()throws SQLException{
         String storeName = "{call findbyName }";
         return db.getCallAble(storeName).executeQuery();
     }
