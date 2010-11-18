@@ -8,7 +8,10 @@ package user;
 import dataLayer.DBHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,7 +39,7 @@ public class OperationUser {
                 if (rs.getInt(3) == 1)
                     v.add("Manager");
                 else 
-                    v.add("User");
+                    v.add("Exhibitor");
                 v.add(rs.getString(4));
                 UserModel.addRow(v);
             }
@@ -54,5 +57,6 @@ public class OperationUser {
         String storeName = "{call getAllUser }";
         return db.getCallAble(storeName).executeQuery();
     }
+
 }
 
