@@ -12,6 +12,8 @@
 package exhibitor;
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
+import java.awt.Frame;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -20,10 +22,15 @@ import javax.swing.UIManager;
  *
  * @author Cuongnvgc00064
  */
-public class AddExhibitor extends javax.swing.JFrame {
+public class AddExhibitor extends javax.swing.JDialog {
 
     /** Creates new form AddExhibitor */
-    public AddExhibitor() {
+    Main m = null;
+    Frame parentFrame = null;
+    OperationExhibitor oex = new OperationExhibitor();
+    public AddExhibitor(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        parentFrame = parent;
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }
@@ -202,6 +209,7 @@ public class AddExhibitor extends javax.swing.JFrame {
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Exhibitor has been added !","New Exhibitor",JOptionPane.INFORMATION_MESSAGE);
+        ((Main)parentFrame).LoadExhibitor();
         dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Exhibitor",JOptionPane.ERROR_MESSAGE);
@@ -225,7 +233,14 @@ public class AddExhibitor extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddExhibitor().setVisible(true);
+                AddExhibitor dialog = new AddExhibitor(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
