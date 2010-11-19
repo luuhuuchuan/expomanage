@@ -7,9 +7,14 @@ package boothType;
 
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -58,4 +63,34 @@ public class OperationBoothType {
         String storeName = "{call getID_Name_Of_Expo }";
         return db.getCallAble(storeName).executeQuery();
     }
+    public ResultSet getDeleteBoothType()throws SQLException{
+        String storeName = "{call deleteBoothType }";
+        return db.getCallAble(storeName).executeQuery();
+    }
+    DefaultComboBoxModel CbExpoModel = null;
+    HashMap hm = new HashMap();
+
+    public void buildCbExpo(JComboBox cbExpo)
+    {
+        cbExpo.setModel(CbExpoModel = new DefaultComboBoxModel());
+        CbExpoModel.addElement("-- Choose Expo --");
+        try{
+            ResultSet rs = getAllExpo();
+            while(rs.next()){
+                String name = rs.getString(1);
+                String id = String.valueOf(rs.getInt(2));
+                hm.put(name,id);
+                CbExpoModel.addElement(name);
+            }
+            rs.close();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public int returnIdExpo(JComboBox cbExpo)
+    {
+        return Integer.parseInt(hm.get(cbExpo.getSelectedItem().toString().trim()).toString());
+    }
+
 }
