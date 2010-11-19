@@ -42,6 +42,48 @@ AS
 INSERT INTO BoothType (BTName,ExID, BTHeight, BTWidth, BoothRemain, BoothLength)
 VALUES(@Name,@ExID,@Height,@Width,@BoothRemain,@BoothLength)
 
+-- Tao Store delete BoothType
+create proc deleteBoothType
+@ID int
+as
+delete from BoothType
+where BTID = @ID
+
+-- Tao store edit BoothType
+create proc editBoothType
+@ID int,
+@Name nvarchar(100),
+@ExID int,
+@Height float,
+@Width float,
+@BoothRemain int,
+@BoothLength int
+as
+update BoothType
+set BTName = @Name
+where BTID = @ID
+
+update BoothType
+set ExID = @ExID
+where BTID = @ID
+
+update BoothType
+set BTHeight = @Height
+where BTID = @ID
+
+update BoothType
+set BTWidth = @Width
+where BTID = @ID
+
+update BoothType
+set BoothRemain = @BoothRemain
+where BTID = @ID
+
+update BoothType
+set BoothLength = @BoothLength
+where BTID = @ID
+
+
 --Tao Store tim kiem Exhibitor
 Create proc findExhibitorbyName
 as
