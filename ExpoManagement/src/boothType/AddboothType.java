@@ -13,9 +13,6 @@ package boothType;
 
 import dataLayer.DBHelper;
 import java.sql.CallableStatement;
-import java.sql.ResultSet;
-import java.util.HashMap;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -26,8 +23,7 @@ import javax.swing.UIManager;
 public class AddboothType extends javax.swing.JFrame {
 
     OperationBoothType ob  = new OperationBoothType();
-    DefaultComboBoxModel CbExpoModel = null;
-    HashMap hm = new HashMap();
+    
     /** Creates new form AddboothType */
     public AddboothType() {
         try {
@@ -37,22 +33,9 @@ public class AddboothType extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         initComponents();
-        cbExpo.setModel(CbExpoModel = new DefaultComboBoxModel());
-        CbExpoModel.addElement("-- Choose Expo --");
-        try{
-            ResultSet rs = ob.getAllExpo();
-            while(rs.next()){
-                String name = rs.getString(1);
-                String id = String.valueOf(rs.getInt(2));
-                hm.put(name,id);
-                CbExpoModel.addElement(name);
-            }
-            rs.close();
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
+        ob.buildCbExpo(cbExpo);
     }
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -248,7 +231,7 @@ public class AddboothType extends javax.swing.JFrame {
         db.openConnection();
         
         String name = txtBTName.getText().trim();
-        int EID = Integer.parseInt(hm.get(cbExpo.getSelectedItem().toString().trim()).toString());
+        int EID = ob.returnIdExpo(cbExpo);
         float height = Float.parseFloat(txtBTHeight.getText().trim());
         float width = Float.parseFloat(txtBTWidth.getText().trim());
         int remain = Integer.parseInt(txtBremain.getText().trim());
