@@ -182,7 +182,7 @@ public class EditSponsor extends javax.swing.JDialog {
         }
         catch(Exception ex)
         {
-
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
