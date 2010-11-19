@@ -311,7 +311,7 @@ public class Addbooths extends javax.swing.JFrame {
         db = new DBHelper();
         db.openConnection();
         int BTID = Integer.parseInt(hm2.get(cbBoothType.getSelectedItem().toString().trim()).toString());
-        int SID = Integer.parseInt(hm.get(cbStaff.getSelectedItem().toString().trim()).toString());
+        int SID = Integer.parseInt(hm.get(cbStaff.getSelectedItem().toString().trim()));
         String CID = cbContact.getSelectedItem().toString();
         String name = txtBname.getText().trim();
         String bdate = txtBdate.getText().trim();
