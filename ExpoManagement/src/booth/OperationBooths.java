@@ -8,7 +8,10 @@ package booth;
 import dataLayer.DBHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,6 +23,11 @@ public class OperationBooths {
 
     DBHelper db = null;
     DefaultTableModel BoothsModel = null;
+    DefaultComboBoxModel CbContactModel = null;
+    DefaultComboBoxModel CbStaffModel = null;
+    HashMap hm = new HashMap();
+    DefaultComboBoxModel CbBoothTypeModel = null;
+    HashMap hm2 = new HashMap();
     public void loadAllBooths(JTable jTable1){
         jTable1.setModel(BoothsModel = new DefaultTableModel());
         Vector v = new Vector();
@@ -66,6 +74,67 @@ public class OperationBooths {
     public ResultSet getAllBoothType()throws SQLException{
         String storeName = "{call get_BoothType }";
         return db.getCallAble(storeName).executeQuery();
+    }
+    public void buildAllStaff(JComboBox cbStaff)
+    {
+        cbStaff.setModel(CbStaffModel = new DefaultComboBoxModel());
+        CbStaffModel.addElement("-- Choose Staff --");
+        try{
+            ResultSet rs = getAllStaff();
+            while(rs.next()){
+                String sname = rs.getString(1);
+                String sid = String.valueOf(rs.getInt(2));
+                hm.put(sname,sid);
+                CbStaffModel.addElement(sname);
+            }
+            rs.close();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+    }
+    public void buildAllContactID(JComboBox cbContact)
+    {
+        cbContact.setModel(CbContactModel = new DefaultComboBoxModel());
+        CbContactModel.addElement("-- Choose Contact --");
+        try{
+            ResultSet rs = getAllCID();
+            while(rs.next()){
+                String Cid = rs.getString(1);
+                CbContactModel.addElement(Cid);
+            }
+            rs.close();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public void buildAlBoothType(JComboBox cbBoothType)
+    {
+        cbBoothType.setModel(CbBoothTypeModel = new DefaultComboBoxModel());
+        CbBoothTypeModel.addElement("-- Choose BoothType --");
+        try{
+            ResultSet rs = getAllBoothType();
+            while(rs.next()){
+                String btname = rs.getString(1);
+                String btid = String.valueOf(rs.getInt(2));
+                hm2.put(btname,btid);
+                CbBoothTypeModel.addElement(btname);
+            }
+            rs.close();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public int returnBTID(JComboBox cbBoothType)
+    {
+        return Integer.parseInt(hm2.get(cbBoothType.getSelectedItem().toString().trim()).toString());
+    }
+    public int returnSID(JComboBox cbStaff)
+    {
+        return Integer.parseInt(hm.get(cbStaff.getSelectedItem().toString().trim()).toString());
     }
 
 }
