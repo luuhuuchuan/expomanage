@@ -44,9 +44,9 @@ public class Addbooths extends javax.swing.JFrame {
 
     }
     public void Reset(){
-        cbContact.setSelectedItem(0);
-        cbBoothType.setSelectedItem(0);
-        cbStaff.setSelectedItem(0);
+        cbContact.setSelectedIndex(0);
+        cbBoothType.setSelectedIndex(0);
+        cbStaff.setSelectedIndex(0);
         txtBname.setText("");
         txtBdate.setText("");
         txtBmoney.setText("");
