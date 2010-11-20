@@ -16,7 +16,6 @@ import dataLayer.DBHelper;
 import expomanagement.Main;
 import java.awt.Frame;
 import java.sql.CallableStatement;
-import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
@@ -43,23 +42,9 @@ public class AddProduct extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         initComponents();
-        parentFrame = parent;
-
-        cbContact.setModel(CbContactModel = new DefaultComboBoxModel());
-        CbContactModel.addElement("-- Choose Contact --");
-        try{
-            ResultSet rs = ob.getAllCID();
-            while(rs.next()){
-                String Cid = rs.getString(1);
-                CbContactModel.addElement(Cid);
-            }
-            rs.close();
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
+        op.buildCbExpo(cbExpo);
+        op.buildCbContact(cbContact);
     }
-
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -82,10 +67,10 @@ public class AddProduct extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
-        txtEID = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbContact = new javax.swing.JComboBox();
+        cbExpo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Product");
@@ -137,6 +122,8 @@ public class AddProduct extends javax.swing.JDialog {
 
         cbContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        cbExpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,8 +152,8 @@ public class AddProduct extends javax.swing.JDialog {
                                     .add(org.jdesktop.layout.GroupLayout.LEADING, txtPrice, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                                     .add(org.jdesktop.layout.GroupLayout.LEADING, txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .add(txtEID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 193, Short.MAX_VALUE))
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 193, Short.MAX_VALUE)
+                                    .add(cbExpo, 0, 193, Short.MAX_VALUE))
                                 .add(72, 72, 72))
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                                 .add(jLabel6)
@@ -187,8 +174,8 @@ public class AddProduct extends javax.swing.JDialog {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(txtEID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel7))
+                            .add(jLabel7)
+                            .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(18, 18, 18)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel8)
@@ -213,7 +200,7 @@ public class AddProduct extends javax.swing.JDialog {
                     .add(btnAdd)
                     .add(btnReset)
                     .add(btnClose))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -234,7 +221,7 @@ public class AddProduct extends javax.swing.JDialog {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         String DateP = sdf.format(today);
         
-        int EID = Integer.parseInt(txtEID.getText().trim());
+        String EID = cbContact.getSelectedItem().toString().trim();
         String CID = cbContact.getSelectedItem().toString().trim();
         String name = txtName.getText().trim();
         float price = Float.parseFloat(txtPrice.getText().trim());
@@ -244,7 +231,7 @@ public class AddProduct extends javax.swing.JDialog {
         //tao giao dien de thuc thi store
         CallableStatement cs = db.getConnection().prepareCall("{call AddProducts(?,?,?,?,?,?,?)}");
         //truyen tham so cho store
-        cs.setInt(1, EID);
+        cs.setString(1, EID);
         cs.setString(2, CID);
         cs.setString(3, name);
         cs.setFloat(4, price);
@@ -264,7 +251,7 @@ public class AddProduct extends javax.swing.JDialog {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-        txtEID.setText(null);
+        cbExpo.setSelectedItem(0);
         cbContact.setSelectedItem(0);
         txtName.setText(null);
         txtPrice.setText(null);
@@ -296,6 +283,7 @@ public class AddProduct extends javax.swing.JDialog {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReset;
     private javax.swing.JComboBox cbContact;
+    private javax.swing.JComboBox cbExpo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -305,7 +293,6 @@ public class AddProduct extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtDescription;
-    private javax.swing.JTextField txtEID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNumber;
     private javax.swing.JTextField txtPrice;
