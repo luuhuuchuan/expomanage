@@ -18,7 +18,6 @@ as
 select * from Products
 
 -- Tao Store co tham so de tao Products
-
 CREATE PROC AddProducts
 @EID int,
 @CID char(10),
@@ -26,13 +25,12 @@ CREATE PROC AddProducts
 @Price float,
 @Number int,
 @Description ntext,
-@Date SMALLDATETIME
+@Date smalldatetime
 AS
 BEGIN
 	INSERT INTO Products (EID,CID,PName, PPrice, PNumber, PDescription, PDate)
 	VALUES(@EID,@CID,@Name,@Price,@Number,@Description,@Date)
 END
-
 
 --Tao Store de xoa Product
 CREATE PROC DeleteProducts
@@ -52,3 +50,26 @@ AS
 BEGIN
 	SELECT * FROM Products WHERE PName = @Name
 END
+
+--Tao Store de Edit Product
+Create Proc EditProduct
+@Id int,
+@EID int,
+@CID char(10),
+@Name nvarchar(100),
+@Price float,
+@Number int,
+@Description ntext,
+@Date smalldatetime
+AS
+	Begin
+		Update Products
+		Set EID = @EID,CID = @CID,PName = @Name,PPrice = @Price,PNumber = @Number,PDescription = @Description,PDate = @Date
+		Where PID = @Id		
+	End
+
+--Store lay ID cua Exhibitor
+create proc get_EID
+as
+select ExID
+from Expo
