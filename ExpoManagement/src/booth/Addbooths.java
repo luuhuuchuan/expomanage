@@ -6,16 +6,13 @@
 /*
  * Addbooths.java
  *
- * Created on Nov 12, 2010, 5:16:02 PM
+ * Created on Nov 22, 2010, 1:24:26 AM
  */
 
 package booth;
 
 import dataLayer.DBHelper;
 import java.sql.CallableStatement;
-import java.sql.ResultSet;
-import java.util.HashMap;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -25,10 +22,8 @@ import javax.swing.UIManager;
  */
 public class Addbooths extends javax.swing.JFrame {
 
-    OperationBooths ob  = new OperationBooths();
-
-    
     /** Creates new form Addbooths */
+    OperationBooths ob  = new OperationBooths();
     public Addbooths() {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -40,18 +35,7 @@ public class Addbooths extends javax.swing.JFrame {
         ob.buildAllStaff(cbStaff);
         ob.buildAllContactID(cbContact);
         ob.buildAlBoothType(cbBoothType);
-        
-
     }
-    public void Reset(){
-        cbContact.setSelectedIndex(0);
-        cbBoothType.setSelectedIndex(0);
-        cbStaff.setSelectedIndex(0);
-        txtBname.setText("");
-        txtBdate.setText("");
-        txtBmoney.setText("");
-    }
-
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -62,35 +46,128 @@ public class Addbooths extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BgBooker = new javax.swing.ButtonGroup();
-        btnAdd = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cbStaff = new javax.swing.JComboBox();
-        jLabel5 = new javax.swing.JLabel();
-        cbContact = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cbContact = new javax.swing.JComboBox();
         cbBoothType = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         txtBname = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtBdate = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         txtBmoney = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         btnYes = new javax.swing.JRadioButton();
         btnNo = new javax.swing.JRadioButton();
+        btnClose = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Add New Booth");
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Add BoothType"));
+
+        jLabel2.setText("Staff :");
+
+        cbStaff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Contact ID :");
+
+        jLabel4.setText("Booth Type : ");
+
+        cbContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbBoothType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel1.setText("Booth Name :");
+
+        txtBname.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+
+        jLabel5.setText("Booth Date :");
+
+        jLabel6.setText("Booth Money :");
+
+        jLabel7.setText("Booth Booker :");
+
+        buttonGroup1.add(btnYes);
+        btnYes.setSelected(true);
+        btnYes.setText("Yes");
+
+        buttonGroup1.add(btnNo);
+        btnNo.setText("No");
+
+        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel1)
+                    .add(jLabel5)
+                    .add(jLabel6)
+                    .add(jLabel7)
+                    .add(jLabel2)
+                    .add(jLabel3)
+                    .add(jLabel4))
+                .add(29, 29, 29)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(cbContact, 0, 173, Short.MAX_VALUE)
+                    .add(cbStaff, 0, 173, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, cbBoothType, 0, 173, Short.MAX_VALUE)
+                    .add(txtBname, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .add(txtBdate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(btnYes)
+                        .add(35, 35, 35)
+                        .add(btnNo))
+                    .add(txtBmoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                .add(29, 29, 29))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(cbStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(cbContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel4)
+                    .add(cbBoothType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtBname, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1))
+                .add(18, 18, 18)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel5)
+                    .add(txtBdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel6)
+                    .add(txtBmoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel7)
+                    .add(btnYes)
+                    .add(btnNo))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
 
@@ -102,147 +179,41 @@ public class Addbooths extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
-        btnClose.setText("Close");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Booths"));
-
-        jLabel2.setText("Staff  :");
-
-        cbStaff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel5.setText("Contact :");
-
-        cbContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel3.setText("BoothType :");
-
-        cbBoothType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel6.setText("Booth Name :");
-
-        jLabel7.setText("Booth Date :");
-
-        jLabel1.setText("Booth Money :");
-
-        jLabel11.setText("Booth Booker :");
-
-        BgBooker.add(btnYes);
-        btnYes.setSelected(true);
-        btnYes.setText("Yes");
-
-        BgBooker.add(btnNo);
-        btnNo.setText("No");
-
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jLabel11)
-                        .add(18, 18, 18)
-                        .add(btnYes)
-                        .add(18, 18, 18)
-                        .add(btnNo)
-                        .addContainerGap(130, Short.MAX_VALUE))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
-                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel7)
-                                    .add(jLabel1))
-                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jPanel1Layout.createSequentialGroup()
-                                        .add(18, 18, 18)
-                                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(txtBname, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 186, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(txtBdate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)))
-                                    .add(jPanel1Layout.createSequentialGroup()
-                                        .add(18, 18, 18)
-                                        .add(txtBmoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))))
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel6)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
-                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel2)
-                                    .add(jLabel3)
-                                    .add(jLabel5))
-                                .add(28, 28, 28)
-                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, cbContact, 0, 187, Short.MAX_VALUE)
-                                    .add(cbStaff, 0, 187, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, cbBoothType, 0, 187, Short.MAX_VALUE))))
-                        .add(49, 49, 49))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(cbStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(cbContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(19, 19, 19)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(cbBoothType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(23, 23, 23)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel6)
-                    .add(txtBname, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel7)
-                    .add(txtBdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(23, 23, 23)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(txtBmoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnYes)
-                    .add(btnNo)
-                    .add(jLabel11))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-            .add(layout.createSequentialGroup()
-                .add(36, 36, 36)
-                .add(btnAdd)
-                .add(38, 38, 38)
-                .add(btnReset)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 35, Short.MAX_VALUE)
-                .add(btnClose)
-                .add(33, 33, 33))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(btnAdd)
+                        .add(40, 40, 40)
+                        .add(btnReset)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 57, Short.MAX_VALUE)
+                        .add(btnClose)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(24, 24, 24)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(7, 7, 7)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnAdd)
                     .add(btnReset)
+                    .add(btnAdd)
                     .add(btnClose))
-                .add(28, 28, 28))
+                .add(121, 121, 121))
         );
 
         pack();
@@ -255,8 +226,13 @@ public class Addbooths extends javax.swing.JFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-        Reset();
-    }//GEN-LAST:event_btnResetActionPerformed
+        cbContact.setSelectedIndex(0);
+        cbBoothType.setSelectedIndex(0);
+        cbStaff.setSelectedIndex(0);
+        txtBname.setText("");
+        txtBdate.setText("");
+        txtBmoney.setText("");
+}//GEN-LAST:event_btnResetActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
@@ -293,7 +269,8 @@ public class Addbooths extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_btnAddActionPerformed
+
+}//GEN-LAST:event_btnAddActionPerformed
 
     /**
     * @param args the command line arguments
@@ -307,23 +284,23 @@ public class Addbooths extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup BgBooker;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
     private javax.swing.JRadioButton btnNo;
     private javax.swing.JButton btnReset;
     private javax.swing.JRadioButton btnYes;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbBoothType;
     private javax.swing.JComboBox cbContact;
     private javax.swing.JComboBox cbStaff;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txtBdate;
     private javax.swing.JTextField txtBmoney;
     private javax.swing.JTextField txtBname;
