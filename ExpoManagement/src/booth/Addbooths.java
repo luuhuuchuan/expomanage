@@ -68,8 +68,9 @@ public class Addbooths extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Add New Booths");
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Add BoothType"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Booth"));
 
         jLabel2.setText("Staff :");
 
@@ -197,9 +198,9 @@ public class Addbooths extends javax.swing.JFrame {
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
                         .add(btnAdd)
-                        .add(40, 40, 40)
+                        .add(46, 46, 46)
                         .add(btnReset)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 57, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 51, Short.MAX_VALUE)
                         .add(btnClose)))
                 .addContainerGap())
         );
@@ -210,9 +211,9 @@ public class Addbooths extends javax.swing.JFrame {
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(7, 7, 7)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnReset)
                     .add(btnAdd)
-                    .add(btnClose))
+                    .add(btnClose)
+                    .add(btnReset))
                 .add(121, 121, 121))
         );
 
