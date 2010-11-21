@@ -29,7 +29,7 @@ from Expo
 
 exec getID_Name_Of_Expo2
 
--- Tao Store co tham so de tao Expo
+-- Tao Store co tham so de tao BoothType
 
 CREATE PROC AddBoothType
 @Name nvarchar(100),
@@ -41,6 +41,22 @@ CREATE PROC AddBoothType
 AS
 INSERT INTO BoothType (BTName,ExID, BTHeight, BTWidth, BoothRemain, BoothLength)
 VALUES(@Name,@ExID,@Height,@Width,@BoothRemain,@BoothLength)
+
+-- Tao store de edit BoothType
+Create Proc EditBoothType
+@ID int,
+@Name nvarchar(100),
+@ExID int,
+@Height float,
+@Width float,
+@BoothRemain int,
+@BoothLength int
+AS
+	Begin
+		Update BoothType
+		Set BTName = @Name,ExID = @ExID,BTHeight = @Height,BTWidth = @Width,BoothRemain = @BoothRemain,BoothLength = @BoothLength
+		Where BTID = @ID		
+	End
 
 -- Tao Store delete BoothType
 create proc deleteBoothType
