@@ -14,6 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -31,7 +32,7 @@ public class OperationBooths {
     public void loadAllBooths(JTable jTable1){
         jTable1.setModel(BoothsModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Contact ID","Book ID","BoothType Name","Staff Name","Booth Name","Booth Date","Booth Money","Booth Booker"};
+        String [] heading = {"Contact","Booth ID","Booth Type","Staff","Booth Name","Date","Cost","Booker"};
         for(String s : heading)
             v.add(s);
         BoothsModel.setColumnIdentifiers(v);
@@ -46,10 +47,30 @@ public class OperationBooths {
                 v.add(rs.getString(5));
                 v.add(rs.getDate(6));
                 v.add(rs.getFloat(7));
-                v.add(rs.getBoolean(8));
+                if(rs.getBoolean(8))
+                    v.add("Yes");
+                else
+                    v.add("No");
                 BoothsModel.addRow(v);
             }
             rs.close();
+            TableColumn column = null;
+            for (int i = 0; i < 8; i++) {
+                column = jTable1.getColumnModel().getColumn(i);
+                if (i == 1) {
+                    column.setPreferredWidth(30);
+                }
+                if (i == 2) {
+                    column.setPreferredWidth(100);
+                } 
+                if (i == 4 || i ==5) {
+                    column.setPreferredWidth(80);
+                }
+                else {
+                    column.setPreferredWidth(50);
+                }
+            }
+
         }
         catch(Exception ex){
             ex.printStackTrace();
