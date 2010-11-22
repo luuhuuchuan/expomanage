@@ -232,9 +232,10 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/home.png")), TabHome); // NOI18N
 
         SubTabManager.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 14));
+        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         TabExpo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TabExpo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TabExpo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 TabExpoPropertyChange(evt);
@@ -358,7 +359,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        SubTabManager.addTab("Expo         ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/expo.png")), TabExpo); // NOI18N
+        SubTabManager.addTab(" Expo         ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/expo.png")), TabExpo); // NOI18N
 
         TabBoothType.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -477,7 +478,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        SubTabManager.addTab("Booth Type", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/organize.png")), TabBoothType); // NOI18N
+        SubTabManager.addTab(" Booth Type", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/organize.png")), TabBoothType); // NOI18N
 
         TabBooth.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TabBooth.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -597,7 +598,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        SubTabManager.addTab("Booth         ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/booth.png")), TabBooth); // NOI18N
+        SubTabManager.addTab(" Booth         ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/booth.png")), TabBooth); // NOI18N
 
         TabAccount.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -711,7 +712,7 @@ public class Main extends javax.swing.JFrame {
                 .add(16, 16, 16))
         );
 
-        SubTabManager.addTab("Account     ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/users.png")), TabAccount); // NOI18N
+        SubTabManager.addTab(" Account     ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/users.png")), TabAccount); // NOI18N
 
         STabExhibitor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -835,7 +836,7 @@ public class Main extends javax.swing.JFrame {
                 .add(38, 38, 38))
         );
 
-        SubTabManager.addTab("Exhibitor    ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/exhibitor_man.png")), STabExhibitor); // NOI18N
+        SubTabManager.addTab(" Exhibitor    ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/exhibitor_man.png")), STabExhibitor); // NOI18N
 
         org.jdesktop.layout.GroupLayout TabManagerLayout = new org.jdesktop.layout.GroupLayout(TabManager);
         TabManager.setLayout(TabManagerLayout);
@@ -855,7 +856,7 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Manager", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/administrator.png")), TabManager); // NOI18N
 
         SubTabExhibitor.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabExhibitor.setFont(new java.awt.Font("Tahoma", 0, 14));
+        SubTabExhibitor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         SubTabExhibitor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 SubTabExhibitorPropertyChange(evt);
@@ -919,7 +920,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereP1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .add(txtPKeyword1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindS))
         );
@@ -956,7 +957,7 @@ public class Main extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -984,7 +985,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        SubTabExhibitor.addTab("Sponsor     ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/sponsor.png")), TabSponsor); // NOI18N
+        SubTabExhibitor.addTab(" Sponsor      ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/sponsor.png")), TabSponsor); // NOI18N
 
         TabStaff.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -1033,7 +1034,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereP2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .add(txtPKeyword2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindP1))
         );
@@ -1070,7 +1071,7 @@ public class Main extends javax.swing.JFrame {
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1098,7 +1099,7 @@ public class Main extends javax.swing.JFrame {
                 .add(23, 23, 23))
         );
 
-        SubTabExhibitor.addTab("Staff          ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/staff.png")), TabStaff); // NOI18N
+        SubTabExhibitor.addTab(" Staff           ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/staff.png")), TabStaff); // NOI18N
 
         TabProduct.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -1162,7 +1163,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .add(txtPKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindP))
         );
@@ -1207,7 +1208,7 @@ public class Main extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1235,7 +1236,7 @@ public class Main extends javax.swing.JFrame {
                 .add(23, 23, 23))
         );
 
-        SubTabExhibitor.addTab("Product      ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/product.png")), TabProduct); // NOI18N
+        SubTabExhibitor.addTab(" Product       ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/product.png")), TabProduct); // NOI18N
 
         org.jdesktop.layout.GroupLayout TabExhibitorLayout = new org.jdesktop.layout.GroupLayout(TabExhibitor);
         TabExhibitor.setLayout(TabExhibitorLayout);

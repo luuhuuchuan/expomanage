@@ -174,7 +174,7 @@
               <Properties>
                 <Property name="tabPlacement" type="int" value="2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
+                  <Font name="Tahoma" size="12" style="0"/>
                 </Property>
               </Properties>
 
@@ -185,14 +185,17 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Default Cursor"/>
                     </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="12" style="0"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="TabExpoPropertyChange"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Expo         ">
-                        <Property name="tabTitle" type="java.lang.String" value="Expo         "/>
+                      <JTabbedPaneConstraints tabName=" Expo         ">
+                        <Property name="tabTitle" type="java.lang.String" value=" Expo         "/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/expomanagement/icon/expo.png"/>
                         </Property>
@@ -439,8 +442,8 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Booth Type">
-                        <Property name="tabTitle" type="java.lang.String" value="Booth Type"/>
+                      <JTabbedPaneConstraints tabName=" Booth Type">
+                        <Property name="tabTitle" type="java.lang.String" value=" Booth Type"/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/expomanagement/icon/organize.png"/>
                         </Property>
@@ -686,8 +689,8 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Booth         ">
-                        <Property name="tabTitle" type="java.lang.String" value="Booth         "/>
+                      <JTabbedPaneConstraints tabName=" Booth         ">
+                        <Property name="tabTitle" type="java.lang.String" value=" Booth         "/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/expomanagement/icon/booth.png"/>
                         </Property>
@@ -928,8 +931,8 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Account     ">
-                        <Property name="tabTitle" type="java.lang.String" value="Account     "/>
+                      <JTabbedPaneConstraints tabName=" Account     ">
+                        <Property name="tabTitle" type="java.lang.String" value=" Account     "/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/expomanagement/icon/users.png"/>
                         </Property>
@@ -1167,8 +1170,8 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Exhibitor    ">
-                        <Property name="tabTitle" type="java.lang.String" value="Exhibitor    "/>
+                      <JTabbedPaneConstraints tabName=" Exhibitor    ">
+                        <Property name="tabTitle" type="java.lang.String" value=" Exhibitor    "/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/expomanagement/icon/exhibitor_man.png"/>
                         </Property>
@@ -1448,7 +1451,7 @@
               <Properties>
                 <Property name="tabPlacement" type="int" value="2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
+                  <Font name="Tahoma" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -1463,8 +1466,8 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Sponsor     ">
-                        <Property name="tabTitle" type="java.lang.String" value="Sponsor     "/>
+                      <JTabbedPaneConstraints tabName=" Sponsor      ">
+                        <Property name="tabTitle" type="java.lang.String" value=" Sponsor      "/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/expomanagement/icon/sponsor.png"/>
                         </Property>
@@ -1521,7 +1524,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword1" pref="221" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword1" pref="219" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindS" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1640,7 +1643,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane6" alignment="0" pref="578" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" alignment="0" pref="576" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -1708,8 +1711,8 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Staff          ">
-                        <Property name="tabTitle" type="java.lang.String" value="Staff          "/>
+                      <JTabbedPaneConstraints tabName=" Staff           ">
+                        <Property name="tabTitle" type="java.lang.String" value=" Staff           "/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/expomanagement/icon/staff.png"/>
                         </Property>
@@ -1766,7 +1769,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword2" pref="221" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword2" pref="219" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1879,7 +1882,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane12" alignment="0" pref="578" max="32767" attributes="0"/>
+                              <Component id="jScrollPane12" alignment="0" pref="576" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -1947,8 +1950,8 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Product      ">
-                        <Property name="tabTitle" type="java.lang.String" value="Product      "/>
+                      <JTabbedPaneConstraints tabName=" Product       ">
+                        <Property name="tabTitle" type="java.lang.String" value=" Product       "/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/expomanagement/icon/product.png"/>
                         </Property>
@@ -2005,7 +2008,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword" pref="221" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword" pref="219" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2127,7 +2130,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane" alignment="0" pref="578" max="32767" attributes="0"/>
+                              <Component id="jScrollPane" alignment="0" pref="576" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
