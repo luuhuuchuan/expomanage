@@ -11,6 +11,7 @@
 
 package booth;
 
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -33,6 +34,41 @@ public class Editbooths extends javax.swing.JDialog {
         ob.buildAllStaff(cbStaff);
         ob.buildAllContactID(cbContact);
         ob.buildAlBoothType(cbBoothType);
+    }
+    private boolean checkformBooth(){
+        if(cbStaff.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this,"Please,select Staff");
+            cbStaff.requestFocus();
+            return false;
+        }
+        if(cbContact.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this,"Please,select Contact ID");
+            cbStaff.requestFocus();
+            return false;
+        }
+        if(cbBoothType.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this,"Please,select BoothType");
+            cbBoothType.requestFocus();
+            return false;
+        }
+        if(txtBname.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please,Enter Name of Booth");
+            txtBname.requestFocus();
+            return false;
+        }
+        if(txtBmoney.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please,Enter Booth Money");
+            txtBmoney.requestFocus();
+            return false;
+        }
+        try {
+            Long.parseLong(txtBmoney.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Booth Money must Number");
+            return false;
+        }
+
+        return true;
     }
 
     /** This method is called from within the constructor to
@@ -63,7 +99,7 @@ public class Editbooths extends javax.swing.JDialog {
         btnNo = new javax.swing.JRadioButton();
         btnEdit = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Booths");
@@ -164,15 +200,20 @@ public class Editbooths extends javax.swing.JDialog {
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
         btnReset.setText("Reset");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
-        jButton3.setText("Cancel");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -192,7 +233,7 @@ public class Editbooths extends javax.swing.JDialog {
                         .add(38, 38, 38)
                         .add(btnReset)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 34, Short.MAX_VALUE)
-                        .add(jButton3)
+                        .add(btnCancel)
                         .add(19, 19, 19))))
         );
         layout.setVerticalGroup(
@@ -203,17 +244,24 @@ public class Editbooths extends javax.swing.JDialog {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnEdit)
                     .add(btnReset)
-                    .add(jButton3))
+                    .add(btnCancel))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        if(checkformBooth()){
+            
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
     * @param args the command line arguments
@@ -233,6 +281,7 @@ public class Editbooths extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnEdit;
     private javax.swing.JRadioButton btnNo;
     private javax.swing.JButton btnReset;
@@ -241,7 +290,6 @@ public class Editbooths extends javax.swing.JDialog {
     private javax.swing.JComboBox cbBoothType;
     private javax.swing.JComboBox cbContact;
     private javax.swing.JComboBox cbStaff;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
