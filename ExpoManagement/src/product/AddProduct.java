@@ -31,7 +31,7 @@ public class AddProduct extends javax.swing.JDialog {
     Main m = null;
     Frame parentFrame = null;
     OperationProduct op = new OperationProduct();
-    OperationBooths ob  = new OperationBooths();
+
     DefaultComboBoxModel CbContactModel = null;
     public AddProduct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -221,8 +221,9 @@ public class AddProduct extends javax.swing.JDialog {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         String DateP = sdf.format(today);
         
-        String EID = cbContact.getSelectedItem().toString().trim();
+        int EID = op.returnIdExpo(cbExpo);;
         String CID = cbContact.getSelectedItem().toString().trim();
+
         String name = txtName.getText().trim();
         float price = Float.parseFloat(txtPrice.getText().trim());
         int number = Integer.parseInt(txtNumber.getText().trim());
@@ -231,7 +232,7 @@ public class AddProduct extends javax.swing.JDialog {
         //tao giao dien de thuc thi store
         CallableStatement cs = db.getConnection().prepareCall("{call AddProducts(?,?,?,?,?,?,?)}");
         //truyen tham so cho store
-        cs.setString(1, EID);
+        cs.setInt(1, EID);
         cs.setString(2, CID);
         cs.setString(3, name);
         cs.setFloat(4, price);
