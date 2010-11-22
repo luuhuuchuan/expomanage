@@ -38,6 +38,42 @@ public class Addbooths extends javax.swing.JDialog {
         ob.buildAlBoothType(cbBoothType);
     }
 
+    private boolean checkformBooth(){
+        if(cbStaff.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this,"Please,select Staff");
+            cbStaff.requestFocus();
+            return false;
+        }
+        if(cbContact.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this,"Please,select Contact ID");
+            cbStaff.requestFocus();
+            return false;
+        }
+        if(cbBoothType.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this,"Please,select BoothType");
+            cbBoothType.requestFocus();
+            return false;
+        }
+        if(txtBname.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please,Enter Name of Booth");
+            txtBname.requestFocus();
+            return false;
+        }
+        if(txtBmoney.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please,Enter Booth Money");
+            txtBmoney.requestFocus();
+            return false;
+        }
+        try {
+            Long.parseLong(txtBmoney.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Booth Money must Number");
+            return false;
+        }
+
+        return true;
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -200,9 +236,9 @@ public class Addbooths extends javax.swing.JDialog {
                     .add(layout.createSequentialGroup()
                         .add(10, 10, 10)
                         .add(btnAdd)
-                        .add(49, 49, 49)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 47, Short.MAX_VALUE)
                         .add(btnReset)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 38, Short.MAX_VALUE)
+                        .add(40, 40, 40)
                         .add(btnClose)))
                 .addContainerGap())
         );
@@ -238,38 +274,40 @@ public class Addbooths extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        try {
-            DBHelper db = null;
-            db = new DBHelper();
-            db.openConnection();
-            int BTID = ob.returnBTID(cbBoothType);
-            int SID = ob.returnSID(cbStaff);
-            String CID = cbContact.getSelectedItem().toString();
-            String name = txtBname.getText().trim();
-            String bdate = txtBdate.getText().trim();
-            float money = Float.parseFloat(txtBmoney.getText().trim());
+        if(checkformBooth()){
+            try {
+                DBHelper db = null;
+                db = new DBHelper();
+                db.openConnection();
+                int BTID = ob.returnBTID(cbBoothType);
+                int SID = ob.returnSID(cbStaff);
+                String CID = cbContact.getSelectedItem().toString();
+                String name = txtBname.getText().trim();
+                String bdate = txtBdate.getText().trim();
+                float money = Float.parseFloat(txtBmoney.getText().trim());
 
 
-            //tao giao dien de thuc thi store
-            CallableStatement cs = db.getConnection().prepareCall("{call AddBoothType(?,?,?,?,?,?,?)}");
-            //truyen tham so cho store
-            cs.setInt(1, BTID);
-            cs.setInt(2, SID);
-            cs.setString(3, CID);
-            cs.setString(4, name);
-            cs.setString(5, bdate);
-            cs.setFloat(6, money);
-            if(btnYes.isSelected())
-                cs.setBoolean(7, true);
+                //tao giao dien de thuc thi store
+                CallableStatement cs = db.getConnection().prepareCall("{call AddBoothType(?,?,?,?,?,?,?)}");
+                //truyen tham so cho store
+                cs.setInt(1, BTID);
+                cs.setInt(2, SID);
+                cs.setString(3, CID);
+                cs.setString(4, name);
+                cs.setString(5, bdate);
+                cs.setFloat(6, money);
+                if(btnYes.isSelected())
+                    cs.setBoolean(7, true);
 
-            //thuc thi store
-            cs.execute();
-            JOptionPane.showMessageDialog(null, "One new Booth has been added","Add new Booth",JOptionPane.INFORMATION_MESSAGE);
-            dispose();
-            //lay gia tri tham so ra
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth",JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+                //thuc thi store
+                cs.execute();
+                JOptionPane.showMessageDialog(null, "One new Booth has been added","Add new Booth",JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                //lay gia tri tham so ra
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth",JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
