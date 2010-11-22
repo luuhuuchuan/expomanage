@@ -6,7 +6,7 @@
 /*
  * EditboothType.java
  *
- * Created on Nov 12, 2010, 5:01:47 PM
+ * Created on Nov 22, 2010, 11:19:20 PM
  */
 
 package boothType;
@@ -20,11 +20,12 @@ import javax.swing.UIManager;
  *
  * @author namh3o
  */
-public class EditboothType extends javax.swing.JFrame {
+public class EditboothType extends javax.swing.JDialog {
 
-    OperationBoothType ob  = new OperationBoothType();
     /** Creates new form EditboothType */
-    public EditboothType() {
+    OperationBoothType ob  = new OperationBoothType();
+    public EditboothType(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }
@@ -101,9 +102,6 @@ public class EditboothType extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnEdit = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cbExpo = new javax.swing.JComboBox();
@@ -117,32 +115,11 @@ public class EditboothType extends javax.swing.JFrame {
         txtBTWidth = new javax.swing.JTextField();
         txtBremain = new javax.swing.JTextField();
         txtBlength = new javax.swing.JTextField();
+        btnReset = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Edit BoothType");
-
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
-        btnEdit.setText("Edit");
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
-            }
-        });
-
-        btnReset.setText("Reset");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
-            }
-        });
-
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
-        btnClose.setText("Close");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit BoothType"));
 
@@ -181,7 +158,7 @@ public class EditboothType extends javax.swing.JFrame {
                     .add(txtBremain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                     .add(txtBTWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                     .add(cbExpo, 0, 153, Short.MAX_VALUE))
-                .add(37, 37, 37))
+                .add(46, 46, 46))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -213,87 +190,103 @@ public class EditboothType extends javax.swing.JFrame {
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
+        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .add(layout.createSequentialGroup()
-                .add(23, 23, 23)
-                .add(btnEdit)
-                .add(37, 37, 37)
-                .add(btnReset)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 52, Short.MAX_VALUE)
-                .add(btnClose)
-                .add(24, 24, 24))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(btnEdit)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(btnReset)
+                        .add(42, 42, 42)
+                        .add(btnClose))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnEdit)
-                    .add(btnReset)
-                    .add(btnClose))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .add(btnClose)
+                    .add(btnReset))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose();
-}//GEN-LAST:event_btnCloseActionPerformed
-
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         if(checkformBoothType()){
             try {
-            DBHelper db = null;
-            db = new DBHelper();
-            db.openConnection();
+                DBHelper db = null;
+                db = new DBHelper();
+                db.openConnection();
 
-            String name = txtBTName.getText().trim();
-            int EID = ob.returnIdExpo(cbExpo);
-            float height = Float.parseFloat(txtBTHeight.getText().trim());
-            float width = Float.parseFloat(txtBTWidth.getText().trim());
-            int remain = Integer.parseInt(txtBremain.getText().trim());
-            int length = Integer.parseInt(txtBlength.getText().trim());
+                String name = txtBTName.getText().trim();
+                int EID = ob.returnIdExpo(cbExpo);
+                float height = Float.parseFloat(txtBTHeight.getText().trim());
+                float width = Float.parseFloat(txtBTWidth.getText().trim());
+                int remain = Integer.parseInt(txtBremain.getText().trim());
+                int length = Integer.parseInt(txtBlength.getText().trim());
 
-            //tao giao dien de thuc thi store
-            CallableStatement cs = db.getConnection().prepareCall("{call EditBoothType(?,?,?,?,?,?)}");
-            //truyen tham so cho store
+                //tao giao dien de thuc thi store
+                CallableStatement cs = db.getConnection().prepareCall("{call EditBoothType(?,?,?,?,?,?)}");
+                //truyen tham so cho store
 
-            cs.setString(1, name);
-            cs.setInt(2, EID);
-            cs.setFloat(3, height);
-            cs.setFloat(4, width);
-            cs.setInt(5, remain);
-            cs.setInt(6, length);
+                cs.setString(1, name);
+                cs.setInt(2, EID);
+                cs.setFloat(3, height);
+                cs.setFloat(4, width);
+                cs.setInt(5, remain);
+                cs.setInt(6, length);
 
-            //thuc thi store
-            if(JOptionPane.showConfirmDialog(null, "Do you want to edit the BoothType",
-                "Edit Product",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-            {
-                cs.execute();
-                JOptionPane.showMessageDialog(null, "One new Booth Type has been added","Add new Booth Type",JOptionPane.INFORMATION_MESSAGE);
-                dispose();
-            }
-            
+                //thuc thi store
+                if(JOptionPane.showConfirmDialog(null, "Do you want to edit the BoothType",
+                        "Edit Product",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    cs.execute();
+                    JOptionPane.showMessageDialog(null, "One new Booth Type has been added","Add new Booth Type",JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                }
 
-            //lay gia tri tham so ra
+
+                //lay gia tri tham so ra
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth Type",JOptionPane.ERROR_MESSAGE);
                 ex.printStackTrace();
             }
         }
-    }//GEN-LAST:event_btnEditActionPerformed
+}//GEN-LAST:event_btnEditActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
@@ -303,7 +296,12 @@ public class EditboothType extends javax.swing.JFrame {
         txtBTWidth.setText("");
         txtBlength.setText("");
         txtBremain.setText("");
-    }//GEN-LAST:event_btnResetActionPerformed
+}//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+}//GEN-LAST:event_btnCloseActionPerformed
 
     /**
     * @param args the command line arguments
@@ -311,7 +309,13 @@ public class EditboothType extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditboothType().setVisible(true);
+                EditboothType dialog = new EditboothType(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
