@@ -27,10 +27,8 @@ CREATE PROC AddProducts
 @Description ntext,
 @Date smalldatetime
 AS
-BEGIN
-	INSERT INTO Products (EID,CID,PName, PPrice, PNumber, PDescription, PDate)
-	VALUES(@EID,@CID,@Name,@Price,@Number,@Description,@Date)
-END
+INSERT INTO Products (EID,CID,PName, PPrice, PNumber, PDescription, PDate)
+VALUES(@EID,@CID,@Name,@Price,@Number,@Description,@Date)
 
 --Tao Store de xoa Product
 CREATE PROC DeleteProducts
