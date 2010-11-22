@@ -207,8 +207,14 @@
           </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="txtDateStart">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="MM/dd/yyyy"/>
+          </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="txtDateEnd">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="MM/dd/yyyy"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

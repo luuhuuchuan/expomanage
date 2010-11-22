@@ -13,6 +13,8 @@ package expo;
 
 import dataLayer.DBHelper;
 import java.sql.CallableStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -32,8 +34,7 @@ public class AddExpo extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         initComponents();
-        txtDateStart.setDateFormatString("mm/dd/yyyy");
-        txtDateEnd.setDateFormatString("mm/dd/yyyy");
+
     }
 
 
@@ -85,7 +86,7 @@ public class AddExpo extends javax.swing.JFrame {
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
-        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +103,10 @@ public class AddExpo extends javax.swing.JFrame {
                 BtnCloseActionPerformed(evt);
             }
         });
+
+        txtDateStart.setDateFormatString("MM/dd/yyyy");
+
+        txtDateEnd.setDateFormatString("MM/dd/yyyy");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -196,9 +201,12 @@ public class AddExpo extends javax.swing.JFrame {
         int numBooth = Integer.parseInt(txtNumBooth.getText().trim());
         float cost = Float.parseFloat(txtCost.getText().trim());
         String description = txtDescription.getText();
-        String dateStart = txtDateEnd.getDate().toString();
-        String dateEnd = txtDateEnd.getDate().toString();
-        
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date dS = txtDateStart.getDate();
+        Date dE = txtDateEnd.getDate();
+        String dateStart = sdf.format(dS);
+        String dateEnd = sdf.format(dE);
+       
         //tao giao dien de thuc thi store
         CallableStatement cs = db.getConnection().prepareCall("{call AddExpo(?,?,?,?,?,?)}");
         //truyen tham so cho store
@@ -208,7 +216,7 @@ public class AddExpo extends javax.swing.JFrame {
         cs.setString(4, description);
         cs.setString(5,dateStart);
         cs.setString(6,dateEnd);
-
+        
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Expo has been added !","Add new Expo",JOptionPane.INFORMATION_MESSAGE);

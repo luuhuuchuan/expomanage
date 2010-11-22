@@ -8,6 +8,7 @@ package product;
 import dataLayer.DBHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -69,26 +70,34 @@ public class OperationProduct {
     }
 
     public ResultSet getAllExpo()throws SQLException{
-        String storeName = "{call get_EID }";
+        String storeName = "{call getAllExhibitor }";
         return db.getCallAble(storeName).executeQuery();
     }
 
     DefaultComboBoxModel CbExpoModel = null;
+    HashMap hm = new HashMap();
+
     public void buildCbExpo(JComboBox cbExpo)
     {
         cbExpo.setModel(CbExpoModel = new DefaultComboBoxModel());
-        CbExpoModel.addElement("-- Choose Expo ID --");
+        CbExpoModel.addElement("-- Choose Exbitor --");
         try{
             ResultSet rs = getAllExpo();
             while(rs.next()){
-                String Eid = rs.getString(1);
-                CbExpoModel.addElement(Eid);
+                String id = String.valueOf(rs.getInt(1));
+                String name = rs.getString(2);
+                hm.put(name,id);
+                CbExpoModel.addElement(name);
             }
             rs.close();
         }
         catch(Exception ex){
             ex.printStackTrace();
         }
+    }
+    public int returnIdExpo(JComboBox cbExpo)
+    {
+        return Integer.parseInt(hm.get(cbExpo.getSelectedItem().toString().trim()).toString());
     }
     DefaultComboBoxModel CbContactModel = null;
     public void buildCbContact(JComboBox cbContact)
