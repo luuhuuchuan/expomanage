@@ -8,7 +8,6 @@ package product;
 import dataLayer.DBHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -41,7 +40,7 @@ public class OperationProduct {
                 v.add(rs.getDate(8));
                 ProductsModel.addRow(v);
             }
-            rs.close();
+            rs.close();  
         }
         catch(Exception ex){
             ex.printStackTrace();
