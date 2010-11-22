@@ -6,7 +6,7 @@
 /*
  * AddboothType.java
  *
- * Created on Nov 22, 2010, 3:34:22 AM
+ * Created on Nov 22, 2010, 11:14:56 PM
  */
 
 package boothType;
@@ -20,11 +20,12 @@ import javax.swing.UIManager;
  *
  * @author namh3o
  */
-public class AddboothType extends javax.swing.JFrame {
+public class AddboothType extends javax.swing.JDialog {
 
     /** Creates new form AddboothType */
     OperationBoothType ob  = new OperationBoothType();
-    public AddboothType() {
+    public AddboothType(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }
@@ -34,7 +35,6 @@ public class AddboothType extends javax.swing.JFrame {
         initComponents();
         ob.buildCbExpo(cbExpo);
     }
-
     private boolean checkformBoothType(){
         if(cbExpo.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(this,"Please,select Expo");
@@ -93,6 +93,7 @@ public class AddboothType extends javax.swing.JFrame {
 
         return true;
     }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -116,10 +117,10 @@ public class AddboothType extends javax.swing.JFrame {
         txtBremain = new javax.swing.JTextField();
         txtBlength = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New BoothType");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Add BoothType"));
@@ -159,7 +160,7 @@ public class AddboothType extends javax.swing.JFrame {
                     .add(txtBremain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                     .add(txtBTWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                     .add(cbExpo, 0, 153, Short.MAX_VALUE))
-                .add(37, 37, 37))
+                .add(74, 74, 74))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -199,14 +200,6 @@ public class AddboothType extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
-        btnClose.setText("Close");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
@@ -215,31 +208,38 @@ public class AddboothType extends javax.swing.JFrame {
             }
         });
 
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(layout.createSequentialGroup()
-                        .add(btnAdd)
-                        .add(45, 45, 45)
-                        .add(btnReset)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 51, Short.MAX_VALUE)
-                        .add(btnClose)))
+            .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(18, 18, 18)
+                .add(btnAdd)
+                .add(52, 52, 52)
+                .add(btnReset)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 53, Short.MAX_VALUE)
+                .add(btnClose)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(27, 27, 27)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnClose)
                     .add(btnAdd)
+                    .add(btnClose)
                     .add(btnReset))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -284,11 +284,6 @@ public class AddboothType extends javax.swing.JFrame {
         }
 }//GEN-LAST:event_btnAddActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose();
-}//GEN-LAST:event_btnCloseActionPerformed
-
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         cbExpo.setSelectedIndex(0);
@@ -299,13 +294,24 @@ public class AddboothType extends javax.swing.JFrame {
         txtBremain.setText("");
 }//GEN-LAST:event_btnResetActionPerformed
 
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+}//GEN-LAST:event_btnCloseActionPerformed
+
     /**
     * @param args the command line arguments
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddboothType().setVisible(true);
+                AddboothType dialog = new AddboothType(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
