@@ -6,7 +6,7 @@
 /*
  * Addbooths.java
  *
- * Created on Nov 22, 2010, 1:24:26 AM
+ * Created on Nov 22, 2010, 11:22:56 PM
  */
 
 package booth;
@@ -20,11 +20,12 @@ import javax.swing.UIManager;
  *
  * @author namh3o
  */
-public class Addbooths extends javax.swing.JFrame {
+public class Addbooths extends javax.swing.JDialog {
 
     /** Creates new form Addbooths */
     OperationBooths ob  = new OperationBooths();
-    public Addbooths() {
+    public Addbooths(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }
@@ -63,11 +64,11 @@ public class Addbooths extends javax.swing.JFrame {
         txtBmoney = new javax.swing.JTextField();
         btnYes = new javax.swing.JRadioButton();
         btnNo = new javax.swing.JRadioButton();
-        btnClose = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Booths");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Booth"));
@@ -164,19 +165,19 @@ public class Addbooths extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
-        btnClose.setText("Close");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
+            }
+        });
+
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
             }
         });
 
@@ -192,38 +193,33 @@ public class Addbooths extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
+                        .add(10, 10, 10)
                         .add(btnAdd)
-                        .add(46, 46, 46)
+                        .add(49, 49, 49)
                         .add(btnReset)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 51, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 38, Short.MAX_VALUE)
                         .add(btnClose)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+            .add(layout.createSequentialGroup()
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(7, 7, 7)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnAdd)
                     .add(btnClose)
+                    .add(btnAdd)
                     .add(btnReset))
-                .add(121, 121, 121))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose();
-}//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
@@ -235,43 +231,47 @@ public class Addbooths extends javax.swing.JFrame {
         txtBmoney.setText("");
 }//GEN-LAST:event_btnResetActionPerformed
 
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+}//GEN-LAST:event_btnCloseActionPerformed
+
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         try {
-        DBHelper db = null;
-        db = new DBHelper();
-        db.openConnection();
-        int BTID = ob.returnBTID(cbBoothType);
-        int SID = ob.returnSID(cbStaff);
-        String CID = cbContact.getSelectedItem().toString();
-        String name = txtBname.getText().trim();
-        String bdate = txtBdate.getText().trim();
-        float money = Float.parseFloat(txtBmoney.getText().trim());
+            DBHelper db = null;
+            db = new DBHelper();
+            db.openConnection();
+            int BTID = ob.returnBTID(cbBoothType);
+            int SID = ob.returnSID(cbStaff);
+            String CID = cbContact.getSelectedItem().toString();
+            String name = txtBname.getText().trim();
+            String bdate = txtBdate.getText().trim();
+            float money = Float.parseFloat(txtBmoney.getText().trim());
 
 
-        //tao giao dien de thuc thi store
-        CallableStatement cs = db.getConnection().prepareCall("{call AddBoothType(?,?,?,?,?,?,?)}");
-        //truyen tham so cho store
-        cs.setInt(1, BTID);
-        cs.setInt(2, SID);
-        cs.setString(3, CID);
-        cs.setString(4, name);
-        cs.setString(5, bdate);
-        cs.setFloat(6, money);
-        if(btnYes.isSelected())
-            cs.setBoolean(7, true);
+            //tao giao dien de thuc thi store
+            CallableStatement cs = db.getConnection().prepareCall("{call AddBoothType(?,?,?,?,?,?,?)}");
+            //truyen tham so cho store
+            cs.setInt(1, BTID);
+            cs.setInt(2, SID);
+            cs.setString(3, CID);
+            cs.setString(4, name);
+            cs.setString(5, bdate);
+            cs.setFloat(6, money);
+            if(btnYes.isSelected())
+                cs.setBoolean(7, true);
 
-        //thuc thi store
-        cs.execute();
-        JOptionPane.showMessageDialog(null, "One new Booth has been added","Add new Booth",JOptionPane.INFORMATION_MESSAGE);
-        dispose();
-        //lay gia tri tham so ra
+            //thuc thi store
+            cs.execute();
+            JOptionPane.showMessageDialog(null, "One new Booth has been added","Add new Booth",JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+            //lay gia tri tham so ra
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-
-}//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
     * @param args the command line arguments
@@ -279,7 +279,13 @@ public class Addbooths extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Addbooths().setVisible(true);
+                Addbooths dialog = new Addbooths(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
