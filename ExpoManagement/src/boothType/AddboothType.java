@@ -12,6 +12,8 @@
 package boothType;
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
+import java.awt.Frame;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -24,6 +26,8 @@ public class AddboothType extends javax.swing.JDialog {
 
     /** Creates new form AddboothType */
     OperationBoothType ob  = new OperationBoothType();
+    Main m = null;
+    Frame parentFrame = null;
     public AddboothType(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         try {
@@ -34,6 +38,8 @@ public class AddboothType extends javax.swing.JDialog {
         }
         initComponents();
         ob.buildCbExpo(cbExpo);
+        parentFrame = parent;
+        m = (Main)parent;
     }
     private boolean checkformBoothType(){
         if(cbExpo.getSelectedIndex() == 0){
@@ -55,6 +61,7 @@ public class AddboothType extends javax.swing.JDialog {
             Long.parseLong(txtBTHeight.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "BoothType Height must Number");
+            txtBTHeight.requestFocus();
             return false;
         }
         if(txtBTWidth.getText().equals("")){
@@ -66,6 +73,7 @@ public class AddboothType extends javax.swing.JDialog {
             Long.parseLong(txtBTWidth.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "BoothType Width must Number");
+            txtBTWidth.requestFocus();
             return false;
         }
         if(txtBremain.getText().equals("")){
@@ -77,6 +85,7 @@ public class AddboothType extends javax.swing.JDialog {
             Long.parseLong(txtBremain.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Booth Remain must Number");
+            txtBremain.requestFocus();
             return false;
         }
         if(txtBlength.getText().equals("")){
@@ -88,6 +97,7 @@ public class AddboothType extends javax.swing.JDialog {
             Long.parseLong(txtBlength.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Booth Length must Number");
+            txtBlength.requestFocus();
             return false;
         }
 
@@ -273,12 +283,13 @@ public class AddboothType extends javax.swing.JDialog {
 
                 //thuc thi store
                 cs.execute();
+                ((Main)parentFrame).LoadBoothType();
                 JOptionPane.showMessageDialog(null, "One new Booth Type has been added","Add new Booth Type",JOptionPane.INFORMATION_MESSAGE);
                 dispose();
 
                 //lay gia tri tham so ra
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth Type",JOptionPane.ERROR_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth Type",JOptionPane.ERROR_MESSAGE);
                 ex.printStackTrace();
             }
         }
