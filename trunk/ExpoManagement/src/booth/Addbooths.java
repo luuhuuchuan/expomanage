@@ -13,6 +13,8 @@ package booth;
 
 import dataLayer.DBHelper;
 import java.sql.CallableStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -96,10 +98,10 @@ public class Addbooths extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtBdate = new javax.swing.JTextField();
         txtBmoney = new javax.swing.JTextField();
         btnYes = new javax.swing.JRadioButton();
         btnNo = new javax.swing.JRadioButton();
+        txtBDate = new com.toedter.calendar.JDateChooser();
         btnReset = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
@@ -138,6 +140,8 @@ public class Addbooths extends javax.swing.JDialog {
         buttonGroup1.add(btnNo);
         btnNo.setText("No");
 
+        txtBDate.setDateFormatString("MM/dd/yyyy");
+
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -145,25 +149,25 @@ public class Addbooths extends javax.swing.JDialog {
             .add(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel1)
                     .add(jLabel5)
                     .add(jLabel6)
                     .add(jLabel7)
                     .add(jLabel2)
                     .add(jLabel3)
-                    .add(jLabel4))
+                    .add(jLabel4)
+                    .add(jLabel1))
                 .add(29, 29, 29)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(cbContact, 0, 173, Short.MAX_VALUE)
-                    .add(cbStaff, 0, 173, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, cbBoothType, 0, 173, Short.MAX_VALUE)
-                    .add(txtBname, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .add(txtBdate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .add(jPanel3Layout.createSequentialGroup()
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(txtBDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 184, Short.MAX_VALUE)
+                    .add(cbBoothType, 0, 184, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtBname, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3Layout.createSequentialGroup()
                         .add(btnYes)
                         .add(35, 35, 35)
                         .add(btnNo))
-                    .add(txtBmoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtBmoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbStaff, 0, 184, Short.MAX_VALUE))
                 .add(29, 29, 29))
         );
         jPanel3Layout.setVerticalGroup(
@@ -186,9 +190,9 @@ public class Addbooths extends javax.swing.JDialog {
                     .add(txtBname, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel1))
                 .add(18, 18, 18)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jLabel5)
-                    .add(txtBdate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(txtBDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel6)
@@ -236,7 +240,7 @@ public class Addbooths extends javax.swing.JDialog {
                     .add(layout.createSequentialGroup()
                         .add(10, 10, 10)
                         .add(btnAdd)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 47, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 39, Short.MAX_VALUE)
                         .add(btnReset)
                         .add(40, 40, 40)
                         .add(btnClose)))
@@ -263,7 +267,7 @@ public class Addbooths extends javax.swing.JDialog {
         cbBoothType.setSelectedIndex(0);
         cbStaff.setSelectedIndex(0);
         txtBname.setText("");
-        txtBdate.setText("");
+        txtBDate.setDate(null);
         txtBmoney.setText("");
 }//GEN-LAST:event_btnResetActionPerformed
 
@@ -283,7 +287,9 @@ public class Addbooths extends javax.swing.JDialog {
                 int SID = ob.returnSID(cbStaff);
                 String CID = cbContact.getSelectedItem().toString();
                 String name = txtBname.getText().trim();
-                String bdate = txtBdate.getText().trim();
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                Date dS = txtBDate.getDate();
+                String bdate = sdf.format(dS);
                 float money = Float.parseFloat(txtBmoney.getText().trim());
 
 
@@ -346,7 +352,7 @@ public class Addbooths extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField txtBdate;
+    private com.toedter.calendar.JDateChooser txtBDate;
     private javax.swing.JTextField txtBmoney;
     private javax.swing.JTextField txtBname;
     // End of variables declaration//GEN-END:variables
