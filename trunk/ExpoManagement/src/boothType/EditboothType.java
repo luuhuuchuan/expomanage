@@ -12,9 +12,15 @@
 package boothType;
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
+import java.awt.Frame;
 import java.sql.CallableStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import java.util.Vector;
 
 /**
  *
@@ -24,6 +30,8 @@ public class EditboothType extends javax.swing.JDialog {
 
     /** Creates new form EditboothType */
     OperationBoothType ob  = new OperationBoothType();
+    Main m = null;
+    Frame parentFrame = null;
     public EditboothType(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         try {
@@ -34,6 +42,16 @@ public class EditboothType extends javax.swing.JDialog {
         }
         initComponents();
         ob.buildCbExpo(cbExpo);
+        parentFrame = parent;
+        m = (Main)parent;
+        int row = m.getBoothTypeTable().getSelectedRow();
+        txtBTName.setText(m.getBoothTypeTable().getValueAt(row, 0).toString());
+        cbExpo.setSelectedItem(m.getBoothTypeTable().getValueAt(row, 1).toString());
+        txtBTHeight.setText(m.getBoothTypeTable().getValueAt(row, 2).toString());
+        txtBTWidth.setText(m.getBoothTypeTable().getValueAt(row, 3).toString());
+        txtBremain.setText(m.getBoothTypeTable().getValueAt(row, 4).toString());
+        txtBlength.setText(m.getBoothTypeTable().getValueAt(row, 5).toString());
+
     }
 
     private boolean checkformBoothType(){
@@ -252,38 +270,32 @@ public class EditboothType extends javax.swing.JDialog {
                 DBHelper db = null;
                 db = new DBHelper();
                 db.openConnection();
-
                 String name = txtBTName.getText().trim();
                 int EID = ob.returnIdExpo(cbExpo);
                 float height = Float.parseFloat(txtBTHeight.getText().trim());
                 float width = Float.parseFloat(txtBTWidth.getText().trim());
                 int remain = Integer.parseInt(txtBremain.getText().trim());
                 int length = Integer.parseInt(txtBlength.getText().trim());
-
                 //tao giao dien de thuc thi store
                 CallableStatement cs = db.getConnection().prepareCall("{call EditBoothType(?,?,?,?,?,?)}");
                 //truyen tham so cho store
-
                 cs.setString(1, name);
                 cs.setInt(2, EID);
                 cs.setFloat(3, height);
                 cs.setFloat(4, width);
                 cs.setInt(5, remain);
                 cs.setInt(6, length);
-
                 //thuc thi store
-                if(JOptionPane.showConfirmDialog(null, "Do you want to edit the BoothType",
-                        "Edit Product",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                    cs.execute();
-                    JOptionPane.showMessageDialog(null, "One new Booth Type has been added","Add new Booth Type",JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
+                cs.execute();
+                if (JOptionPane.showConfirmDialog(null, "Do you want to edit the record(s)", "Update Dialog", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    ((Main) parentFrame).LoadBoothType();
+                    JOptionPane.showMessageDialog(null, "The record(s) has been edited", "Update Result", JOptionPane.INFORMATION_MESSAGE);
                 }
+                dispose();
+                //xac thuc yeu cau update
 
-
-                //lay gia tri tham so ra
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth Type",JOptionPane.ERROR_MESSAGE);
-                ex.printStackTrace();
+            } catch (SQLException ex) {
+                Logger.getLogger(EditboothType.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 }//GEN-LAST:event_btnEditActionPerformed

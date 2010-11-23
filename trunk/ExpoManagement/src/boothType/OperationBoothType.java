@@ -67,6 +67,10 @@ public class OperationBoothType {
         String storeName = "{call deleteBoothType }";
         return db.getCallAble(storeName).executeQuery();
     }
+    public ResultSet getEditBoothType()throws SQLException{
+        String storeName = "{call EditBoothType }";
+        return db.getCallAble(storeName).executeQuery();
+    }
     DefaultComboBoxModel CbExpoModel = null;
     HashMap hm = new HashMap();
 

@@ -70,6 +70,7 @@ public class Addbooths extends javax.swing.JDialog {
             Long.parseLong(txtBmoney.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Booth Money must Number");
+            txtBmoney.requestFocus();
             return false;
         }
 
@@ -134,7 +135,6 @@ public class Addbooths extends javax.swing.JDialog {
         jLabel7.setText("Booth Booker :");
 
         buttonGroup1.add(btnYes);
-        btnYes.setSelected(true);
         btnYes.setText("Yes");
 
         buttonGroup1.add(btnNo);
@@ -240,7 +240,7 @@ public class Addbooths extends javax.swing.JDialog {
                     .add(layout.createSequentialGroup()
                         .add(10, 10, 10)
                         .add(btnAdd)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 39, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 58, Short.MAX_VALUE)
                         .add(btnReset)
                         .add(40, 40, 40)
                         .add(btnClose)))
@@ -292,7 +292,6 @@ public class Addbooths extends javax.swing.JDialog {
                 String bdate = sdf.format(dS);
                 float money = Float.parseFloat(txtBmoney.getText().trim());
 
-
                 //tao giao dien de thuc thi store
                 CallableStatement cs = db.getConnection().prepareCall("{call AddBoothType(?,?,?,?,?,?,?)}");
                 //truyen tham so cho store
@@ -304,14 +303,15 @@ public class Addbooths extends javax.swing.JDialog {
                 cs.setFloat(6, money);
                 if(btnYes.isSelected())
                     cs.setBoolean(7, true);
-
+                else if(btnNo.isSelected())
+                    cs.setBoolean(7, false);
                 //thuc thi store
                 cs.execute();
                 JOptionPane.showMessageDialog(null, "One new Booth has been added","Add new Booth",JOptionPane.INFORMATION_MESSAGE);
                 dispose();
                 //lay gia tri tham so ra
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth",JOptionPane.ERROR_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth",JOptionPane.ERROR_MESSAGE);
                 ex.printStackTrace();
             }
         }
