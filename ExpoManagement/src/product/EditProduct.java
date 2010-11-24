@@ -213,7 +213,6 @@ public class EditProduct extends javax.swing.JDialog {
                     dispose();
                 }
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Edit Product",JOptionPane.ERROR_MESSAGE);
                 ex.printStackTrace();
             }
         }
@@ -225,7 +224,7 @@ public class EditProduct extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AddProduct dialog = new AddProduct(new javax.swing.JFrame(), true);
+                EditProduct dialog = new EditProduct(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

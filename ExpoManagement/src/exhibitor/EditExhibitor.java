@@ -12,25 +12,33 @@
 package exhibitor;
 
 import dataLayer.DBHelper;
-import java.sql.PreparedStatement;
+import expomanagement.Main;
+import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Cuongnvgc00064
  */
-public class EditExhibitor extends javax.swing.JFrame {
+public class EditExhibitor extends javax.swing.JDialog {
 
     /** Creates new form AddExhibitor */
-    private DBHelper db = null;
-    public EditExhibitor() {
+    Main m = null;
+    private DBHelper db = null; 
+    OperationExhibitor oex = new OperationExhibitor();
+    public EditExhibitor(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         db = new DBHelper();
-        //if can not open the connection
-        if(!db.openConnection()){
-            this.btnSave.setEnabled(false);
-            this.btnClose.setEnabled(false);
-        }
+        db.openConnection();
+
+        m = (Main) parent;
+        int row = m.getExhibitorTable().getSelectedRow();
+        txtName.setText(m.getExhibitorTable().getValueAt(row, 1).toString());
+        txtFax.setText(m.getExhibitorTable().getValueAt(row, 2).toString());
+        txtPhone.setText(m.getExhibitorTable().getValueAt(row, 3).toString());
+        txtAddress.setText(m.getExhibitorTable().getValueAt(row, 4).toString());
+        txtWebsite.setText(m.getExhibitorTable().getValueAt(row, 5).toString());
     }
 
     /** This method is called from within the constructor to
@@ -53,8 +61,7 @@ public class EditExhibitor extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtWebsite = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -70,7 +77,7 @@ public class EditExhibitor extends javax.swing.JFrame {
 
         jLabel5.setText("Exhibitor Website");
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,23 +85,15 @@ public class EditExhibitor extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
-        btnClose.setText("Close");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
-        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
-        btnReset.setText("Reset");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24));
         jLabel6.setForeground(new java.awt.Color(102, 102, 255));
         jLabel6.setText("Edit Exhibitor");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -106,7 +105,7 @@ public class EditExhibitor extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(15, 15, 15)
+                        .add(20, 20, 20)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel2)
                             .add(jLabel1)
@@ -114,16 +113,10 @@ public class EditExhibitor extends javax.swing.JFrame {
                             .add(jLabel4)
                             .add(jLabel5)))
                     .add(layout.createSequentialGroup()
-                        .add(29, 29, 29)
+                        .add(50, 50, 50)
                         .add(btnSave)))
-                .add(18, 18, 18)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(10, 10, 10)
-                        .add(btnReset)
-                        .add(24, 24, 24)
-                        .add(btnClose)
-                        .add(28, 28, 28))
                     .add(layout.createSequentialGroup()
                         .add(2, 2, 2)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
@@ -131,9 +124,16 @@ public class EditExhibitor extends javax.swing.JFrame {
                             .add(org.jdesktop.layout.GroupLayout.LEADING, txtFax)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, txtWebsite)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, txtAddress)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel6))
-                        .addContainerGap(72, Short.MAX_VALUE))))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                        .addContainerGap(52, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnCancel)
+                        .add(45, 45, 45))))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
+                .add(jLabel6)
+                .add(85, 85, 85))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -162,60 +162,51 @@ public class EditExhibitor extends javax.swing.JFrame {
                     .add(jLabel5))
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnClose)
-                    .add(btnSave)
-                    .add(btnReset))
+                    .add(btnCancel)
+                    .add(btnSave))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         dispose();
-}//GEN-LAST:event_btnCloseActionPerformed
+}//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        if(oex.checkExhibitor(txtName, txtFax, txtPhone, txtAddress, txtWebsite)){
         try{
-        //lay dl tu form
+        //lay dl
+        int row = m.getProductsTable().getSelectedRow();
+        int id = Integer.parseInt(m.getProductsTable().getValueAt(row, 0).toString());
         String name = txtName.getText().trim();
         String fax = txtFax.getText().trim();
         String phone = txtPhone.getText().trim();
         String address = txtAddress.getText().trim();
         String website = txtWebsite.getText().trim();
 
-        String sqlCmd = "Insert Into Exhibitor values(?,?,?,?,?)";
-        PreparedStatement ps = db.getConnection().prepareStatement(sqlCmd);
-        ps.setString(1, name);
-        ps.setString(2, fax);
-        ps.setString(3, phone);
-        ps.setString(4, address);
-        ps.setString(5, website);
-        ps.execute();
-        JOptionPane.showMessageDialog(null, "One Exhibitor has been edit","Edit Exhibitor",JOptionPane.INFORMATION_MESSAGE);
-        //((TabProduct)parentFrame).loadAll();
-    }
-    catch(Exception ex){
+        CallableStatement cs = db.getConnection().prepareCall("{call EditProduct(?,?,?,?,?,?)}");
+        cs.setInt(1,id);
+        cs.setString(2, name);
+        cs.setString(3, fax);
+        cs.setString(4, phone);
+        cs.setString(5, address);
+        cs.setString(6, website);
+        if(JOptionPane.showConfirmDialog(null, "Do you want edit this Exhibitor",
+                        "Edit Exhibitor",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            cs.execute();
+            ((Main)m).LoadExhibitor();
+            JOptionPane.showMessageDialog(null, "One Exhibitor has been Edit","Edit Exhibitor",JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        }
+    }catch(Exception ex){
         ex.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Edit a Exhibitor failed","Edit Exhibitor",JOptionPane.INFORMATION_MESSAGE);
-    }
+        }
+     }
     }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        // TODO add your handling code here:
-        txtName.setText(null);
-        txtFax.setText(null);
-        txtPhone.setText(null);
-        txtAddress.setText(null);
-        txtWebsite.setText(null);
-        txtName.requestFocus();
-        txtFax.requestFocus();
-        txtPhone.requestFocus();
-        txtAddress.requestFocus();
-        txtWebsite.requestFocus();
-    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
     * @param args the command line arguments
@@ -223,14 +214,20 @@ public class EditExhibitor extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditExhibitor().setVisible(true);
+                EditExhibitor dialog = new EditExhibitor(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
