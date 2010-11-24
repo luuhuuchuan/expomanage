@@ -191,8 +191,6 @@ public class AddExhibitor extends javax.swing.JDialog {
         DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
-//        String storeName = "{call getAllExhibitor }";
-//        db.getCallAble(storeName).executeQuery();
         String name = txtName.getText().trim();
         String fax = txtFax.getText().trim();
         String phone = txtPhone.getText().trim();
@@ -214,7 +212,6 @@ public class AddExhibitor extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(null, "One new Exhibitor has been added !","New Exhibitor",JOptionPane.INFORMATION_MESSAGE);        
         dispose();
         } catch (Exception ex) {
-            //JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Exhibitor",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
         }

@@ -6,9 +6,13 @@
 package exhibitor;
 
 import dataLayer.DBHelper;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -25,7 +29,7 @@ public class OperationExhibitor {
     public void loadAllExhibitor(JTable jTable1){
         jTable1.setModel(ExhibitorModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Exhibitor Code","Exhibitor Name","Exhibitor Fax","Exhibitor Phone","Website"};
+        String [] heading = {"Exhibitor Code","Exhibitor Name","Exhibitor Fax","Phone Number","Address","Website"};
         for(String s : heading)
             v.add(s);
         ExhibitorModel.setColumnIdentifiers(v);
@@ -37,6 +41,7 @@ public class OperationExhibitor {
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
+                v.add(rs.getString(5));
                 v.add(rs.getString(6));
                 ExhibitorModel.addRow(v);
             }
@@ -97,12 +102,64 @@ public class OperationExhibitor {
         }
         return true;
     }
-//    public ResultSet doSearch(String str)throws SQLException{
-//        //mo ket noi
-//        //tao van tin
-//    }
-//    public void delExhibitor(int id)throws SQLException{
-//        String storeName = "{call delExhibitor }";
-//        db.getCallAble(storeName).executeQuery();
-//    }
+
+    public void doSearch(String Where, String Key, JTable tblProduct){
+        try
+        {
+        String storeName = "{call findExhibitor('" + Where + "','" + Key + "')}";
+        tblProduct.setModel(ExhibitorModel = new DefaultTableModel());
+        Vector v = new Vector();
+        String [] heading = {"Exhibitor Code","Exhibitor Name","Exhibitor Fax","Phone Number","Address","Website"};
+        for(String s : heading)
+            v.add(s);
+        ExhibitorModel.setColumnIdentifiers(v);
+        ResultSet rs = db.getCallAble(storeName).executeQuery();
+        while(rs.next()){
+            v = new Vector();
+            v.add(rs.getInt(1));
+            v.add(rs.getString(2));
+            v.add(rs.getString(3));
+            v.add(rs.getString(4));
+            v.add(rs.getString(5));
+            v.add(rs.getString(6));
+            ExhibitorModel.addRow(v);
+        }
+        rs.close();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    DefaultComboBoxModel CbExModel = null;
+    HashMap hmp = new HashMap();
+    public void buildCbEx(JComboBox cbEx)
+    {
+        cbEx.setModel(CbExModel = new DefaultComboBoxModel());
+        CbExModel.addElement("Exhibitor ID");
+        hmp.put("Exhibitor ID","EID");
+        CbExModel.addElement("Exhibitor Name");
+        hmp.put("Exhibitor Name","EName");
+        CbExModel.addElement("Exhibitor Address");
+        hmp.put("Exhibitor Address","EAddress");
+        CbExModel.addElement("Fax");
+        hmp.put("Fax","EFax");
+    }
+    public String returnSearch(JComboBox cbEx)
+    {
+        return hmp.get(cbEx.getSelectedItem().toString().trim()).toString();
+    }
+    public void delExhibitor(int id){
+        try{
+        CallableStatement cs = db.getConnection().prepareCall("{call DeleteExhibitor(?)}");
+        //truyen tham so cho store
+        cs.setInt(1, id);
+        cs.execute();
+        JOptionPane.showMessageDialog(null, "One Exhibitor has been deleted !","Delete Exhibitor",JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, "Can't delete this Exhibitor !","Delete Exhibitor",JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

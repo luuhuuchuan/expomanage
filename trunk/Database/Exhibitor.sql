@@ -32,6 +32,29 @@ BEGIN
 END
 
 ----Tao Store tim kiem Exhibitor
---Create proc findExhibitorbyName
---as
---Select * from Exhibitor where EName like '%"+pattern+"%'
+Create PROC findExhibitor
+@Where nvarchar(50),
+@Key nvarchar(100)
+AS
+Declare @exh nvarchar(200)
+set @exh = 'Select * from Exhibitor where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+execute(@exh)
+
+--Tao Store de Edit Exhibitor
+Create Proc EditProduct
+@ID int,
+@Name nvarchar(100),
+@Fax varchar(30),
+@Phone varchar(30),
+@Address ntext,
+@Website varchar(100)
+AS
+Update Exhibitor
+Set EName = @Name,EFax = @Fax,Ephone = @Phone,EAddress = @Address,EWebsite = @Website
+Where EID = @ID
+
+--Tao store de xoa exhibitor
+CREATE PROC DeleteExhibitor
+@id int
+AS
+DELETE FROM Exhibitor WHERE EID = @id

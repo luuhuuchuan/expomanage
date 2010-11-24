@@ -136,7 +136,7 @@ public class Main extends javax.swing.JFrame {
         btnEditEx = new javax.swing.JButton();
         btnDeleteEx = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        cbWhereEx = new javax.swing.JComboBox();
+        cbEx = new javax.swing.JComboBox();
         txtFind = new javax.swing.JTextField();
         btnFindEx = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -755,15 +755,31 @@ public class Main extends javax.swing.JFrame {
         btnDeleteEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx.setText("Delete");
         btnDeleteEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnDeleteEx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteExActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel3.setText("Filter");
 
-        cbWhereEx.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbEx.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtFind.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtFindCaretUpdate(evt);
+            }
+        });
 
         btnFindEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
         btnFindEx.setText("Find");
         btnFindEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnFindEx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindExActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -778,7 +794,7 @@ public class Main extends javax.swing.JFrame {
                 .add(18, 18, 18)
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbWhereEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(cbEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(txtFind, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -792,7 +808,7 @@ public class Main extends javax.swing.JFrame {
                     .add(btnEditEx)
                     .add(btnDeleteEx)
                     .add(jLabel3)
-                    .add(cbWhereEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(cbEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(txtFind, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnFindEx))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -865,7 +881,7 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Manager", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/administrator.png")), TabManager); // NOI18N
 
         SubTabExhibitor.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabExhibitor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        SubTabExhibitor.setFont(new java.awt.Font("Tahoma", 0, 12));
 
         TabSponsor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -1133,7 +1149,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteP.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteP.setText("Delete");
         btnDeleteP.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -1330,8 +1346,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnEditExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditExActionPerformed
         // TODO add your handling code here:
-        EditExhibitor ex =new  EditExhibitor();
-        ex.setVisible(true);
+        new EditExhibitor(this,true).setVisible(true);
     }//GEN-LAST:event_btnEditExActionPerformed
 
 
@@ -1359,6 +1374,7 @@ public class Main extends javax.swing.JFrame {
     private void STabExhibitorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_STabExhibitorPropertyChange
         // TODO add your handling code here:
         LoadExhibitor();
+        oex.buildCbEx(cbEx);
     }//GEN-LAST:event_STabExhibitorPropertyChange
 
     private void btnFindPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindPActionPerformed
@@ -1429,6 +1445,24 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         op.doSearch(op.returnSearch(cbWhereP),txtPKeyword.getText().trim(),tblProducts);
     }//GEN-LAST:event_txtPKeywordCaretUpdate
+
+    private void txtFindCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindCaretUpdate
+        // TODO add your handling code here:
+        oex.doSearch(oex.returnSearch(cbEx),txtFind.getText().trim(),tblExhibitor);
+    }//GEN-LAST:event_txtFindCaretUpdate
+
+    private void btnFindExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindExActionPerformed
+        // TODO add your handling code here:
+        oex.doSearch(oex.returnSearch(cbEx),txtFind.getText().trim(),tblExhibitor);
+    }//GEN-LAST:event_btnFindExActionPerformed
+
+    private void btnDeleteExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteExActionPerformed
+        // TODO add your handling code here:
+        int row = tblExhibitor.getSelectedRow();
+        int id = Integer.parseInt(tblExhibitor.getValueAt(row, 0).toString());
+        oex.delExhibitor(id);
+        LoadExhibitor();
+    }//GEN-LAST:event_btnDeleteExActionPerformed
     public void LoadExpo()
     {
         oe.loadAllExpo(tblExpo);
@@ -1544,10 +1578,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnFindP;
     private javax.swing.JButton btnFindP1;
     private javax.swing.JButton btnFindS;
+    private javax.swing.JComboBox cbEx;
     private javax.swing.JComboBox cbWhere;
     private javax.swing.JComboBox cbWhereB;
     private javax.swing.JComboBox cbWhereBT;
-    private javax.swing.JComboBox cbWhereEx;
     private javax.swing.JComboBox cbWhereEx3;
     private javax.swing.JComboBox cbWhereP;
     private javax.swing.JComboBox cbWhereP1;
