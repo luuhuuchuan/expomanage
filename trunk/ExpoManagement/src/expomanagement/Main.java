@@ -261,8 +261,8 @@ public class Main extends javax.swing.JFrame {
         btnEdit.setText("Edit");
         btnEdit.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
-        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -391,8 +391,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx1.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnDeleteEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteEx1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx1.setText("Delete");
         btnDeleteEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
@@ -516,8 +516,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx2.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnDeleteEx2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteEx2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteEx2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx2.setText("Delete");
         btnDeleteEx2.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
@@ -630,8 +630,8 @@ public class Main extends javax.swing.JFrame {
         btnEditEx3.setText("Edit");
         btnEditEx3.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
-        btnDeleteEx3.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnDeleteEx3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteEx3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteEx3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx3.setText("Delete");
         btnDeleteEx3.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
@@ -754,8 +754,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnDeleteEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx.setText("Delete");
         btnDeleteEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
@@ -903,8 +903,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteS.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnDeleteS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteS.setText("Delete");
         btnDeleteS.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
@@ -923,9 +923,9 @@ public class Main extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel11Layout.createSequentialGroup()
                 .add(btnAddS)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnEditS)
-                .add(2, 2, 2)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnDeleteS)
                 .add(18, 18, 18)
                 .add(jLabel6)
@@ -1017,8 +1017,8 @@ public class Main extends javax.swing.JFrame {
         btnEditP1.setText("Edit");
         btnEditP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
-        btnDeleteP1.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnDeleteP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteP1.setText("Delete");
         btnDeleteP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
@@ -1141,8 +1141,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteP.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnDeleteP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        btnDeleteP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteP.setText("Delete");
         btnDeleteP.setMargin(new java.awt.Insets(2, 4, 2, 4));
 
@@ -1425,21 +1425,37 @@ public class Main extends javax.swing.JFrame {
     {
         oe.loadAllExpo(tblExpo);
     }
+    public JTable getExpoTable()
+    {
+        return tblExpo;
+    }
     public void LoadBoothType()
     {
         obt.loadAllBoothType(tblBoothType);
+    }
+    public JTable getBoothTypeTable(){
+        return tblBoothType;
     }
     public void LoadBooth()
     {
         ob.loadAllBooths(tblBooth);
     }
+    public JTable getBoothTable(){
+        return tblBooth;
+    }
     public void LoadStaff()
     {
         ost.loadAllStaff(tblStaff);
     }
+    public JTable getStaffTable(){
+        return tblStaff;
+    }
     public void LoadAccount()
     {
         ou.loadAllUser(tblAccount);
+    }
+    public JTable getAccountTable(){
+        return tblAccount;
     }
     public void LoadProduct()
     {
@@ -1461,12 +1477,6 @@ public class Main extends javax.swing.JFrame {
     }
     public JTable getSponsorTable(){
         return tblSponsor;
-    }
-    public JTable getBoothTypeTable(){
-        return tblBoothType;
-    }
-    public JTable getBoothTable(){
-        return tblBooth;
     }
     /**
     * @param args the command line arguments
