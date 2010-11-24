@@ -6,6 +6,7 @@
 package product;
 
 import dataLayer.DBHelper;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -24,9 +25,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class OperationProduct {
     DBHelper db = null;
-
+    DefaultTableModel ProductsModel = null;
     public void loadAllProduct(JTable jTable1){
-        DefaultTableModel ProductsModel = null;
+        
         jTable1.setModel(ProductsModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"Product Code","Exhibitor ID","Contact ID","Product Name","Product Price","Product Number","Description","Date"};
@@ -61,13 +62,49 @@ public class OperationProduct {
         String storeName = "{call getAllProducts }";
         return db.getCallAble(storeName).executeQuery();
     }
-    public ResultSet doSearch()throws SQLException{
-        String storeName = "{call findbyName }";
-        return db.getCallAble(storeName).executeQuery();
+    public void doSearch(String Where, String Key, JTable tblProduct){
+        try
+        {
+        String storeName = "{call findProduct('" + Where + "','" + Key + "')}";
+        tblProduct.setModel(ProductsModel = new DefaultTableModel());
+        Vector v = new Vector();
+        String [] heading = {"Product Code","Exhibitor ID","Contact ID","Product Name","Product Price","Product Number","Description","Date"};
+        for(String s : heading)
+            v.add(s);
+        ProductsModel.setColumnIdentifiers(v);
+        ResultSet rs = db.getCallAble(storeName).executeQuery();
+        while(rs.next()){
+            v = new Vector();
+            v.add(rs.getInt(1));
+            v.add(rs.getInt(2));
+            v.add(rs.getString(3));
+            v.add(rs.getString(4));
+            v.add(rs.getFloat(5));
+            v.add(rs.getInt(6));
+            v.add(rs.getString(7));
+            v.add(rs.getDate(8));
+            ProductsModel.addRow(v);
+        }
+        rs.close();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
-    public void delProducts(int id)throws SQLException{
-        String storeName = "{call deleteProducts }";
-        db.getCallAble(storeName).executeQuery();
+    public void delProducts(int id){
+        try{
+        CallableStatement cs = db.getConnection().prepareCall("{call DeleteProducts(?)}");
+        //truyen tham so cho store
+        cs.setInt(1, id);
+        cs.execute();
+
+        JOptionPane.showMessageDialog(null, "One Product has been deleted !","Delete Product",JOptionPane.INFORMATION_MESSAGE);
+
+        }catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, "Can't delete this Product !","Delete Product",JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public ResultSet getAllCID()throws SQLException{
@@ -121,12 +158,7 @@ public class OperationProduct {
             ex.printStackTrace();
         }
     }
-    public boolean checkProducts(JComboBox cbExhibitor,JComboBox cbContact,JTextField txtName,JTextField txtPrice,JTextField txtNumber,JTextArea txtDescription){
-        if(cbExhibitor.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null,"Please, select Expo !","Check Product",JOptionPane.WARNING_MESSAGE);
-            cbExhibitor.requestFocus();
-            return false;
-        }
+    public boolean checkProducts(JComboBox cbContact,JTextField txtName,JTextField txtPrice,JTextField txtNumber,JTextArea txtDescription){
         if(cbContact.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null,"Please, select CID !","Check Product",JOptionPane.WARNING_MESSAGE);
             cbContact.requestFocus();
@@ -143,7 +175,7 @@ public class OperationProduct {
             return false;
         }
         try {
-            Long.parseLong(txtPrice.getText());
+            Float.parseFloat(txtPrice.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Price of Product must Number !","Check Product",JOptionPane.WARNING_MESSAGE);
             txtPrice.requestFocus();
@@ -167,5 +199,24 @@ public class OperationProduct {
             return false;
         }
         return true;
+    }
+    
+    DefaultComboBoxModel CbWherePModel = null;
+    HashMap hmp = new HashMap();
+    public void buildCbWhereP(JComboBox cbWhereP)
+    {
+        cbWhereP.setModel(CbWherePModel = new DefaultComboBoxModel());
+        CbWherePModel.addElement("Product ID");
+        hmp.put("Product ID","PID");
+        CbWherePModel.addElement("Product Name");
+        hmp.put("Product Name","PName");
+        CbWherePModel.addElement("Product Price");
+        hmp.put("Product Price","PPrice");
+        CbWherePModel.addElement("Date Create");
+        hmp.put("Date Create","PDate");
+    }
+    public String returnSearch(JComboBox cbWhereP)
+    {
+        return hmp.get(cbWhereP.getSelectedItem().toString().trim()).toString();
     }
 }
