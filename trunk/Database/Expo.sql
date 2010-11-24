@@ -33,4 +33,5 @@ VALUES(@Name,@NumBooth,@Cost,@Description,@DateStart,@DateEnd)
 
 -- Chay thu Store
 --DECLARE @F INT
---exec addExpo 'Hoi Sung',100,6000000,'Trien lam cac loai sung','11/10/2010','12/9/2010',@F OUTPUT
+--exec addExpo 'Hoi Sung',100,6000000,'Trien lam cac loai sung','11/10/2010','12/9/2010'
+exec getID_Name_Of_Expo
