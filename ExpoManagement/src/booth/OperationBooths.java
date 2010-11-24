@@ -14,7 +14,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  *
@@ -54,23 +53,6 @@ public class OperationBooths {
                 BoothsModel.addRow(v);
             }
             rs.close();
-            TableColumn column = null;
-            for (int i = 0; i < 8; i++) {
-                column = jTable1.getColumnModel().getColumn(i);
-                if (i == 1) {
-                    column.setPreferredWidth(30);
-                }
-                if (i == 2) {
-                    column.setPreferredWidth(100);
-                } 
-                if (i == 4 || i ==5) {
-                    column.setPreferredWidth(80);
-                }
-                else {
-                    column.setPreferredWidth(50);
-                }
-            }
-
         }
         catch(Exception ex){
             ex.printStackTrace();
