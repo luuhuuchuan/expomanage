@@ -16,7 +16,7 @@ insert into BoothType (BTName,ExID , BTHeight, BTWidth, BoothRemain, BoothLength
 -- Tao Store goi ra tat ca expo
 create proc getAllBoothType
 as
-select BT.BTName,E.ExName,BT.BTHeight, BT.BTWidth, BT.BoothRemain, BT.BoothLength 
+select BT.BTID,BT.BTName,E.ExName,BT.BTHeight, BT.BTWidth, BT.BoothRemain, BT.BoothLength 
 from BoothType BT join Expo E
 on BT.ExID = E.ExID
 
@@ -42,22 +42,6 @@ AS
 INSERT INTO BoothType (BTName,ExID, BTHeight, BTWidth, BoothRemain, BoothLength)
 VALUES(@Name,@ExID,@Height,@Width,@BoothRemain,@BoothLength)
 
--- Tao store de edit BoothType
-Create Proc EditBoothType
-@ID int,
-@Name nvarchar(100),
-@ExID int,
-@Height float,
-@Width float,
-@BoothRemain int,
-@BoothLength int
-AS
-	Begin
-		Update BoothType
-		Set BTName = @Name,ExID = @ExID,BTHeight = @Height,BTWidth = @Width,BoothRemain = @BoothRemain,BoothLength = @BoothLength
-		Where BTID = @ID		
-	End
-
 -- Tao Store delete BoothType
 create proc deleteBoothType
 @ID int
@@ -65,9 +49,10 @@ as
 delete from BoothType
 where BTID = @ID
 
+
 -- Tao store edit BoothType
 create proc editBoothType
-@ID int,
+@id int,
 @Name nvarchar(100),
 @ExID int,
 @Height float,
@@ -76,28 +61,8 @@ create proc editBoothType
 @BoothLength int
 as
 update BoothType
-set BTName = @Name
-where BTID = @ID
-
-update BoothType
-set ExID = @ExID
-where BTID = @ID
-
-update BoothType
-set BTHeight = @Height
-where BTID = @ID
-
-update BoothType
-set BTWidth = @Width
-where BTID = @ID
-
-update BoothType
-set BoothRemain = @BoothRemain
-where BTID = @ID
-
-update BoothType
-set BoothLength = @BoothLength
-where BTID = @ID
+Set BTName = @Name,ExID = @ExID,BTHeight = @Height,BTWidth = @Width,BoothRemain = @BoothRemain,BoothLength = @BoothLength
+where BTID = @id
 
 
 --Tao Store tim kiem Exhibitor

@@ -50,9 +50,17 @@ AS
 INSERT INTO Booths (BTID, SID, CID, BName, BDate, BMoney, BBooker)
 VALUES(@BTID,@SID,@CID,@Name,@Date,@money,@booker)
 
-
-exec AddBooths 1,9,'A001','Helo','1/1/2010',2000,'true'
---Tao Store tim kiem Exhibitor
-Create proc findExhibitorbyName
+-- Tao store edit BoothType
+create proc editBooths
+@id int,
+@BTID int,
+@SID int,
+@CID char(10),
+@Name nvarchar(100),
+@Date smalldatetime,
+@money float,
+@booker bit
 as
-Select * from Exhibitor where EName like '%"+pattern+"%'
+update Booths
+Set BTID = @BTID,SID = @SID,CID = @CID,BName = @Name,BDate = @Date,BMoney = @money,BBooker = @booker
+where BID = @id
