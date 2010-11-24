@@ -11,8 +11,12 @@
 
 package booth;
 
+import dataLayer.DBHelper;
 import expomanagement.Main;
 import java.awt.Frame;
+import java.sql.CallableStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -43,12 +47,12 @@ public class Editbooths extends javax.swing.JDialog {
 
         int row = m.getBoothTable().getSelectedRow();
 
-        cbStaff.setSelectedItem(m.getBoothTable().getValueAt(row, 0).toString());
-        cbContact.setSelectedItem(m.getBoothTable().getValueAt(row, 1).toString());
+        cbStaff.setSelectedItem(m.getBoothTable().getValueAt(row, 3).toString());
+        cbContact.setSelectedItem(m.getBoothTable().getValueAt(row,0).toString());
         cbBoothType.setSelectedItem(m.getBoothTable().getValueAt(row, 2).toString());
-        txtBname.setText(m.getBoothTable().getValueAt(row, 3).toString());
+        txtBname.setText(m.getBoothTable().getValueAt(row, 4).toString());
         txtBDate.setDate(null);
-        txtBmoney.setText(m.getBoothTable().getValueAt(row, 5).toString());
+        txtBmoney.setText(m.getBoothTable().getValueAt(row, 6).toString());
         buttonGroup1.isSelected(null);
     }
     private boolean checkformBooth(){
@@ -277,7 +281,48 @@ public class Editbooths extends javax.swing.JDialog {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         if(checkformBooth()){
-            
+            try {
+                DBHelper db = null;
+                db = new DBHelper();
+                db.openConnection();
+                int row = m.getBoothTable().getSelectedRow();
+                int id = Integer.parseInt(((Main)m).getBoothTable().getValueAt(row, 1).toString());
+                int BTID = ob.returnBTID(cbBoothType);
+                int SID = ob.returnSID(cbStaff);
+                String CID = cbContact.getSelectedItem().toString();
+                String name = txtBname.getText().trim();
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                Date dS = txtBDate.getDate();
+                String bdate = sdf.format(dS);
+                float money = Float.parseFloat(txtBmoney.getText().trim());
+
+                //tao giao dien de thuc thi store
+                CallableStatement cs = db.getConnection().prepareCall("{call EditBooths (?,?,?,?,?,?,?,?)}");
+                //truyen tham so cho store
+                cs.setInt(1, id);
+                cs.setInt(2, BTID);
+                cs.setInt(3, SID);
+                cs.setString(4, CID);
+                cs.setString(5, name);
+                cs.setString(6, bdate);
+                cs.setFloat(7, money);
+                if(btnYes.isSelected())
+                    cs.setInt(8, 1);
+                else
+                    cs.setInt(8, 0);
+                //thuc thi store
+                if(JOptionPane.showConfirmDialog(null, "Do you want to update the record(s)",
+                "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                    cs.execute();
+                    ((Main)m).LoadBooth();
+                    JOptionPane.showMessageDialog(null, "The record(s) has been updated","Update Result",JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                }
+                //lay gia tri tham so ra
+            } catch (Exception ex) {
+                //JOptionPane.showMessageDialog(null, "An error occurred during execution","Add new Booth",JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
         }
     }//GEN-LAST:event_btnEditActionPerformed
 

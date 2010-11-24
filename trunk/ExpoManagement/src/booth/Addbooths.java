@@ -12,6 +12,8 @@
 package booth;
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
+import java.awt.Frame;
 import java.sql.CallableStatement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,6 +29,7 @@ public class Addbooths extends javax.swing.JDialog {
 
     /** Creates new form Addbooths */
     OperationBooths ob  = new OperationBooths();
+    Main m = null;
     public Addbooths(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         try {
@@ -39,6 +42,7 @@ public class Addbooths extends javax.swing.JDialog {
         ob.buildAllStaff(cbStaff);
         ob.buildAllContactID(cbContact);
         ob.buildAlBoothType(cbBoothType);
+        m = (Main)parent;
     }
 
     private boolean checkformBooth(){
@@ -309,6 +313,7 @@ public class Addbooths extends javax.swing.JDialog {
                     cs.setInt(7, 0);
                 //thuc thi store
                 cs.execute();
+                ((Main) m ).LoadBooth();
                 JOptionPane.showMessageDialog(null, "One new Booth has been added","Add new Booth",JOptionPane.INFORMATION_MESSAGE);
                 dispose();
                 //lay gia tri tham so ra
