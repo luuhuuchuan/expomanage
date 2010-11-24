@@ -252,7 +252,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhere" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtKeyword" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtKeyword" pref="225" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFind" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -371,12 +371,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="0" pref="586" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" pref="582" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="0" pref="223" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" pref="217" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -500,9 +500,9 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereBT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind1" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtFindBT" pref="225" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnFindEx1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnFindBT" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -515,8 +515,8 @@
                                       <Component id="btnDeleteEx1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbWhereBT" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtFind1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                      <Component id="btnFindEx1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFindBT" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="btnFindBT" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -571,6 +571,9 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteEx1ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel4">
                           <Properties>
@@ -592,9 +595,12 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtFind1">
+                        <Component class="javax.swing.JTextField" name="txtFindBT">
+                          <Events>
+                            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtFindBTCaretUpdate"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnFindEx1">
+                        <Component class="javax.swing.JButton" name="btnFindBT">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/expomanagement/icon_func/65.png"/>
@@ -604,6 +610,9 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindBTActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -619,12 +628,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane8" alignment="0" pref="586" max="32767" attributes="0"/>
+                              <Component id="jScrollPane8" alignment="0" pref="582" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane8" alignment="0" pref="245" max="32767" attributes="0"/>
+                              <Component id="jScrollPane8" alignment="0" pref="239" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -748,9 +757,9 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbWhereB" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbWhereBooth" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind2" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtFindBooth" pref="225" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx2" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -764,8 +773,8 @@
                                       <Component id="btnEditB1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnDeleteEx2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbWhereB" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtFind2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="cbWhereBooth" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFindBooth" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="btnFindEx2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -821,6 +830,9 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteEx2ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel5">
                           <Properties>
@@ -830,7 +842,7 @@
                             <Property name="text" type="java.lang.String" value="Filter"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="cbWhereB">
+                        <Component class="javax.swing.JComboBox" name="cbWhereBooth">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="4">
@@ -842,7 +854,10 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtFind2">
+                        <Component class="javax.swing.JTextField" name="txtFindBooth">
+                          <Events>
+                            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtFindBoothCaretUpdate"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnFindEx2">
                           <Properties>
@@ -869,12 +884,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane7" alignment="0" pref="586" max="32767" attributes="0"/>
+                              <Component id="jScrollPane7" alignment="0" pref="582" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane7" alignment="0" pref="245" max="32767" attributes="0"/>
+                              <Component id="jScrollPane7" alignment="0" pref="239" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -995,7 +1010,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind3" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtFind3" pref="225" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1108,12 +1123,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" alignment="0" pref="586" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="0" pref="582" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" alignment="0" pref="240" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="0" pref="234" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -1234,7 +1249,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbEx" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtFindEhi" pref="225" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1249,7 +1264,7 @@
                                       <Component id="btnDeleteEx" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbEx" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtFind" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="txtFindEhi" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="btnFindEx" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -1329,9 +1344,9 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtFind">
+                        <Component class="javax.swing.JTextField" name="txtFindEhi">
                           <Events>
-                            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtFindCaretUpdate"/>
+                            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtFindEhiCaretUpdate"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnFindEx">
@@ -1362,12 +1377,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" pref="586" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="582" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" pref="218" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="212" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -1536,7 +1551,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword1" pref="230" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword1" pref="223" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindS" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1655,12 +1670,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane6" alignment="0" pref="584" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" alignment="0" pref="580" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane6" alignment="0" pref="256" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" alignment="0" pref="250" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -1781,7 +1796,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword2" pref="230" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword2" pref="223" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1894,12 +1909,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane12" alignment="0" pref="584" max="32767" attributes="0"/>
+                              <Component id="jScrollPane12" alignment="0" pref="580" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane12" alignment="0" pref="244" max="32767" attributes="0"/>
+                              <Component id="jScrollPane12" alignment="0" pref="238" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -2020,7 +2035,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword" pref="230" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword" pref="223" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2148,12 +2163,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane" alignment="0" pref="584" max="32767" attributes="0"/>
+                              <Component id="jScrollPane" alignment="0" pref="580" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane" alignment="0" pref="244" max="32767" attributes="0"/>
+                              <Component id="jScrollPane" alignment="0" pref="238" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>

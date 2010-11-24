@@ -49,6 +49,15 @@ as
 delete from BoothType
 where BTID = @ID
 
+--Tao Store de tim kiem Product theo ten
+Create PROC findBoothType
+@Where nvarchar(50),
+@Key nvarchar(100)
+AS
+Declare @fbt nvarchar(200)
+set @fbt = 'Select * from BoothType where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+execute(@fbt)
+
 
 -- Tao store edit BoothType
 create proc editBoothType
@@ -65,7 +74,3 @@ Set BTName = @Name,ExID = @ExID,BTHeight = @Height,BTWidth = @Width,BoothRemain 
 where BTID = @id
 
 
---Tao Store tim kiem Exhibitor
-Create proc findExhibitorbyName
-as
-Select * from Exhibitor where EName like '%"+pattern+"%'

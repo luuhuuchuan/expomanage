@@ -64,3 +64,18 @@ as
 update Booths
 Set BTID = @BTID,SID = @SID,CID = @CID,BName = @Name,BDate = @Date,BMoney = @money,BBooker = @booker
 where BID = @id
+-- Tao store dele Booths
+create proc deleteBooths
+@ID int
+as
+delete from Booths
+where BID = @ID
+
+-- Tao store search Booths
+Create PROC findBooths
+@Where nvarchar(50),
+@Key nvarchar(100)
+AS
+Declare @fb nvarchar(200)
+set @fb = 'Select * from Booths where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+execute(@fb)

@@ -101,8 +101,8 @@ public class Main extends javax.swing.JFrame {
         btnDeleteEx1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cbWhereBT = new javax.swing.JComboBox();
-        txtFind1 = new javax.swing.JTextField();
-        btnFindEx1 = new javax.swing.JButton();
+        txtFindBT = new javax.swing.JTextField();
+        btnFindBT = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblBoothType = new javax.swing.JTable();
@@ -112,8 +112,8 @@ public class Main extends javax.swing.JFrame {
         btnEditB1 = new javax.swing.JButton();
         btnDeleteEx2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        cbWhereB = new javax.swing.JComboBox();
-        txtFind2 = new javax.swing.JTextField();
+        cbWhereBooth = new javax.swing.JComboBox();
+        txtFindBooth = new javax.swing.JTextField();
         btnFindEx2 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -137,7 +137,7 @@ public class Main extends javax.swing.JFrame {
         btnDeleteEx = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cbEx = new javax.swing.JComboBox();
-        txtFind = new javax.swing.JTextField();
+        txtFindEhi = new javax.swing.JTextField();
         btnFindEx = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -204,7 +204,7 @@ public class Main extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18));
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextArea1.setRows(5);
         jTextArea1.setText("\n Welcome !\n You using software of Team 1 - GC0501 - FPT GreenWich.\n Hope you work efficiently.\n Thank you for using our software.");
         jTextArea1.setAutoscrolls(false);
@@ -292,7 +292,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhere, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .add(txtKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFind))
         );
@@ -330,11 +330,11 @@ public class Main extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabExpoLayout = new org.jdesktop.layout.GroupLayout(TabExpo);
@@ -388,19 +388,35 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx1.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteEx1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx1.setText("Delete");
         btnDeleteEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnDeleteEx1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteEx1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel4.setText("Filter");
 
         cbWhereBT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnFindEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
-        btnFindEx1.setText("Find");
-        btnFindEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        txtFindBT.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtFindBTCaretUpdate(evt);
+            }
+        });
+
+        btnFindBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
+        btnFindBT.setText("Find");
+        btnFindBT.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnFindBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindBTActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel8Layout = new org.jdesktop.layout.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -417,9 +433,9 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereBT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .add(txtFindBT, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnFindEx1))
+                .add(btnFindBT))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -430,8 +446,8 @@ public class Main extends javax.swing.JFrame {
                     .add(btnDeleteEx1)
                     .add(jLabel4)
                     .add(cbWhereBT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(txtFind1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(btnFindEx1))
+                    .add(txtFindBT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnFindBT))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -454,11 +470,11 @@ public class Main extends javax.swing.JFrame {
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabBoothTypeLayout = new org.jdesktop.layout.GroupLayout(TabBoothType);
@@ -517,11 +533,22 @@ public class Main extends javax.swing.JFrame {
         btnDeleteEx2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx2.setText("Delete");
         btnDeleteEx2.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnDeleteEx2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteEx2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel5.setText("Filter");
 
-        cbWhereB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbWhereBooth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtFindBooth.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtFindBoothCaretUpdate(evt);
+            }
+        });
 
         btnFindEx2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
         btnFindEx2.setText("Find");
@@ -540,9 +567,9 @@ public class Main extends javax.swing.JFrame {
                 .add(18, 18, 18)
                 .add(jLabel5)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbWhereB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(cbWhereBooth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .add(txtFindBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx2))
         );
@@ -554,8 +581,8 @@ public class Main extends javax.swing.JFrame {
                     .add(btnEditB1)
                     .add(btnDeleteEx2)
                     .add(jLabel5)
-                    .add(cbWhereB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(txtFind2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(cbWhereBooth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtFindBooth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnFindEx2))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -579,11 +606,11 @@ public class Main extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabBoothLayout = new org.jdesktop.layout.GroupLayout(TabBooth);
@@ -656,7 +683,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereEx3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .add(txtFind3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx3))
         );
@@ -693,11 +720,11 @@ public class Main extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabAccountLayout = new org.jdesktop.layout.GroupLayout(TabAccount);
@@ -751,7 +778,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx.setText("Delete");
         btnDeleteEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -766,9 +793,9 @@ public class Main extends javax.swing.JFrame {
 
         cbEx.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        txtFind.addCaretListener(new javax.swing.event.CaretListener() {
+        txtFindEhi.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtFindCaretUpdate(evt);
+                txtFindEhiCaretUpdate(evt);
             }
         });
 
@@ -796,7 +823,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .add(txtFindEhi, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx))
         );
@@ -809,7 +836,7 @@ public class Main extends javax.swing.JFrame {
                     .add(btnDeleteEx)
                     .add(jLabel3)
                     .add(cbEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(txtFind, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtFindEhi, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnFindEx))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -833,11 +860,11 @@ public class Main extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout STabExhibitorLayout = new org.jdesktop.layout.GroupLayout(STabExhibitor);
@@ -940,7 +967,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereP1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .add(txtPKeyword1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindS))
         );
@@ -977,11 +1004,11 @@ public class Main extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabSponsorLayout = new org.jdesktop.layout.GroupLayout(TabSponsor);
@@ -1054,7 +1081,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereP2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .add(txtPKeyword2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindP1))
         );
@@ -1091,11 +1118,11 @@ public class Main extends javax.swing.JFrame {
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabStaffLayout = new org.jdesktop.layout.GroupLayout(TabStaff);
@@ -1194,7 +1221,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .add(txtPKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindP))
         );
@@ -1239,11 +1266,11 @@ public class Main extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabProductLayout = new org.jdesktop.layout.GroupLayout(TabProduct);
@@ -1363,7 +1390,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAddSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSActionPerformed
         // TODO add your handling code here:
-           new AddSponsor(this,true).setVisible(true);
+        new AddSponsor(this,true).setVisible(true);
     }//GEN-LAST:event_btnAddSActionPerformed
 
     private void btnEditSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSActionPerformed
@@ -1395,11 +1422,13 @@ public class Main extends javax.swing.JFrame {
     private void TabBoothTypePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabBoothTypePropertyChange
         // TODO add your handling code here:
         LoadBoothType();
+        obt.buildCbWhereP(cbWhereBT);
     }//GEN-LAST:event_TabBoothTypePropertyChange
 
     private void TabBoothPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabBoothPropertyChange
         // TODO add your handling code here:
         LoadBooth();
+        ob.buildCbWhereB(cbWhereBooth);
     }//GEN-LAST:event_TabBoothPropertyChange
 
     private void TabAccountPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabAccountPropertyChange
@@ -1446,14 +1475,14 @@ public class Main extends javax.swing.JFrame {
         op.doSearch(op.returnSearch(cbWhereP),txtPKeyword.getText().trim(),tblProducts);
     }//GEN-LAST:event_txtPKeywordCaretUpdate
 
-    private void txtFindCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindCaretUpdate
+    private void txtFindEhiCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindEhiCaretUpdate
         // TODO add your handling code here:
-        oex.doSearch(oex.returnSearch(cbEx),txtFind.getText().trim(),tblExhibitor);
-    }//GEN-LAST:event_txtFindCaretUpdate
+        oex.doSearch(oex.returnSearch(cbEx),txtFindEhi.getText().trim(),tblExhibitor);
+    }//GEN-LAST:event_txtFindEhiCaretUpdate
 
     private void btnFindExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindExActionPerformed
         // TODO add your handling code here:
-        oex.doSearch(oex.returnSearch(cbEx),txtFind.getText().trim(),tblExhibitor);
+        oex.doSearch(oex.returnSearch(cbEx),txtFindEhi.getText().trim(),tblExhibitor);
     }//GEN-LAST:event_btnFindExActionPerformed
 
     private void btnDeleteExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteExActionPerformed
@@ -1463,6 +1492,39 @@ public class Main extends javax.swing.JFrame {
         oex.delExhibitor(id);
         LoadExhibitor();
     }//GEN-LAST:event_btnDeleteExActionPerformed
+
+    private void btnDeleteEx1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEx1ActionPerformed
+        // TODO add your handling code here:
+        int row = tblBoothType.getSelectedRow();
+        int id = Integer.parseInt(tblBoothType.getValueAt(row, 0).toString());
+        obt.delBoothType(id);
+        LoadBoothType();
+    }//GEN-LAST:event_btnDeleteEx1ActionPerformed
+
+    private void txtFindBTCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindBTCaretUpdate
+        // TODO add your handling code here:
+        obt.doSearch(obt.returnSearch(cbWhereBT),txtFindBT.getText().trim(),tblBoothType);
+
+    }//GEN-LAST:event_txtFindBTCaretUpdate
+
+    private void btnFindBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindBTActionPerformed
+        // TODO add your handling code here:
+        obt.doSearch(obt.returnSearch(cbWhereBT),txtFindBT.getText().trim(),tblBoothType);
+    }//GEN-LAST:event_btnFindBTActionPerformed
+
+    private void btnDeleteEx2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEx2ActionPerformed
+        // TODO add your handling code here:
+        int row = tblBooth.getSelectedRow();
+        int id = Integer.parseInt(tblBooth.getValueAt(row, 1).toString());
+        ob.delBooth(id);
+        LoadBooth();
+
+    }//GEN-LAST:event_btnDeleteEx2ActionPerformed
+
+    private void txtFindBoothCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindBoothCaretUpdate
+        // TODO add your handling code here:
+        ob.doSearch(ob.returnSearch(cbWhereBooth),txtFindBooth.getText().trim(),tblBooth);
+    }//GEN-LAST:event_txtFindBoothCaretUpdate
     public void LoadExpo()
     {
         oe.loadAllExpo(tblExpo);
@@ -1571,8 +1633,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnEditP1;
     private javax.swing.JButton btnEditS;
     private javax.swing.JButton btnFind;
+    private javax.swing.JButton btnFindBT;
     private javax.swing.JButton btnFindEx;
-    private javax.swing.JButton btnFindEx1;
     private javax.swing.JButton btnFindEx2;
     private javax.swing.JButton btnFindEx3;
     private javax.swing.JButton btnFindP;
@@ -1580,8 +1642,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnFindS;
     private javax.swing.JComboBox cbEx;
     private javax.swing.JComboBox cbWhere;
-    private javax.swing.JComboBox cbWhereB;
     private javax.swing.JComboBox cbWhereBT;
+    private javax.swing.JComboBox cbWhereBooth;
     private javax.swing.JComboBox cbWhereEx3;
     private javax.swing.JComboBox cbWhereP;
     private javax.swing.JComboBox cbWhereP1;
@@ -1630,10 +1692,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable tblProducts;
     private javax.swing.JTable tblSponsor;
     private javax.swing.JTable tblStaff;
-    private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txtFind1;
-    private javax.swing.JTextField txtFind2;
     private javax.swing.JTextField txtFind3;
+    private javax.swing.JTextField txtFindBT;
+    private javax.swing.JTextField txtFindBooth;
+    private javax.swing.JTextField txtFindEhi;
     private javax.swing.JTextField txtKeyword;
     private javax.swing.JTextField txtPKeyword;
     private javax.swing.JTextField txtPKeyword1;
