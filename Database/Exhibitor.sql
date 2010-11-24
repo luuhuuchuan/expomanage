@@ -41,7 +41,7 @@ set @exh = 'Select * from Exhibitor where '+ @Where + ' like '+char(39)+'%'  + @
 execute(@exh)
 
 --Tao Store de Edit Exhibitor
-Create Proc EditProduct
+Create Proc EditExhibitor
 @ID int,
 @Name nvarchar(100),
 @Fax varchar(30),

@@ -180,15 +180,15 @@ public class EditExhibitor extends javax.swing.JDialog {
         if(oex.checkExhibitor(txtName, txtFax, txtPhone, txtAddress, txtWebsite)){
         try{
         //lay dl
-        int row = m.getProductsTable().getSelectedRow();
-        int id = Integer.parseInt(m.getProductsTable().getValueAt(row, 0).toString());
+        int row = m.getExhibitorTable().getSelectedRow();
+        int id = Integer.parseInt(m.getExhibitorTable().getValueAt(row, 0).toString());
         String name = txtName.getText().trim();
         String fax = txtFax.getText().trim();
         String phone = txtPhone.getText().trim();
         String address = txtAddress.getText().trim();
         String website = txtWebsite.getText().trim();
 
-        CallableStatement cs = db.getConnection().prepareCall("{call EditProduct(?,?,?,?,?,?)}");
+        CallableStatement cs = db.getConnection().prepareCall("{call EditExhibitor(?,?,?,?,?,?)}");
         cs.setInt(1,id);
         cs.setString(2, name);
         cs.setString(3, fax);
