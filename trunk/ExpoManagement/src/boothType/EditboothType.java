@@ -20,7 +20,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import java.util.Vector;
 
 /**
  *
@@ -44,13 +43,13 @@ public class EditboothType extends javax.swing.JDialog {
         ob.buildCbExpo(cbExpo);
         parentFrame = parent;
         m = (Main)parent;
-        int row = m.getBoothTypeTable().getSelectedRow();
-        txtBTName.setText(m.getBoothTypeTable().getValueAt(row, 0).toString());
-        cbExpo.setSelectedItem(m.getBoothTypeTable().getValueAt(row, 1).toString());
-        txtBTHeight.setText(m.getBoothTypeTable().getValueAt(row, 2).toString());
-        txtBTWidth.setText(m.getBoothTypeTable().getValueAt(row, 3).toString());
-        txtBremain.setText(m.getBoothTypeTable().getValueAt(row, 4).toString());
-        txtBlength.setText(m.getBoothTypeTable().getValueAt(row, 5).toString());
+//        int row = m.getBoothTypeTable().getSelectedRow();
+//        txtBTName.setText(m.getBoothTypeTable().getValueAt(row, 0).toString());
+//        cbExpo.setSelectedItem(m.getBoothTypeTable().getValueAt(row, 1).toString());
+//        txtBTHeight.setText(m.getBoothTypeTable().getValueAt(row, 2).toString());
+//        txtBTWidth.setText(m.getBoothTypeTable().getValueAt(row, 3).toString());
+//        txtBremain.setText(m.getBoothTypeTable().getValueAt(row, 4).toString());
+//        txtBlength.setText(m.getBoothTypeTable().getValueAt(row, 5).toString());
 
     }
 
