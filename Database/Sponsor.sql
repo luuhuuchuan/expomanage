@@ -29,14 +29,6 @@ where SpID=@id
 
 exec getSponsorByID 7
 
--- Tao Store goi ra ten va id tat ca expo
-create proc getID_Name_Of_Expo
-as
-select ExName, ExID
-from Expo
-
-exec getID_Name_Of_Expo
-
 
 -- Tao Store co tham so de tao Expo
 

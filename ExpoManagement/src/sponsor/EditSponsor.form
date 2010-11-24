@@ -104,7 +104,7 @@
                               <Component id="txtSpMoney" pref="269" max="32767" attributes="1"/>
                               <Component id="txtSpName" alignment="0" pref="269" max="32767" attributes="1"/>
                               <Component id="cbExpo" alignment="0" pref="269" max="32767" attributes="1"/>
-                              <Component id="txtExpoID" alignment="0" pref="269" max="32767" attributes="1"/>
+                              <Component id="txtSpID" alignment="0" pref="269" max="32767" attributes="1"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -122,7 +122,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtExpoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSpID" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -155,7 +155,7 @@
             <Property name="text" type="java.lang.String" value="Sponsor Description:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtExpoID">
+        <Component class="javax.swing.JTextField" name="txtSpID">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
