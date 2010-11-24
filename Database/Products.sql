@@ -71,3 +71,10 @@ create proc get_EID
 as
 select EName, EID
 from Exhibitor
+
+--Tao store lay thong tinc cua 1 Product boi ID
+create proc getProductByID
+@id int
+as
+select * from Products 
+where PID=@id

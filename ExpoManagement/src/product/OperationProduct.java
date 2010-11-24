@@ -29,7 +29,7 @@ public class OperationProduct {
         DefaultTableModel ProductsModel = null;
         jTable1.setModel(ProductsModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Product Code","Product Name","Product Price","Product Number","Date"};
+        String [] heading = {"Product Code","Exhibitor ID","Contact ID","Product Name","Product Price","Product Number","Description","Date"};
         for(String s : heading)
             v.add(s);
         ProductsModel.setColumnIdentifiers(v);
@@ -38,13 +38,16 @@ public class OperationProduct {
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
+                v.add(rs.getInt(2));
+                v.add(rs.getString(3));
                 v.add(rs.getString(4));
                 v.add(rs.getFloat(5));
                 v.add(rs.getInt(6));
+                v.add(rs.getString(7));
                 v.add(rs.getDate(8));
                 ProductsModel.addRow(v);
             }
-            rs.close();  
+            rs.close();
         }
         catch(Exception ex){
             ex.printStackTrace();

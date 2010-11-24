@@ -14,12 +14,10 @@ package product;
 import booth.OperationBooths;
 import dataLayer.DBHelper;
 import expomanagement.Main;
-import java.awt.Frame;
 import java.sql.CallableStatement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 /**
  *
  * @author Cuongnvgc00064
@@ -28,20 +26,24 @@ public class EditProduct extends javax.swing.JDialog {
 
     /** Creates new form EditProduct */
     Main m = null;
-    Frame parentFrame = null;
+    DBHelper db = null;
     OperationProduct op = new OperationProduct();
     OperationBooths ob  = new OperationBooths();
     public EditProduct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        initComponents();
-        op.buildCbExpo(cbExpo);
-        op.buildCbContact(cbContact);
+            initComponents();
+            db = new DBHelper();
+            db.openConnection();
+            op.buildCbExhibitor(cbExhibitor);
+            op.buildCbContact(cbContact);
+            m = (Main) parent;
+            int row = m.getProductsTable().getSelectedRow();
+                cbExhibitor.setSelectedItem(m.getProductsTable().getValueAt(row, 1));
+                cbContact.setSelectedItem(m.getProductsTable().getValueAt(row, 2));
+                txtName.setText(m.getProductsTable().getValueAt(row, 3).toString());
+                txtPrice.setText(m.getProductsTable().getValueAt(row, 4).toString());
+                txtNumber.setText(m.getProductsTable().getValueAt(row, 5).toString());
+                txtDescription.setText(m.getProductsTable().getValueAt(row, 6).toString());
     }
 
     /** This method is called from within the constructor to
@@ -61,15 +63,14 @@ public class EditProduct extends javax.swing.JDialog {
         txtNumber = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbContact = new javax.swing.JComboBox();
-        cbExpo = new javax.swing.JComboBox();
+        cbExhibitor = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Product");
@@ -90,19 +91,11 @@ public class EditProduct extends javax.swing.JDialog {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
-        btnClose.setText("Close");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-
-        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
-        btnReset.setText("Cancel");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -121,7 +114,7 @@ public class EditProduct extends javax.swing.JDialog {
 
         cbContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbExpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbExhibitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,14 +143,12 @@ public class EditProduct extends javax.swing.JDialog {
                             .add(org.jdesktop.layout.GroupLayout.LEADING, txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                             .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 197, Short.MAX_VALUE)
-                            .add(cbExpo, 0, 197, Short.MAX_VALUE))
+                            .add(cbExhibitor, 0, 197, Short.MAX_VALUE))
                         .add(72, 72, 72))
-                    .add(layout.createSequentialGroup()
-                        .add(46, 46, 46)
-                        .add(btnReset)
-                        .add(43, 43, 43)
-                        .add(btnClose)
-                        .add(38, 38, 38))))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnCancel)
+                        .add(57, 57, 57))))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(156, Short.MAX_VALUE)
                 .add(jLabel6)
@@ -173,7 +164,7 @@ public class EditProduct extends javax.swing.JDialog {
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel7)
-                            .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(cbExhibitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(18, 18, 18)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel8)
@@ -196,30 +187,23 @@ public class EditProduct extends javax.swing.JDialog {
                 .add(33, 33, 33)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnAdd)
-                    .add(btnReset)
-                    .add(btnClose))
+                    .add(btnCancel))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose();
-}//GEN-LAST:event_btnCloseActionPerformed
-
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        if(op.checkProducts(cbExhibitor, cbContact, txtName, txtPrice, txtNumber, txtDescription)){
         try {
-        DBHelper db = null;
         db = new DBHelper();
         db.openConnection();
         Date today = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         String DateP = sdf.format(today);
-        
-        String EID = cbContact.getSelectedItem().toString().trim();
+        int EID = op.returnIdExhibitor(cbExhibitor);
         String CID = cbContact.getSelectedItem().toString().trim();
         String name = txtName.getText().trim();
         float price = Float.parseFloat(txtPrice.getText().trim());
@@ -229,7 +213,7 @@ public class EditProduct extends javax.swing.JDialog {
         //tao giao dien de thuc thi store
         CallableStatement cs = db.getConnection().prepareCall("{call EditProduct(?,?,?,?,?,?,?)}");
         //truyen tham so cho store
-        cs.setString(1, EID);
+        cs.setInt(1, EID);
         cs.setString(2, CID);
         cs.setString(3, name);
         cs.setFloat(4, price);
@@ -237,37 +221,23 @@ public class EditProduct extends javax.swing.JDialog {
         cs.setString(6, description);
         cs.setString(7,DateP);
         //thuc thi store
-        if(checkformProduct())
-        {
         if(JOptionPane.showConfirmDialog(null, "Do you want to Save the Product(s)",
                 "Save Product",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
         cs.execute();
-        ((Main)parentFrame).LoadProduct();
+        ((Main)m).LoadProduct();
             JOptionPane.showMessageDialog(null, "The Product(s) has been Edit","Edit Product",JOptionPane.INFORMATION_MESSAGE);
          }
-        }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Edit Product",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
+      }
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-        cbExpo.setSelectedItem(0);
-        cbContact.setSelectedItem(0);
-        txtName.setText(null);
-        txtPrice.setText(null);
-        txtNumber.setText(null);
-        txtDescription.setText(null);
-
-        cbExpo.setEditable(true);
-        txtName.setEditable(true);
-        txtPrice.setEditable(true);
-        txtNumber.setEditable(true);
-        txtDescription.setEditable(true);
-        txtName.requestFocus();
-    }//GEN-LAST:event_btnResetActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
     * @param args the command line arguments
@@ -289,10 +259,9 @@ public class EditProduct extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JComboBox cbContact;
-    private javax.swing.JComboBox cbExpo;
+    private javax.swing.JComboBox cbExhibitor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -307,38 +276,4 @@ public class EditProduct extends javax.swing.JDialog {
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
 
-    private boolean checkformProduct(){
-        if(cbExpo.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter EID");
-            cbExpo.requestFocus();
-            return false;
-        }
-        if(txtName.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter Name of Product");
-            txtName.requestFocus();
-            return false;
-        }
-        if(txtPrice.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter Product Price");
-            txtPrice.requestFocus();
-            return false;
-        }
-        if(txtNumber.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter Product Number");
-            txtNumber.requestFocus();
-            return false;
-        }
-        try {
-            Long.parseLong(txtNumber.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Product NumBer must Number");
-            return false;
-        }
-        if(txtDescription.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter Description");
-            txtDescription.requestFocus();
-            return false;
-        }
-        return true;
-    }
 }

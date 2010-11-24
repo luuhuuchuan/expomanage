@@ -1445,9 +1445,15 @@ public class Main extends javax.swing.JFrame {
     {
         op.loadAllProduct(tblProducts);
     }
+    public JTable getProductsTable(){
+        return tblProducts;
+    }
     public void LoadExhibitor()
     {
         oex.loadAllExhibitor(tblExhibitor);
+    }
+    public JTable getExhibitorTable(){
+        return tblExhibitor;
     }
     public void LoadSponsor()
     {
