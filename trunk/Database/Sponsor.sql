@@ -20,6 +20,15 @@ select S.SpID,S.SpName,E.ExName,S.SpMoney,S.SpDescription
 from Sponsors as S join Expo as E
 on S.ExID = E.ExID 
 
+-- tao store lay thong tin 1 sponsor
+create proc getSponsorByID
+@id int
+as
+select * from Sponsors 
+where SpID=@id
+
+exec getSponsorByID 7
+
 -- Tao Store goi ra ten va id tat ca expo
 create proc getID_Name_Of_Expo
 as
@@ -49,9 +58,10 @@ INSERT INTO Sponsors ( ExID, SpName, SpMoney, SpDescription)
 create proc editSponsor
 @id int,
 @name nvarchar(100),
+@eid int,
 @money float,
 @description ntext 
 as
 update Sponsors
-set SpName= @name,SpMoney = @money,SpDes = @description
+set SpName = @name,ExID = @eid,SpMoney = @money,SpDescription = @description
 where SpID = @id
