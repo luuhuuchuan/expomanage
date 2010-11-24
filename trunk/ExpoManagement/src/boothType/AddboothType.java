@@ -27,7 +27,6 @@ public class AddboothType extends javax.swing.JDialog {
     /** Creates new form AddboothType */
     OperationBoothType ob  = new OperationBoothType();
     Main m = null;
-    Frame parentFrame = null;
     public AddboothType(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         try {
@@ -38,7 +37,6 @@ public class AddboothType extends javax.swing.JDialog {
         }
         initComponents();
         ob.buildCbExpo(cbExpo);
-        parentFrame = parent;
         m = (Main)parent;
     }
     private boolean checkformBoothType(){
@@ -283,7 +281,7 @@ public class AddboothType extends javax.swing.JDialog {
 
                 //thuc thi store
                 cs.execute();
-                ((Main)parentFrame).LoadBoothType();
+                ((Main) m ).LoadBoothType();
                 JOptionPane.showMessageDialog(null, "One new Booth Type has been added","Add new Booth Type",JOptionPane.INFORMATION_MESSAGE);
                 dispose();
 
