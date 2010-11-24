@@ -13,24 +13,46 @@ package sponsor;
 
 import dataLayer.DBHelper;
 import expomanagement.Main;
-import java.awt.Frame;
 import java.sql.CallableStatement;
-import java.util.Vector;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Admin
  */
+
 public class EditSponsor extends javax.swing.JDialog {
     Main m = null;
-    Frame parentFrame = null;
+    DBHelper db = null;
+    OperationSponsor os  = new OperationSponsor();
     /** Creates new form EditSponsor */
     public EditSponsor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
-        int row = ((Main)parentFrame).getSponsorTable().getSelectedRow();
-        txtExpoID.setText(((Main)parentFrame).getSponsorTable().getValueAt(row, 0).toString());
+        try {
+            initComponents();
+            os.buildCbExpo(cbExpo);
+            m = (Main) parent;
+            int row = m.getSponsorTable().getSelectedRow();
+            String id = ((Main) m).getSponsorTable().getValueAt(row, 0).toString();
+            db = new DBHelper();
+            db.openConnection();
+            String storeName = "{call getSponsorByID("+id+") }";
+            ResultSet rs = db.getCallAble(storeName).executeQuery();
+            while(rs.next()){
+                txtExpoID.setText(rs.getString(1));
+                cbExpo.setSelectedItem(((Main) m).getSponsorTable().getValueAt(row, 2));
+                txtSpName.setText(rs.getString(3));
+                txtSpMoney.setText(String.valueOf(rs.getFloat(4)).toString());
+                txtSpDes.setText(rs.getString(5));
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EditSponsor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -42,25 +64,22 @@ public class EditSponsor extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtSpName = new javax.swing.JTextField();
-        txtSpDes = new javax.swing.JTextField();
         btnClose = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        txtExpoID = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtSpMoney = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         btnEdit = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        txtExpoID = new javax.swing.JTextField();
+        txtSpName = new javax.swing.JTextField();
+        txtSpMoney = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtSpDes = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        cbExpo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18));
-        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel1.setText("Edit Sponsor");
-
-        jLabel2.setText("Sponsor ID:");
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnClose.setText("Close");
@@ -70,12 +89,6 @@ public class EditSponsor extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setText("Sponsor Name:");
-
-        jLabel4.setText("Sponsor Money");
-
-        jLabel5.setText("Sponsor Description:");
-
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -84,63 +97,102 @@ public class EditSponsor extends javax.swing.JDialog {
             }
         });
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit Sponsor"));
+
+        jLabel5.setText("Sponsor Description:");
+
+        txtExpoID.setEditable(false);
+
+        jLabel4.setText("Sponsor Money");
+
+        jLabel3.setText("Sponsor Name:");
+
+        jLabel2.setText("Sponsor ID:");
+
+        txtSpDes.setColumns(20);
+        txtSpDes.setRows(5);
+        jScrollPane1.setViewportView(txtSpDes);
+
+        jLabel1.setText("Expo:");
+
+        cbExpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel1)
+                            .add(jLabel2)
+                            .add(jLabel3)
+                            .add(jLabel4))
+                        .add(29, 29, 29)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(txtSpMoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtSpName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, cbExpo, 0, 269, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtExpoID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jLabel5)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)))
+                .add(23, 23, 23))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(txtExpoID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel1)
+                    .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(txtSpName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtSpMoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel4))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel5)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(142, 142, 142)
-                .add(jLabel1)
-                .addContainerGap(161, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
-                .add(btnEdit)
-                .add(68, 68, 68)
-                .add(btnClose)
-                .add(98, 98, 98))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(45, 45, 45)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel5)
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                        .add(jLabel4)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(jLabel3))))
-                .add(51, 51, 51)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtExpoID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtSpName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtSpMoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .add(txtSpDes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
-                .add(32, 32, 32))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .add(63, 63, 63)
+                        .add(btnEdit)
+                        .add(126, 126, 126)
+                        .add(btnClose)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(21, 21, 21)
-                .add(jLabel1)
-                .add(28, 28, 28)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtExpoID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel2))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtSpName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtSpMoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel4))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtSpDes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel5))
-                .add(29, 29, 29)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnClose)
-                    .add(btnEdit))
-                .add(36, 36, 36))
+                    .add(btnEdit)
+                    .add(btnClose))
+                .addContainerGap())
         );
 
         pack();
@@ -153,31 +205,32 @@ public class EditSponsor extends javax.swing.JDialog {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-
-
-        try{
-        DBHelper db = null;
+     try{
         db = new DBHelper();
         db.openConnection();
-        //int row = ((Main)parentFrame).getSponsorTable().getSelectedRow();
-        //int id = Integer.parseInt(((Main)parentFrame).getSponsorTable().getValueAt(row, 0).toString());
+        int row = m.getSponsorTable().getSelectedRow();
+        int id = Integer.parseInt(((Main)m).getSponsorTable().getValueAt(row, 0).toString());
         String name = txtSpName.getText().trim();
+        int eid = os.returnIdExpo(cbExpo);
         Float money = Float.parseFloat(txtSpMoney.getText().trim());
         String description = txtSpDes.getText().trim();
         //tao giao dien de thuc thi store
-        CallableStatement cs = db.getConnection().prepareCall("{call EditSponsor(?,?,?,?)}");
+        CallableStatement cs = db.getConnection().prepareCall("{call EditSponsor(?,?,?,?,?)}");
         //truyen tham so cho store
-        cs.setString(1, name);
-        cs.setFloat(2, money);
-        cs.setString(3, description);
+        cs.setInt(1, id);
+        cs.setString(2, name);
+        cs.setInt(3, eid);
+        cs.setFloat(4, money);
+        cs.setString(5, description);
         //thuc thi store
         cs.execute();
         //confirm update request from client
         if(JOptionPane.showConfirmDialog(null, "Do you want to update the record(s)",
                 "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-        cs.execute();
-        ((Main)parentFrame).LoadSponsor();
+            cs.execute();
+            ((Main)m).LoadSponsor();
             JOptionPane.showMessageDialog(null, "The record(s) has been updated","Update Result",JOptionPane.INFORMATION_MESSAGE);
+            dispose();
             }
         }
         catch(Exception ex)
@@ -194,6 +247,7 @@ public class EditSponsor extends javax.swing.JDialog {
             public void run() {
                 EditSponsor dialog = new EditSponsor(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
@@ -206,13 +260,16 @@ public class EditSponsor extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JComboBox cbExpo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtExpoID;
-    private javax.swing.JTextField txtSpDes;
+    private javax.swing.JTextArea txtSpDes;
     private javax.swing.JTextField txtSpMoney;
     private javax.swing.JTextField txtSpName;
     // End of variables declaration//GEN-END:variables
