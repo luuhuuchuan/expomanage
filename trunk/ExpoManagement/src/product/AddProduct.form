@@ -52,7 +52,7 @@
                                   <Component id="txtNumber" alignment="0" pref="193" max="32767" attributes="1"/>
                                   <Component id="jScrollPane1" alignment="1" pref="193" max="32767" attributes="1"/>
                                   <Component id="cbContact" alignment="0" pref="193" max="32767" attributes="0"/>
-                                  <Component id="cbExpo" alignment="1" pref="193" max="32767" attributes="0"/>
+                                  <Component id="cbExhibitor" alignment="1" pref="193" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                           </Group>
@@ -83,7 +83,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbExpo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbExhibitor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -230,7 +230,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cbExpo">
+    <Component class="javax.swing.JComboBox" name="cbExhibitor">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">

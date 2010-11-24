@@ -12,7 +12,10 @@ import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -69,25 +72,24 @@ public class OperationProduct {
         return db.getCallAble(storeName).executeQuery();
     }
 
-    public ResultSet getAllExpo()throws SQLException{
+    public ResultSet getAllExhibitor()throws SQLException{
         String storeName = "{call getAllExhibitor }";
         return db.getCallAble(storeName).executeQuery();
     }
 
-    DefaultComboBoxModel CbExpoModel = null;
+    DefaultComboBoxModel CbExhibitorModel = null;
     HashMap hm = new HashMap();
-
-    public void buildCbExpo(JComboBox cbExpo)
+    public void buildCbExhibitor(JComboBox cbExpo)
     {
-        cbExpo.setModel(CbExpoModel = new DefaultComboBoxModel());
-        CbExpoModel.addElement("-- Choose Exbitor --");
+        cbExpo.setModel(CbExhibitorModel = new DefaultComboBoxModel());
+        CbExhibitorModel.addElement("-- Choose Exhibitor --");
         try{
-            ResultSet rs = getAllExpo();
+            ResultSet rs = getAllExhibitor();
             while(rs.next()){
                 String id = String.valueOf(rs.getInt(1));
                 String name = rs.getString(2);
                 hm.put(name,id);
-                CbExpoModel.addElement(name);
+                CbExhibitorModel.addElement(name);
             }
             rs.close();
         }
@@ -95,9 +97,9 @@ public class OperationProduct {
             ex.printStackTrace();
         }
     }
-    public int returnIdExpo(JComboBox cbExpo)
+    public int returnIdExhibitor(JComboBox cbExhibitor)
     {
-        return Integer.parseInt(hm.get(cbExpo.getSelectedItem().toString().trim()).toString());
+        return Integer.parseInt(hm.get(cbExhibitor.getSelectedItem().toString().trim()).toString());
     }
     DefaultComboBoxModel CbContactModel = null;
     public void buildCbContact(JComboBox cbContact)
@@ -115,5 +117,52 @@ public class OperationProduct {
         catch(Exception ex){
             ex.printStackTrace();
         }
+    }
+    public boolean checkProducts(JComboBox cbExhibitor,JComboBox cbContact,JTextField txtName,JTextField txtPrice,JTextField txtNumber,JTextArea txtDescription){
+        if(cbExhibitor.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null,"Please, select Expo !","Check Product",JOptionPane.WARNING_MESSAGE);
+            cbExhibitor.requestFocus();
+            return false;
+        }
+        if(cbContact.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null,"Please, select CID !","Check Product",JOptionPane.WARNING_MESSAGE);
+            cbContact.requestFocus();
+            return false;
+        }
+        if(txtName.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Please, Enter Name of Product !","Check Product",JOptionPane.WARNING_MESSAGE);
+            txtName.requestFocus();
+            return false;
+        }
+        if(txtPrice.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Please, Enter Price of Product !","Check Product",JOptionPane.WARNING_MESSAGE);
+            txtPrice.requestFocus();
+            return false;
+        }
+        try {
+            Long.parseLong(txtPrice.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Price of Product must Number !","Check Product",JOptionPane.WARNING_MESSAGE);
+            txtPrice.requestFocus();
+            return false;
+        }
+        if(txtNumber.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Please, enter Number Product !","Check Product",JOptionPane.WARNING_MESSAGE);
+            txtNumber.requestFocus();
+            return false;
+        }
+        try {
+            Long.parseLong(txtNumber.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Number Product must Number !","Check Product",JOptionPane.WARNING_MESSAGE);
+            txtNumber.requestFocus();
+            return false;
+        }
+        if(txtDescription.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Please, enter Description !","Check Product",JOptionPane.WARNING_MESSAGE);
+            txtDescription.requestFocus();
+            return false;
+        }
+        return true;
     }
 }

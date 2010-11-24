@@ -13,7 +13,6 @@ package exhibitor;
 
 import dataLayer.DBHelper;
 import expomanagement.Main;
-import java.awt.Frame;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -26,11 +25,11 @@ public class AddExhibitor extends javax.swing.JDialog {
 
     /** Creates new form AddExhibitor */
     Main m = null;
-    Frame parentFrame = null;
+
     OperationExhibitor oex = new OperationExhibitor();
     public AddExhibitor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        parentFrame = parent;
+     
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }
@@ -38,6 +37,7 @@ public class AddExhibitor extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         initComponents();
+        m = (Main)parent;
     }
 
     /** This method is called from within the constructor to
@@ -185,6 +185,8 @@ public class AddExhibitor extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        if(oex.checkExhibitor(txtName, txtFax, txtPhone, txtAddress, txtWebsite))
+        {
         try {
         DBHelper db = null;
         db = new DBHelper();
@@ -208,12 +210,13 @@ public class AddExhibitor extends javax.swing.JDialog {
 
         //thuc thi store
         cs.execute();
-        JOptionPane.showMessageDialog(null, "One new Exhibitor has been added !","New Exhibitor",JOptionPane.INFORMATION_MESSAGE);
-        ((Main)parentFrame).LoadExhibitor();
+        ((Main)m).LoadExhibitor();
+        JOptionPane.showMessageDialog(null, "One new Exhibitor has been added !","New Exhibitor",JOptionPane.INFORMATION_MESSAGE);        
         dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Exhibitor",JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Exhibitor",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
+        }
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
