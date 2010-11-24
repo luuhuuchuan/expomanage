@@ -60,12 +60,12 @@ public class AddProduct extends javax.swing.JDialog {
         btnClose = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescription = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbContact = new javax.swing.JComboBox();
         cbExhibitor = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescription = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Product");
@@ -107,10 +107,6 @@ public class AddProduct extends javax.swing.JDialog {
         jLabel6.setText("Add Product");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        txtDescription.setColumns(20);
-        txtDescription.setRows(5);
-        jScrollPane1.setViewportView(txtDescription);
-
         jLabel7.setText("Exhibitor ID");
 
         jLabel8.setText("Contact ID");
@@ -118,6 +114,10 @@ public class AddProduct extends javax.swing.JDialog {
         cbContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cbExhibitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtDescription.setColumns(20);
+        txtDescription.setRows(5);
+        jScrollPane1.setViewportView(txtDescription);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,13 +143,13 @@ public class AddProduct extends javax.swing.JDialog {
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtPrice, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 193, Short.MAX_VALUE)
-                                    .add(cbExhibitor, 0, 193, Short.MAX_VALUE))
-                                .add(72, 72, 72))
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtPrice, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 222, Short.MAX_VALUE)
+                                    .add(cbExhibitor, 0, 222, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(43, 43, 43))
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                                 .add(jLabel6)
                                 .add(133, 133, 133))))
@@ -189,8 +189,8 @@ public class AddProduct extends javax.swing.JDialog {
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel4)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 91, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(33, 33, 33)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(32, 32, 32)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnAdd)
                     .add(btnReset)
@@ -208,7 +208,7 @@ public class AddProduct extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(op.checkProducts(cbExhibitor, cbContact, txtName, txtPrice, txtNumber, txtDescription)){
+        if(op.checkProducts(cbContact, txtName, txtPrice, txtNumber, txtDescription)){
         try {
         DBHelper db = null;
         db = new DBHelper();
@@ -223,7 +223,7 @@ public class AddProduct extends javax.swing.JDialog {
         String name = txtName.getText().trim();
         float price = Float.parseFloat(txtPrice.getText().trim());
         int number = Integer.parseInt(txtNumber.getText().trim());
-        String description = txtDescription.getText();
+        String description = txtDescription.getText().trim();
 
         //tao giao dien de thuc thi store
         CallableStatement cs = db.getConnection().prepareCall("{call AddProducts(?,?,?,?,?,?,?)}");

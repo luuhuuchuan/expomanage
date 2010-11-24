@@ -15,8 +15,6 @@ import booth.OperationBooths;
 import dataLayer.DBHelper;
 import expomanagement.Main;
 import java.sql.CallableStatement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 /**
  *
@@ -34,16 +32,14 @@ public class EditProduct extends javax.swing.JDialog {
             initComponents();
             db = new DBHelper();
             db.openConnection();
-            op.buildCbExhibitor(cbExhibitor);
             op.buildCbContact(cbContact);
             m = (Main) parent;
             int row = m.getProductsTable().getSelectedRow();
-                cbExhibitor.setSelectedItem(m.getProductsTable().getValueAt(row, 1));
-                cbContact.setSelectedItem(m.getProductsTable().getValueAt(row, 2));
-                txtName.setText(m.getProductsTable().getValueAt(row, 3).toString());
-                txtPrice.setText(m.getProductsTable().getValueAt(row, 4).toString());
-                txtNumber.setText(m.getProductsTable().getValueAt(row, 5).toString());
-                txtDescription.setText(m.getProductsTable().getValueAt(row, 6).toString());
+            cbContact.setSelectedItem(m.getProductsTable().getValueAt(row, 2));
+            txtName.setText(m.getProductsTable().getValueAt(row, 3).toString());
+            txtPrice.setText(m.getProductsTable().getValueAt(row, 4).toString());
+            txtNumber.setText(m.getProductsTable().getValueAt(row, 5).toString());
+            txtDescription.setText(m.getProductsTable().getValueAt(row, 6).toString());
     }
 
     /** This method is called from within the constructor to
@@ -62,15 +58,13 @@ public class EditProduct extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         txtNumber = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescription = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbContact = new javax.swing.JComboBox();
-        cbExhibitor = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescription = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Product");
@@ -83,15 +77,15 @@ public class EditProduct extends javax.swing.JDialog {
 
         jLabel4.setText("Description");
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
-        btnAdd.setText("Save");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,140 +98,126 @@ public class EditProduct extends javax.swing.JDialog {
         jLabel6.setText("Edit Product");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        txtDescription.setColumns(20);
-        txtDescription.setRows(5);
-        jScrollPane1.setViewportView(txtDescription);
-
-        jLabel7.setText("Exhibitor ID");
-
         jLabel8.setText("Contact ID");
 
         cbContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbExhibitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtDescription.setColumns(20);
+        txtDescription.setRows(5);
+        jScrollPane1.setViewportView(txtDescription);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(46, 46, 46)
+                .add(10, 10, 10)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel4)
                     .add(layout.createSequentialGroup()
+                        .add(30, 30, 30)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel8)
                             .add(jLabel1)
                             .add(jLabel2)
-                            .add(jLabel8)
-                            .add(jLabel7))
-                        .add(3, 3, 3))
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(btnAdd)
-                        .add(jLabel3)))
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel4)))
+                    .add(jLabel3))
+                .add(18, 18, 18)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtName)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtPrice)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtNumber)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane1)
                     .add(layout.createSequentialGroup()
-                        .add(22, 22, 22)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtPrice, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 197, Short.MAX_VALUE)
-                            .add(cbExhibitor, 0, 197, Short.MAX_VALUE))
-                        .add(72, 72, 72))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnCancel)
-                        .add(57, 57, 57))))
+                        .add(btnSave)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(btnCancel))))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
+                .addContainerGap(123, Short.MAX_VALUE)
                 .add(jLabel6)
-                .add(125, 125, 125))
+                .add(126, 126, 126))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel6)
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel7)
-                            .add(cbExhibitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(18, 18, 18)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel8)
-                            .add(cbContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(18, 18, 18)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel1))
-                        .add(18, 18, 18)
-                        .add(txtPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jLabel2))
+                .add(36, 36, 36)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel8)
+                    .add(cbContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtNumber, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3))
+                    .add(jLabel1)
+                    .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(txtPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(0, 0, 0)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel4)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 91, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(33, 33, 33)
+                    .add(layout.createSequentialGroup()
+                        .add(64, 64, 64)
+                        .add(jLabel4))
+                    .add(layout.createSequentialGroup()
+                        .add(18, 18, 18)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(txtNumber, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel3))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(27, 27, 27)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnAdd)
-                    .add(btnCancel))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .add(btnCancel)
+                    .add(btnSave))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        if(op.checkProducts(cbExhibitor, cbContact, txtName, txtPrice, txtNumber, txtDescription)){
-        try {
-        db = new DBHelper();
-        db.openConnection();
-        Date today = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        String DateP = sdf.format(today);
-        int EID = op.returnIdExhibitor(cbExhibitor);
-        String CID = cbContact.getSelectedItem().toString().trim();
-        String name = txtName.getText().trim();
-        float price = Float.parseFloat(txtPrice.getText().trim());
-        int number = Integer.parseInt(txtNumber.getText().trim());
-        String description = txtDescription.getText();
-
-        //tao giao dien de thuc thi store
-        CallableStatement cs = db.getConnection().prepareCall("{call EditProduct(?,?,?,?,?,?,?)}");
-        //truyen tham so cho store
-        cs.setInt(1, EID);
-        cs.setString(2, CID);
-        cs.setString(3, name);
-        cs.setFloat(4, price);
-        cs.setInt(5, number);
-        cs.setString(6, description);
-        cs.setString(7,DateP);
-        //thuc thi store
-        if(JOptionPane.showConfirmDialog(null, "Do you want to Save the Product(s)",
-                "Save Product",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-        cs.execute();
-        ((Main)m).LoadProduct();
-            JOptionPane.showMessageDialog(null, "The Product(s) has been Edit","Edit Product",JOptionPane.INFORMATION_MESSAGE);
-         }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Edit Product",JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
-        }
-      }
-    }//GEN-LAST:event_btnAddActionPerformed
-
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        if(op.checkProducts(cbContact, txtName, txtPrice, txtNumber, txtDescription)){
+            try {
+                db = new DBHelper();
+                db.openConnection();
+                int row = m.getProductsTable().getSelectedRow();
+                int id = Integer.parseInt(m.getProductsTable().getValueAt(row, 0).toString());
+                String CID = cbContact.getSelectedItem().toString().trim();
+                String name = txtName.getText().trim();
+                float price = Float.parseFloat(txtPrice.getText().trim());
+                int number = Integer.parseInt(txtNumber.getText().trim());
+                String description = txtDescription.getText().trim();
+
+                //tao giao dien de thuc thi store
+                CallableStatement cs = db.getConnection().prepareCall("{call EditProduct(?,?,?,?,?,?)}");
+                //truyen tham so cho store
+                cs.setInt(1,id);
+                cs.setString(2, CID);
+                cs.setString(3, name);
+                cs.setFloat(4, price);
+                cs.setInt(5, number);
+                cs.setString(6, description);
+                //thuc thi store
+                if(JOptionPane.showConfirmDialog(null, "Do you want edit this Product",
+                        "Edit Product",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                    cs.execute();
+                    ((Main)m).LoadProduct();
+                    JOptionPane.showMessageDialog(null, "One Product has been Edit","Edit Product",JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Edit Product",JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+        }
+}//GEN-LAST:event_btnSaveActionPerformed
 
     /**
     * @param args the command line arguments
@@ -258,16 +238,14 @@ public class EditProduct extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnSave;
     private javax.swing.JComboBox cbContact;
-    private javax.swing.JComboBox cbExhibitor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtDescription;

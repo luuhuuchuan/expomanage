@@ -3,7 +3,7 @@ go
 -- them du lieu de test xem bang Products trong Java co load dc thong tu DB khong
 -- luu y kieu datetime la thang truoc ngay sau (mm/dd/yy)
 insert into Products (EID,CID,PName, PPrice, PNumber, PDescription, PDate)
-	values (1,'A001','Nokia C3',4500000,20,'Dong xe moi cua Honda','1/1/2010')
+	values (1,'A001','Nokia C3',4500000,20,'Dong dien thoai moi cua Nokia','1/1/2010')
 insert into Products (EID,CID,PName, PPrice, PNumber, PDescription, PDate)
 	values (1,'A001','Nokia X6',6940000,30,'Dong dien thoai cam ung','7/5/2010')
 insert into Products (EID,CID,PName, PPrice, PNumber, PDescription, PDate)
@@ -32,49 +32,35 @@ VALUES(@EID,@CID,@Name,@Price,@Number,@Description,@Date)
 
 --Tao Store de xoa Product
 CREATE PROC DeleteProducts
-@Name nvarchar(100)
+@id int
 AS
-  BEGIN 
-        DECLARE @id int
-        SET @id=(SELECT Pid FROM Products WHERE PName = @Name)
-        -- Bat dau xoa
-        DELETE FROM Products WHERE PName = @Name
-  END
+DELETE FROM Products WHERE PID = @id
 
 --Tao Store de tim kiem Product theo ten
-CREATE PROC findbyName
-@Name nvarchar(100)
+Create PROC findProduct
+@Where nvarchar(50),
+@Key nvarchar(100)
 AS
-BEGIN
-	SELECT * FROM Products WHERE PName = @Name
-END
+Declare @sp nvarchar(200)
+set @sp = 'Select * from Products where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+execute(@sp)
 
+exec findProduct 'PID', '4'
 --Tao Store de Edit Product
 Create Proc EditProduct
 @Id int,
-@EID int,
 @CID char(10),
 @Name nvarchar(100),
 @Price float,
 @Number int,
-@Description ntext,
-@Date smalldatetime
+@Description ntext
 AS
-	Begin
-		Update Products
-		Set EID = @EID,CID = @CID,PName = @Name,PPrice = @Price,PNumber = @Number,PDescription = @Description,PDate = @Date
-		Where PID = @Id		
-	End
+Update Products
+Set CID = @CID,PName = @Name,PPrice = @Price,PNumber = @Number,PDescription = @Description
+Where PID = @Id
 
 --Store lay ID cua Exhibitor
 create proc get_EID
 as
 select EName, EID
 from Exhibitor
-
---Tao store lay thong tinc cua 1 Product boi ID
-create proc getProductByID
-@id int
-as
-select * from Products 
-where PID=@id
