@@ -14,7 +14,6 @@ package sponsor;
 import dataLayer.DBHelper;
 import expomanagement.Main;
 import java.sql.CallableStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,27 +31,15 @@ public class EditSponsor extends javax.swing.JDialog {
     /** Creates new form EditSponsor */
     public EditSponsor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        try {
-            initComponents();
-            os.buildCbExpo(cbExpo);
-            m = (Main) parent;
-            int row = m.getSponsorTable().getSelectedRow();
-            String id = ((Main) m).getSponsorTable().getValueAt(row, 0).toString();
-            db = new DBHelper();
-            db.openConnection();
-            String storeName = "{call getSponsorByID("+id+") }";
-            ResultSet rs = db.getCallAble(storeName).executeQuery();
-            while(rs.next()){
-                txtExpoID.setText(rs.getString(1));
-                cbExpo.setSelectedItem(((Main) m).getSponsorTable().getValueAt(row, 2));
-                txtSpName.setText(rs.getString(3));
-                txtSpMoney.setText(String.valueOf(rs.getFloat(4)).toString());
-                txtSpDes.setText(rs.getString(5));
-            }
-            rs.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(EditSponsor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        initComponents();
+        os.buildCbExpo(cbExpo);
+        m = (Main) parent;
+        int row = m.getSponsorTable().getSelectedRow();
+        txtSpID.setText(((Main) m).getSponsorTable().getValueAt(row, 0).toString());
+        txtSpName.setText(((Main) m).getSponsorTable().getValueAt(row, 1).toString());
+        cbExpo.setSelectedItem(((Main) m).getSponsorTable().getValueAt(row, 2));
+        txtSpMoney.setText(((Main) m).getSponsorTable().getValueAt(row, 3).toString());
+        txtSpDes.setText(((Main) m).getSponsorTable().getValueAt(row, 4).toString());
     }
 
     /** This method is called from within the constructor to
@@ -68,7 +55,7 @@ public class EditSponsor extends javax.swing.JDialog {
         btnEdit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        txtExpoID = new javax.swing.JTextField();
+        txtSpID = new javax.swing.JTextField();
         txtSpName = new javax.swing.JTextField();
         txtSpMoney = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -101,7 +88,7 @@ public class EditSponsor extends javax.swing.JDialog {
 
         jLabel5.setText("Sponsor Description:");
 
-        txtExpoID.setEditable(false);
+        txtSpID.setEditable(false);
 
         jLabel4.setText("Sponsor Money");
 
@@ -135,7 +122,7 @@ public class EditSponsor extends javax.swing.JDialog {
                             .add(txtSpMoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, txtSpName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, cbExpo, 0, 269, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtExpoID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtSpID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jLabel5)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -147,7 +134,7 @@ public class EditSponsor extends javax.swing.JDialog {
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
-                    .add(txtExpoID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(txtSpID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
@@ -268,8 +255,8 @@ public class EditSponsor extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtExpoID;
     private javax.swing.JTextArea txtSpDes;
+    private javax.swing.JTextField txtSpID;
     private javax.swing.JTextField txtSpMoney;
     private javax.swing.JTextField txtSpName;
     // End of variables declaration//GEN-END:variables
