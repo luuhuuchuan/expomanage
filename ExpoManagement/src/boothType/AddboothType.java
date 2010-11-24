@@ -39,68 +39,6 @@ public class AddboothType extends javax.swing.JDialog {
         ob.buildCbExpo(cbExpo);
         m = (Main)parent;
     }
-    private boolean checkformBoothType(){
-        if(cbExpo.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this,"Please,select Expo");
-            cbExpo.requestFocus();
-            return false;
-        }
-        if(txtBTName.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter Name of BoothType");
-            txtBTName.requestFocus();
-            return false;
-        }
-        if(txtBTHeight.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter BoothType Height");
-            txtBTHeight.requestFocus();
-            return false;
-        }
-        try {
-            Long.parseLong(txtBTHeight.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "BoothType Height must Number");
-            txtBTHeight.requestFocus();
-            return false;
-        }
-        if(txtBTWidth.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter BoothType Width");
-            txtBTWidth.requestFocus();
-            return false;
-        }
-        try {
-            Long.parseLong(txtBTWidth.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "BoothType Width must Number");
-            txtBTWidth.requestFocus();
-            return false;
-        }
-        if(txtBremain.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter Booth Remain");
-            txtBremain.requestFocus();
-            return false;
-        }
-        try {
-            Long.parseLong(txtBremain.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Booth Remain must Number");
-            txtBremain.requestFocus();
-            return false;
-        }
-        if(txtBlength.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter Booth Length");
-            txtBlength.requestFocus();
-            return false;
-        }
-        try {
-            Long.parseLong(txtBlength.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Booth Length must Number");
-            txtBlength.requestFocus();
-            return false;
-        }
-
-        return true;
-    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -255,7 +193,7 @@ public class AddboothType extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(checkformBoothType()){
+        if(ob.checkformBoothType(cbExpo, txtBTName, txtBTHeight, txtBTWidth, txtBremain, txtBlength)){
             try {
                 DBHelper db = null;
                 db = new DBHelper();

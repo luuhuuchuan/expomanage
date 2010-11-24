@@ -55,41 +55,6 @@ public class Editbooths extends javax.swing.JDialog {
         txtBmoney.setText(m.getBoothTable().getValueAt(row, 6).toString());
         buttonGroup1.isSelected(null);
     }
-    private boolean checkformBooth(){
-        if(cbStaff.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this,"Please,select Staff");
-            cbStaff.requestFocus();
-            return false;
-        }
-        if(cbContact.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this,"Please,select Contact ID");
-            cbStaff.requestFocus();
-            return false;
-        }
-        if(cbBoothType.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this,"Please,select BoothType");
-            cbBoothType.requestFocus();
-            return false;
-        }
-        if(txtBname.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter Name of Booth");
-            txtBname.requestFocus();
-            return false;
-        }
-        if(txtBmoney.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please,Enter Booth Money");
-            txtBmoney.requestFocus();
-            return false;
-        }
-        try {
-            Long.parseLong(txtBmoney.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Booth Money must Number");
-            return false;
-        }
-
-        return true;
-    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -280,7 +245,7 @@ public class Editbooths extends javax.swing.JDialog {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        if(checkformBooth()){
+        if(ob.checkformBooth(cbStaff, cbContact, cbBoothType, txtBname, txtBmoney)){
             try {
                 DBHelper db = null;
                 db = new DBHelper();

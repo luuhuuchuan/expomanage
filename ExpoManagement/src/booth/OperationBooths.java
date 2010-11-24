@@ -6,13 +6,16 @@
 package booth;
 
 import dataLayer.DBHelper;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,6 +31,42 @@ public class OperationBooths {
     HashMap hm = new HashMap();
     DefaultComboBoxModel CbBoothTypeModel = null;
     HashMap hm2 = new HashMap();
+    public boolean checkformBooth(JComboBox cbStaff, JComboBox cbContact, JComboBox cbBoothType, JTextField txtBname, JTextField txtBmoney){
+        if(cbStaff.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null,"Please,select Staff");
+            cbStaff.requestFocus();
+            return false;
+        }
+        if(cbContact.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null,"Please,select Contact ID");
+            cbStaff.requestFocus();
+            return false;
+        }
+        if(cbBoothType.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null,"Please,select BoothType");
+            cbBoothType.requestFocus();
+            return false;
+        }
+        if(txtBname.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Please,Enter Name of Booth");
+            txtBname.requestFocus();
+            return false;
+        }
+        if(txtBmoney.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Please,Enter Booth Money");
+            txtBmoney.requestFocus();
+            return false;
+        }
+        try {
+            Long.parseLong(txtBmoney.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Booth Money must Number");
+            txtBmoney.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
     public void loadAllBooths(JTable jTable1){
         jTable1.setModel(BoothsModel = new DefaultTableModel());
         Vector v = new Vector();
@@ -131,6 +170,68 @@ public class OperationBooths {
             ex.printStackTrace();
         }
     }
+    public void delBooth(int id){
+        try{
+        CallableStatement cs = db.getConnection().prepareCall("{call deleteBooths(?)}");
+        //truyen tham so cho store
+        cs.setInt(1, id);
+        cs.execute();
+
+        JOptionPane.showMessageDialog(null, "One Booth has been deleted !","Delete Booth",JOptionPane.INFORMATION_MESSAGE);
+
+        }catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, "Can't delete this Booth !","Delete deleteBooth",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public void doSearch(String Where, String Key, JTable tblBooths){
+        try
+        {
+            String storeName = "{call findBooths('" + Where + "','" + Key + "')}";
+            tblBooths.setModel(BoothsModel = new DefaultTableModel());
+            Vector v = new Vector();
+            String [] heading = {"Contact","Booth ID","Booth Type","Staff","Booth Name","Date","Cost","Booker"};
+            for(String s : heading)
+                v.add(s);
+            BoothsModel.setColumnIdentifiers(v);
+            ResultSet rs = db.getCallAble(storeName).executeQuery();
+            while(rs.next()){
+                v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getInt(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getDate(6));
+                v.add(rs.getFloat(7));
+                if(rs.getBoolean(8))
+                    v.add("Yes");
+                else
+                    v.add("No");
+                BoothsModel.addRow(v);
+            }
+            rs.close();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    DefaultComboBoxModel CbWhereBModel = null;
+    HashMap hmbt = new HashMap();
+    public void buildCbWhereB(JComboBox cbWhereB)
+    {
+        cbWhereB.setModel(CbWhereBModel = new DefaultComboBoxModel());
+        CbWhereBModel.addElement("Booth ID");
+        hmbt.put("Booth ID","BID");
+        CbWhereBModel.addElement("Booth Name");
+        hmbt.put("Booth Name","BName");
+        CbWhereBModel.addElement("Staff");
+        hmbt.put("Staff Name","SName");
+    }
+    public String returnSearch(JComboBox cbWhereBT)
+    {
+        return hmbt.get(cbWhereBT.getSelectedItem().toString().trim()).toString();
+    }
     public int returnBTID(JComboBox cbBoothType)
     {
         return Integer.parseInt(hm2.get(cbBoothType.getSelectedItem().toString().trim()).toString());
@@ -139,5 +240,6 @@ public class OperationBooths {
     {
         return Integer.parseInt(hm.get(cbStaff.getSelectedItem().toString().trim()).toString());
     }
+
 
 }
