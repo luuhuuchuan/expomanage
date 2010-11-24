@@ -136,6 +136,7 @@ public class Addbooths extends javax.swing.JDialog {
         jLabel7.setText("Booth Booker :");
 
         buttonGroup1.add(btnYes);
+        btnYes.setSelected(true);
         btnYes.setText("Yes");
 
         buttonGroup1.add(btnNo);
@@ -294,7 +295,7 @@ public class Addbooths extends javax.swing.JDialog {
                 float money = Float.parseFloat(txtBmoney.getText().trim());
 
                 //tao giao dien de thuc thi store
-                CallableStatement cs = db.getConnection().prepareCall("{call AddBoothType(?,?,?,?,?,?,?)}");
+                CallableStatement cs = db.getConnection().prepareCall("{call AddBooths (?,?,?,?,?,?,?)}");
                 //truyen tham so cho store
                 cs.setInt(1, BTID);
                 cs.setInt(2, SID);
@@ -303,9 +304,9 @@ public class Addbooths extends javax.swing.JDialog {
                 cs.setString(5, bdate);
                 cs.setFloat(6, money);
                 if(btnYes.isSelected())
-                    cs.setBoolean(7, true);
-                else if(btnNo.isSelected())
-                    cs.setBoolean(7, false);
+                    cs.setInt(7, 1);
+                else 
+                    cs.setInt(7, 0);
                 //thuc thi store
                 cs.execute();
                 JOptionPane.showMessageDialog(null, "One new Booth has been added","Add new Booth",JOptionPane.INFORMATION_MESSAGE);

@@ -38,18 +38,18 @@ public class Editbooths extends javax.swing.JDialog {
         ob.buildAllStaff(cbStaff);
         ob.buildAllContactID(cbContact);
         ob.buildAlBoothType(cbBoothType);
-//        parentFrame = parent;
-//        m = (Main) parent;
-//
-//        int row = m.getBoothTable().getSelectedRow();
-//
-//        cbStaff.setSelectedItem(m.getBoothTable().getValueAt(row, 0).toString());
-//        cbContact.setSelectedItem(m.getBoothTable().getValueAt(row, 1).toString());
-//        cbBoothType.setSelectedItem(m.getBoothTable().getValueAt(row, 2).toString());
-//        txtBname.setText(m.getBoothTable().getValueAt(row, 3).toString());
-//        txtBDate.setDate(null);
-//        txtBmoney.setText(m.getBoothTable().getValueAt(row, 5).toString());
-//        buttonGroup1.isSelected(null);
+        parentFrame = parent;
+        m = (Main)parent;
+
+        int row = m.getBoothTable().getSelectedRow();
+
+        cbStaff.setSelectedItem(m.getBoothTable().getValueAt(row, 0).toString());
+        cbContact.setSelectedItem(m.getBoothTable().getValueAt(row, 1).toString());
+        cbBoothType.setSelectedItem(m.getBoothTable().getValueAt(row, 2).toString());
+        txtBname.setText(m.getBoothTable().getValueAt(row, 3).toString());
+        txtBDate.setDate(null);
+        txtBmoney.setText(m.getBoothTable().getValueAt(row, 5).toString());
+        buttonGroup1.isSelected(null);
     }
     private boolean checkformBooth(){
         if(cbStaff.getSelectedIndex() == 0){
