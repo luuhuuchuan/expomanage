@@ -12,6 +12,7 @@
 package sponsor;
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -24,7 +25,7 @@ public class AddSponsor extends javax.swing.JDialog {
 
     /** Creates new form AddSponsor */
     OperationSponsor os  = new OperationSponsor();
-
+    Main m = null;
 
     public AddSponsor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -35,6 +36,7 @@ public class AddSponsor extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         initComponents();
+        m = (Main) parent;
         os.buildCbExpo(cbExpo);
        
 
@@ -211,7 +213,7 @@ public class AddSponsor extends javax.swing.JDialog {
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Sponsor has been added !","Add new Sponsor",JOptionPane.INFORMATION_MESSAGE);
         dispose();
-
+        ((Main)m).LoadSponsor();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new Sponsor",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();

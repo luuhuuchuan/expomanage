@@ -80,7 +80,7 @@ public class OperationSponsor {
             ex.printStackTrace();
         }
     }
-    public int returnIdExpo(JComboBox cbExpo)
+public int returnIdExpo(JComboBox cbExpo)
     {
         return Integer.parseInt(hm.get(cbExpo.getSelectedItem().toString().trim()).toString());
     }
