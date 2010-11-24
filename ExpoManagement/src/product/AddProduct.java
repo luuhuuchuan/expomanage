@@ -11,14 +11,11 @@
 
 package product;
 
-import booth.OperationBooths;
 import dataLayer.DBHelper;
 import expomanagement.Main;
-import java.awt.Frame;
 import java.sql.CallableStatement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 /**
@@ -29,10 +26,7 @@ public class AddProduct extends javax.swing.JDialog {
 
     /** Creates new form AddProduct */
     Main m = null;
-    Frame parentFrame = null;
     OperationProduct op = new OperationProduct();
-
-    DefaultComboBoxModel CbContactModel = null;
     public AddProduct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         try {
@@ -42,8 +36,9 @@ public class AddProduct extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         initComponents();
-        op.buildCbExpo(cbExpo);
+        op.buildCbExhibitor(cbExhibitor);
         op.buildCbContact(cbContact);
+        m = (Main)parent;
     }
     /** This method is called from within the constructor to
      * initialize the form.
@@ -70,7 +65,7 @@ public class AddProduct extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbContact = new javax.swing.JComboBox();
-        cbExpo = new javax.swing.JComboBox();
+        cbExhibitor = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Product");
@@ -122,7 +117,7 @@ public class AddProduct extends javax.swing.JDialog {
 
         cbContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbExpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbExhibitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,7 +148,7 @@ public class AddProduct extends javax.swing.JDialog {
                                     .add(org.jdesktop.layout.GroupLayout.LEADING, txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                                     .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 193, Short.MAX_VALUE)
-                                    .add(cbExpo, 0, 193, Short.MAX_VALUE))
+                                    .add(cbExhibitor, 0, 193, Short.MAX_VALUE))
                                 .add(72, 72, 72))
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                                 .add(jLabel6)
@@ -175,7 +170,7 @@ public class AddProduct extends javax.swing.JDialog {
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel7)
-                            .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(cbExhibitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(18, 18, 18)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel8)
@@ -213,6 +208,7 @@ public class AddProduct extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        if(op.checkProducts(cbExhibitor, cbContact, txtName, txtPrice, txtNumber, txtDescription)){
         try {
         DBHelper db = null;
         db = new DBHelper();
@@ -221,7 +217,7 @@ public class AddProduct extends javax.swing.JDialog {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         String DateP = sdf.format(today);
         
-        int EID = op.returnIdExpo(cbExpo);;
+        int EID = op.returnIdExhibitor(cbExhibitor);;
         String CID = cbContact.getSelectedItem().toString().trim();
 
         String name = txtName.getText().trim();
@@ -241,24 +237,25 @@ public class AddProduct extends javax.swing.JDialog {
         cs.setString(7,DateP);
         //thuc thi store
         cs.execute();
-        JOptionPane.showMessageDialog(null, "One new Product has been added !","New Product",JOptionPane.INFORMATION_MESSAGE);
-        ((Main)parentFrame).LoadProduct();
+        ((Main)m).LoadProduct();
+        JOptionPane.showMessageDialog(null, "One new Product has been added !","New Product",JOptionPane.INFORMATION_MESSAGE);        
         dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Product",JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","New Product",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
+     }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-        cbExpo.setSelectedItem(0);
-        cbContact.setSelectedItem(0);
+        cbExhibitor.setSelectedIndex(0);
+        cbContact.setSelectedIndex(0);
         txtName.setText(null);
         txtPrice.setText(null);
         txtNumber.setText(null);
         txtDescription.setText(null);
-        txtName.requestFocus();
+        cbExhibitor.requestFocus();
     }//GEN-LAST:event_btnResetActionPerformed
 
     /**
@@ -284,7 +281,7 @@ public class AddProduct extends javax.swing.JDialog {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReset;
     private javax.swing.JComboBox cbContact;
-    private javax.swing.JComboBox cbExpo;
+    private javax.swing.JComboBox cbExhibitor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

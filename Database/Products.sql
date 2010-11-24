@@ -69,5 +69,5 @@ AS
 --Store lay ID cua Exhibitor
 create proc get_EID
 as
-select ExName, ExID
-from Expo
+select EName, EID
+from Exhibitor

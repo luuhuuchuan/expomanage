@@ -9,7 +9,9 @@ import dataLayer.DBHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -51,6 +53,49 @@ public class OperationExhibitor {
     public ResultSet getAllExhibitor()throws SQLException{
         String storeName = "{call getAllExhibitor }";
         return db.getCallAble(storeName).executeQuery();
+    }
+    public boolean checkExhibitor(JTextField txtName,JTextField txtFax,JTextField txtPhone,JTextField txtAddress,JTextField txtWebsite){
+        if(txtName.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter Name of Exhibitor !","Check Exhibitor",JOptionPane.WARNING_MESSAGE);
+            txtName.requestFocus();
+            return false;
+        }
+        if(txtFax.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please,Enter Fax of Exhibitor","Check Exhibitor",JOptionPane.WARNING_MESSAGE);
+            txtFax.requestFocus();
+            return false;
+        }
+        try {
+            Long.parseLong(txtFax.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Fax must be number","Check Exhibitor",JOptionPane.WARNING_MESSAGE);
+            txtFax.requestFocus();
+            return false;
+        }
+        if(txtPhone.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Please,Enter phone of Exhibitor","Check Exhibitor",JOptionPane.WARNING_MESSAGE);
+            txtPhone.requestFocus();
+            return false;
+        }
+        try {
+            int age = Integer.parseInt(txtPhone.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Phone must be number","Check Exhibitor",JOptionPane.WARNING_MESSAGE);
+            txtPhone.requestFocus();
+            return false;
+        }
+        if(txtAddress.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please,Enter Address of Exhibitor","Check Exhibitor",JOptionPane.WARNING_MESSAGE);
+            txtAddress.requestFocus();
+            return false;
+        }
+        if(txtWebsite.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please,Enter Website of Exhibitor","Check Exhibitor",JOptionPane.WARNING_MESSAGE);
+            txtWebsite.requestFocus();
+            return false;
+        }
+        return true;
     }
 //    public ResultSet doSearch(String str)throws SQLException{
 //        //mo ket noi
