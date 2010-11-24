@@ -88,11 +88,11 @@
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtBDate" pref="173" max="32767" attributes="0"/>
                       <Component id="cbContact" alignment="0" pref="173" max="32767" attributes="0"/>
                       <Component id="cbStaff" alignment="0" pref="173" max="32767" attributes="0"/>
                       <Component id="cbBoothType" alignment="1" pref="173" max="32767" attributes="0"/>
                       <Component id="txtBname" alignment="0" pref="173" max="32767" attributes="0"/>
-                      <Component id="txtBdate" alignment="0" pref="173" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnYes" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -128,9 +128,9 @@
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtBdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBDate" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -225,8 +225,6 @@
             <Property name="text" type="java.lang.String" value="Booth Booker :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtBdate">
-        </Component>
         <Component class="javax.swing.JTextField" name="txtBmoney">
         </Component>
         <Component class="javax.swing.JRadioButton" name="btnYes">
@@ -244,6 +242,11 @@
               <ComponentRef name="buttonGroup1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="No"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="txtBDate">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="MM/dd/yyyy"/>
           </Properties>
         </Component>
       </SubComponents>

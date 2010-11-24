@@ -25,6 +25,34 @@ public class OperationBoothType {
 
     DBHelper db = null;
     DefaultTableModel BoothTypeModel = null;
+    Main m = new Main();
+    Frame parentFrame = null;
+    private Frame parent;
+    public void getResult(String pattern){
+        parentFrame = parent;
+        m = (Main) parent;
+        try{
+            //tao van tin sql
+//            if(m.tb.getSelectedItem() == "First Name"){
+//                String sqlCmd = "Select * from EMPLOYEE where FirstName like '%"+pattern+"%'";
+//                ResultSet rs = db.getStatement().executeQuery(sqlCmd);
+//                this.showResul(rs);
+//            }
+//            else if(btnList.getSelectedItem() == "Last Name"){
+//                String sqlCmd = "Select * from EMPLOYEE where LastName like '%"+pattern+"%'";
+//                ResultSet rs = db.getStatement().executeQuery(sqlCmd);
+//                this.showResul(rs);
+//            }
+//            else if(btnList.getSelectedItem() == "Address"){
+//                String sqlCmd = "Select * from EMPLOYEE where Address like '%"+pattern+"%'";
+//                ResultSet rs = db.getStatement().executeQuery(sqlCmd);
+//                this.showResul(rs);
+//            }
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
     public void loadAllBoothType(JTable jTable1){
         jTable1.setModel(BoothTypeModel = new DefaultTableModel());
         Vector v = new Vector();
