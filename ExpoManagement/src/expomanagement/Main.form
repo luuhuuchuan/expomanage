@@ -252,7 +252,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhere" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtKeyword" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtKeyword" pref="229" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFind" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -313,7 +313,7 @@
                               <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/expomanagement/icon_func/33.png"/>
+                              <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -500,7 +500,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereBT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind1" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtFind1" pref="229" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -564,7 +564,7 @@
                               <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/expomanagement/icon_func/33.png"/>
+                              <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -750,7 +750,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereB" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind2" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtFind2" pref="229" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx2" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -814,7 +814,7 @@
                               <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/expomanagement/icon_func/33.png"/>
+                              <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -995,7 +995,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind3" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtFind3" pref="229" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1053,7 +1053,7 @@
                               <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/expomanagement/icon_func/33.png"/>
+                              <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -1234,7 +1234,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereEx" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind" pref="232" max="32767" attributes="0"/>
+                                  <Component id="txtFind" pref="229" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1298,7 +1298,7 @@
                               <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/expomanagement/icon_func/33.png"/>
+                              <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -1521,16 +1521,16 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="btnAddS" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnEditS" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnDeleteS" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword1" pref="230" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword1" pref="227" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindS" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1594,7 +1594,7 @@
                               <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/expomanagement/icon_func/33.png"/>
+                              <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -1775,7 +1775,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword2" pref="230" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword2" pref="227" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1833,7 +1833,7 @@
                               <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/expomanagement/icon_func/33.png"/>
+                              <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -2014,7 +2014,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword" pref="230" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword" pref="227" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2078,7 +2078,7 @@
                               <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/expomanagement/icon_func/33.png"/>
+                              <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
