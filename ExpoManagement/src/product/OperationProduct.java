@@ -25,8 +25,8 @@ import javax.swing.table.DefaultTableModel;
 public class OperationProduct {
     DBHelper db = null;
 
-    DefaultTableModel ProductsModel = null;
     public void loadAllProduct(JTable jTable1){
+        DefaultTableModel ProductsModel = null;
         jTable1.setModel(ProductsModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"Product Code","Product Name","Product Price","Product Number","Date"};
