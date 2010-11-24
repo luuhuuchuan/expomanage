@@ -1457,6 +1457,12 @@ public class Main extends javax.swing.JFrame {
     public JTable getSponsorTable(){
         return tblSponsor;
     }
+    public JTable getBoothTypeTable(){
+        return tblBoothType;
+    }
+    public JTable getBoothTable(){
+        return tblBooth;
+    }
     /**
     * @param args the command line arguments
     */
