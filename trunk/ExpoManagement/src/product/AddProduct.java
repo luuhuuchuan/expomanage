@@ -217,7 +217,7 @@ public class AddProduct extends javax.swing.JDialog {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         String DateP = sdf.format(today);
         
-        int EID = op.returnIdExhibitor(cbExhibitor);;
+        int EID = op.returnIdExhibitor(cbExhibitor);
         String CID = cbContact.getSelectedItem().toString().trim();
 
         String name = txtName.getText().trim();
