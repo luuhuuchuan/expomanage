@@ -46,16 +46,22 @@ VALUES(@Name,@ExID,@Height,@Width,@BoothRemain,@BoothLength)
 create proc deleteBoothType
 @ID int
 as
-delete from BoothType
-where BTID = @ID
+begin
+	delete from BoothType
+		where BTID = @ID
+	delete from Booths
+		where BTID = @ID
+end
+
+
 
 --Tao Store de tim kiem Product theo ten
-Create PROC findBoothType
+create PROC findBoothType
 @Where nvarchar(50),
 @Key nvarchar(100)
 AS
 Declare @fbt nvarchar(200)
-set @fbt = 'Select * from BoothType where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+set @fbt = 'select BT.BTID,BT.BTName,E.ExName,BT.BTHeight, BT.BTWidth, BT.BoothRemain, BT.BoothLength from BoothType BT join Expo E on BT.ExID = E.ExID where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
 execute(@fbt)
 
 
