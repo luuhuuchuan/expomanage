@@ -492,9 +492,9 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="btnAddBT1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnEditBT1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnEditBT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnDeleteEx1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnDeleteBT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -511,8 +511,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnAddBT1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnEditBT1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnDeleteEx1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnEditBT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteBT" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbWhereBT" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtFindBT" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
@@ -541,7 +541,7 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddBT1ActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnEditBT1">
+                        <Component class="javax.swing.JButton" name="btnEditBT">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="12" style="0"/>
@@ -550,15 +550,16 @@
                               <Image iconType="3" name="/expomanagement/icon_func/69.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Edit"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditBT1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditBTActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnDeleteEx1">
+                        <Component class="javax.swing.JButton" name="btnDeleteBT">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="12" style="0"/>
@@ -567,12 +568,13 @@
                               <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteEx1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteBTActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -683,6 +685,9 @@
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblBoothTypeFocusGained"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
