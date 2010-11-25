@@ -33,34 +33,34 @@ public class OperationBooths {
     HashMap hm2 = new HashMap();
     public boolean checkformBooth(JComboBox cbStaff, JComboBox cbContact, JComboBox cbBoothType, JTextField txtBname, JTextField txtBmoney){
         if(cbStaff.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null,"Please,select Staff");
+            JOptionPane.showMessageDialog(null,"Please,select Staff","Check Information",JOptionPane.ERROR_MESSAGE);
             cbStaff.requestFocus();
             return false;
         }
         if(cbContact.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null,"Please,select Contact ID");
+            JOptionPane.showMessageDialog(null,"Please,select Contact ID","Check Information",JOptionPane.ERROR_MESSAGE);
             cbStaff.requestFocus();
             return false;
         }
         if(cbBoothType.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null,"Please,select BoothType");
+            JOptionPane.showMessageDialog(null,"Please,select BoothType","Check Information",JOptionPane.ERROR_MESSAGE);
             cbBoothType.requestFocus();
             return false;
         }
         if(txtBname.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter Name of Booth");
+            JOptionPane.showMessageDialog(null,"Please,Enter Name of Booth","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBname.requestFocus();
             return false;
         }
         if(txtBmoney.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter Booth Money");
+            JOptionPane.showMessageDialog(null,"Please,Enter Booth Money","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBmoney.requestFocus();
             return false;
         }
         try {
-            Long.parseLong(txtBmoney.getText());
+            Float.parseFloat(txtBmoney.getText());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Booth Money must Number");
+            JOptionPane.showMessageDialog(null, "Booth Money must Number","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBmoney.requestFocus();
             return false;
         }
@@ -172,13 +172,14 @@ public class OperationBooths {
     }
     public void delBooth(int id){
         try{
-        CallableStatement cs = db.getConnection().prepareCall("{call deleteBooths(?)}");
-        //truyen tham so cho store
-        cs.setInt(1, id);
-        cs.execute();
-
-        JOptionPane.showMessageDialog(null, "One Booth has been deleted !","Delete Booth",JOptionPane.INFORMATION_MESSAGE);
-
+            CallableStatement cs = db.getConnection().prepareCall("{call deleteBooths(?)}");
+            //truyen tham so cho store
+            cs.setInt(1, id);
+            if(JOptionPane.showConfirmDialog(null, "Do you want to delete the record(s)",
+                "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                    cs.execute();
+                    JOptionPane.showMessageDialog(null, "One Booth has been deleted !","Delete Booth",JOptionPane.INFORMATION_MESSAGE);
+                }
         }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, "Can't delete this Booth !","Delete deleteBooth",JOptionPane.ERROR_MESSAGE);

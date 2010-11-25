@@ -7,15 +7,12 @@ package boothType;
 
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
-import java.awt.Frame;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 //import java.sql.SQLException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Vector;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -32,60 +29,48 @@ public class OperationBoothType {
     DefaultTableModel BoothTypeModel = null;
     public boolean checkformBoothType(JComboBox cbExpo,JTextField txtBTName, JTextField txtBTHeight, JTextField txtBTWidth, JTextField txtBlength){
         if(cbExpo.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null,"Please,select Expo");
+            JOptionPane.showMessageDialog(null,"Please,select Expo","Check Information",JOptionPane.ERROR_MESSAGE);
             cbExpo.requestFocus();
             return false;
         }
         if(txtBTName.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter Name of BoothType");
+            JOptionPane.showMessageDialog(null,"Please,Enter Name of BoothType","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBTName.requestFocus();
             return false;
         }
         if(txtBTHeight.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter BoothType Height");
+            JOptionPane.showMessageDialog(null,"Please,Enter BoothType Height","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBTHeight.requestFocus();
             return false;
         }
         try {
-            Long.parseLong(txtBTHeight.getText());
+            Float.parseFloat(txtBTHeight.getText());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "BoothType Height must Number");
+            JOptionPane.showMessageDialog(null, "BoothType Height must Number","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBTHeight.requestFocus();
             return false;
         }
         if(txtBTWidth.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter BoothType Width");
+            JOptionPane.showMessageDialog(null,"Please,Enter BoothType Width","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBTWidth.requestFocus();
             return false;
         }
         try {
-            Long.parseLong(txtBTWidth.getText());
+            Float.parseFloat(txtBTWidth.getText());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "BoothType Width must Number");
+            JOptionPane.showMessageDialog(null, "BoothType Width must Number","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBTWidth.requestFocus();
             return false;
         }
-//        if(txtBremain.getText().equals("")){
-//            JOptionPane.showMessageDialog(null,"Please,Enter Booth Remain");
-//            txtBremain.requestFocus();
-//            return false;
-//        }
-//        try {
-//            Long.parseLong(txtBremain.getText());
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Booth Remain must Number");
-//            txtBremain.requestFocus();
-//            return false;
-//        }
         if(txtBlength.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter Booth Length");
+            JOptionPane.showMessageDialog(null,"Please,Enter Booth Length","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBlength.requestFocus();
             return false;
         }
         try {
-            Long.parseLong(txtBlength.getText());
+            Float.parseFloat(txtBlength.getText());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Booth Length must Number");
+            JOptionPane.showMessageDialog(null, "Booth Length must Number","Check Information",JOptionPane.ERROR_MESSAGE);
             txtBlength.requestFocus();
             return false;
         }
@@ -181,13 +166,14 @@ public class OperationBoothType {
     }
     public void delBoothType(int id){
         try{
-        CallableStatement cs = db.getConnection().prepareCall("{call deleteBoothType(?)}");
-        //truyen tham so cho store
-        cs.setInt(1, id);
-        cs.execute();
-
-        JOptionPane.showMessageDialog(null, "One BoothType has been deleted !","Delete BoothType",JOptionPane.INFORMATION_MESSAGE);
-
+            CallableStatement cs = db.getConnection().prepareCall("{call deleteBoothType(?)}");
+            //truyen tham so cho store
+            cs.setInt(1, id);
+            if(JOptionPane.showConfirmDialog(null, "Do you want to delete the record(s)",
+                "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                    cs.execute();
+                    JOptionPane.showMessageDialog(null, "One BoothType has been deleted !","Delete BoothType",JOptionPane.INFORMATION_MESSAGE);
+                }
         }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, "Can't delete this BoothType !","Delete deleteBoothType",JOptionPane.ERROR_MESSAGE);
