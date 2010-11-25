@@ -30,7 +30,7 @@ public class OperationBoothType {
 
     DBHelper db = null;
     DefaultTableModel BoothTypeModel = null;
-    public boolean checkformBoothType(JComboBox cbExpo,JTextField txtBTName, JTextField txtBTHeight, JTextField txtBTWidth, JTextField txtBremain, JTextField txtBlength){
+    public boolean checkformBoothType(JComboBox cbExpo,JTextField txtBTName, JTextField txtBTHeight, JTextField txtBTWidth, JTextField txtBlength){
         if(cbExpo.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null,"Please,select Expo");
             cbExpo.requestFocus();
@@ -65,18 +65,18 @@ public class OperationBoothType {
             txtBTWidth.requestFocus();
             return false;
         }
-        if(txtBremain.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter Booth Remain");
-            txtBremain.requestFocus();
-            return false;
-        }
-        try {
-            Long.parseLong(txtBremain.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Booth Remain must Number");
-            txtBremain.requestFocus();
-            return false;
-        }
+//        if(txtBremain.getText().equals("")){
+//            JOptionPane.showMessageDialog(null,"Please,Enter Booth Remain");
+//            txtBremain.requestFocus();
+//            return false;
+//        }
+//        try {
+//            Long.parseLong(txtBremain.getText());
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Booth Remain must Number");
+//            txtBremain.requestFocus();
+//            return false;
+//        }
         if(txtBlength.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Please,Enter Booth Length");
             txtBlength.requestFocus();

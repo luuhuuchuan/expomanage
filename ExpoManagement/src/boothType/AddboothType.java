@@ -85,6 +85,8 @@ public class AddboothType extends javax.swing.JDialog {
 
         jLabel9.setText("Booth Length :");
 
+        txtBremain.setEditable(false);
+
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -193,7 +195,7 @@ public class AddboothType extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(ob.checkformBoothType(cbExpo, txtBTName, txtBTHeight, txtBTWidth, txtBremain, txtBlength)){
+        if(ob.checkformBoothType(cbExpo, txtBTName, txtBTHeight, txtBTWidth, txtBlength)){
             try {
                 DBHelper db = null;
                 db = new DBHelper();
@@ -203,8 +205,8 @@ public class AddboothType extends javax.swing.JDialog {
                 int EID = ob.returnIdExpo(cbExpo);
                 float height = Float.parseFloat(txtBTHeight.getText().trim());
                 float width = Float.parseFloat(txtBTWidth.getText().trim());
-                int remain = Integer.parseInt(txtBremain.getText().trim());
                 int length = Integer.parseInt(txtBlength.getText().trim());
+                int remain = length;
 
                 //tao giao dien de thuc thi store
                 CallableStatement cs = db.getConnection().prepareCall("{call AddBoothType(?,?,?,?,?,?)}");
