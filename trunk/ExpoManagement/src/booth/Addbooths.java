@@ -104,10 +104,10 @@ public class Addbooths extends javax.swing.JDialog {
         jLabel7.setText("Booth Booker :");
 
         buttonGroup1.add(btnYes);
-        btnYes.setSelected(true);
         btnYes.setText("Yes");
 
         buttonGroup1.add(btnNo);
+        btnNo.setSelected(true);
         btnNo.setText("No");
 
         txtBDate.setDateFormatString("MM/dd/yyyy");
@@ -271,10 +271,10 @@ public class Addbooths extends javax.swing.JDialog {
                 cs.setString(4, name);
                 cs.setString(5, bdate);
                 cs.setFloat(6, money);
-                if(btnYes.isSelected())
-                    cs.setInt(7, 1);
-                else 
+                if(btnNo.isSelected())
                     cs.setInt(7, 0);
+                else 
+                    cs.setInt(7, 1);
                 //thuc thi store
                 cs.execute();
                 ((Main) m ).LoadBooth();

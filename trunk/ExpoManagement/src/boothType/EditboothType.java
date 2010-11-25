@@ -98,6 +98,8 @@ public class EditboothType extends javax.swing.JDialog {
 
         jLabel9.setText("Booth Length :");
 
+        txtBremain.setEditable(false);
+
         jLabel1.setText("BoothType ID :");
 
         txtBTID.setEditable(false);
@@ -215,7 +217,7 @@ public class EditboothType extends javax.swing.JDialog {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        if(obt.checkformBoothType(cbExpo, txtBTName, txtBTHeight, txtBTWidth, txtBremain, txtBlength)){
+        if(obt.checkformBoothType(cbExpo, txtBTName, txtBTHeight, txtBTWidth, txtBlength)){
             try {
                 DBHelper db = null;
                 db = new DBHelper();
@@ -227,8 +229,8 @@ public class EditboothType extends javax.swing.JDialog {
                 int EID = obt.returnIdExpo(cbExpo);
                 float height = Float.parseFloat(txtBTHeight.getText().trim());
                 float width = Float.parseFloat(txtBTWidth.getText().trim());
-                int remain = Integer.parseInt(txtBremain.getText().trim());
                 int length = Integer.parseInt(txtBlength.getText().trim());
+                int remain = length;
                 //tao giao dien de thuc thi store
                 CallableStatement cs = db.getConnection().prepareCall("{call EditBoothType(?,?,?,?,?,?,?)}");
                 //truyen tham so cho store
