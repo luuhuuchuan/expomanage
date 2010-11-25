@@ -97,8 +97,8 @@ public class Main extends javax.swing.JFrame {
         TabBoothType = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         btnAddBT1 = new javax.swing.JButton();
-        btnEditBT1 = new javax.swing.JButton();
-        btnDeleteEx1 = new javax.swing.JButton();
+        btnEditBT = new javax.swing.JButton();
+        btnDeleteBT = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cbWhereBT = new javax.swing.JComboBox();
         txtFindBT = new javax.swing.JTextField();
@@ -204,7 +204,7 @@ public class Main extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18));
         jTextArea1.setRows(5);
         jTextArea1.setText("\n Welcome !\n You using software of Team 1 - GC0501 - FPT GreenWich.\n Hope you work efficiently.\n Thank you for using our software.");
         jTextArea1.setAutoscrolls(false);
@@ -378,23 +378,25 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditBT1.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnEditBT1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
-        btnEditBT1.setText("Edit");
-        btnEditBT1.setMargin(new java.awt.Insets(2, 4, 2, 4));
-        btnEditBT1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditBT.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
+        btnEditBT.setText("Edit");
+        btnEditBT.setEnabled(false);
+        btnEditBT.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnEditBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditBT1ActionPerformed(evt);
+                btnEditBTActionPerformed(evt);
             }
         });
 
-        btnDeleteEx1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnDeleteEx1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
-        btnDeleteEx1.setText("Delete");
-        btnDeleteEx1.setMargin(new java.awt.Insets(2, 4, 2, 4));
-        btnDeleteEx1.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteBT.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
+        btnDeleteBT.setText("Delete");
+        btnDeleteBT.setEnabled(false);
+        btnDeleteBT.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnDeleteBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteEx1ActionPerformed(evt);
+                btnDeleteBTActionPerformed(evt);
             }
         });
 
@@ -425,9 +427,9 @@ public class Main extends javax.swing.JFrame {
             .add(jPanel8Layout.createSequentialGroup()
                 .add(btnAddBT1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnEditBT1)
+                .add(btnEditBT)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnDeleteEx1)
+                .add(btnDeleteBT)
                 .add(18, 18, 18)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -442,8 +444,8 @@ public class Main extends javax.swing.JFrame {
             .add(jPanel8Layout.createSequentialGroup()
                 .add(jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnAddBT1)
-                    .add(btnEditBT1)
-                    .add(btnDeleteEx1)
+                    .add(btnEditBT)
+                    .add(btnDeleteBT)
                     .add(jLabel4)
                     .add(cbWhereBT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(txtFindBT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -464,6 +466,11 @@ public class Main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblBoothType.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblBoothTypeFocusGained(evt);
+            }
+        });
         jScrollPane8.setViewportView(tblBoothType);
 
         org.jdesktop.layout.GroupLayout jPanel14Layout = new org.jdesktop.layout.GroupLayout(jPanel14);
@@ -778,7 +785,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx.setText("Delete");
         btnDeleteEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -1452,10 +1459,10 @@ public class Main extends javax.swing.JFrame {
         LoadExpo();
     }//GEN-LAST:event_TabExpoPropertyChange
 
-    private void btnEditBT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBT1ActionPerformed
+    private void btnEditBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBTActionPerformed
         // TODO add your handling code here:
         new EditboothType(this, true).setVisible(true);
-    }//GEN-LAST:event_btnEditBT1ActionPerformed
+    }//GEN-LAST:event_btnEditBTActionPerformed
 
     private void btnEditB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditB1ActionPerformed
         // TODO add your handling code here:
@@ -1493,17 +1500,19 @@ public class Main extends javax.swing.JFrame {
         LoadExhibitor();
     }//GEN-LAST:event_btnDeleteExActionPerformed
 
-    private void btnDeleteEx1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEx1ActionPerformed
+    private void btnDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBTActionPerformed
         // TODO add your handling code here:
         int row = tblBoothType.getSelectedRow();
         int id = Integer.parseInt(tblBoothType.getValueAt(row, 0).toString());
         obt.delBoothType(id);
         LoadBoothType();
-    }//GEN-LAST:event_btnDeleteEx1ActionPerformed
+    }//GEN-LAST:event_btnDeleteBTActionPerformed
 
     private void txtFindBTCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindBTCaretUpdate
         // TODO add your handling code here:
-        obt.doSearch(obt.returnSearch(cbWhereBT),txtFindBT.getText().trim(),tblBoothType);
+        String keyword = txtFindBT.getText().trim();
+        keyword.replace(" ", "%");
+        obt.doSearch(obt.returnSearch(cbWhereBT),keyword,tblBoothType);
 
     }//GEN-LAST:event_txtFindBTCaretUpdate
 
@@ -1523,8 +1532,18 @@ public class Main extends javax.swing.JFrame {
 
     private void txtFindBoothCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindBoothCaretUpdate
         // TODO add your handling code here:
-        ob.doSearch(ob.returnSearch(cbWhereBooth),txtFindBooth.getText().trim(),tblBooth);
+        String keyword = txtFindBooth.getText().trim();
+        keyword.replace(" ", "%");
+        ob.doSearch(ob.returnSearch(cbWhereBooth),keyword,tblBooth);
     }//GEN-LAST:event_txtFindBoothCaretUpdate
+
+    private void tblBoothTypeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblBoothTypeFocusGained
+        // TODO add your handling code here:
+        btnDeleteBT.setEnabled(true);
+        btnEditBT.setEnabled(true);
+    }//GEN-LAST:event_tblBoothTypeFocusGained
+
+
     public void LoadExpo()
     {
         oe.loadAllExpo(tblExpo);
@@ -1617,8 +1636,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnAddP1;
     private javax.swing.JButton btnAddS;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDeleteBT;
     private javax.swing.JButton btnDeleteEx;
-    private javax.swing.JButton btnDeleteEx1;
     private javax.swing.JButton btnDeleteEx2;
     private javax.swing.JButton btnDeleteEx3;
     private javax.swing.JButton btnDeleteP;
@@ -1626,7 +1645,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteS;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditB1;
-    private javax.swing.JButton btnEditBT1;
+    private javax.swing.JButton btnEditBT;
     private javax.swing.JButton btnEditEx;
     private javax.swing.JButton btnEditEx3;
     private javax.swing.JButton btnEditP;

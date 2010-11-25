@@ -15,7 +15,7 @@ insert into Booths (BTID,SID,CID,BName, BDate, BMoney,BBooker)
 -- Tao Store goi ra tat ca expo
 create proc getAllBooths
 as
-select B.CID,B.BID,BT.BTName,S.SName,B.BName,B.BDate, B.BMoney,B.BBooker 
+select B.CID,B.BID,BT.BTName,S.SName,B.BName,B.BDate,B.BMoney,B.BBooker 
 from Booths B ,BoothType BT ,Staff S
 where B.BTID = BT.BTID and B.SID = S.SID
 
@@ -77,5 +77,5 @@ Create PROC findBooths
 @Key nvarchar(100)
 AS
 Declare @fb nvarchar(200)
-set @fb = 'Select * from Booths where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+set @fb = 'select B.CID, B.BID, BT.BTName, S.SName, B.BName, B.BDate, B.BMoney, B.BBooker from Booths B ,BoothType BT ,Staff S where B.BTID = BT.BTID and B.SID = S.SID and '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
 execute(@fb)

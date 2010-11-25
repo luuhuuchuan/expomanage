@@ -223,11 +223,13 @@ public class OperationBooths {
     {
         cbWhereB.setModel(CbWhereBModel = new DefaultComboBoxModel());
         CbWhereBModel.addElement("Booth ID");
-        hmbt.put("Booth ID","BID");
+        hmbt.put("Booth ID","B.BID");
         CbWhereBModel.addElement("Booth Name");
-        hmbt.put("Booth Name","BName");
+        hmbt.put("Booth Name","B.BName");
+        CbWhereBModel.addElement("Booth Type");
+        hmbt.put("Booth Type","BT.BTName");
         CbWhereBModel.addElement("Staff");
-        hmbt.put("Staff Name","SName");
+        hmbt.put("Staff Name","S.SName");
     }
     public String returnSearch(JComboBox cbWhereBT)
     {
