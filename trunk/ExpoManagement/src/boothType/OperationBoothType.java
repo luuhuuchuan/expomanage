@@ -190,7 +190,7 @@ public class OperationBoothType {
                 v.add(s);
             BoothTypeModel.setColumnIdentifiers(v);
             ResultSet rs = db.getCallAble(storeName).executeQuery();
-            while(rs.next()){
+           while(rs.next()){
                 v = new Vector();
                 v.add(rs.getString(1));
                 v.add(rs.getString(2));
@@ -213,9 +213,15 @@ public class OperationBoothType {
     {
         cbWhereBT.setModel(CbWhereBTModel = new DefaultComboBoxModel());
         CbWhereBTModel.addElement("BoothType ID");
-        hmbt.put("BoothType ID","BTID");
+        hmbt.put("BoothType ID","BT.BTID");
         CbWhereBTModel.addElement("BoothType Name");
-        hmbt.put("BoothType Name","BTName");
+        hmbt.put("BoothType Name","BT.BTName");
+        CbWhereBTModel.addElement("Expo Name");
+        hmbt.put("Expo Name","E.ExName");
+        CbWhereBTModel.addElement("Booth Height");
+        hmbt.put("Booth Height","BT.BTHeight");
+        CbWhereBTModel.addElement("Booth Width");
+        hmbt.put("Booth Width","BT.BTWidth");
     }
     public String returnSearch(JComboBox cbWhereBT)
     {
