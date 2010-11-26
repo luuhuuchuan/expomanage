@@ -57,3 +57,19 @@ as
 update Sponsors
 set SpName = @name,ExID = @eid,SpMoney = @money,SpDescription = @description
 where SpID = @id
+
+-- Tao store dele Sponsor
+create proc deleteSponsor
+@ID int
+as
+delete from Sponsors
+where SID = @ID
+
+-- Tao store search Sponsor
+Alter PROC findSponsor
+@Where nvarchar(50),
+@Key nvarchar(100)
+AS
+Declare @fs nvarchar(200)
+set @fs = 'select S.SpID,S.SpName,E.ExName,S.SpMoney,S.SpDescription from Sponsors as S join Expo as E on S.ExID = E.ExID  where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+execute(@fs)
