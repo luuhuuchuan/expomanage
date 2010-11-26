@@ -12,21 +12,45 @@
 package expo;
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
  * @author Admin
  */
 public class EditExpo extends javax.swing.JDialog {
-
+    Main m = null;
+    DBHelper db = null;
+    OperationExpo oe = new OperationExpo();
     /** Creates new form EditExpo */
     public EditExpo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
         initComponents();
+        m = (Main)parent;
+        int row = m.getExpoTable().getSelectedRow();
+        txtName.setText(m.getExpoTable().getValueAt(row, 1).toString());
+        txtNumBooth.setText(m.getExpoTable().getValueAt(row, 2).toString());
+        txtCost.setText(m.getExpoTable().getValueAt(row, 3).toString());
+        txtDescription.setText(m.getExpoTable().getValueAt(row, 4).toString());
+        txtDateStart.setDate(null);
+        txtDateEnd.setDate(null);
     }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -46,19 +70,17 @@ public class EditExpo extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtNumBooth = new javax.swing.JTextField();
-        txtDateStart = new javax.swing.JTextField();
         txtCost = new javax.swing.JTextField();
-        txtDatEnd = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
-        btnAdd = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         BtnClose = new javax.swing.JButton();
-        cbxExpo = new javax.swing.JComboBox();
-        jLabel7 = new javax.swing.JLabel();
+        txtDateStart = new com.toedter.calendar.JDateChooser();
+        txtDateEnd = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add New Expo"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit Expo"));
 
         jLabel1.setText("Expo Name:");
 
@@ -76,12 +98,12 @@ public class EditExpo extends javax.swing.JDialog {
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
-        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
-        btnAdd.setText("Edit");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnEditActionPerformed(evt);
             }
         });
 
@@ -94,9 +116,9 @@ public class EditExpo extends javax.swing.JDialog {
             }
         });
 
-        cbxExpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtDateStart.setDateFormatString("MM/dd/yyyy");
 
-        jLabel7.setText("Select Expo :");
+        txtDateEnd.setDateFormatString("MM/dd/yyyy");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,77 +129,76 @@ public class EditExpo extends javax.swing.JDialog {
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(103, 103, 103)
-                        .add(btnAdd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(btnEdit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(BtnClose)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 107, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel1)
+                            .add(jLabel2))
+                        .add(31, 31, 31)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtNumBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                            .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jLabel3)
+                        .add(77, 77, 77)
+                        .add(txtCost, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
+                    .add(jPanel1Layout.createSequentialGroup()
                         .add(jLabel4)
                         .add(46, 46, 46)
                         .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .add(jLabel6)
-                        .add(55, 55, 55)
-                        .add(txtDatEnd, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel3)
+                            .add(jLabel6)
                             .add(jLabel5))
                         .add(49, 49, 49)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(txtDateStart, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtCost, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(jLabel1)
-                            .add(jLabel7))
-                        .add(31, 31, 31)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jPanel1Layout.createSequentialGroup()
-                                .add(5, 5, 5)
-                                .add(cbxExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 221, Short.MAX_VALUE))
-                            .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                            .add(txtNumBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))))
+                            .add(txtDateEnd, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtDateStart, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(cbxExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel7))
-                .add(18, 18, 18)
+                .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
                     .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(18, 18, 18)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(txtNumBooth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtCost, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(txtDateStart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtDatEnd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel6))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel3)
+                    .add(txtCost, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 103, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(14, 14, 14)
+                        .add(jLabel5))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(18, 18, 18)
+                        .add(txtDateStart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(23, 23, 23)
+                        .add(jLabel6))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(18, 18, 18)
+                        .add(txtDateEnd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                         .add(18, 18, 18)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(btnAdd)
+                            .add(btnEdit)
                             .add(BtnClose)))
-                    .add(jLabel4)))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jLabel4)
+                        .addContainerGap())))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -202,18 +223,48 @@ public class EditExpo extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        DBHelper db = null;
+        if(oe.checkformExpo(txtName, txtNumBooth, txtCost, txtName, txtName)){
+        try{
         db = new DBHelper();
         db.openConnection();
-        String storeName = "{call getAllExpo }";
-        try {
-            db.getCallAble(storeName).executeQuery();
-        } catch (SQLException ex) {
-            Logger.getLogger(AddExpo.class.getName()).log(Level.SEVERE, null, ex);
+        int row = m.getExpoTable().getSelectedRow();
+        int id = Integer.parseInt(((Main)m).getExpoTable().getValueAt(row, 0).toString());
+        String name = txtName.getText().trim();
+        int numBooth = Integer.parseInt(txtNumBooth.getText().trim());
+        float cost = Float.parseFloat(txtCost.getText().trim());
+        String description = txtDescription.getText();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date dS = txtDateStart.getDate();
+        Date dE = txtDateEnd.getDate();
+        String dateStart = sdf.format(dS);
+        String dateEnd = sdf.format(dE);
+        CallableStatement cs = db.getConnection().prepareCall("{call EditExpo(?,?,?,?,?,?,?)}");
+        //truyen tham so cho store
+        cs.setInt(1, id);
+        cs.setString(2, name);
+        cs.setInt(3, numBooth);
+        cs.setFloat(4, cost);
+        cs.setString(5, description);
+        cs.setString(6,dateStart);
+        cs.setString(7,dateEnd);
+        //thuc thi store
+        cs.execute();
+        //confirm update request from client
+        if(JOptionPane.showConfirmDialog(null, "Do you want to update the record(s)",
+                "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            cs.execute();
+            ((Main)m).LoadExpo();
+            dispose();
+            }
         }
-}//GEN-LAST:event_btnAddActionPerformed
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+      }
+}//GEN-LAST:event_btnEditActionPerformed
 
     private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
         // TODO add your handling code here:
@@ -239,20 +290,18 @@ public class EditExpo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnClose;
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JComboBox cbxExpo;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtCost;
-    private javax.swing.JTextField txtDatEnd;
-    private javax.swing.JTextField txtDateStart;
+    private com.toedter.calendar.JDateChooser txtDateEnd;
+    private com.toedter.calendar.JDateChooser txtDateStart;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNumBooth;
