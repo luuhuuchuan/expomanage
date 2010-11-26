@@ -12,6 +12,7 @@
 package expo;
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
 import java.sql.CallableStatement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,7 +24,8 @@ import javax.swing.UIManager;
  * @author Hse7en
  */
 public class AddExpo extends javax.swing.JFrame {
-
+    OperationExpo oe = new OperationExpo();
+    Main m = null;
     /** Creates new form AddExpo */
 
     public AddExpo() {
@@ -64,6 +66,7 @@ public class AddExpo extends javax.swing.JFrame {
         BtnClose = new javax.swing.JButton();
         txtDateStart = new com.toedter.calendar.JDateChooser();
         txtDateEnd = new com.toedter.calendar.JDateChooser();
+        btnReset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add New Expo");
@@ -108,6 +111,14 @@ public class AddExpo extends javax.swing.JFrame {
 
         txtDateEnd.setDateFormatString("MM/dd/yyyy");
 
+        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -124,16 +135,21 @@ public class AddExpo extends javax.swing.JFrame {
                 .add(31, 31, 31)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(txtCost, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .add(txtNumBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .add(txtDateStart, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .add(txtDateEnd, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .add(jPanel1Layout.createSequentialGroup()
                         .add(btnAdd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(BtnClose))
-                    .add(txtCost, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .add(txtNumBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .add(txtDateStart, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .add(txtDateEnd, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnReset)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(BtnClose)
+                        .add(18, 18, 18))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -160,14 +176,17 @@ public class AddExpo extends javax.swing.JFrame {
                         .add(txtDateStart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(txtDateEnd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 25, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel4)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 103, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 11, Short.MAX_VALUE)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnAdd)
-                    .add(BtnClose)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(BtnClose)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(btnAdd)
+                        .add(btnReset)))
+                .addContainerGap())
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -192,6 +211,7 @@ public class AddExpo extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+          if(oe.checkformExpo(txtName, txtNumBooth, txtCost, txtName, txtName)){
         try {
         DBHelper db = null;
         db = new DBHelper();
@@ -220,18 +240,29 @@ public class AddExpo extends javax.swing.JFrame {
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Expo has been added !","Add new Expo",JOptionPane.INFORMATION_MESSAGE);
+        ((Main)m).LoadExpo();
         dispose();
         
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new Expo",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
-        }
+             }
+          }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_BtnCloseActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        txtName.setText(null);
+        txtNumBooth.setText(null);
+        txtCost.setText(null);
+        txtDateStart.setDate(null);
+        txtDateEnd.setDate(null);
+        txtDescription.setText(null);
+}//GEN-LAST:event_btnResetActionPerformed
 
     /**
     * @param args the command line arguments
@@ -247,6 +278,7 @@ public class AddExpo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnClose;
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnReset;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
