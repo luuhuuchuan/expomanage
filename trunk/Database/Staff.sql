@@ -16,19 +16,22 @@ insert into Staff (CID,SName, SEmail, SPhone, SAddress)
 -- Tao Store goi ra tat ca Staff
 create proc getAllStaff
 as
-select * from Staff
+select S.SID,C.CID,S.SName,S.SEmail,S.SPhone,S.SAddress 
+from Staff S join Contact C
+on S.CID = C.CID
+
 
 -- Tao Store co tham so de tao Staff
 
 CREATE PROC AddStaff
+@CID char(10),
 @Name nvarchar(100),
 @Email nvarchar(100),
 @Phone nvarchar(50),
 @Address ntext
 AS
-INSERT INTO Staff (SName, SEmail, SPhone, SAddress)
-	VALUES(@Name,@Email,@Phone,@Address)
-END
+INSERT INTO Staff (CID,SName, SEmail, SPhone, SAddress)
+	VALUES(@CID,@Name,@Email,@Phone,@Address)
 
 ----Tao Store tim kiem Staff
 Create PROC findStaff
@@ -36,19 +39,20 @@ Create PROC findStaff
 @Key nvarchar(100)
 AS
 Declare @sta nvarchar(200)
-set @sta = 'Select * from Staff where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+set @sta = 'select S.SID,C.CID,S.SName,S.SEmail,S.SPhone,S.SAddress from Staff S join Contact C on S.CID = C.CID where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
 execute(@sta)
 
 --Tao Store de Edit Staff
 Create Proc EditStaff
 @ID int,
+@CID char(10),
 @Name nvarchar(100),
 @Email nvarchar(100),
 @Phone nvarchar(50),
 @Address ntext
 AS
 Update Staff
-Set SName = @Name,SEmail = @Email,SPhone = @Phone,SAddress = @Address
+Set CID = @CID,SName = @Name,SEmail = @Email,SPhone = @Phone,SAddress = @Address
 Where SID = @ID
 
 --Tao store de xoa staff

@@ -1013,9 +1013,9 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbWhereEx3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbWhereUser" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFind3" pref="229" max="32767" attributes="0"/>
+                                  <Component id="txtFindUser" pref="229" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1029,8 +1029,8 @@
                                       <Component id="btnEditEx3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnDeleteEx3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbWhereEx3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtFind3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="cbWhereUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFindUser" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="btnFindEx3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -1098,7 +1098,7 @@
                             <Property name="text" type="java.lang.String" value="Filter"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="cbWhereEx3">
+                        <Component class="javax.swing.JComboBox" name="cbWhereUser">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="4">
@@ -1110,7 +1110,10 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtFind3">
+                        <Component class="javax.swing.JTextField" name="txtFindUser">
+                          <Events>
+                            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtFindUserCaretUpdate"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnFindEx3">
                           <Properties>
@@ -1808,9 +1811,9 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbWhereP2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbWhereStaff" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword2" pref="227" max="32767" attributes="0"/>
+                                  <Component id="txtFindStaff" pref="227" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1824,8 +1827,8 @@
                                       <Component id="btnEditP1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnDeleteP1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbWhereP2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtPKeyword2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="cbWhereStaff" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFindStaff" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="btnFindP1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -1847,6 +1850,9 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddP1ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnEditP1">
                           <Properties>
@@ -1861,6 +1867,9 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditP1ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnDeleteP1">
                           <Properties>
@@ -1875,6 +1884,9 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteP1ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel8">
                           <Properties>
@@ -1884,7 +1896,7 @@
                             <Property name="text" type="java.lang.String" value="Filter"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="cbWhereP2">
+                        <Component class="javax.swing.JComboBox" name="cbWhereStaff">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="4">
@@ -1896,7 +1908,10 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtPKeyword2">
+                        <Component class="javax.swing.JTextField" name="txtFindStaff">
+                          <Events>
+                            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtFindStaffCaretUpdate"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnFindP1">
                           <Properties>

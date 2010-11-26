@@ -11,6 +11,7 @@
 
 package staff;
 
+import booth.OperationBooths;
 import dataLayer.DBHelper;
 import exhibitor.OperationExhibitor;
 import expomanagement.Main;
@@ -27,19 +28,22 @@ public class EditStaff extends javax.swing.JDialog {
     /** Creates new form EditStaff */
     Main m = null;
     private DBHelper db = null;
+    OperationBooths ob = new OperationBooths();
     OperationStaff ost = new OperationStaff();
     public EditStaff(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         db = new DBHelper();
         db.openConnection();
+        ob.buildAllContactID(cbContact);
 
         m = (Main) parent;
         int row = m.getStaffTable().getSelectedRow();
-        txtName.setText(m.getStaffTable().getValueAt(row, 1).toString());
-        txtEmail.setText(m.getStaffTable().getValueAt(row, 2).toString());
-        txtPhone.setText(m.getStaffTable().getValueAt(row, 3).toString());
-        txtAddress.setText(m.getStaffTable().getValueAt(row, 4).toString());
+        cbContact.setSelectedItem(m.getStaffTable().getValueAt(row, 1).toString());
+        txtName.setText(m.getStaffTable().getValueAt(row, 2).toString());
+        txtEmail.setText(m.getStaffTable().getValueAt(row, 3).toString());
+        txtPhone.setText(m.getStaffTable().getValueAt(row, 4).toString());
+        txtAddress.setText(m.getStaffTable().getValueAt(row, 5).toString());
     }
 
     /** This method is called from within the constructor to
@@ -63,6 +67,8 @@ public class EditStaff extends javax.swing.JDialog {
         txtName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        cbContact = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -100,6 +106,10 @@ public class EditStaff extends javax.swing.JDialog {
 
         jLabel2.setText("Staff Name:");
 
+        cbContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel1.setText("Contact ID: ");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,7 +122,8 @@ public class EditStaff extends javax.swing.JDialog {
                         .add(jLabel2)
                         .add(jLabel3)
                         .add(jLabel4)
-                        .add(jLabel5)))
+                        .add(jLabel5)
+                        .add(jLabel1)))
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(42, 42, 42)
@@ -120,7 +131,8 @@ public class EditStaff extends javax.swing.JDialog {
                             .add(txtAddress)
                             .add(txtPhone)
                             .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                            .add(txtEmail)))
+                            .add(txtEmail)
+                            .add(cbContact, 0, 164, Short.MAX_VALUE)))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(53, 53, 53)
                         .add(btnReset)
@@ -131,7 +143,11 @@ public class EditStaff extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .add(73, 73, 73)
+                .add(20, 20, 20)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(cbContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1))
+                .add(31, 31, 31)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
                     .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -182,17 +198,19 @@ public class EditStaff extends javax.swing.JDialog {
         //lay dl
         int row = m.getStaffTable().getSelectedRow();
         int id = Integer.parseInt(m.getStaffTable().getValueAt(row, 0).toString());
+        String CID = cbContact.getSelectedItem().toString();
         String name = txtName.getText().trim();
         String email = txtEmail.getText().trim();
         String phone = txtPhone.getText().trim();
         String address = txtAddress.getText().trim();
 
-        CallableStatement cs = db.getConnection().prepareCall("{call EditStaff(?,?,?,?,?)}");
+        CallableStatement cs = db.getConnection().prepareCall("{call EditStaff(?,?,?,?,?,?)}");
         cs.setInt(1,id);
-        cs.setString(2, name);
-        cs.setString(3, email);
-        cs.setString(4, phone);
-        cs.setString(5, address);
+        cs.setString(2, CID);
+        cs.setString(3, name);
+        cs.setString(4, email);
+        cs.setString(5, phone);
+        cs.setString(6, address);
  
         if(JOptionPane.showConfirmDialog(null, "Do you want edit this Staff",
                         "Edit Staff",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
@@ -242,6 +260,8 @@ public class EditStaff extends javax.swing.JDialog {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox cbContact;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
