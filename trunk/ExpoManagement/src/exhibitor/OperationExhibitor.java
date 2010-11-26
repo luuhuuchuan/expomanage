@@ -155,8 +155,11 @@ public class OperationExhibitor {
         CallableStatement cs = db.getConnection().prepareCall("{call DeleteExhibitor(?)}");
         //truyen tham so cho store
         cs.setInt(1, id);
-        cs.execute();
-        JOptionPane.showMessageDialog(null, "One Exhibitor has been deleted !","Delete Exhibitor",JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.showConfirmDialog(null, "Do you want to delete this Exhibitor ?",
+                "Delete Exhibitor",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                    cs.execute();
+                    JOptionPane.showMessageDialog(null, "One Exhibitor has been deleted !","Delete Exhibitor",JOptionPane.INFORMATION_MESSAGE);
+                }
         }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, "Can't delete this Exhibitor !","Delete Exhibitor",JOptionPane.ERROR_MESSAGE);
