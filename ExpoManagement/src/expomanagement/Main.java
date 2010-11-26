@@ -31,6 +31,8 @@ import product.OperationProduct;
 import sponsor.AddSponsor;
 import sponsor.EditSponsor;
 import sponsor.OperationSponsor;
+import staff.AddStaff;
+import staff.EditStaff;
 import staff.OperationStaff;
 import user.AddUser;
 import user.EditUser;
@@ -126,8 +128,8 @@ public class Main extends javax.swing.JFrame {
         btnEditEx3 = new javax.swing.JButton();
         btnDeleteEx3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        cbWhereEx3 = new javax.swing.JComboBox();
-        txtFind3 = new javax.swing.JTextField();
+        cbWhereUser = new javax.swing.JComboBox();
+        txtFindUser = new javax.swing.JTextField();
         btnFindEx3 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -164,8 +166,8 @@ public class Main extends javax.swing.JFrame {
         btnEditP1 = new javax.swing.JButton();
         btnDeleteP1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        cbWhereP2 = new javax.swing.JComboBox();
-        txtPKeyword2 = new javax.swing.JTextField();
+        cbWhereStaff = new javax.swing.JComboBox();
+        txtFindStaff = new javax.swing.JTextField();
         btnFindP1 = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
@@ -686,7 +688,13 @@ public class Main extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel7.setText("Filter");
 
-        cbWhereEx3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbWhereUser.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtFindUser.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtFindUserCaretUpdate(evt);
+            }
+        });
 
         btnFindEx3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
         btnFindEx3.setText("Find");
@@ -705,9 +713,9 @@ public class Main extends javax.swing.JFrame {
                 .add(18, 18, 18)
                 .add(jLabel7)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbWhereEx3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(cbWhereUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFind3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .add(txtFindUser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindEx3))
         );
@@ -719,8 +727,8 @@ public class Main extends javax.swing.JFrame {
                     .add(btnEditEx3)
                     .add(btnDeleteEx3)
                     .add(jLabel7)
-                    .add(cbWhereEx3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(txtFind3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(cbWhereUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtFindUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnFindEx3))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1066,25 +1074,46 @@ public class Main extends javax.swing.JFrame {
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAddP1.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnAddP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnAddP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAddP1.setText("Add");
         btnAddP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnAddP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddP1ActionPerformed(evt);
+            }
+        });
 
-        btnEditP1.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEditP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEditP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditP1.setText("Edit");
         btnEditP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnEditP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditP1ActionPerformed(evt);
+            }
+        });
 
-        btnDeleteP1.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteP1.setText("Delete");
         btnDeleteP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnDeleteP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteP1ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel8.setText("Filter");
 
-        cbWhereP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbWhereStaff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtFindStaff.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtFindStaffCaretUpdate(evt);
+            }
+        });
 
         btnFindP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
         btnFindP1.setText("Find");
@@ -1103,9 +1132,9 @@ public class Main extends javax.swing.JFrame {
                 .add(18, 18, 18)
                 .add(jLabel8)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbWhereP2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(cbWhereStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .add(txtFindStaff, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindP1))
         );
@@ -1117,8 +1146,8 @@ public class Main extends javax.swing.JFrame {
                     .add(btnEditP1)
                     .add(btnDeleteP1)
                     .add(jLabel8)
-                    .add(cbWhereP2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(txtPKeyword2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(cbWhereStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtFindStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnFindP1))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1463,6 +1492,7 @@ public class Main extends javax.swing.JFrame {
     private void TabStaffPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabStaffPropertyChange
         // TODO add your handling code here:
         LoadStaff();
+        ost.buildCbStaff(cbWhereStaff);
     }//GEN-LAST:event_TabStaffPropertyChange
 
     private void TabProductPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabProductPropertyChange
@@ -1577,6 +1607,38 @@ public class Main extends javax.swing.JFrame {
         ou.delUser(Name);
         LoadAccount();
     }//GEN-LAST:event_btnDeleteEx3ActionPerformed
+
+    private void btnAddP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddP1ActionPerformed
+        // TODO add your handling code here:
+        new AddStaff(this, true).setVisible(true);
+    }//GEN-LAST:event_btnAddP1ActionPerformed
+
+    private void btnEditP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditP1ActionPerformed
+        // TODO add your handling code here:
+        new EditStaff(this, true).setVisible(true);
+    }//GEN-LAST:event_btnEditP1ActionPerformed
+
+    private void btnDeleteP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteP1ActionPerformed
+        // TODO add your handling code here:
+        int row = tblStaff.getSelectedRow();
+        int id = Integer.parseInt(tblStaff.getValueAt(row, 0).toString());
+        ost.delStaff(id);
+        LoadStaff();
+    }//GEN-LAST:event_btnDeleteP1ActionPerformed
+
+    private void txtFindUserCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindUserCaretUpdate
+        // TODO add your handling code here:
+        String keyword = txtFindUser.getText().trim();
+        keyword.replace(" ", "%");
+        ou.doSearch(ou.returnSearch(cbWhereUser),keyword,tblAccount);
+    }//GEN-LAST:event_txtFindUserCaretUpdate
+
+    private void txtFindStaffCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindStaffCaretUpdate
+        // TODO add your handling code here:
+        String keyword = txtFindStaff.getText().trim();
+        keyword.replace(" ", "%");
+        ost.doSearch(ost.returnSearch(cbWhereStaff),keyword,tblStaff);
+    }//GEN-LAST:event_txtFindStaffCaretUpdate
 
 
     public void LoadExpo()
@@ -1698,10 +1760,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox cbWhere;
     private javax.swing.JComboBox cbWhereBT;
     private javax.swing.JComboBox cbWhereBooth;
-    private javax.swing.JComboBox cbWhereEx3;
     private javax.swing.JComboBox cbWhereP;
     private javax.swing.JComboBox cbWhereP1;
-    private javax.swing.JComboBox cbWhereP2;
+    private javax.swing.JComboBox cbWhereStaff;
+    private javax.swing.JComboBox cbWhereUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1746,14 +1808,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable tblProducts;
     private javax.swing.JTable tblSponsor;
     private javax.swing.JTable tblStaff;
-    private javax.swing.JTextField txtFind3;
     private javax.swing.JTextField txtFindBT;
     private javax.swing.JTextField txtFindBooth;
     private javax.swing.JTextField txtFindEhi;
+    private javax.swing.JTextField txtFindStaff;
+    private javax.swing.JTextField txtFindUser;
     private javax.swing.JTextField txtKeyword;
     private javax.swing.JTextField txtPKeyword;
     private javax.swing.JTextField txtPKeyword1;
-    private javax.swing.JTextField txtPKeyword2;
     private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
 

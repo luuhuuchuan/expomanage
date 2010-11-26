@@ -30,7 +30,7 @@ public class OperationStaff {
     public void loadAllStaff(JTable jTable1){
         jTable1.setModel(StaffModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Staff Name","Staff Email","Staff Phone","Staff Address"};
+        String [] heading = {"Staff ID","Contact ID","Staff Name","Staff Email","Staff Phone","Staff Address"};
         for(String s : heading)
             v.add(s);
         StaffModel.setColumnIdentifiers(v);
@@ -38,6 +38,8 @@ public class OperationStaff {
             ResultSet rs = getAllStaff();
             while(rs.next()){
                 v = new Vector();
+                v.add(rs.getInt(1));
+                v.add(rs.getString(2));
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));
@@ -96,13 +98,15 @@ public class OperationStaff {
         String storeName = "{call findStaff('" + Where + "','" + Key + "')}";
         tblStaff.setModel(StaffModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Staff Code","Staff Name","Staff Email","Phone Number","Address"};
+        String [] heading = {"Staff ID","Contact ID","Staff Name","Staff Email","Staff Phone","Staff Address"};
         for(String s : heading)
             v.add(s);
         StaffModel.setColumnIdentifiers(v);
         ResultSet rs = db.getCallAble(storeName).executeQuery();
         while(rs.next()){
             v = new Vector();
+            v.add(rs.getInt(1));
+            v.add(rs.getString(2));
             v.add(rs.getString(3));
             v.add(rs.getString(4));
             v.add(rs.getString(5));
@@ -126,8 +130,8 @@ public class OperationStaff {
         hmp.put("Staff ID","SID");
         CbStaffModel.addElement("Staff Name");
         hmp.put("Staff Name","SName");
-        CbStaffModel.addElement("Email");
-        hmp.put("Email","SEmail");
+        CbStaffModel.addElement("Staff Email");
+        hmp.put("Staff Email","SEmail");
         CbStaffModel.addElement("Staff Phone");
         hmp.put("Staff Phone","SPhone");
         CbStaffModel.addElement("Staff Address");
@@ -143,8 +147,12 @@ public class OperationStaff {
         CallableStatement cs = db.getConnection().prepareCall("{call DeleteStaff(?)}");
         //truyen tham so cho store
         cs.setInt(1, id);
-        cs.execute();
-        JOptionPane.showMessageDialog(null, "One Staff has been deleted !","Delete Staff",JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.showConfirmDialog(null, "Do you want to delete the record(s)",
+                "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            cs.execute();
+            JOptionPane.showMessageDialog(null, "One Staff has been deleted !","Delete Staff",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
         }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, "Can't delete this Staff !","Delete Staff",JOptionPane.ERROR_MESSAGE);
