@@ -89,6 +89,7 @@ public class EditSponsor extends javax.swing.JDialog {
         jLabel5.setText("Sponsor Description:");
 
         txtSpID.setEditable(false);
+        txtSpID.setEnabled(false);
 
         jLabel4.setText("Sponsor Money");
 
@@ -192,6 +193,7 @@ public class EditSponsor extends javax.swing.JDialog {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
+        if(os.checkformSponsor( cbExpo, txtSpName, txtSpMoney)){
      try{
         db = new DBHelper();
         db.openConnection();
@@ -216,13 +218,13 @@ public class EditSponsor extends javax.swing.JDialog {
                 "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             cs.execute();
             ((Main)m).LoadSponsor();
-            JOptionPane.showMessageDialog(null, "The record(s) has been updated","Update Result",JOptionPane.INFORMATION_MESSAGE);
             dispose();
             }
         }
         catch(Exception ex)
         {
             ex.printStackTrace();
+        }
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
