@@ -30,3 +30,29 @@ AS
 INSERT INTO [User] (UName, UPass, UTypeUser, UEmail, EID)
 	VALUES(@Name,@Pass,@TypeUser,@Email,@EID)
 END
+
+----Tao Store tim kiem User
+Create PROC findUser
+@Where nvarchar(50),
+@Key nvarchar(100)
+AS
+Declare @use nvarchar(200)
+set @use = 'Select * from [User] where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+execute(@use)
+
+--Tao Store de Edit User
+Create Proc EditUser
+@Name nvarchar(100),
+@Pass nvarchar(100),
+@TypeUser nvarchar(50),
+@Email ntext
+AS
+Update [User]
+Set UName = @Name,UPass = @Pass,UTypeUser = @TypeUser,UEmail = @Email
+Where UName = @Name
+
+--Tao store de xoa user
+CREATE PROC DeleteUser
+@name nvarchar(100)
+AS
+DELETE FROM [User] WHERE UName = @name
