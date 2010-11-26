@@ -6,13 +6,15 @@
 /*
  * EditStaff.java
  *
- * Created on 14-11-2010, 21:30:28
+ * Created on 24-11-2010, 11:46:41
  */
 
 package staff;
 
 import dataLayer.DBHelper;
-import java.awt.Frame;
+import exhibitor.OperationExhibitor;
+import expomanagement.Main;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
@@ -20,18 +22,24 @@ import javax.swing.JOptionPane;
  *
  * @author SiaroKool
  */
-public class EditStaff extends javax.swing.JFrame {
+public class EditStaff extends javax.swing.JDialog {
 
     /** Creates new form EditStaff */
+    Main m = null;
     private DBHelper db = null;
-    public EditStaff() {
+    OperationStaff ost = new OperationStaff();
+    public EditStaff(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         db = new DBHelper();
-        //if can not open the connection
-        if(!db.openConnection()){
-            this.btnSave.setEnabled(false);
-            this.btnClose.setEnabled(false);
-        }
+        db.openConnection();
+
+        m = (Main) parent;
+        int row = m.getStaffTable().getSelectedRow();
+        txtName.setText(m.getStaffTable().getValueAt(row, 1).toString());
+        txtEmail.setText(m.getStaffTable().getValueAt(row, 2).toString());
+        txtPhone.setText(m.getStaffTable().getValueAt(row, 3).toString());
+        txtAddress.setText(m.getStaffTable().getValueAt(row, 4).toString());
     }
 
     /** This method is called from within the constructor to
@@ -43,47 +51,22 @@ public class EditStaff extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtPhone = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
-        btnSave = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnReset = new javax.swing.JButton();
+        txtAddress = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18));
-        jLabel1.setText("Edit Staff");
-
-        jLabel2.setText("Staff Name:");
-
-        jLabel3.setText("Staff Email:");
-
-        jLabel4.setText("Staff Phone:");
-
-        jLabel5.setText("Staff Address:");
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/75.png"))); // NOI18N
-        btnReset.setText("Reset");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
-            }
-        });
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit Staff"));
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnClose.setText("Close");
@@ -93,62 +76,100 @@ public class EditStaff extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Staff Address:");
+
+        jLabel3.setText("Staff Email:");
+
+        jLabel4.setText("Staff Phone:");
+
+        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/75.png"))); // NOI18N
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Staff Name:");
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
                 .add(33, 33, 33)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(btnSave)
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                         .add(jLabel2)
                         .add(jLabel3)
                         .add(jLabel4)
                         .add(jLabel5)))
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
                         .add(42, 42, 42)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(txtAddress)
                             .add(txtPhone)
-                            .add(jLabel1)
                             .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                             .add(txtEmail)))
-                    .add(layout.createSequentialGroup()
+                    .add(jPanel1Layout.createSequentialGroup()
                         .add(53, 53, 53)
                         .add(btnReset)
                         .add(51, 51, 51)
                         .add(btnClose)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(19, 19, 19)
-                .add(jLabel1)
-                .add(32, 32, 32)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(73, 73, 73)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
                     .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(txtEmail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel4)
                     .add(txtPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel5)
                     .add(txtAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 36, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnSave)
                     .add(btnReset)
                     .add(btnClose))
                 .add(36, 36, 36))
+        );
+
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(36, 36, 36)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,33 +177,35 @@ public class EditStaff extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        if(ost.checkStaff(txtName, txtEmail, txtPhone, txtAddress)){
         try{
-        //lay dl tu form
+        //lay dl
+        int row = m.getStaffTable().getSelectedRow();
+        int id = Integer.parseInt(m.getStaffTable().getValueAt(row, 0).toString());
         String name = txtName.getText().trim();
         String email = txtEmail.getText().trim();
         String phone = txtPhone.getText().trim();
         String address = txtAddress.getText().trim();
 
-        String sqlCmd = "Insert Into Staff values(?,?,?,?)";
-        PreparedStatement ps = db.getConnection().prepareStatement(sqlCmd);
-        ps.setString(1, name);
-        ps.setString(2, email);
-        ps.setString(3, phone);
-        ps.setString(4, address);
-        ps.execute();
-        JOptionPane.showMessageDialog(null, "One Staff has been edit","Edit Staff",JOptionPane.INFORMATION_MESSAGE);
-        //((TabProduct)parentFrame).loadAll();
-    }
-    catch(Exception ex){
+        CallableStatement cs = db.getConnection().prepareCall("{call EditStaff(?,?,?,?,?)}");
+        cs.setInt(1,id);
+        cs.setString(2, name);
+        cs.setString(3, email);
+        cs.setString(4, phone);
+        cs.setString(5, address);
+ 
+        if(JOptionPane.showConfirmDialog(null, "Do you want edit this Staff",
+                        "Edit Staff",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            cs.execute();
+            ((Main)m).LoadStaff();
+            JOptionPane.showMessageDialog(null, "One Staff has been Edit","Edit Staff",JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        }
+    }catch(Exception ex){
         ex.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Editing a Staff failed","Edit Staff",JOptionPane.INFORMATION_MESSAGE);
-    }
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_btnCloseActionPerformed
+        }
+     }
+}//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
@@ -191,7 +214,12 @@ public class EditStaff extends javax.swing.JFrame {
         txtPhone.setText(null);
         txtAddress.setText(null);
         txtName.requestFocus();
-    }//GEN-LAST:event_btnResetActionPerformed
+}//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
     * @param args the command line arguments
@@ -199,7 +227,13 @@ public class EditStaff extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditStaff().setVisible(true);
+                EditStaff dialog = new EditStaff(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -208,11 +242,11 @@ public class EditStaff extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
