@@ -21,6 +21,7 @@ import exhibitor.AddExhibitor;
 import exhibitor.EditExhibitor;
 import exhibitor.OperationExhibitor;
 import expo.AddExpo;
+import expo.EditExpo;
 import expo.OperationExpo;
 import java.awt.Frame;
 import javax.swing.JTable;
@@ -92,8 +93,8 @@ public class Main extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        cbWhere = new javax.swing.JComboBox();
-        txtKeyword = new javax.swing.JTextField();
+        cbWhereExpo = new javax.swing.JComboBox();
+        txtFindExpo = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -154,8 +155,8 @@ public class Main extends javax.swing.JFrame {
         btnEditS = new javax.swing.JButton();
         btnDeleteS = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        cbWhereP1 = new javax.swing.JComboBox();
-        txtPKeyword1 = new javax.swing.JTextField();
+        cbWhereSp = new javax.swing.JComboBox();
+        txtSponsor = new javax.swing.JTextField();
         btnFindS = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -261,6 +262,11 @@ public class Main extends javax.swing.JFrame {
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEdit.setText("Edit");
         btnEdit.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
@@ -275,7 +281,13 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel1.setText("Filter");
 
-        cbWhere.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbWhereExpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtFindExpo.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtFindExpoCaretUpdate(evt);
+            }
+        });
 
         btnFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
         btnFind.setText("Find");
@@ -294,9 +306,9 @@ public class Main extends javax.swing.JFrame {
                 .add(18, 18, 18)
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbWhere, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(cbWhereExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .add(txtFindExpo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFind))
         );
@@ -308,8 +320,8 @@ public class Main extends javax.swing.JFrame {
                     .add(btnEdit)
                     .add(btnDelete)
                     .add(jLabel1)
-                    .add(cbWhere, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(txtKeyword, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(cbWhereExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtFindExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnFind))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -655,7 +667,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAddEx3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAddEx3.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAddEx3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAddEx3.setText("Add");
         btnAddEx3.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -665,7 +677,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditEx3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditEx3.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditEx3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditEx3.setText("Edit");
         btnEditEx3.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -675,7 +687,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteEx3.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteEx3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx3.setText("Delete");
         btnDeleteEx3.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -974,11 +986,22 @@ public class Main extends javax.swing.JFrame {
         btnDeleteS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteS.setText("Delete");
         btnDeleteS.setMargin(new java.awt.Insets(2, 4, 2, 4));
+        btnDeleteS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel6.setText("Filter");
 
-        cbWhereP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbWhereSp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtSponsor.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtSponsorCaretUpdate(evt);
+            }
+        });
 
         btnFindS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
         btnFindS.setText("Find");
@@ -997,9 +1020,9 @@ public class Main extends javax.swing.JFrame {
                 .add(18, 18, 18)
                 .add(jLabel6)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbWhereP1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(cbWhereSp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .add(txtSponsor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnFindS))
         );
@@ -1010,8 +1033,8 @@ public class Main extends javax.swing.JFrame {
                     .add(btnAddS)
                     .add(btnDeleteS)
                     .add(jLabel6)
-                    .add(cbWhereP1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(txtPKeyword1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(cbWhereSp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtSponsor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnFindS)
                     .add(btnEditS))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1074,7 +1097,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        btnAddP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAddP1.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnAddP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAddP1.setText("Add");
         btnAddP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -1084,7 +1107,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditP1.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditP1.setText("Edit");
         btnEditP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -1094,7 +1117,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteP1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDeleteP1.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnDeleteP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteP1.setText("Delete");
         btnDeleteP1.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -1406,6 +1429,10 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int row = tblExpo.getSelectedRow();
+        int id = Integer.parseInt(tblExpo.getValueAt(row, 0).toString());
+        oe.delExpo(id);
+        LoadExpo();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -1465,6 +1492,7 @@ public class Main extends javax.swing.JFrame {
     private void TabSponsorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabSponsorPropertyChange
         // TODO add your handling code here:
         LoadSponsor();
+        os.buildCbWhereSp(cbWhereSp);
     }//GEN-LAST:event_TabSponsorPropertyChange
 
     private void btnEditPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPActionPerformed
@@ -1504,6 +1532,7 @@ public class Main extends javax.swing.JFrame {
     private void TabExpoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabExpoPropertyChange
         // TODO add your handling code here:
         LoadExpo();
+        oe.buildCbWhereEx(cbWhereExpo);
     }//GEN-LAST:event_TabExpoPropertyChange
 
     private void btnEditBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBTActionPerformed
@@ -1640,6 +1669,33 @@ public class Main extends javax.swing.JFrame {
         ost.doSearch(ost.returnSearch(cbWhereStaff),keyword,tblStaff);
     }//GEN-LAST:event_txtFindStaffCaretUpdate
 
+    private void txtFindExpoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindExpoCaretUpdate
+        // TODO add your handling code here:
+        String keyword = txtFindExpo.getText().trim();
+        keyword.replace(" ", "%");
+        oe.doSearch(oe.returnSearch(cbWhereExpo),keyword,tblExpo);
+    }//GEN-LAST:event_txtFindExpoCaretUpdate
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        new EditExpo(this, true).setVisible(true);
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSActionPerformed
+        // TODO add your handling code here:
+        int row = tblSponsor.getSelectedRow();
+        int id = Integer.parseInt(tblSponsor.getValueAt(row, 0).toString());
+        os.delSponsor(id);
+        LoadSponsor();
+    }//GEN-LAST:event_btnDeleteSActionPerformed
+
+    private void txtSponsorCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtSponsorCaretUpdate
+        // TODO add your handling code here:
+        String keyword = txtSponsor.getText().trim();
+        keyword.replace(" ", "%");
+        os.doSearch(os.returnSearch(cbWhereSp),keyword,tblSponsor);
+    }//GEN-LAST:event_txtSponsorCaretUpdate
+
 
     public void LoadExpo()
     {
@@ -1757,11 +1813,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnFindP1;
     private javax.swing.JButton btnFindS;
     private javax.swing.JComboBox cbEx;
-    private javax.swing.JComboBox cbWhere;
     private javax.swing.JComboBox cbWhereBT;
     private javax.swing.JComboBox cbWhereBooth;
+    private javax.swing.JComboBox cbWhereExpo;
     private javax.swing.JComboBox cbWhereP;
-    private javax.swing.JComboBox cbWhereP1;
+    private javax.swing.JComboBox cbWhereSp;
     private javax.swing.JComboBox cbWhereStaff;
     private javax.swing.JComboBox cbWhereUser;
     private javax.swing.JLabel jLabel1;
@@ -1811,11 +1867,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtFindBT;
     private javax.swing.JTextField txtFindBooth;
     private javax.swing.JTextField txtFindEhi;
+    private javax.swing.JTextField txtFindExpo;
     private javax.swing.JTextField txtFindStaff;
     private javax.swing.JTextField txtFindUser;
-    private javax.swing.JTextField txtKeyword;
     private javax.swing.JTextField txtPKeyword;
-    private javax.swing.JTextField txtPKeyword1;
+    private javax.swing.JTextField txtSponsor;
     private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
 

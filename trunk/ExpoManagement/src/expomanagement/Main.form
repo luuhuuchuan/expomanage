@@ -250,9 +250,9 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbWhere" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbWhereExpo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtKeyword" pref="229" max="32767" attributes="0"/>
+                                  <Component id="txtFindExpo" pref="229" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFind" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -266,8 +266,8 @@
                                       <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbWhere" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtKeyword" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="cbWhereExpo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFindExpo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="btnFind" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -306,6 +306,9 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnDelete">
                           <Properties>
@@ -332,7 +335,7 @@
                             <Property name="text" type="java.lang.String" value="Filter"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="cbWhere">
+                        <Component class="javax.swing.JComboBox" name="cbWhereExpo">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="4">
@@ -344,7 +347,10 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtKeyword">
+                        <Component class="javax.swing.JTextField" name="txtFindExpo">
+                          <Events>
+                            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtFindExpoCaretUpdate"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnFind">
                           <Properties>
@@ -1566,9 +1572,9 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbWhereP1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbWhereSp" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword1" pref="227" max="32767" attributes="0"/>
+                                  <Component id="txtSponsor" pref="227" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindS" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1581,8 +1587,8 @@
                                       <Component id="btnAddS" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnDeleteS" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbWhereP1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtPKeyword1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="cbWhereSp" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtSponsor" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="btnFindS" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnEditS" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -1639,6 +1645,9 @@
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteSActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel6">
                           <Properties>
@@ -1648,7 +1657,7 @@
                             <Property name="text" type="java.lang.String" value="Filter"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="cbWhereP1">
+                        <Component class="javax.swing.JComboBox" name="cbWhereSp">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="4">
@@ -1660,7 +1669,10 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtPKeyword1">
+                        <Component class="javax.swing.JTextField" name="txtSponsor">
+                          <Events>
+                            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtSponsorCaretUpdate"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnFindS">
                           <Properties>
