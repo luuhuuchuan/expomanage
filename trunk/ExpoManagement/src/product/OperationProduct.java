@@ -97,10 +97,11 @@ public class OperationProduct {
         CallableStatement cs = db.getConnection().prepareCall("{call DeleteProducts(?)}");
         //truyen tham so cho store
         cs.setInt(1, id);
-        cs.execute();
-
-        JOptionPane.showMessageDialog(null, "One Product has been deleted !","Delete Product",JOptionPane.INFORMATION_MESSAGE);
-
+        if(JOptionPane.showConfirmDialog(null, "Do you want to delete this Product ?",
+                "Delete Product",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            cs.execute();
+            JOptionPane.showMessageDialog(null, "One Product has been deleted !","Delete Product",JOptionPane.INFORMATION_MESSAGE);
+        }
         }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, "Can't delete this Product !","Delete Product",JOptionPane.ERROR_MESSAGE);
