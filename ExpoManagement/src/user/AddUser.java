@@ -6,12 +6,13 @@
 /*
  * AddUser.java
  *
- * Created on 14-11-2010, 21:59:50
+ * Created on 25-11-2010, 22:50:14
  */
 
 package user;
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -20,21 +21,21 @@ import javax.swing.UIManager;
  *
  * @author SiaroKool
  */
-public class AddUser extends javax.swing.JFrame {
+public class AddUser extends javax.swing.JDialog {
 
     /** Creates new form AddUser */
-
- 
-    public AddUser() {
-        try {
+    Main m = null;
+    OperationUser ou = new OperationUser();
+    public AddUser(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }
         catch (Exception ex) {
             ex.printStackTrace();
         }
         initComponents();
-
-
+        m = (Main)parent;
     }
 
     /** This method is called from within the constructor to
@@ -47,33 +48,19 @@ public class AddUser extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtPass = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        txtPass = new javax.swing.JPasswordField();
+        btnAdd = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add New Manager"));
-
-        jLabel2.setText("User Name:");
-
-        jLabel3.setText("User Pass:");
-
-        jLabel5.setText("User Email:");
-
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
 
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/75.png"))); // NOI18N
         btnReset.setText("Reset");
@@ -83,6 +70,18 @@ public class AddUser extends javax.swing.JFrame {
             }
         });
 
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("User Name:");
+
+        jLabel3.setText("User Pass:");
+
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -91,35 +90,36 @@ public class AddUser extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("User Email:");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
-                                .add(jLabel2)
-                                .add(36, 36, 36)
-                                .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
-                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel3)
-                                    .add(jLabel5))
-                                .add(39, 39, 39)
-                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                                    .add(txtPass, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(29, 29, 29)
-                        .add(btnAdd)
-                        .add(18, 18, 18)
-                        .add(btnReset)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 30, Short.MAX_VALUE)
-                        .add(btnClose)))
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                        .add(jLabel2)
+                        .add(36, 36, 36)
+                        .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel3)
+                            .add(jLabel5))
+                        .add(39, 39, 39)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                            .add(txtPass, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE))))
                 .addContainerGap())
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(29, 29, 29)
+                .add(btnAdd)
+                .add(42, 42, 42)
+                .add(btnReset)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 46, Short.MAX_VALUE)
+                .add(btnClose)
+                .add(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -139,8 +139,8 @@ public class AddUser extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 17, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnAdd)
-                    .add(btnClose)
-                    .add(btnReset))
+                    .add(btnReset)
+                    .add(btnClose))
                 .add(26, 26, 26))
         );
 
@@ -149,54 +149,20 @@ public class AddUser extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
+                .add(35, 35, 35)
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(20, 20, 20)
+                .add(24, 24, 24)
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        try {
-        DBHelper db = null;
-        db = new DBHelper();
-        db.openConnection();
-
-        String name = txtName.getText().trim();
-        String pass = txtPass.getPassword().toString().trim();
-        String email = txtEmail.getText().trim();
-
-        //tao giao dien de thuc thi store
-        CallableStatement cs = db.getConnection().prepareCall("{call AddUser(?,?,?,?,null)}");
-        //truyen tham so cho store
-        cs.setString(1, name);
-        cs.setString(2, pass);
-        cs.setInt(3, 1);
-        cs.setString(4, email);
-        //thuc thi store
-        cs.execute();
-        JOptionPane.showMessageDialog(null, "One new User has been added !","Add new Manager",JOptionPane.INFORMATION_MESSAGE);
-        dispose();
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new Manager",JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
-        }
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
@@ -204,7 +170,42 @@ public class AddUser extends javax.swing.JFrame {
         txtPass.setText(null);
         txtEmail.setText(null);
         txtName.requestFocus();
-    }//GEN-LAST:event_btnResetActionPerformed
+}//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        if(ou.checkUser(txtName, txtPass, txtEmail))
+        {
+        try {
+        DBHelper db = null;
+        db = new DBHelper();
+        db.openConnection();
+        String name = txtName.getText().trim();
+        String pass = txtPass.getPassword().toString().trim();
+        String email = txtEmail.getText().trim();
+
+        //tao giao dien de thuc thi store
+        CallableStatement cs = db.getConnection().prepareCall("{call AddUser(?,?,?)}");
+        //truyen tham so cho store
+        cs.setString(1, name);
+        cs.setString(2, pass);
+        cs.setString(3, email);
+
+        //thuc thi store
+        cs.execute();
+        ((Main)m).LoadAccount();
+        JOptionPane.showMessageDialog(null, "One new User has been added !","New User",JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        }
+}//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+}//GEN-LAST:event_btnCloseActionPerformed
 
     /**
     * @param args the command line arguments
@@ -212,7 +213,13 @@ public class AddUser extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddUser().setVisible(true);
+                AddUser dialog = new AddUser(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

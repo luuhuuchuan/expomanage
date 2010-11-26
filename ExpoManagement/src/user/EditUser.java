@@ -6,32 +6,37 @@
 /*
  * EditUser.java
  *
- * Created on 14-11-2010, 22:16:20
+ * Created on 25-11-2010, 23:19:32
  */
 
 package user;
 
 import dataLayer.DBHelper;
-import java.awt.Frame;
-import java.sql.PreparedStatement;
+import expomanagement.Main;
+import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author SiaroKool
  */
-public class EditUser extends javax.swing.JFrame {
+public class EditUser extends javax.swing.JDialog {
 
     /** Creates new form EditUser */
+    Main m = null;
     private DBHelper db = null;
-    public EditUser() {
+    OperationUser ou = new OperationUser();
+    public EditUser(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         db = new DBHelper();
-        //if can not open the connection
-        if(!db.openConnection()){
-            this.btnSave.setEnabled(false);
-            this.btnClose.setEnabled(false);
-        }
+        db.openConnection();
+
+        m = (Main) parent;
+        int row = m.getAccountTable().getSelectedRow();
+        txtName.setText(m.getAccountTable().getValueAt(row, 1).toString());
+        txtPass.setText(m.getAccountTable().getValueAt(row, 2).toString());
+        txtEmail.setText(m.getAccountTable().getValueAt(row, 4).toString());
     }
 
     /** This method is called from within the constructor to
@@ -43,39 +48,20 @@ public class EditUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         txtName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtPass = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtTypeUser = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        btnSave = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
+        txtPass = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel1.setText("Edit User");
-
-        jLabel2.setText("User Name:");
-
-        jLabel3.setText("User Pass:");
-
-        jLabel4.setText("TypeUser:");
-
-        jLabel5.setText("User Email:");
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit User"));
 
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/75.png"))); // NOI18N
         btnReset.setText("Reset");
@@ -85,6 +71,20 @@ public class EditUser extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("User Name:");
+
+        jLabel3.setText("User Pass:");
+
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("User Email:");
+
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -93,108 +93,128 @@ public class EditUser extends javax.swing.JFrame {
             }
         });
 
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(jPanel1Layout.createSequentialGroup()
+                            .add(jLabel3)
+                            .add(51, 51, 51)
+                            .add(txtPass, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                            .addContainerGap())
+                        .add(jPanel1Layout.createSequentialGroup()
+                            .add(jLabel2)
+                            .add(45, 45, 45)
+                            .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                            .addContainerGap()))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(btnClose)
+                        .add(28, 28, 28))))
+            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(jPanel1Layout.createSequentialGroup()
+                            .add(btnSave)
+                            .add(56, 56, 56)
+                            .add(btnReset))
+                        .add(jPanel1Layout.createSequentialGroup()
+                            .add(jLabel5)
+                            .add(48, 48, 48)
+                            .add(txtEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)))
+                    .addContainerGap()))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(26, 26, 26)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(28, 28, 28)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(txtPass, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 86, Short.MAX_VALUE)
+                .add(btnClose)
+                .add(28, 28, 28))
+            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel1Layout.createSequentialGroup()
+                    .add(117, 117, 117)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(jLabel5)
+                        .add(txtEmail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(42, 42, 42)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(btnSave)
+                        .add(btnReset))
+                    .addContainerGap(28, Short.MAX_VALUE)))
+        );
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(33, 33, 33)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(btnSave)
-                        .add(56, 56, 56)
-                        .add(btnReset)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 55, Short.MAX_VALUE)
-                        .add(btnClose)
-                        .add(59, 59, 59))
-                    .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(jLabel3)
-                            .add(jLabel4)
-                            .add(jLabel5))
-                        .add(45, 45, 45)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(txtEmail)
-                            .add(txtTypeUser)
-                            .add(txtPass)
-                            .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
-                        .addContainerGap(112, Short.MAX_VALUE))))
-            .add(layout.createSequentialGroup()
-                .add(154, 154, 154)
-                .add(jLabel1)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .add(32, 32, 32)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtPass, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel4)
-                    .add(txtTypeUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel5)
-                    .add(txtEmail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(42, 42, 42)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnSave)
-                    .add(btnReset)
-                    .add(btnClose))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .add(21, 21, 21)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        try{
-        //lay dl tu form
-        String name = txtName.getText().trim();
-        String pass = txtPass.getText().trim();
-        String typeUser = txtTypeUser.getText().trim();
-        String email = txtEmail.getText().trim();
-
-        String sqlCmd = "Insert Into User values(?,?,?,?,?)";
-        PreparedStatement ps = db.getConnection().prepareStatement(sqlCmd);
-        ps.setString(1, name);
-        ps.setString(2, pass);
-        ps.setString(3, typeUser);
-        ps.setString(4, email);
-        ps.execute();
-        JOptionPane.showMessageDialog(null, "One User has been edit","Edit User",JOptionPane.INFORMATION_MESSAGE);
-        //((TabProduct)parentFrame).loadAll();
-    }
-    catch(Exception ex){
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Editing a User failed","Edit User",JOptionPane.INFORMATION_MESSAGE);
-    }
-    }//GEN-LAST:event_btnSaveActionPerformed
-
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         txtName.setText(null);
         txtPass.setText(null);
-        txtTypeUser.setText(null);
         txtEmail.setText(null);
         txtName.requestFocus();
-    }//GEN-LAST:event_btnResetActionPerformed
+}//GEN-LAST:event_btnResetActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_btnCloseActionPerformed
+}//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        if(ou.checkUser(txtName, txtPass, txtEmail)){
+        try{
+        //lay dl
+        int row = m.getExhibitorTable().getSelectedRow();
+        String Name = m.getAccountTable().getValueAt(row, 0).toString();
+        String name = txtName.getText().trim();
+        String pass = txtPass.getText().trim();
+        String email = txtEmail.getText().trim();
+
+        CallableStatement cs = db.getConnection().prepareCall("{call EditUser(?,?,?)}");
+        cs.setString(1, name);
+        cs.setString(2, pass);
+        cs.setString(3, email);
+        if(JOptionPane.showConfirmDialog(null, "Do you want edit this User",
+                        "Edit User",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            cs.execute();
+            ((Main)m).LoadAccount();
+            JOptionPane.showMessageDialog(null, "One User has been Edit","Edit User",JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        }
+    }catch(Exception ex){
+        ex.printStackTrace();
+        }
+     }
+}//GEN-LAST:event_btnSaveActionPerformed
 
     /**
     * @param args the command line arguments
@@ -202,7 +222,13 @@ public class EditUser extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditUser().setVisible(true);
+                EditUser dialog = new EditUser(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -211,15 +237,13 @@ public class EditUser extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPass;
-    private javax.swing.JTextField txtTypeUser;
     // End of variables declaration//GEN-END:variables
 
 }
