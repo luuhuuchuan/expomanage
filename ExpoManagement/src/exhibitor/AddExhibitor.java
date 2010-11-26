@@ -301,7 +301,8 @@ public class AddExhibitor extends javax.swing.JDialog {
         csu.setInt(5, eid);
         //thuc thi store
         csu.execute();
-        ((Main)m).LoadExhibitor();
+        m.LoadExhibitor();
+        m.LoadAccount();
         JOptionPane.showMessageDialog(null, "One new Exhibitor has been added !","New Exhibitor",JOptionPane.INFORMATION_MESSAGE);        
         dispose();
         } catch (Exception ex) {
