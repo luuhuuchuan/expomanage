@@ -16,7 +16,8 @@ insert into Expo (ExName, ExNumBooth, ExMoney, ExDescription, ExDateStart, ExDat
 -- Tao Store goi ra tat ca expo
 create proc getAllExpo
 as
-select * from Expo
+select Expo.ExID, Expo.ExName, Expo.ExNumBooth, Expo.ExMoney, Expo.ExDescription, Expo.ExDateStart, Expo.ExDateEnd
+from Expo 
 
 -- Tao Store co tham so de tao Expo
 
@@ -31,7 +32,33 @@ AS
 INSERT INTO Expo (ExName, ExNumBooth, ExMoney, ExDescription, ExDateStart, ExDateEnd)
 VALUES(@Name,@NumBooth,@Cost,@Description,@DateStart,@DateEnd)
 
--- Chay thu Store
---DECLARE @F INT
---exec addExpo 'Hoi Sung',100,6000000,'Trien lam cac loai sung','11/10/2010','12/9/2010'
-exec getID_Name_Of_Expo
+-- Tao Store delete BoothType
+create proc deleteExpo
+@ID int
+as
+delete from Expo
+where ExID = @ID
+
+--Tao Store de tim kiem Product theo ten
+Create PROC findExpo
+@Where nvarchar(50),
+@Key nvarchar(100)
+AS
+Declare @fe nvarchar(200)
+set @fe = 'select Expo.ExID, Expo.ExName, Expo.ExNumBooth, Expo.ExMoney, Expo.ExDescription, Expo.ExDateStart, Expo.ExDateEnd from Expo where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+execute(@fe)
+
+
+-- Tao store edit Expo
+create proc editExpo
+@id int,
+@Name nvarchar(100),
+@NumBooth int,
+@Cost float,
+@Description ntext,
+@DateStart SMALLDATETIME,
+@DateEnd SMALLDATETIME
+as
+update Expo
+Set @Name = ExName,@NumBooth = ExNumBooth,@Cost = ExMoney,@Description = ExDescription,@DateStart = ExDateStart,@DateEnd = ExDateEnd
+where ExID = @id
