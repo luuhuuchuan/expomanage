@@ -23,9 +23,37 @@ select * from Staff
 CREATE PROC AddStaff
 @Name nvarchar(100),
 @Email nvarchar(100),
-@Phone int,
+@Phone nvarchar(50),
 @Address ntext
 AS
 INSERT INTO Staff (SName, SEmail, SPhone, SAddress)
 	VALUES(@Name,@Email,@Phone,@Address)
 END
+
+----Tao Store tim kiem Staff
+Create PROC findStaff
+@Where nvarchar(50),
+@Key nvarchar(100)
+AS
+Declare @sta nvarchar(200)
+set @sta = 'Select * from Staff where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+execute(@sta)
+
+--Tao Store de Edit Staff
+Create Proc EditStaff
+@ID int,
+@Name nvarchar(100),
+@Email nvarchar(100),
+@Phone nvarchar(50),
+@Address ntext
+AS
+Update Staff
+Set SName = @Name,SEmail = @Email,SPhone = @Phone,SAddress = @Address
+Where SID = @ID
+
+--Tao store de xoa staff
+CREATE PROC DeleteStaff
+@id int
+AS
+DELETE FROM Staff WHERE SID = @id
+
