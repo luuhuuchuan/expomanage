@@ -191,6 +191,7 @@ public class AddSponsor extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        if(os.checkformSponsor( cbExpo, txtSpName, txtSpMoney)){
         try {
         DBHelper db = null;
         db = new DBHelper();
@@ -215,8 +216,8 @@ public class AddSponsor extends javax.swing.JDialog {
         dispose();
         ((Main)m).LoadSponsor();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred during execution,Please check again !","Add new Sponsor",JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
+        }
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
