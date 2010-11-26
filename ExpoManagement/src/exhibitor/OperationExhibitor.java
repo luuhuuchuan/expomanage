@@ -162,4 +162,9 @@ public class OperationExhibitor {
             JOptionPane.showMessageDialog(null, "Can't delete this Exhibitor !","Delete Exhibitor",JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    public ResultSet getIDExhibitor()throws SQLException{
+        String storeName = "{call GetExhibitorID }";
+        return db.getCallAble(storeName).executeQuery();
+    }
 }
