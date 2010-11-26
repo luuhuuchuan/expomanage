@@ -15,8 +15,12 @@ import dataLayer.DBHelper;
 import expomanagement.Main;
 import java.awt.Frame;
 import java.sql.CallableStatement;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -51,7 +55,7 @@ public class Editbooths extends javax.swing.JDialog {
         cbContact.setSelectedItem(m.getBoothTable().getValueAt(row,0).toString());
         cbBoothType.setSelectedItem(m.getBoothTable().getValueAt(row, 2).toString());
         txtBname.setText(m.getBoothTable().getValueAt(row, 4).toString());
-        txtBDate.setDate(null);
+        txtBDate.setDateFormatString(m.getBoothTable().getValueAt(row, 5).toString());
         txtBmoney.setText(m.getBoothTable().getValueAt(row, 6).toString());
         buttonGroup1.isSelected(null);
     }
