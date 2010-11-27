@@ -58,3 +58,10 @@ CREATE PROC DeleteExhibitor
 @id int
 AS
 DELETE FROM Exhibitor WHERE EID = @id
+
+--Tao Store lay ra ID moi nhat cua Exhibitor
+Create Proc GetExhibitorID
+AS
+Select Max(EID) From Exhibitor
+
+exec GetExhibitorID
