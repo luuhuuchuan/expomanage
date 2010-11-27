@@ -205,12 +205,12 @@ public class AddExhibitor extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(23, 23, 23)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(34, 34, 34)
                 .add(btnAdd)
-                .add(52, 52, 52)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 53, Short.MAX_VALUE)
                 .add(btnReset)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 55, Short.MAX_VALUE)
+                .add(43, 43, 43)
                 .add(btnClose)
                 .add(28, 28, 28))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
@@ -229,9 +229,9 @@ public class AddExhibitor extends javax.swing.JDialog {
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnAdd)
+                    .add(btnClose)
                     .add(btnReset)
-                    .add(btnClose))
+                    .add(btnAdd))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -245,8 +245,7 @@ public class AddExhibitor extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(oex.checkExhibitor(txtName, txtFax, txtPhone, txtAddress, txtWebsite))
-        {
+        if(oex.checkExhibitor(txtName, txtFax, txtPhone, txtAddress, txtWebsite)){
         try {
         DBHelper db = null;
         db = new DBHelper();

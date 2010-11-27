@@ -34,11 +34,11 @@ public class EditExhibitor extends javax.swing.JDialog {
 
         m = (Main) parent;
         int row = m.getExhibitorTable().getSelectedRow();
-        txtName.setText(m.getExhibitorTable().getValueAt(row, 1).toString());
-        txtFax.setText(m.getExhibitorTable().getValueAt(row, 2).toString());
-        txtPhone.setText(m.getExhibitorTable().getValueAt(row, 3).toString());
-        txtAddress.setText(m.getExhibitorTable().getValueAt(row, 4).toString());
-        txtWebsite.setText(m.getExhibitorTable().getValueAt(row, 5).toString());
+        txtName.setText(m.getExhibitorTable().getValueAt(row, 1).toString().trim());
+        txtFax.setText(m.getExhibitorTable().getValueAt(row, 2).toString().trim());
+        txtPhone.setText(m.getExhibitorTable().getValueAt(row, 3).toString().trim());
+        txtAddress.setText(m.getExhibitorTable().getValueAt(row, 4).toString().trim());
+        txtWebsite.setText(m.getExhibitorTable().getValueAt(row, 5).toString().trim());
     }
 
     /** This method is called from within the constructor to
