@@ -51,7 +51,7 @@ public class EditExpo extends javax.swing.JDialog {
         txtNumBooth.setText(m.getExpoTable().getValueAt(row, 2).toString());
         txtCost.setText(m.getExpoTable().getValueAt(row, 3).toString());
         txtDescription.setText(m.getExpoTable().getValueAt(row, 4).toString());
-        DateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
+        DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         String StartDate = m.getExpoTable().getValueAt(row, 5).toString().trim();
         String EndDate = m.getExpoTable().getValueAt(row, 6).toString().trim();
         try {
@@ -182,7 +182,7 @@ public class EditExpo extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        BtnClose.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BtnClose.setFont(new java.awt.Font("Tahoma", 0, 12));
         BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         BtnClose.setText("Close");
         BtnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -191,8 +191,8 @@ public class EditExpo extends javax.swing.JDialog {
             }
         });
 
-        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12));
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
+        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,7 +243,7 @@ public class EditExpo extends javax.swing.JDialog {
         String name = txtName.getText().trim();
         int numBooth = Integer.parseInt(txtNumBooth.getText().trim());
         float cost = Float.parseFloat(txtCost.getText().trim());
-        String description = txtDescription.getText();
+        String description = txtDescription.getText().trim();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Date dS = txtDateStart.getDate();
         Date dE = txtDateEnd.getDate();
@@ -264,7 +264,7 @@ public class EditExpo extends javax.swing.JDialog {
         if(JOptionPane.showConfirmDialog(null, "Do you want to update the record(s)",
                 "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             cs.execute();
-            ((Main)m).LoadExpo();
+            m.LoadExpo();
             dispose();
             }
         }

@@ -9,13 +9,13 @@ import dataLayer.DBHelper;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class OperationProduct {
     DBHelper db = null;
     DefaultTableModel ProductsModel = null;
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public void loadAllProduct(JTable jTable1){
         
         jTable1.setModel(ProductsModel = new DefaultTableModel());
@@ -45,7 +46,7 @@ public class OperationProduct {
                 v.add(rs.getFloat(5));
                 v.add(rs.getInt(6));
                 v.add(rs.getString(7));
-                v.add(rs.getDate(8));
+                v.add(formatter.format(rs.getDate(8)));
                 ProductsModel.addRow(v);
             }
             rs.close();
@@ -82,7 +83,7 @@ public class OperationProduct {
             v.add(rs.getFloat(5));
             v.add(rs.getInt(6));
             v.add(rs.getString(7));
-            v.add(rs.getDate(8));
+            v.add(formatter.format(rs.getDate(8)));
             ProductsModel.addRow(v);
         }
         rs.close();

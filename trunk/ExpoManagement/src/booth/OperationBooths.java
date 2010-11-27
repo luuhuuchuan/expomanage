@@ -9,6 +9,7 @@ import dataLayer.DBHelper;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -31,6 +32,7 @@ public class OperationBooths {
     HashMap hm = new HashMap();
     DefaultComboBoxModel CbBoothTypeModel = null;
     HashMap hm2 = new HashMap();
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public boolean checkformBooth(JComboBox cbStaff, JComboBox cbContact, JComboBox cbBoothType, JTextField txtBname, JTextField txtBmoney){
         if(cbStaff.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null,"Please,select Staff","Check Information",JOptionPane.ERROR_MESSAGE);
@@ -83,7 +85,7 @@ public class OperationBooths {
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));
-                v.add(rs.getDate(6));
+                v.add(formatter.format(rs.getDate(6)));
                 v.add(rs.getFloat(7));
                 if(rs.getBoolean(8))
                     v.add("Yes");
@@ -188,6 +190,7 @@ public class OperationBooths {
     public void doSearch(String Where, String Key, JTable tblBooths){
         try
         {
+
             String storeName = "{call findBooths('" + Where + "','" + Key + "')}";
             tblBooths.setModel(BoothsModel = new DefaultTableModel());
             Vector v = new Vector();
@@ -203,7 +206,7 @@ public class OperationBooths {
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));
-                v.add(rs.getDate(6));
+                v.add(formatter.format(rs.getDate(6)));
                 v.add(rs.getFloat(7));
                 if(rs.getBoolean(8))
                     v.add("Yes");

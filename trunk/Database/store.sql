@@ -34,8 +34,14 @@ go
 create proc deleteExpo
 @ID int
 as
-delete from Expo
-where ExID = @ID
+begin
+	delete from Contact
+		where ExID = @ID
+	delete from Sponsors
+		where ExID = @ID
+	delete from Expo
+		where ExID = @ID
+end
 
 -- Tao Store goi ra ten va id tat ca expo
 go
@@ -69,9 +75,10 @@ create proc editExpo
 @DateEnd SMALLDATETIME
 as
 update Expo
-Set @Name = ExName,@NumBooth = ExNumBooth,@Cost = ExMoney,@Description = ExDescription,@DateStart = ExDateStart,@DateEnd = ExDateEnd
+Set ExName = @Name,ExNumBooth = @NumBooth,ExMoney = @Cost,ExDescription = @Description,ExDateStart = @DateStart,ExDateEnd = @DateEnd
 where ExID = @id
 
+c
 ----------------------------------------BOOTH-------------------------------------------
 
 -- Tao Store goi ra tat ca expo
@@ -181,9 +188,9 @@ create proc deleteBoothType
 @ID int
 as
 begin
-	delete from BoothType
-		where BTID = @ID
 	delete from Booths
+		where BTID = @ID
+	delete from BoothType
 		where BTID = @ID
 end
 
@@ -262,12 +269,17 @@ Update Exhibitor
 Set EName = @Name,EFax = @Fax,Ephone = @Phone,EAddress = @Address,EWebsite = @Website
 Where EID = @ID
 
+
+
 --Tao store de xoa exhibitor
 go
-CREATE PROC DeleteExhibitor
+create PROC DeleteExhibitor
 @id int
 AS
 begin
+	DELETE FROM Staff WHERE CID IN (SELECT CID FROM Contact WHERE EID = @id)
+	DELETE FROM Products WHERE CID IN (SELECT CID FROM Contact WHERE EID = @id)
+	DELETE FROM Contact WHERE EID = @id
 	DELETE FROM Products WHERE EID = @id
 	DELETE FROM [User] WHERE EID = @id
 	DELETE FROM Exhibitor WHERE EID = @id
