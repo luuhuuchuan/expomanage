@@ -36,10 +36,10 @@ public class EditProduct extends javax.swing.JDialog {
             m = (Main) parent;
             int row = m.getProductsTable().getSelectedRow();
             cbContact.setSelectedItem(m.getProductsTable().getValueAt(row, 2));
-            txtName.setText(m.getProductsTable().getValueAt(row, 3).toString());
-            txtPrice.setText(m.getProductsTable().getValueAt(row, 4).toString());
-            txtNumber.setText(m.getProductsTable().getValueAt(row, 5).toString());
-            txtDescription.setText(m.getProductsTable().getValueAt(row, 6).toString());
+            txtName.setText(m.getProductsTable().getValueAt(row, 3).toString().trim());
+            txtPrice.setText(m.getProductsTable().getValueAt(row, 4).toString().trim());
+            txtNumber.setText(m.getProductsTable().getValueAt(row, 5).toString().trim());
+            txtDescription.setText(m.getProductsTable().getValueAt(row, 6).toString().trim());
     }
 
     /** This method is called from within the constructor to
@@ -168,9 +168,9 @@ public class EditProduct extends javax.swing.JDialog {
             .add(layout.createSequentialGroup()
                 .add(55, 55, 55)
                 .add(btnSave)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 97, Short.MAX_VALUE)
                 .add(btnCancel)
-                .add(73, 73, 73))
+                .add(58, 58, 58))
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
