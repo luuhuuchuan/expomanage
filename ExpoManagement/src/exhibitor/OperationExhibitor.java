@@ -9,8 +9,6 @@ import dataLayer.DBHelper;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -29,7 +27,7 @@ public class OperationExhibitor {
     DBHelper db = null;
     DefaultTableModel ExhibitorModel = null;
     public void loadAllExhibitor(JTable jTable1){
-        DateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
+        
         jTable1.setModel(ExhibitorModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"Exhibitor Code","Exhibitor Name","Exhibitor Fax","Phone Number","Address","Website"};

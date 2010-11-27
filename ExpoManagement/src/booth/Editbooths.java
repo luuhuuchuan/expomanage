@@ -15,7 +15,6 @@ import dataLayer.DBHelper;
 import expomanagement.Main;
 import java.awt.Frame;
 import java.sql.CallableStatement;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,7 +33,7 @@ public class Editbooths extends javax.swing.JDialog {
     OperationBooths ob  = new OperationBooths();
     Main m = null;
     Frame parentFrame = null;
-    public Editbooths(java.awt.Frame parent, boolean modal) {
+    public Editbooths(java.awt.Frame parent, boolean modal) throws ParseException {
         super(parent, modal);
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -50,12 +49,12 @@ public class Editbooths extends javax.swing.JDialog {
         m = (Main)parent;
 
         int row = m.getBoothTable().getSelectedRow();
-
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         cbStaff.setSelectedItem(m.getBoothTable().getValueAt(row, 3).toString());
         cbContact.setSelectedItem(m.getBoothTable().getValueAt(row,0).toString());
         cbBoothType.setSelectedItem(m.getBoothTable().getValueAt(row, 2).toString());
         txtBname.setText(m.getBoothTable().getValueAt(row, 4).toString());
-        txtBDate.setDateFormatString(m.getBoothTable().getValueAt(row, 5).toString());
+        txtBDate.setDate(formatter.parse(m.getBoothTable().getValueAt(row, 5).toString()));
         txtBmoney.setText(m.getBoothTable().getValueAt(row, 6).toString());
         buttonGroup1.isSelected(null);
     }
@@ -301,7 +300,12 @@ public class Editbooths extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Editbooths dialog = new Editbooths(new javax.swing.JFrame(), true);
+                Editbooths dialog = null;
+                try {
+                    dialog = new Editbooths(new javax.swing.JFrame(), true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Editbooths.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);

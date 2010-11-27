@@ -11,7 +11,6 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -27,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class OperationExpo {
     DBHelper db = null;
-
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     DefaultTableModel ExpoModel = null;
     public void loadAllExpo(JTable jTable1){
         jTable1.setModel(ExpoModel = new DefaultTableModel());
@@ -37,7 +36,7 @@ public class OperationExpo {
             v.add(s);
         ExpoModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getAllExpo();
+            ResultSet rs = getResultSet("getAllExpo");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
@@ -45,8 +44,8 @@ public class OperationExpo {
                 v.add(rs.getInt(3)); 
                 v.add(rs.getFloat(4));
                 v.add(rs.getString(5));
-                v.add(rs.getDate(6));
-                v.add(rs.getDate(7));
+                v.add(formatter.format(rs.getDate(6)));
+                v.add(formatter.format(rs.getDate(7)));
                 ExpoModel.addRow(v);
             }
             rs.close();
@@ -89,28 +88,15 @@ public class OperationExpo {
             txtCost.requestFocus();
             return false;
         }
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-            Date dS = txtDateStart.getDate();
-            String dateStart = sdf.format(dS);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Start Date must be entered in the format mm/dd/yyyy","Alert",JOptionPane.WARNING_MESSAGE);
+        if(txtDateStart.getCalendar().after(txtDateEnd.getCalendar())) {
+            JOptionPane.showMessageDialog(null, "Start Date must be entered before End Date","Alert",JOptionPane.WARNING_MESSAGE);
             txtDateStart.requestFocus();
-            return false;
-        }
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-            Date dE = txtDateEnd.getDate();
-            String dateStart = sdf.format(dE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "End Date must be entered in the format mm/dd/yyyy","Check Exhibitor",JOptionPane.WARNING_MESSAGE);
-            txtDateEnd.requestFocus();
             return false;
         }
         return true;
     }
-    public ResultSet getAllExpo()throws SQLException{
-        String storeName = "{call getAllExpo }";
+    public ResultSet getResultSet(String store)throws SQLException{
+        String storeName = "{call " + store + " }";
         return db.getCallAble(storeName).executeQuery();
     }
     public void delExpo(int id){
@@ -131,14 +117,14 @@ public class OperationExpo {
     public void doSearch(String Where, String Key, JTable tblExpo){
         try
         {
-            String storeName = "{call findExpo('" + Where + "','" + Key + "')}";
+            String storeName = "findExpo('" + Where + "','" + Key + "')";
             tblExpo.setModel(ExpoModel = new DefaultTableModel());
             Vector v = new Vector();
             String [] heading = {"Expo Code","Expo Name","Number Booth","Cost","Description","Date Start","Date End"};
             for(String s : heading)
                 v.add(s);
             ExpoModel.setColumnIdentifiers(v);
-            ResultSet rs = db.getCallAble(storeName).executeQuery();
+            ResultSet rs = getResultSet(storeName);
                 while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
@@ -146,8 +132,8 @@ public class OperationExpo {
                 v.add(rs.getInt(3));
                 v.add(rs.getFloat(4));
                 v.add(rs.getString(5));
-                v.add(rs.getDate(6));
-                v.add(rs.getDate(7));
+                v.add(formatter.format(rs.getDate(6)));
+                v.add(formatter.format(rs.getDate(7)));
                 ExpoModel.addRow(v);
             }
             rs.close();
