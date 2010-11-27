@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -45,8 +44,8 @@ public class OperationExhibitor {
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
-                v.add(rs.getDate(5).getMonth()+"/"+rs.getDate(5).getDay()+"/"+rs.getDate(5).getYear());
-                v.add(rs.getDate(6).getMonth()+"/"+rs.getDate(6).getDay()+"/"+rs.getDate(6).getYear());
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
                 ExhibitorModel.addRow(v);
             }
             rs.close();
