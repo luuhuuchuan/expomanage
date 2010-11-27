@@ -252,7 +252,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereExpo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindExpo" pref="229" max="32767" attributes="0"/>
+                                  <Component id="txtFindExpo" pref="232" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFind" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -506,7 +506,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereBT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindBT" pref="229" max="32767" attributes="0"/>
+                                  <Component id="txtFindBT" pref="232" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindBT" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -770,7 +770,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereBooth" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindBooth" pref="229" max="32767" attributes="0"/>
+                                  <Component id="txtFindBooth" pref="232" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx2" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1021,7 +1021,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereUser" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindUser" pref="229" max="32767" attributes="0"/>
+                                  <Component id="txtFindUser" pref="232" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1272,7 +1272,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbEx" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindEhi" pref="229" max="32767" attributes="0"/>
+                                  <Component id="txtFindEhi" pref="232" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindEx" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1322,6 +1322,7 @@
                               <Image iconType="3" name="/expomanagement/icon_func/69.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Edit"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
@@ -1339,6 +1340,7 @@
                               <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
@@ -1574,7 +1576,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereSp" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtSponsor" pref="227" max="32767" attributes="0"/>
+                                  <Component id="txtSponsor" pref="230" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindS" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1825,7 +1827,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereStaff" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindStaff" pref="227" max="32767" attributes="0"/>
+                                  <Component id="txtFindStaff" pref="230" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2076,7 +2078,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword" pref="227" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword" pref="230" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnFindP" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2126,6 +2128,7 @@
                               <Image iconType="3" name="/expomanagement/icon_func/69.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Edit"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
@@ -2143,6 +2146,7 @@
                               <Image iconType="3" name="/expomanagement/icon_func/del.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                               <Insets value="[2, 4, 2, 4]"/>
                             </Property>
