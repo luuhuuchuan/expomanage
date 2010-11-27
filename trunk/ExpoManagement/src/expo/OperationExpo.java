@@ -5,17 +5,19 @@
 
 package expo;
 
+import com.toedter.calendar.JDateChooser;
 import dataLayer.DBHelper;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,7 +32,7 @@ public class OperationExpo {
     public void loadAllExpo(JTable jTable1){
         jTable1.setModel(ExpoModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Expo Code","Expo Name","Number Booth","Cost","ExDescription","Date Start","Date End"};
+        String [] heading = {"Expo Code","Expo Name","Number Booth","Cost","Description","Date Start","Date End"};
         for(String s : heading)
             v.add(s);
         ExpoModel.setColumnIdentifiers(v);
@@ -40,9 +42,9 @@ public class OperationExpo {
                 v = new Vector();
                 v.add(rs.getInt(1));
                 v.add(rs.getString(2));
-                v.add(rs.getInt(3));
-                //v.add(rs.getString(5));
+                v.add(rs.getInt(3)); 
                 v.add(rs.getFloat(4));
+                v.add(rs.getString(5));
                 v.add(rs.getDate(6));
                 v.add(rs.getDate(7));
                 ExpoModel.addRow(v);
@@ -57,43 +59,51 @@ public class OperationExpo {
         db = new DBHelper();
         db.openConnection();
     }
-        public boolean checkformExpo(JTextField txtName, JTextField txtNumBooth, JTextField txtCost, JTextField txtDateStart, JTextField txtDateEnd){
+        public boolean checkformExpo(JTextField txtName, JTextField txtNumBooth, JTextField txtCost, JDateChooser txtDateStart, JDateChooser txtDateEnd){
         if(txtName.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter Name of Expo");
+            JOptionPane.showMessageDialog(null,"Please,Enter Name of Expo","Alert",JOptionPane.WARNING_MESSAGE);
             txtName.requestFocus();
             return false;
         }
         if(txtNumBooth.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter Number booth");
+            JOptionPane.showMessageDialog(null,"Please,Enter Number booth","Alert",JOptionPane.WARNING_MESSAGE);
             txtNumBooth.requestFocus();
             return false;
         }
         try {
             Float.parseFloat(txtNumBooth.getText());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Number Booth must Number");
+            JOptionPane.showMessageDialog(null, "Number Booth must Number","Alert",JOptionPane.WARNING_MESSAGE);
             txtNumBooth.requestFocus();
             return false;
         }
         if(txtCost.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Enter Cost ");
+            JOptionPane.showMessageDialog(null,"Please,Enter Cost ","Alert",JOptionPane.WARNING_MESSAGE);
             txtCost.requestFocus();
             return false;
         }
         try {
             Float.parseFloat(txtCost.getText());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cost must Number");
+            JOptionPane.showMessageDialog(null, "Cost must Number","Alert",JOptionPane.WARNING_MESSAGE);
             txtCost.requestFocus();
             return false;
         }
-         if(txtDateStart.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Date Start can't null");
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+            Date dS = txtDateStart.getDate();
+            String dateStart = sdf.format(dS);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Start Date must be entered in the format mm/dd/yyyy","Alert",JOptionPane.WARNING_MESSAGE);
             txtDateStart.requestFocus();
             return false;
-         }
-            if(txtDateEnd.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please,Date End  can't null");
+        }
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+            Date dE = txtDateEnd.getDate();
+            String dateStart = sdf.format(dE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "End Date must be entered in the format mm/dd/yyyy","Check Exhibitor",JOptionPane.WARNING_MESSAGE);
             txtDateEnd.requestFocus();
             return false;
         }
@@ -124,7 +134,7 @@ public class OperationExpo {
             String storeName = "{call findExpo('" + Where + "','" + Key + "')}";
             tblExpo.setModel(ExpoModel = new DefaultTableModel());
             Vector v = new Vector();
-            String [] heading = {"Expo Code","Expo Name","Number Booth","Cost","Date Start","Date End"};
+            String [] heading = {"Expo Code","Expo Name","Number Booth","Cost","Description","Date Start","Date End"};
             for(String s : heading)
                 v.add(s);
             ExpoModel.setColumnIdentifiers(v);
@@ -135,6 +145,7 @@ public class OperationExpo {
                 v.add(rs.getString(2));
                 v.add(rs.getInt(3));
                 v.add(rs.getFloat(4));
+                v.add(rs.getString(5));
                 v.add(rs.getDate(6));
                 v.add(rs.getDate(7));
                 ExpoModel.addRow(v);

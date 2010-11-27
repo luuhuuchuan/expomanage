@@ -159,7 +159,7 @@ public class OperationProduct {
             ex.printStackTrace();
         }
     }
-    public boolean checkProducts(JComboBox cbContact,JTextField txtName,JTextField txtPrice,JTextField txtNumber,JTextArea txtDescription){
+    public boolean checkProducts(JComboBox cbContact,JTextField txtName,JTextField txtPrice,JTextField txtNumber){
         if(cbContact.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null,"Please, select CID !","Check Product",JOptionPane.WARNING_MESSAGE);
             cbContact.requestFocus();
@@ -192,11 +192,6 @@ public class OperationProduct {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Number Product must Number !","Check Product",JOptionPane.WARNING_MESSAGE);
             txtNumber.requestFocus();
-            return false;
-        }
-        if(txtDescription.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please, enter Description !","Check Product",JOptionPane.WARNING_MESSAGE);
-            txtDescription.requestFocus();
             return false;
         }
         return true;

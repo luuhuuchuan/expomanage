@@ -198,7 +198,7 @@ public class EditProduct extends javax.swing.JDialog {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(op.checkProducts(cbContact, txtName, txtPrice, txtNumber, txtDescription)){
+        if(op.checkProducts(cbContact, txtName, txtPrice, txtNumber)){
             try {
                 db = new DBHelper();
                 db.openConnection();
