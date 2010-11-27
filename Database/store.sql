@@ -268,10 +268,9 @@ CREATE PROC DeleteExhibitor
 @id int
 AS
 begin
-	DELETE FROM Exhibitor WHERE EID = @id
 	DELETE FROM Products WHERE EID = @id
 	DELETE FROM [User] WHERE EID = @id
-
+	DELETE FROM Exhibitor WHERE EID = @id
 end
 --Tao Store lay ra ID moi nhat cua Exhibitor
 go
