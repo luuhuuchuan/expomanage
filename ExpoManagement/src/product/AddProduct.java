@@ -216,7 +216,7 @@ public class AddProduct extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(op.checkProducts(cbContact, txtName, txtPrice, txtNumber, txtDescription)){
+        if(op.checkProducts(cbContact, txtName, txtPrice, txtNumber)){
         try {
         DBHelper db = null;
         db = new DBHelper();

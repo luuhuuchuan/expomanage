@@ -13,9 +13,10 @@ package expo;
 
 import dataLayer.DBHelper;
 import expomanagement.Main;
+import java.awt.Toolkit;
 import java.sql.CallableStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -41,14 +42,24 @@ public class EditExpo extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         initComponents();
+        int w = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int h = Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.setLocation(w/3, h/3);
         m = (Main)parent;
         int row = m.getExpoTable().getSelectedRow();
         txtName.setText(m.getExpoTable().getValueAt(row, 1).toString());
         txtNumBooth.setText(m.getExpoTable().getValueAt(row, 2).toString());
         txtCost.setText(m.getExpoTable().getValueAt(row, 3).toString());
         txtDescription.setText(m.getExpoTable().getValueAt(row, 4).toString());
-        txtDateStart.setDate(null);
-        txtDateEnd.setDate(null);
+        DateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
+        String StartDate = m.getExpoTable().getValueAt(row, 5).toString().trim();
+        String EndDate = m.getExpoTable().getValueAt(row, 6).toString().trim();
+        try {
+            txtDateStart.setDate(formatter.parse(StartDate));
+            txtDateEnd.setDate(formatter.parse(EndDate));
+        } catch (ParseException ex) {
+            Logger.getLogger(EditExpo.class.getName()).log(Level.SEVERE, null, ex);
+        }  
     }
 
 
@@ -73,10 +84,10 @@ public class EditExpo extends javax.swing.JDialog {
         txtCost = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
-        btnEdit = new javax.swing.JButton();
-        BtnClose = new javax.swing.JButton();
         txtDateStart = new com.toedter.calendar.JDateChooser();
         txtDateEnd = new com.toedter.calendar.JDateChooser();
+        BtnClose = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,24 +109,6 @@ public class EditExpo extends javax.swing.JDialog {
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
-        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
-        btnEdit.setText("Edit");
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
-            }
-        });
-
-        BtnClose.setFont(new java.awt.Font("Tahoma", 0, 12));
-        BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/56.png"))); // NOI18N
-        BtnClose.setText("Close");
-        BtnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCloseActionPerformed(evt);
-            }
-        });
-
         txtDateStart.setDateFormatString("MM/dd/yyyy");
 
         txtDateEnd.setDateFormatString("MM/dd/yyyy");
@@ -127,12 +120,6 @@ public class EditExpo extends javax.swing.JDialog {
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(103, 103, 103)
-                        .add(btnEdit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(BtnClose)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 107, Short.MAX_VALUE))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel1)
@@ -190,21 +177,39 @@ public class EditExpo extends javax.swing.JDialog {
                         .add(txtDateEnd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(18, 18, 18)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                        .add(18, 18, 18)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(btnEdit)
-                            .add(BtnClose)))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jLabel4)
-                        .addContainerGap())))
+                    .add(jLabel4)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        BtnClose.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        BtnClose.setText("Close");
+        BtnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseActionPerformed(evt);
+            }
+        });
+
+        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(127, Short.MAX_VALUE)
+                .add(btnEdit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
+                .add(BtnClose)
+                .add(127, 127, 127))
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -212,9 +217,13 @@ public class EditExpo extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(BtnClose)
+                    .add(btnEdit))
                 .addContainerGap())
         );
 
@@ -225,7 +234,7 @@ public class EditExpo extends javax.swing.JDialog {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        if(oe.checkformExpo(txtName, txtNumBooth, txtCost, txtName, txtName)){
+        if(oe.checkformExpo(txtName, txtNumBooth, txtCost, txtDateStart, txtDateEnd)){
         try{
         db = new DBHelper();
         db.openConnection();
@@ -279,6 +288,7 @@ public class EditExpo extends javax.swing.JDialog {
             public void run() {
                 EditExpo dialog = new EditExpo(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
