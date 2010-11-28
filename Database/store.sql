@@ -78,7 +78,7 @@ update Expo
 Set ExName = @Name,ExNumBooth = @NumBooth,ExMoney = @Cost,ExDescription = @Description,ExDateStart = @DateStart,ExDateEnd = @DateEnd
 where ExID = @id
 
-c
+
 ----------------------------------------BOOTH-------------------------------------------
 
 -- Tao Store goi ra tat ca expo
@@ -458,6 +458,7 @@ go
 CREATE PROC DeleteStaff
 @id int
 AS
+DELETE FROM Booths WHERE SID = @id
 DELETE FROM Staff WHERE SID = @id
 
 --------------------------------------------------------------------------------------------------
@@ -494,14 +495,14 @@ execute(@use)
 --Tao Store de Edit User
 go
 Create Proc EditUser
-@Name nvarchar(100),
-@Pass nvarchar(100),
-@TypeUser nvarchar(50),
-@Email ntext
+@oName nvarchar(100),
+@nName nvarchar(100),
+@Pass varchar(100),
+@Email varchar(100)
 AS
 Update [User]
-Set UName = @Name,UPass = @Pass,UTypeUser = @TypeUser,UEmail = @Email
-Where UName = @Name
+Set UName = @nName,UPass = @Pass,UEmail = @Email
+Where UName = @oName
 
 --Tao store de xoa user
 go
@@ -509,4 +510,19 @@ CREATE PROC DeleteUser
 @name nvarchar(100)
 AS
 DELETE FROM [User] WHERE UName = @name
+
+----Tao Store check userName da ton tai hay chua
+go
+Create PROC checkUser
+@Name nvarchar(100)
+AS
+begin 
+	declare @status bit
+	if (@Name in (select UName from [User]))
+		set @status = 'true'
+	else 
+		set @status = 'false'
+	select @status 
+end
+
 --------------------------------------------------------------------------------------------------

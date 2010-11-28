@@ -14,6 +14,7 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -34,14 +35,14 @@ public class OperationUser {
             v.add(s);
         UserModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getAllUser();
+            ResultSet rs = getStore("getAllUser");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getString(1));
                 v.add(rs.getString(2));
                 if (rs.getInt(3) == 1)
                     v.add("Manager");
-                else 
+                else
                     v.add("Exhibitor");
                 v.add(rs.getString(4));
                 UserModel.addRow(v);
@@ -56,17 +57,35 @@ public class OperationUser {
         db = new DBHelper();
         db.openConnection();
     }
-    public ResultSet getAllUser()throws SQLException{
-        String storeName = "{call getAllUser }";
+    public ResultSet getStore(String sName)throws SQLException{
+        String storeName = "{call "+sName+" }";
         return db.getCallAble(storeName).executeQuery();
     }
-    public boolean checkUser(JTextField txtName,JTextField txtPass,JTextField txtEmail){
+    public boolean checkUser(JTextField txtName,JPasswordField txtPass,JTextField txtEmail){
+        
+        boolean status = false;
+        try{
+        String storeName = "checkUser('"+txtName.getText().trim()+"')";
+        ResultSet rs = getStore(storeName);
+        while(rs.next()){
+            status = rs.getBoolean(1);
+        }
+        rs.close();
+        }
+        catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        if(status){
+            JOptionPane.showMessageDialog(null, "User Name has been existed !","Check User",JOptionPane.WARNING_MESSAGE);
+            txtName.requestFocus();
+            return false;
+        }
         if(txtName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter Name of User !","Check User",JOptionPane.WARNING_MESSAGE);
             txtName.requestFocus();
             return false;
         }
-        if(txtPass.getText().equals(""))
+        if((new String(txtPass.getPassword())).equals(""))
         {
             JOptionPane.showMessageDialog(null, "Please,Enter pass of User","Check User",JOptionPane.WARNING_MESSAGE);
             txtPass.requestFocus();
@@ -83,14 +102,14 @@ public class OperationUser {
     public void doSearch(String Where, String Key, JTable tblUser){
         try
         {
-        String storeName = "{call findUser('" + Where + "','" + Key + "')}";
+        String storeName = "findUser('" + Where + "','" + Key + "')";
         tblUser.setModel(UserModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"User Name","User Pass","Type User","User Email"};
         for(String s : heading)
             v.add(s);
         UserModel.setColumnIdentifiers(v);
-        ResultSet rs = db.getCallAble(storeName).executeQuery();
+        ResultSet rs = getStore(storeName);
         while(rs.next()){
             v = new Vector();
             v.add(rs.getString(1));
@@ -110,6 +129,7 @@ public class OperationUser {
         }
     }
 
+  
     DefaultComboBoxModel CbUsModel = null;
     HashMap hmp = new HashMap();
     public void buildCbUs(JComboBox cbUs)
