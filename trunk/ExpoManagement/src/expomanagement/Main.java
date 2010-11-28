@@ -26,11 +26,8 @@ import expo.OperationExpo;
 import java.awt.Frame;
 import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.plaf.basic.BasicTabbedPaneUI.TabSelectionHandler;
 import product.AddProduct;
 import product.EditProduct;
 import product.OperationProduct;
@@ -1606,6 +1603,7 @@ public class Main extends javax.swing.JFrame {
     private void TabAccountPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabAccountPropertyChange
         // TODO add your handling code here:
         LoadAccount();
+        ou.buildCbUs(cbWhereUser);
     }//GEN-LAST:event_TabAccountPropertyChange
 
     private void TabStaffPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TabStaffPropertyChange

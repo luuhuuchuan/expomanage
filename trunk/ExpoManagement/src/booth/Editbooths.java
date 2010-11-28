@@ -33,7 +33,7 @@ public class Editbooths extends javax.swing.JDialog {
     OperationBooths ob  = new OperationBooths();
     Main m = null;
     Frame parentFrame = null;
-    public Editbooths(java.awt.Frame parent, boolean modal) throws ParseException {
+    public Editbooths(java.awt.Frame parent, boolean modal){
         super(parent, modal);
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -54,7 +54,11 @@ public class Editbooths extends javax.swing.JDialog {
         cbContact.setSelectedItem(m.getBoothTable().getValueAt(row,0).toString());
         cbBoothType.setSelectedItem(m.getBoothTable().getValueAt(row, 2).toString());
         txtBname.setText(m.getBoothTable().getValueAt(row, 4).toString());
-        txtBDate.setDate(formatter.parse(m.getBoothTable().getValueAt(row, 5).toString()));
+        try {
+            txtBDate.setDate(formatter.parse(m.getBoothTable().getValueAt(row, 5).toString()));
+        } catch (ParseException ex) {
+            Logger.getLogger(Editbooths.class.getName()).log(Level.SEVERE, null, ex);
+        }
         txtBmoney.setText(m.getBoothTable().getValueAt(row, 6).toString());
         buttonGroup1.isSelected(null);
     }
@@ -303,10 +307,11 @@ public class Editbooths extends javax.swing.JDialog {
                 Editbooths dialog = null;
                 try {
                     dialog = new Editbooths(new javax.swing.JFrame(), true);
-                } catch (ParseException ex) {
+                } catch (Exception ex) {
                     Logger.getLogger(Editbooths.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
