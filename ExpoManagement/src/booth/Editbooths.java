@@ -94,7 +94,6 @@ public class Editbooths extends javax.swing.JDialog {
         btnNo = new javax.swing.JRadioButton();
         txtBDate = new com.toedter.calendar.JDateChooser();
         btnEdit = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -149,16 +148,16 @@ public class Editbooths extends javax.swing.JDialog {
                     .add(jLabel4))
                 .add(29, 29, 29)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(txtBDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                    .add(cbContact, 0, 173, Short.MAX_VALUE)
-                    .add(cbStaff, 0, 173, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, cbBoothType, 0, 173, Short.MAX_VALUE)
-                    .add(txtBname, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .add(txtBDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                    .add(cbContact, 0, 177, Short.MAX_VALUE)
+                    .add(cbStaff, 0, 177, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, cbBoothType, 0, 177, Short.MAX_VALUE)
+                    .add(txtBname, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                     .add(jPanel3Layout.createSequentialGroup()
                         .add(btnYes)
                         .add(35, 35, 35)
                         .add(btnNo))
-                    .add(txtBmoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                    .add(txtBmoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
                 .add(29, 29, 29))
         );
         jPanel3Layout.setVerticalGroup(
@@ -196,16 +195,13 @@ public class Editbooths extends javax.swing.JDialog {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
-        btnEdit.setText("Edit");
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
+        btnEdit.setText("Save");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
-
-        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
-        btnReset.setText("Reset");
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnCancel.setText("Cancel");
@@ -221,18 +217,14 @@ public class Editbooths extends javax.swing.JDialog {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .add(layout.createSequentialGroup()
-                        .add(10, 10, 10)
-                        .add(btnEdit)
-                        .add(38, 38, 38)
-                        .add(btnReset)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 34, Short.MAX_VALUE)
-                        .add(btnCancel)
-                        .add(19, 19, 19))))
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(54, 54, 54)
+                .add(btnEdit)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 92, Short.MAX_VALUE)
+                .add(btnCancel)
+                .add(44, 44, 44))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -240,9 +232,8 @@ public class Editbooths extends javax.swing.JDialog {
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnEdit)
-                    .add(btnReset)
-                    .add(btnCancel))
+                    .add(btnCancel)
+                    .add(btnEdit))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -310,7 +301,6 @@ public class Editbooths extends javax.swing.JDialog {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnEdit;
     private javax.swing.JRadioButton btnNo;
-    private javax.swing.JButton btnReset;
     private javax.swing.JRadioButton btnYes;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbBoothType;
