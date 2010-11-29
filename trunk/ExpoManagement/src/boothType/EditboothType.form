@@ -22,20 +22,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnEdit" min="-2" pref="79" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnClose" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jPanel3" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Component id="btnEdit" min="-2" pref="79" max="-2" attributes="0"/>
+              <EmptySpace pref="99" max="32767" attributes="0"/>
+              <Component id="btnClose" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel3" min="-2" max="-2" attributes="1"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,8 +40,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jPanel3" min="-2" pref="317" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnClose" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -78,9 +75,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txtBTName" pref="233" max="32767" attributes="1"/>
-                              <Component id="txtBTID" alignment="0" pref="233" max="32767" attributes="1"/>
-                              <Component id="cbExpo" alignment="0" pref="233" max="32767" attributes="1"/>
+                              <Component id="txtBTName" pref="198" max="32767" attributes="1"/>
+                              <Component id="txtBTID" alignment="0" pref="198" max="32767" attributes="1"/>
+                              <Component id="cbExpo" alignment="0" pref="198" max="32767" attributes="1"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -92,10 +89,10 @@
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtBTWidth" alignment="0" pref="233" max="32767" attributes="1"/>
-                              <Component id="txtBlength" alignment="1" pref="233" max="32767" attributes="1"/>
-                              <Component id="txtBTHeight" alignment="0" pref="233" max="32767" attributes="1"/>
-                              <Component id="txtBremain" alignment="0" pref="233" max="32767" attributes="1"/>
+                              <Component id="txtBTWidth" alignment="0" pref="198" max="32767" attributes="1"/>
+                              <Component id="txtBlength" alignment="1" pref="198" max="32767" attributes="1"/>
+                              <Component id="txtBTHeight" alignment="0" pref="198" max="32767" attributes="1"/>
+                              <Component id="txtBremain" alignment="0" pref="198" max="32767" attributes="1"/>
                           </Group>
                       </Group>
                   </Group>
@@ -217,9 +214,9 @@
     <Component class="javax.swing.JButton" name="btnEdit">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/expomanagement/icon_func/69.png"/>
+          <Image iconType="3" name="/expomanagement/icon_func/22.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Edit"/>
+        <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>

@@ -69,7 +69,6 @@ public class EditStaff extends javax.swing.JDialog {
         cbContact = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -144,14 +143,6 @@ public class EditStaff extends javax.swing.JDialog {
             }
         });
 
-        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/75.png"))); // NOI18N
-        btnReset.setText("Reset");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
-            }
-        });
-
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -172,9 +163,7 @@ public class EditStaff extends javax.swing.JDialog {
                     .add(layout.createSequentialGroup()
                         .add(48, 48, 48)
                         .add(btnSave)
-                        .add(18, 18, 18)
-                        .add(btnReset)
-                        .add(18, 18, 18)
+                        .add(117, 117, 117)
                         .add(btnClose)))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -186,7 +175,6 @@ public class EditStaff extends javax.swing.JDialog {
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnSave)
-                    .add(btnReset)
                     .add(btnClose, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -228,15 +216,6 @@ public class EditStaff extends javax.swing.JDialog {
      }
 }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        // TODO add your handling code here:
-        txtName.setText(null);
-        txtEmail.setText(null);
-        txtPhone.setText(null);
-        txtAddress.setText(null);
-        txtName.requestFocus();
-}//GEN-LAST:event_btnResetActionPerformed
-
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -249,7 +228,6 @@ public class EditStaff extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox cbContact;
     private javax.swing.JLabel jLabel1;
