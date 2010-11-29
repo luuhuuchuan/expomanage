@@ -315,10 +315,10 @@ public class Main extends javax.swing.JFrame {
         setTitle("Expo Management System");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24));
         txtTitle.setText("Expo Management System");
 
-        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14));
+        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
@@ -349,7 +349,7 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/home.png")), TabHome); // NOI18N
 
         SubTabManager.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 12));
+        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         TabExpo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TabExpo.setFont(new java.awt.Font("Tahoma", 0, 12));
@@ -371,9 +371,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEdit.setText("Edit");
+        btnEdit.setEnabled(false);
         btnEdit.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,9 +382,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.setEnabled(false);
         btnDelete.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -506,9 +508,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditBT.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEditBT.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEditBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditBT.setText("Edit");
+        btnEditBT.setEnabled(false);
         btnEditBT.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnEditBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -516,9 +519,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteBT.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteBT.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteBT.setText("Delete");
+        btnDeleteBT.setEnabled(false);
         btnDeleteBT.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnDeleteBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -646,9 +650,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditB.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEditB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEditB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditB.setText("Edit");
+        btnEditB.setEnabled(false);
         btnEditB.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnEditB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -656,9 +661,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteB.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteB.setText("Delete");
+        btnDeleteB.setEnabled(false);
         btnDeleteB.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnDeleteB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -780,9 +786,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditAcc.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEditAcc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEditAcc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditAcc.setText("Edit");
+        btnEditAcc.setEnabled(false);
         btnEditAcc.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnEditAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -790,9 +797,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteAcc.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteAcc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteAcc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteAcc.setText("Delete");
+        btnDeleteAcc.setEnabled(false);
         btnDeleteAcc.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnDeleteAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -914,9 +922,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditEx.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEditEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEditEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditEx.setText("Edit");
+        btnEditEx.setEnabled(false);
         btnEditEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnEditEx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -924,9 +933,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteEx.setText("Delete");
+        btnDeleteEx.setEnabled(false);
         btnDeleteEx.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnDeleteEx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1068,9 +1078,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditS.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEditS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEditS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditS.setText("Edit");
+        btnEditS.setEnabled(false);
         btnEditS.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnEditS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1078,9 +1089,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteS.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteS.setText("Delete");
+        btnDeleteS.setEnabled(false);
         btnDeleteS.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnDeleteS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1202,9 +1214,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditStaff.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnEditStaff.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEditStaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditStaff.setText("Edit");
+        btnEditStaff.setEnabled(false);
         btnEditStaff.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnEditStaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1212,9 +1225,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteStaff.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnDeleteStaff.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDeleteStaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/del.png"))); // NOI18N
         btnDeleteStaff.setText("Delete");
+        btnDeleteStaff.setEnabled(false);
         btnDeleteStaff.setMargin(new java.awt.Insets(2, 4, 2, 4));
         btnDeleteStaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
