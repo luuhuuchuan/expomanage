@@ -47,10 +47,10 @@ public class EditExpo extends javax.swing.JDialog {
         this.setLocation(w/3, h/3);
         m = (Main)parent;
         int row = m.getExpoTable().getSelectedRow();
-        txtName.setText(m.getExpoTable().getValueAt(row, 1).toString());
-        txtNumBooth.setText(m.getExpoTable().getValueAt(row, 2).toString());
-        txtCost.setText(m.getExpoTable().getValueAt(row, 3).toString());
-        txtDescription.setText(m.getExpoTable().getValueAt(row, 4).toString());
+        txtName.setText(m.getExpoTable().getValueAt(row, 1).toString().trim());
+        txtNumBooth.setText(m.getExpoTable().getValueAt(row, 2).toString().trim());
+        txtCost.setText(m.getExpoTable().getValueAt(row, 3).toString().trim());
+        txtDescription.setText(m.getExpoTable().getValueAt(row, 4).toString().trim());
         DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         String StartDate = m.getExpoTable().getValueAt(row, 5).toString().trim();
         String EndDate = m.getExpoTable().getValueAt(row, 6).toString().trim();
