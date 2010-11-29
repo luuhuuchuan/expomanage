@@ -220,8 +220,6 @@ public class OperationBooths {
         hmbt.put("Booth Name","B.BName");
         CbWhereBModel.addElement("Booth Type");
         hmbt.put("Booth Type","BT.BTName");
-        CbWhereBModel.addElement("Staff");
-        hmbt.put("Staff Name","S.SName");
     }
     public String returnSearch(JComboBox cbWhereBT)
     {
