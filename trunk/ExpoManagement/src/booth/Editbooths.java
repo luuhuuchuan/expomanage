@@ -14,6 +14,7 @@ package booth;
 import dataLayer.DBHelper;
 import expomanagement.Main;
 import java.awt.Frame;
+import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,6 +43,9 @@ public class Editbooths extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         initComponents();
+        int w = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int h = Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.setLocation(w/3, h/3);
         ob.buildAllStaff(cbStaff);
         ob.buildAllContactID(cbContact);
         ob.buildAlBoothType(cbBoothType);
@@ -301,25 +305,6 @@ public class Editbooths extends javax.swing.JDialog {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Editbooths dialog = null;
-                try {
-                    dialog = new Editbooths(new javax.swing.JFrame(), true);
-                } catch (Exception ex) {
-                    Logger.getLogger(Editbooths.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

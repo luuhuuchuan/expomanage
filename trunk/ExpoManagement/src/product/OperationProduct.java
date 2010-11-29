@@ -36,7 +36,7 @@ public class OperationProduct {
             v.add(s);
         ProductsModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getAllProducts();
+            ResultSet rs = getStore("getAllProducts");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
@@ -59,21 +59,21 @@ public class OperationProduct {
         db = new DBHelper();
         db.openConnection();
     }
-    public ResultSet getAllProducts()throws SQLException{
-        String storeName = "{call getAllProducts }";
+    public ResultSet getStore(String sName)throws SQLException{
+        String storeName = "{call "+sName+" }";
         return db.getCallAble(storeName).executeQuery();
     }
     public void doSearch(String Where, String Key, JTable tblProduct){
         try
         {
-        String storeName = "{call findProduct('" + Where + "','" + Key + "')}";
+        String storeName = "findProduct('" + Where + "','" + Key + "')";
         tblProduct.setModel(ProductsModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"Product Code","Exhibitor ID","Contact ID","Product Name","Product Price","Product Number","Description","Date"};
         for(String s : heading)
             v.add(s);
         ProductsModel.setColumnIdentifiers(v);
-        ResultSet rs = db.getCallAble(storeName).executeQuery();
+        ResultSet rs = getStore(storeName);
         while(rs.next()){
             v = new Vector();
             v.add(rs.getInt(1));
@@ -108,17 +108,6 @@ public class OperationProduct {
             JOptionPane.showMessageDialog(null, "Can't delete this Product !","Delete Product",JOptionPane.ERROR_MESSAGE);
         }
     }
-
-    public ResultSet getAllCID()throws SQLException{
-        String storeName = "{call get_CID }";
-        return db.getCallAble(storeName).executeQuery();
-    }
-
-    public ResultSet getAllExhibitor()throws SQLException{
-        String storeName = "{call getAllExhibitor }";
-        return db.getCallAble(storeName).executeQuery();
-    }
-
     DefaultComboBoxModel CbExhibitorModel = null;
     HashMap hm = new HashMap();
     public void buildCbExhibitor(JComboBox cbExpo)
@@ -126,7 +115,7 @@ public class OperationProduct {
         cbExpo.setModel(CbExhibitorModel = new DefaultComboBoxModel());
         CbExhibitorModel.addElement("-- Choose Exhibitor --");
         try{
-            ResultSet rs = getAllExhibitor();
+            ResultSet rs = getStore("getAllExhibitor");
             while(rs.next()){
                 String id = String.valueOf(rs.getInt(1));
                 String name = rs.getString(2);
@@ -149,7 +138,7 @@ public class OperationProduct {
         cbContact.setModel(CbContactModel = new DefaultComboBoxModel());
         CbContactModel.addElement("-- Choose Contact ID--");
         try{
-            ResultSet rs = getAllCID();
+            ResultSet rs = getStore("get_CID");
             while(rs.next()){
                 String Cid = rs.getString(1);
                 CbContactModel.addElement(Cid);

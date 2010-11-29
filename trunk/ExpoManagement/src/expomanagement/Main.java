@@ -64,12 +64,10 @@ public class Main extends javax.swing.JFrame {
         catch (Exception ex) {
             ex.printStackTrace();
         }
-        //this.dispose();
-        //new Login(this,true).setVisible(true);
+        this.dispose();
+        new doLogin(this,true).setVisible(true);
         initComponents();
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
-
-
         //Event
         tblExpo.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {

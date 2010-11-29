@@ -84,7 +84,7 @@ public class OperationBoothType {
             v.add(s);
         BoothTypeModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getAllBoothType();
+            ResultSet rs = getStore("getAllBoothType");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getString(1));
@@ -107,23 +107,11 @@ public class OperationBoothType {
         db = new DBHelper();
         db.openConnection();
     }
-    public ResultSet getAllBoothType()throws SQLException{
-        String storeName = "{call getAllBoothType }";
+    public ResultSet getStore(String sName)throws SQLException{
+        String storeName = "{call "+sName+" }";
         return db.getCallAble(storeName).executeQuery();
     }
 
-    public ResultSet getAllExpo()throws SQLException{
-        String storeName = "{call getID_Name_Of_Expo }";
-        return db.getCallAble(storeName).executeQuery();
-    }
-    public ResultSet getDeleteBoothType()throws SQLException{
-        String storeName = "{call deleteBoothType }";
-        return db.getCallAble(storeName).executeQuery();
-    }
-    public ResultSet getBoothTypeID()throws SQLException{
-        String storeName = "{call getBoothTypeByID }";
-        return db.getCallAble(storeName).executeQuery();
-    }
     DefaultComboBoxModel CbExpoModel = null;
     HashMap hm = new HashMap();
     private DefaultTableModel model = null;
@@ -133,7 +121,7 @@ public class OperationBoothType {
             loadAllBoothType(tblBoothType);
             if(boxBT.getSelectedItem() == "BoothType Name"){
                 String sqlCmd = "Select * from BoothType where BTName like '%"+pattern+"%'";
-                ResultSet rs = db.getStatement().executeQuery(sqlCmd);
+                ResultSet rs = getStore(sqlCmd);
                 loadAllBoothType(tblBoothType);
             }
         }
@@ -147,7 +135,7 @@ public class OperationBoothType {
         cbExpo.setModel(CbExpoModel = new DefaultComboBoxModel());
         CbExpoModel.addElement("-- Choose Expo --");
         try{
-            ResultSet rs = getAllExpo();
+            ResultSet rs = getStore("getID_Name_Of_Expo");
             while(rs.next()){
                 String name = rs.getString(1);
                 String id = String.valueOf(rs.getInt(2));
@@ -182,14 +170,14 @@ public class OperationBoothType {
     public void doSearch(String Where, String Key, JTable tblBoothType){
         try
         {
-            String storeName = "{call findBoothType('" + Where + "','" + Key + "')}";
+            String storeName = "findBoothType('" + Where + "','" + Key + "')";
             tblBoothType.setModel(BoothTypeModel = new DefaultTableModel());
             Vector v = new Vector();
             String [] heading = {"BTID","BoothType Name","Expo Name" ,"Booth Height","Booth Width","Booth Remain","Booth Length"};
             for(String s : heading)
                 v.add(s);
             BoothTypeModel.setColumnIdentifiers(v);
-            ResultSet rs = db.getCallAble(storeName).executeQuery();
+            ResultSet rs = getStore(storeName);
            while(rs.next()){
                 v = new Vector();
                 v.add(rs.getString(1));

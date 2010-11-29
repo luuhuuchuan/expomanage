@@ -272,7 +272,7 @@ public class AddExhibitor extends javax.swing.JDialog {
 
         //thuc thi store
         cs.execute();
-        ResultSet rs = oex.getIDExhibitor();
+        ResultSet rs = oex.getStore("GetExhibitorID");
         int eid = 0;
             while(rs.next()){
                eid = rs.getInt(1);
@@ -313,20 +313,7 @@ public class AddExhibitor extends javax.swing.JDialog {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                AddExhibitor dialog = new AddExhibitor(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
