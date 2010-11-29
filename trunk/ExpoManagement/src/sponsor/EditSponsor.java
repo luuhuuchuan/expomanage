@@ -35,11 +35,11 @@ public class EditSponsor extends javax.swing.JDialog {
         os.buildCbExpo(cbExpo);
         m = (Main) parent;
         int row = m.getSponsorTable().getSelectedRow();
-        txtSpID.setText(((Main) m).getSponsorTable().getValueAt(row, 0).toString());
-        txtSpName.setText(((Main) m).getSponsorTable().getValueAt(row, 1).toString());
+        txtSpID.setText(((Main) m).getSponsorTable().getValueAt(row, 0).toString().trim());
+        txtSpName.setText(((Main) m).getSponsorTable().getValueAt(row, 1).toString().trim());
         cbExpo.setSelectedItem(((Main) m).getSponsorTable().getValueAt(row, 2));
-        txtSpMoney.setText(((Main) m).getSponsorTable().getValueAt(row, 3).toString());
-        txtSpDes.setText(((Main) m).getSponsorTable().getValueAt(row, 4).toString());
+        txtSpMoney.setText(((Main) m).getSponsorTable().getValueAt(row, 3).toString().trim());
+        txtSpDes.setText(((Main) m).getSponsorTable().getValueAt(row, 4).toString().trim());
     }
 
     /** This method is called from within the constructor to
