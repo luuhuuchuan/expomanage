@@ -23,15 +23,17 @@ public class doLogin {
         db = new DBHelper();
         db.openConnection();
 
+        String DBUser = "";
+        String DBPass = "";
         String userName = txtUserName.getText().trim();
         String pass = new String(txtPass.getPassword()).trim();
 
         String storeName = "{call doLogin('" + userName + "')}";
         ResultSet rs = db.getCallAble(storeName).executeQuery();
         while(rs.next()){
-            String DBUser = rs.getString(1).trim();
+            DBUser = rs.getString(1).trim();
             hm.put("User",DBUser);
-            String DBPass = rs.getString(2).trim();
+            DBPass = rs.getString(2).trim();
             int TypeUser = rs.getInt(3);
             hm.put("TypeUser",TypeUser);
             int EID = rs.getInt(4);
@@ -46,6 +48,7 @@ public class doLogin {
 
     }
     public String ReturnLogin(String Obj){
+        JOptionPane.showMessageDialog(null, "One:"+hm.get("User").toString(),"Delete Expo",JOptionPane.INFORMATION_MESSAGE);
         return hm.get(Obj).toString();
     }
  

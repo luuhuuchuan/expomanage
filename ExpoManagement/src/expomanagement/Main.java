@@ -1832,7 +1832,7 @@ public class Main extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        lbUser.setText(dl.ReturnUsername());
+        lbUser.setText(dl.ReturnLogin("User"));
     }//GEN-LAST:event_formWindowActivated
 
 
