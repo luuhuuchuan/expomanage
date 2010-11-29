@@ -2,12 +2,10 @@ use Expo
 go
 
 go
-Create PROC doLogin
-@User nvarchar(50),
-@Pass nvarchar(100)
+create PROC doLogin
+@User nvarchar(50)
 AS
-Select UName,UPass from [User] where UName=@User and UPass=@Pass
-
+Select UName,UPass,UTypeUser,EID from [User] where UName=@User 
 ----------------------------------------EXPO-------------------------------------------
 -- Tao Store goi ra tat ca expo
 go
