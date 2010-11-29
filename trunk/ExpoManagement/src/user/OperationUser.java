@@ -38,13 +38,13 @@ public class OperationUser {
             ResultSet rs = getStore("getAllUser");
             while(rs.next()){
                 v = new Vector();
-                v.add(rs.getString(1));
-                v.add(rs.getString(2));
+                v.add(rs.getString(1).trim());
+                v.add(rs.getString(2).trim());
                 if (rs.getInt(3) == 1)
                     v.add("Manager");
                 else
                     v.add("Exhibitor");
-                v.add(rs.getString(4));
+                v.add(rs.getString(4).trim());
                 UserModel.addRow(v);
             }
             rs.close();
@@ -112,13 +112,13 @@ public class OperationUser {
         ResultSet rs = getStore(storeName);
         while(rs.next()){
             v = new Vector();
-            v.add(rs.getString(1));
-            v.add(rs.getString(2));
+            v.add(rs.getString(1).trim());
+            v.add(rs.getString(2).trim());
             if (rs.getInt(3) == 1)
                     v.add("Manager");
                 else
                     v.add("Exhibitor");
-            v.add(rs.getString(4));
+            v.add(rs.getString(4).trim());
             UserModel.addRow(v);
         }
         rs.close();

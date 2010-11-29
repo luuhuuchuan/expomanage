@@ -90,6 +90,7 @@ public class EditExpo extends javax.swing.JDialog {
         btnEdit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit Expo");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit Expo"));
 
@@ -191,7 +192,7 @@ public class EditExpo extends javax.swing.JDialog {
             }
         });
 
-        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEdit.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +206,7 @@ public class EditExpo extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+                .addContainerGap(131, Short.MAX_VALUE)
                 .add(btnEdit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(18, 18, 18)
                 .add(BtnClose)

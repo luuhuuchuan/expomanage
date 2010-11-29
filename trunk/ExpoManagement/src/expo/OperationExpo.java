@@ -40,10 +40,10 @@ public class OperationExpo {
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
-                v.add(rs.getString(2));
+                v.add(rs.getString(2).trim());
                 v.add(rs.getInt(3)); 
                 v.add(rs.getFloat(4));
-                v.add(rs.getString(5));
+                v.add(rs.getString(5).trim());
                 v.add(formatter.format(rs.getDate(6)));
                 v.add(formatter.format(rs.getDate(7)));
                 ExpoModel.addRow(v);
@@ -128,10 +128,10 @@ public class OperationExpo {
                 while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
-                v.add(rs.getString(2));
+                v.add(rs.getString(2).trim());
                 v.add(rs.getInt(3));
                 v.add(rs.getFloat(4));
-                v.add(rs.getString(5));
+                v.add(rs.getString(5).trim());
                 v.add(formatter.format(rs.getDate(6)));
                 v.add(formatter.format(rs.getDate(7)));
                 ExpoModel.addRow(v);

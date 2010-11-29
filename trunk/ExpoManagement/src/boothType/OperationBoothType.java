@@ -87,9 +87,9 @@ public class OperationBoothType {
             ResultSet rs = getStore("getAllBoothType");
             while(rs.next()){
                 v = new Vector();
-                v.add(rs.getString(1));
-                v.add(rs.getString(2));
-                v.add(rs.getString(3));
+                v.add(rs.getString(1).trim());
+                v.add(rs.getString(2).trim());
+                v.add(rs.getString(3).trim());
                 v.add(rs.getFloat(4));
                 v.add(rs.getFloat(5));
                 v.add(rs.getInt(6));
@@ -180,9 +180,9 @@ public class OperationBoothType {
             ResultSet rs = getStore(storeName);
            while(rs.next()){
                 v = new Vector();
-                v.add(rs.getString(1));
-                v.add(rs.getString(2));
-                v.add(rs.getString(3));
+                v.add(rs.getString(1).trim());
+                v.add(rs.getString(2).trim());
+                v.add(rs.getString(3).trim());
                 v.add(rs.getFloat(4));
                 v.add(rs.getFloat(5));
                 v.add(rs.getInt(6));

@@ -77,7 +77,7 @@ public class AddExhibitor extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Add Exhibitor");
+        setTitle("Add New Exhibitor");
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         btnAdd.setText("Add");
@@ -127,7 +127,7 @@ public class AddExhibitor extends javax.swing.JDialog {
                     .add(jLabel3)
                     .add(jLabel4)
                     .add(jLabel5))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 33, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                     .add(txtPhone)
                     .add(txtAddress)
@@ -212,7 +212,7 @@ public class AddExhibitor extends javax.swing.JDialog {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(34, 34, 34)
                 .add(btnAdd)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 59, Short.MAX_VALUE)
                 .add(btnReset)
                 .add(43, 43, 43)
                 .add(btnClose)

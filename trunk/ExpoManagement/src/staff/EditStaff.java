@@ -73,6 +73,7 @@ public class EditStaff extends javax.swing.JDialog {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit Staff");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit Staff"));
 

@@ -69,7 +69,7 @@ public class EditExhibitor extends javax.swing.JDialog {
         txtWebsite = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Add Product");
+        setTitle("Edit Exhibitor");
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
         btnSave.setText("Save");
@@ -122,11 +122,9 @@ public class EditExhibitor extends javax.swing.JDialog {
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, txtPhone)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, txtFax)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                            .add(txtWebsite))
-                        .addContainerGap())
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jLabel2)
-                        .addContainerGap(237, Short.MAX_VALUE))))
+                            .add(txtWebsite)))
+                    .add(jLabel2))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -168,7 +166,7 @@ public class EditExhibitor extends javax.swing.JDialog {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(59, 59, 59)
                 .add(btnSave)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 73, Short.MAX_VALUE)
                 .add(btnCancel)
                 .add(56, 56, 56))
         );
