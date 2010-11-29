@@ -24,6 +24,7 @@ import expo.AddExpo;
 import expo.EditExpo;
 import expo.OperationExpo;
 import java.awt.Frame;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
@@ -56,6 +57,7 @@ public class Main extends javax.swing.JFrame {
     OperationBooths ob = new OperationBooths();
     OperationStaff ost = new OperationStaff();
     OperationUser ou = new OperationUser();
+    doLogin dl = new doLogin();
 
     public Main() {
         try {
@@ -65,10 +67,12 @@ public class Main extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         this.dispose();
-        new doLogin(this,true).setVisible(true);
+        new Login(this,true).setVisible(true);
         initComponents();
+
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
         //Event
+
         tblExpo.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 //throw new UnsupportedOperationException("Not supported yet.");
@@ -299,6 +303,9 @@ public class Main extends javax.swing.JFrame {
         jScrollPane = new javax.swing.JScrollPane();
         tblProducts = new javax.swing.JTable();
         TabContact = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        lbUser = new javax.swing.JLabel();
+        btnLogOut = new javax.swing.JButton();
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -314,6 +321,11 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Expo Management System");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24));
         txtTitle.setText("Expo Management System");
@@ -1508,6 +1520,18 @@ public class Main extends javax.swing.JFrame {
 
         mainTab.addTab("Contact", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/contact.png")), TabContact); // NOI18N
 
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/6.png"))); // NOI18N
+        jLabel17.setText("User Name:");
+
+        lbUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        btnLogOut.setText("Log Out");
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOutActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1515,14 +1539,25 @@ public class Main extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(txtTitle)
-                    .add(mainTab, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE))
+                    .add(mainTab, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(txtTitle)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 203, Short.MAX_VALUE)
+                        .add(jLabel17)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(lbUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnLogOut)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(txtTitle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 43, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtTitle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 43, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel17)
+                    .add(lbUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnLogOut))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(mainTab, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1789,6 +1824,17 @@ public class Main extends javax.swing.JFrame {
         oe.buildCbWhereEx(cbWhereExpo);
 }//GEN-LAST:event_TabExpoPropertyChange
 
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Login(this,true).setVisible(true);
+    }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        lbUser.setText(dl.ReturnUsername());
+    }//GEN-LAST:event_formWindowActivated
+
 
     public void LoadExpo()
     {
@@ -1847,6 +1893,7 @@ public class Main extends javax.swing.JFrame {
     public JTable getSponsorTable(){
         return tblSponsor;
     }
+
     /**
     * @param args the command line arguments
     */
@@ -1897,6 +1944,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnEditP;
     private javax.swing.JButton btnEditS;
     private javax.swing.JButton btnEditStaff;
+    private javax.swing.JButton btnLogOut;
     private javax.swing.JComboBox cbEx;
     private javax.swing.JComboBox cbWhereBT;
     private javax.swing.JComboBox cbWhereBooth;
@@ -1913,6 +1961,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1948,6 +1997,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lbUser;
     private javax.swing.JTabbedPane mainTab;
     private javax.swing.JTable tblAccount;
     private javax.swing.JTable tblBooth;
