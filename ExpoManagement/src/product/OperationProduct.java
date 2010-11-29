@@ -41,11 +41,11 @@ public class OperationProduct {
                 v = new Vector();
                 v.add(rs.getInt(1));
                 v.add(rs.getInt(2));
-                v.add(rs.getString(3));
-                v.add(rs.getString(4));
+                v.add(rs.getString(3).trim());
+                v.add(rs.getString(4).trim());
                 v.add(rs.getFloat(5));
                 v.add(rs.getInt(6));
-                v.add(rs.getString(7));
+                v.add(rs.getString(7).trim());
                 v.add(formatter.format(rs.getDate(8)));
                 ProductsModel.addRow(v);
             }
@@ -78,11 +78,11 @@ public class OperationProduct {
             v = new Vector();
             v.add(rs.getInt(1));
             v.add(rs.getInt(2));
-            v.add(rs.getString(3));
-            v.add(rs.getString(4));
+            v.add(rs.getString(3).trim());
+            v.add(rs.getString(4).trim());
             v.add(rs.getFloat(5));
             v.add(rs.getInt(6));
-            v.add(rs.getString(7));
+            v.add(rs.getString(7).trim());
             v.add(formatter.format(rs.getDate(8)));
             ProductsModel.addRow(v);
         }

@@ -71,7 +71,7 @@ public class EditProduct extends javax.swing.JDialog {
         txtDescription = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Add Product");
+        setTitle("Edit Product");
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
         btnSave.setText("Save");
@@ -172,7 +172,7 @@ public class EditProduct extends javax.swing.JDialog {
             .add(layout.createSequentialGroup()
                 .add(55, 55, 55)
                 .add(btnSave)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 98, Short.MAX_VALUE)
                 .add(btnCancel)
                 .add(58, 58, 58))
             .add(layout.createSequentialGroup()

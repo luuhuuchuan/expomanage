@@ -38,10 +38,10 @@ public class OperationSponsor {
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
-                v.add(rs.getString(2));
-                v.add(rs.getString(3));
+                v.add(rs.getString(2).trim());
+                v.add(rs.getString(3).trim());
                 v.add(rs.getFloat(4));
-                v.add(rs.getString(5));
+                v.add(rs.getString(5).trim());
                 SponsorModel.addRow(v);
             }
             rs.close();
@@ -134,10 +134,10 @@ public class OperationSponsor {
                 while(rs.next()){
                  v = new Vector();
                 v.add(rs.getInt(1));
-                v.add(rs.getString(2));
-                v.add(rs.getString(3));
+                v.add(rs.getString(2).trim());
+                v.add(rs.getString(3).trim());
                 v.add(rs.getFloat(4));
-                v.add(rs.getString(5));
+                v.add(rs.getString(5).trim());
                 SponsorModel.addRow(v);
             }
             rs.close();

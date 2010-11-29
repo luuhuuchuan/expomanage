@@ -38,9 +38,9 @@ public class EditUser extends javax.swing.JDialog {
 
         m = (Main) parent;
         int row = m.getAccountTable().getSelectedRow();
-        txtName.setText(m.getAccountTable().getValueAt(row, 0).toString());
-        txtPass.setText(m.getAccountTable().getValueAt(row, 1).toString());
-        txtEmail.setText(m.getAccountTable().getValueAt(row, 3).toString());
+        txtName.setText(m.getAccountTable().getValueAt(row, 0).toString().trim());
+        txtPass.setText(m.getAccountTable().getValueAt(row, 1).toString().trim());
+        txtEmail.setText(m.getAccountTable().getValueAt(row, 3).toString().trim());
     }
 
     /** This method is called from within the constructor to
@@ -64,6 +64,7 @@ public class EditUser extends javax.swing.JDialog {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit Account");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit Account"));
 
@@ -171,8 +172,6 @@ public class EditUser extends javax.swing.JDialog {
                     .add(btnSave))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel1.getAccessibleContext().setAccessibleName("Edit Account");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
