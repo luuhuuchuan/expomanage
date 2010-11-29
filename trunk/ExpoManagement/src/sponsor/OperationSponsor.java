@@ -107,13 +107,14 @@ public class OperationSponsor {
     }
     public void delSponsor(int id){
         try{
-        CallableStatement cs = db.getConnection().prepareCall("{call deleteSponsor(?)}");
-        //truyen tham so cho store
-        cs.setInt(1, id);
-        cs.execute();
-
-        JOptionPane.showMessageDialog(null, "One Expo has been deleted !","Delete Sponsor",JOptionPane.INFORMATION_MESSAGE);
-
+            CallableStatement cs = db.getConnection().prepareCall("{call deleteSponsor(?)}");
+            //truyen tham so cho store
+            cs.setInt(1, id);
+            if(JOptionPane.showConfirmDialog(null, "Do you want to delete the record(s)",
+                        "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                cs.execute();
+                JOptionPane.showMessageDialog(null, "One Sponsor has been deleted !","Delete Sponsor",JOptionPane.INFORMATION_MESSAGE);
+            }
         }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, "Can't delete this Sponsor !","Delete Sponsor",JOptionPane.ERROR_MESSAGE);
