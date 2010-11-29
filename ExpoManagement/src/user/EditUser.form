@@ -66,9 +66,6 @@
           </Border>
         </Property>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Edit Account"/>
-      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">

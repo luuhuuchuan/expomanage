@@ -13,10 +13,8 @@ package sponsor;
 
 import dataLayer.DBHelper;
 import expomanagement.Main;
+import java.awt.Toolkit;
 import java.sql.CallableStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +30,9 @@ public class EditSponsor extends javax.swing.JDialog {
     public EditSponsor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        int w = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int h = Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.setLocation(w/3, h/3);
         os.buildCbExpo(cbExpo);
         m = (Main) parent;
         int row = m.getSponsorTable().getSelectedRow();
@@ -231,20 +232,6 @@ public class EditSponsor extends javax.swing.JDialog {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                EditSponsor dialog = new EditSponsor(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;

@@ -34,7 +34,7 @@ public class OperationSponsor {
             v.add(s);
         SponsorModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getAllSponsor();
+            ResultSet rs = getStore("getAllSponsors");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
@@ -80,12 +80,8 @@ public class OperationSponsor {
 
         return true;
     }
-    public ResultSet getAllSponsor()throws SQLException{
-        String storeName = "{call getAllSponsors }";
-        return db.getCallAble(storeName).executeQuery();
-    }
-    public ResultSet getAllExpo()throws SQLException{
-        String storeName = "{call getID_Name_Of_Expo }";
+    public ResultSet getStore(String sName)throws SQLException{
+        String storeName = "{call "+sName+" }";
         return db.getCallAble(storeName).executeQuery();
     }
     DefaultComboBoxModel CbExpoModel = null;
@@ -96,7 +92,7 @@ public class OperationSponsor {
         cbExpo.setModel(CbExpoModel = new DefaultComboBoxModel());
         CbExpoModel.addElement("-- Choose Expo --");
         try{
-            ResultSet rs = getAllExpo();
+            ResultSet rs = getStore("getID_Name_Of_Expo");
             while(rs.next()){
                 String name = rs.getString(1);
                 String id = String.valueOf(rs.getInt(2));
@@ -126,14 +122,14 @@ public class OperationSponsor {
     public void doSearch(String Where, String Key, JTable tblSponsor){
         try
         {
-            String storeName = "{call findSponsor('" + Where + "','" + Key + "')}";
+            String storeName = "findSponsor('" + Where + "','" + Key + "')";
             tblSponsor.setModel(SponsorModel = new DefaultTableModel());
             Vector v = new Vector();
             String [] heading = {"Sponsers ID","Name","Expo","Money","Description",};
             for(String s : heading)
                 v.add(s);
             SponsorModel.setColumnIdentifiers(v);
-            ResultSet rs = db.getCallAble(storeName).executeQuery();
+            ResultSet rs = getStore(storeName);
                 while(rs.next()){
                  v = new Vector();
                 v.add(rs.getInt(1));

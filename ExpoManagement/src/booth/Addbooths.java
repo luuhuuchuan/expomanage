@@ -13,6 +13,7 @@ package booth;
 
 import dataLayer.DBHelper;
 import expomanagement.Main;
+import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,6 +38,9 @@ public class Addbooths extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         initComponents();
+        int w = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int h = Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.setLocation(w/3, h/3);
         ob.buildAllStaff(cbStaff);
         ob.buildAllContactID(cbContact);
         ob.buildAlBoothType(cbBoothType);
@@ -289,19 +293,6 @@ public class Addbooths extends javax.swing.JDialog {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Addbooths dialog = new Addbooths(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;

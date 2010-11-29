@@ -35,7 +35,7 @@ public class OperationExhibitor {
             v.add(s);
         ExhibitorModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getAllExhibitor();
+            ResultSet rs = getStore("getAllExhibitor");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
@@ -56,8 +56,8 @@ public class OperationExhibitor {
         db = new DBHelper();
         db.openConnection();
     }
-    public ResultSet getAllExhibitor()throws SQLException{
-        String storeName = "{call getAllExhibitor }";
+    public ResultSet getStore(String sName)throws SQLException{
+        String storeName = "{call "+sName+" }";
         return db.getCallAble(storeName).executeQuery();
     }
     public boolean checkExhibitor(JTextField txtName, JTextField txtFax, JTextField txtPhone, JTextField txtAddress, JTextField txtWebsite){
@@ -107,14 +107,14 @@ public class OperationExhibitor {
     public void doSearch(String Where, String Key, JTable tblProduct){
         try
         {
-        String storeName = "{call findExhibitor('" + Where + "','" + Key + "')}";
+        String storeName = "findExhibitor('" + Where + "','" + Key + "')";
         tblProduct.setModel(ExhibitorModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"Exhibitor Code","Exhibitor Name","Exhibitor Fax","Phone Number","Address","Website"};
         for(String s : heading)
             v.add(s);
         ExhibitorModel.setColumnIdentifiers(v);
-        ResultSet rs = db.getCallAble(storeName).executeQuery();
+        ResultSet rs = getStore(storeName);
         while(rs.next()){
             v = new Vector();
             v.add(rs.getInt(1));
@@ -167,8 +167,4 @@ public class OperationExhibitor {
         }
     }
 
-    public ResultSet getIDExhibitor()throws SQLException{
-        String storeName = "{call GetExhibitorID }";
-        return db.getCallAble(storeName).executeQuery();
-    }
 }

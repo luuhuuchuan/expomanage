@@ -77,7 +77,7 @@ public class OperationBooths {
             v.add(s);
         BoothsModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getAllBooths();
+            ResultSet rs = getStore("getAllBooths");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getString(1));
@@ -103,28 +103,17 @@ public class OperationBooths {
         db = new DBHelper();
         db.openConnection();
     }
-    public ResultSet getAllBooths()throws SQLException{
-        String storeName = "{call getAllBooths }";
+    public ResultSet getStore(String sName)throws SQLException{
+        String storeName = "{call "+sName+" }";
         return db.getCallAble(storeName).executeQuery();
     }
-    public ResultSet getAllCID()throws SQLException{
-        String storeName = "{call get_CID }";
-        return db.getCallAble(storeName).executeQuery();
-    }
-    public ResultSet getAllStaff()throws SQLException{
-        String storeName = "{call get_Sname }";
-        return db.getCallAble(storeName).executeQuery();
-    }
-    public ResultSet getAllBoothType()throws SQLException{
-        String storeName = "{call get_BoothType }";
-        return db.getCallAble(storeName).executeQuery();
-    }
+
     public void buildAllStaff(JComboBox cbStaff)
     {
         cbStaff.setModel(CbStaffModel = new DefaultComboBoxModel());
         CbStaffModel.addElement("-- Choose Staff --");
         try{
-            ResultSet rs = getAllStaff();
+            ResultSet rs = getStore("get_Sname");
             while(rs.next()){
                 String sname = rs.getString(1);
                 String sid = String.valueOf(rs.getInt(2));
@@ -143,7 +132,7 @@ public class OperationBooths {
         cbContact.setModel(CbContactModel = new DefaultComboBoxModel());
         CbContactModel.addElement("-- Choose Contact --");
         try{
-            ResultSet rs = getAllCID();
+            ResultSet rs = getStore("get_CID");
             while(rs.next()){
                 String Cid = rs.getString(1);
                 CbContactModel.addElement(Cid);
@@ -159,7 +148,7 @@ public class OperationBooths {
         cbBoothType.setModel(CbBoothTypeModel = new DefaultComboBoxModel());
         CbBoothTypeModel.addElement("-- Choose BoothType --");
         try{
-            ResultSet rs = getAllBoothType();
+            ResultSet rs = getStore("get_BoothType");
             while(rs.next()){
                 String btname = rs.getString(1);
                 String btid = String.valueOf(rs.getInt(2));
@@ -191,14 +180,14 @@ public class OperationBooths {
         try
         {
 
-            String storeName = "{call findBooths('" + Where + "','" + Key + "')}";
+            String storeName = "findBooths('" + Where + "','" + Key + "')";
             tblBooths.setModel(BoothsModel = new DefaultTableModel());
             Vector v = new Vector();
             String [] heading = {"Contact","Booth ID","Booth Type","Staff","Booth Name","Date","Cost","Booker"};
             for(String s : heading)
                 v.add(s);
             BoothsModel.setColumnIdentifiers(v);
-            ResultSet rs = db.getCallAble(storeName).executeQuery();
+            ResultSet rs = getStore(storeName);
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getString(1));

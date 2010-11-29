@@ -35,7 +35,7 @@ public class OperationStaff {
             v.add(s);
         StaffModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getAllStaff();
+            ResultSet rs = getStore("getAllStaff");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
@@ -56,8 +56,8 @@ public class OperationStaff {
         db = new DBHelper();
         db.openConnection();
     }
-    public ResultSet getAllStaff()throws SQLException{
-        String storeName = "{call getAllStaff }";
+    public ResultSet getStore(String sName)throws SQLException{
+        String storeName = "{call "+sName+" }";
         return db.getCallAble(storeName).executeQuery();
     }
     public boolean checkStaff(JTextField txtName,JTextField txtEmail,JTextField txtPhone,JTextField txtAddress){
@@ -95,14 +95,14 @@ public class OperationStaff {
     public void doSearch(String Where, String Key, JTable tblStaff){
         try
         {
-        String storeName = "{call findStaff('" + Where + "','" + Key + "')}";
+        String storeName = "findStaff('" + Where + "','" + Key + "')";
         tblStaff.setModel(StaffModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"Staff ID","Contact ID","Staff Name","Staff Email","Staff Phone","Staff Address"};
         for(String s : heading)
             v.add(s);
         StaffModel.setColumnIdentifiers(v);
-        ResultSet rs = db.getCallAble(storeName).executeQuery();
+        ResultSet rs = getStore(storeName);
         while(rs.next()){
             v = new Vector();
             v.add(rs.getInt(1));
