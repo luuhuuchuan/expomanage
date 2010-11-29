@@ -61,24 +61,25 @@ public class OperationUser {
         String storeName = "{call "+sName+" }";
         return db.getCallAble(storeName).executeQuery();
     }
-    public boolean checkUser(JTextField txtName,JPasswordField txtPass,JTextField txtEmail){
-        
-        boolean status = false;
-        try{
-        String storeName = "checkUser('"+txtName.getText().trim()+"')";
-        ResultSet rs = getStore(storeName);
-        while(rs.next()){
-            status = rs.getBoolean(1);
-        }
-        rs.close();
-        }
-        catch(SQLException ex){
-            ex.printStackTrace();
-        }
-        if(status){
-            JOptionPane.showMessageDialog(null, "User Name has been existed !","Check User",JOptionPane.WARNING_MESSAGE);
-            txtName.requestFocus();
-            return false;
+    public boolean checkUser(JTextField txtName,JPasswordField txtPass,JTextField txtEmail,String oName){
+        if(oName.equalsIgnoreCase(txtName.getText().trim())){
+            boolean status = false;
+            try{
+            String storeName = "checkUser('"+txtName.getText().trim()+"')";
+            ResultSet rs = getStore(storeName);
+            while(rs.next()){
+                status = rs.getBoolean(1);
+            }
+            rs.close();
+            }
+            catch(SQLException ex){
+                ex.printStackTrace();
+            }
+            if(status){
+                JOptionPane.showMessageDialog(null, "User Name has been existed !","Check User",JOptionPane.WARNING_MESSAGE);
+                txtName.requestFocus();
+                return false;
+            }
         }
         if(txtName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter Name of User !","Check User",JOptionPane.WARNING_MESSAGE);
