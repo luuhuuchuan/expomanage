@@ -191,11 +191,11 @@ public class EditUser extends javax.swing.JDialog {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(ou.checkUser(txtName, txtPass, txtEmail)){
-        try{
-        //lay dl
         int row = m.getAccountTable().getSelectedRow();
         String oName = m.getAccountTable().getValueAt(row, 0).toString();
+        if(ou.checkUser(txtName, txtPass, txtEmail,oName)){
+        try{
+        //lay dl
         String nName = txtName.getText().trim();
         String pass = new String(txtPass.getPassword()).trim();
         String email = txtEmail.getText().trim();
