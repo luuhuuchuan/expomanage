@@ -6,6 +6,7 @@
 package staff;
 
 import dataLayer.DBHelper;
+import expomanagement.Main;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,17 +26,18 @@ import javax.swing.table.DefaultTableModel;
 public class OperationStaff {
 
     DBHelper db = null;
-
+    Main m = null;
     DefaultTableModel StaffModel = null;
-    public void loadAllStaff(JTable jTable1){
+    public void loadAllStaff(java.awt.Frame parent,JTable jTable1){
+        m = (Main) parent;
         jTable1.setModel(StaffModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Staff ID","Contact ID","Staff Name","Staff Email","Staff Phone","Staff Address"};
+        String [] heading = {"Staff ID","Contact ID","Staff Name","Staff Email","Staff Phone","Staff Address","Booth"};
         for(String s : heading)
             v.add(s);
         StaffModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getStore("getAllStaff");
+            ResultSet rs = getStore("getAllStaff("+m.getEID().trim()+")");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
@@ -44,6 +46,7 @@ public class OperationStaff {
                 v.add(rs.getString(4).trim());
                 v.add(rs.getString(5).trim());
                 v.add(rs.getString(6).trim());
+                v.add(rs.getString(7).trim());
                 StaffModel.addRow(v);
             }
             rs.close();
@@ -60,7 +63,7 @@ public class OperationStaff {
         String storeName = "{call "+sName+" }";
         return db.getCallAble(storeName).executeQuery();
     }
-    public boolean checkStaff(JTextField txtName,JTextField txtEmail,JTextField txtPhone,JTextField txtAddress){
+    public boolean checkStaff(JTextField txtName,JTextField txtEmail,JTextField txtPhone){
         if(txtName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter Name of Staff !","Check Staff",JOptionPane.WARNING_MESSAGE);
             txtName.requestFocus();
@@ -84,21 +87,17 @@ public class OperationStaff {
             txtPhone.requestFocus();
             return false;
         }
-        if(txtAddress.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please,Enter Address of Staff","Check Staff",JOptionPane.WARNING_MESSAGE);
-            txtAddress.requestFocus();
-            return false;
-        }
         return true;
     }
 
-    public void doSearch(String Where, String Key, JTable tblStaff){
+    public void doSearch(java.awt.Frame parent,String Where, String Key, JTable tblStaff){
         try
         {
-        String storeName = "findStaff('" + Where + "','" + Key + "')";
+        m = (Main) parent;
+        String storeName = "findStaff("+m.getEID().trim()+",'" + Where + "','" + Key + "')";
         tblStaff.setModel(StaffModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Staff ID","Contact ID","Staff Name","Staff Email","Staff Phone","Staff Address"};
+        String [] heading = {"Staff ID","Contact ID","Staff Name","Staff Email","Staff Phone","Staff Address","Booth"};
         for(String s : heading)
             v.add(s);
         StaffModel.setColumnIdentifiers(v);
@@ -111,6 +110,7 @@ public class OperationStaff {
             v.add(rs.getString(4).trim());
             v.add(rs.getString(5).trim());
             v.add(rs.getString(6).trim());
+            v.add(rs.getString(7).trim());
             StaffModel.addRow(v);
         }
         rs.close();
@@ -141,6 +141,31 @@ public class OperationStaff {
     public String returnSearch(JComboBox cbSt)
     {
         return hmp.get(cbSt.getSelectedItem().toString().trim()).toString();
+    }
+        DefaultComboBoxModel CbBoothModel = null;
+        HashMap hm = new HashMap();
+        private DefaultTableModel model = null;
+        public void buildCbBooth(JComboBox cbBooth)
+    {
+        cbBooth.setModel(CbBoothModel = new DefaultComboBoxModel());
+        CbBoothModel.addElement("-- Choose Booth --");
+        try{
+            ResultSet rs = getStore("get_Booth");
+            while(rs.next()){
+                String name = rs.getString(1);
+                String id = String.valueOf(rs.getInt(2));
+                hm.put(name,id);
+                CbBoothModel.addElement(name);
+            }
+            rs.close();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public int returnIdBooth(JComboBox cbBooth)
+    {
+        return Integer.parseInt(hm.get(cbBooth.getSelectedItem().toString().trim()).toString());
     }
     public void delStaff(int id){
         try{

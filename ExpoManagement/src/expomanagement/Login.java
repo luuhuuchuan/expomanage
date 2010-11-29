@@ -6,7 +6,7 @@
 /*
  * Login.java
  *
- * Created on 27-11-2010, 23:09:31
+ * Created on 30-11-2010, 02:17:17
  */
 
 package expomanagement;
@@ -15,6 +15,7 @@ import dataLayer.DBHelper;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,7 +26,6 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JDialog {
     Main m = null;
-    doLogin dl = new doLogin();
     /** Creates new form Login */
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -166,6 +166,7 @@ public class Login extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 417, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -173,9 +174,10 @@ public class Login extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 217, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 195, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -186,38 +188,60 @@ public class Login extends javax.swing.JDialog {
         // TODO add your handling code here:
         if(KeyEvent.getKeyText(evt.getKeyCode()).equalsIgnoreCase("enter"))
             doLogin();
-}//GEN-LAST:event_txtUserNameKeyPressed
+    }//GEN-LAST:event_txtUserNameKeyPressed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         doLogin();
-}//GEN-LAST:event_btnLoginActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-        txtUserName.setText(null);
-        txtPass.setText(null);
-}//GEN-LAST:event_btnResetActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-}//GEN-LAST:event_btnQuitActionPerformed
+    }//GEN-LAST:event_btnQuitActionPerformed
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
         // TODO add your handling code here:
         if(KeyEvent.getKeyText(evt.getKeyCode()).equalsIgnoreCase("enter"))
             doLogin();
-}//GEN-LAST:event_txtPassKeyPressed
+    }//GEN-LAST:event_txtPassKeyPressed
 public void doLogin(){
         try {
-            if (dl.Login(txtUserName, txtPass)) {
+            DBHelper db = null;
+            db = new DBHelper();
+            db.openConnection();
+            String DBUser = "";
+            String DBPass = "";
+            int TypeUser = 0,EID = 0;
+            String userName = txtUserName.getText().trim();
+            String pass = new String(txtPass.getPassword()).trim();
+            String storeName = "{call doLogin('" + userName + "')}";
+            ResultSet rs = db.getCallAble(storeName).executeQuery();
+            while (rs.next()) {
+                DBUser = rs.getString(1).trim();
+                DBPass = rs.getString(2).trim();
+                TypeUser = rs.getInt(3);
+                EID = rs.getInt(4);
+            }
+            rs.close();
+            if (userName.equalsIgnoreCase(DBUser.trim()) && pass.equalsIgnoreCase(DBPass.trim())) {
+                m.setUser(DBUser);
+                m.setTypeUser(TypeUser);
+                m.setEID(EID);
                 m.setVisible(true);
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "The username or password you entered is incorrect!", "Login Application", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception ex) {
+        }
+        /**
+         * @param args the command line arguments
+         */
+        catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 }

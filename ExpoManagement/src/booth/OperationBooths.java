@@ -33,15 +33,11 @@ public class OperationBooths {
     DefaultComboBoxModel CbBoothTypeModel = null;
     HashMap hm2 = new HashMap();
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    public boolean checkformBooth(JComboBox cbStaff, JComboBox cbContact, JComboBox cbBoothType, JTextField txtBname, JTextField txtBmoney){
-        if(cbStaff.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null,"Please,select Staff","Check Information",JOptionPane.ERROR_MESSAGE);
-            cbStaff.requestFocus();
-            return false;
-        }
+    public boolean checkformBooth(JComboBox cbContact, JComboBox cbBoothType, JTextField txtBname, JTextField txtBmoney){
+
         if(cbContact.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null,"Please,select Contact ID","Check Information",JOptionPane.ERROR_MESSAGE);
-            cbStaff.requestFocus();
+            cbContact.requestFocus();
             return false;
         }
         if(cbBoothType.getSelectedIndex() == 0){
@@ -72,7 +68,7 @@ public class OperationBooths {
     public void loadAllBooths(JTable jTable1){
         jTable1.setModel(BoothsModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Contact","Booth ID","Booth Type","Staff","Booth Name","Date","Cost","Booker"};
+        String [] heading = {"Contact","Booth ID","Booth Type","Booth Name","Date","Cost","Booker"};
         for(String s : heading)
             v.add(s);
         BoothsModel.setColumnIdentifiers(v);
@@ -84,10 +80,9 @@ public class OperationBooths {
                 v.add(rs.getInt(2));
                 v.add(rs.getString(3).trim());
                 v.add(rs.getString(4).trim());
-                v.add(rs.getString(5).trim());
-                v.add(formatter.format(rs.getDate(6)));
-                v.add(rs.getFloat(7));
-                if(rs.getBoolean(8))
+                v.add(formatter.format(rs.getDate(5)));
+                v.add(rs.getFloat(6));
+                if(rs.getBoolean(7))
                     v.add("Yes");
                 else
                     v.add("No");
@@ -108,25 +103,7 @@ public class OperationBooths {
         return db.getCallAble(storeName).executeQuery();
     }
 
-    public void buildAllStaff(JComboBox cbStaff)
-    {
-        cbStaff.setModel(CbStaffModel = new DefaultComboBoxModel());
-        CbStaffModel.addElement("-- Choose Staff --");
-        try{
-            ResultSet rs = getStore("get_Sname");
-            while(rs.next()){
-                String sname = rs.getString(1);
-                String sid = String.valueOf(rs.getInt(2));
-                hm.put(sname,sid);
-                CbStaffModel.addElement(sname);
-            }
-            rs.close();
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
 
-    }
     public void buildAllContactID(JComboBox cbContact)
     {
         cbContact.setModel(CbContactModel = new DefaultComboBoxModel());
@@ -134,7 +111,7 @@ public class OperationBooths {
         try{
             ResultSet rs = getStore("get_CID");
             while(rs.next()){
-                String Cid = rs.getString(1);
+                String Cid = rs.getString(1).trim();
                 CbContactModel.addElement(Cid);
             }
             rs.close();
@@ -183,7 +160,7 @@ public class OperationBooths {
             String storeName = "findBooths('" + Where + "','" + Key + "')";
             tblBooths.setModel(BoothsModel = new DefaultTableModel());
             Vector v = new Vector();
-            String [] heading = {"Contact","Booth ID","Booth Type","Staff","Booth Name","Date","Cost","Booker"};
+            String [] heading = {"Contact","Booth ID","Booth Type","Booth Name","Date","Cost","Booker"};
             for(String s : heading)
                 v.add(s);
             BoothsModel.setColumnIdentifiers(v);
@@ -194,10 +171,9 @@ public class OperationBooths {
                 v.add(rs.getInt(2));
                 v.add(rs.getString(3).trim());
                 v.add(rs.getString(4).trim());
-                v.add(rs.getString(5).trim());
-                v.add(formatter.format(rs.getDate(6)));
-                v.add(rs.getFloat(7));
-                if(rs.getBoolean(8))
+                v.add(formatter.format(rs.getDate(5)));
+                v.add(rs.getFloat(6));
+                if(rs.getBoolean(7))
                     v.add("Yes");
                 else
                     v.add("No");
@@ -229,10 +205,7 @@ public class OperationBooths {
     {
         return Integer.parseInt(hm2.get(cbBoothType.getSelectedItem().toString().trim()).toString());
     }
-    public int returnSID(JComboBox cbStaff)
-    {
-        return Integer.parseInt(hm.get(cbStaff.getSelectedItem().toString().trim()).toString());
-    }
+
 
 
 }
