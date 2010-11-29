@@ -36,14 +36,14 @@ public class EditProduct extends javax.swing.JDialog {
             this.setLocation(w/3, h/3);
             db = new DBHelper();
             db.openConnection();
-            op.buildCbContact(cbContact);
+            ob.buildAllContactID(cbContact);
             m = (Main) parent;
             int row = m.getProductsTable().getSelectedRow();
-            cbContact.setSelectedItem(m.getProductsTable().getValueAt(row, 2));
-            txtName.setText(m.getProductsTable().getValueAt(row, 3).toString().trim());
-            txtPrice.setText(m.getProductsTable().getValueAt(row, 4).toString().trim());
-            txtNumber.setText(m.getProductsTable().getValueAt(row, 5).toString().trim());
-            txtDescription.setText(m.getProductsTable().getValueAt(row, 6).toString().trim());
+            cbContact.setSelectedItem(m.getProductsTable().getValueAt(row, 1));
+            txtName.setText(m.getProductsTable().getValueAt(row, 2).toString().trim());
+            txtPrice.setText(m.getProductsTable().getValueAt(row, 3).toString().trim());
+            txtNumber.setText(m.getProductsTable().getValueAt(row, 4).toString().trim());
+            txtDescription.setText(m.getProductsTable().getValueAt(row, 5).toString().trim());
     }
 
     /** This method is called from within the constructor to

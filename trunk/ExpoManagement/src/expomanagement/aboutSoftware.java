@@ -11,6 +11,8 @@
 
 package expomanagement;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author namh3o
@@ -20,6 +22,9 @@ public class aboutSoftware extends javax.swing.JFrame {
     /** Creates new form aboutSoftware */
     public aboutSoftware() {
         initComponents();
+        int w = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int h = Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.setLocation(w/3, h/3);
     }
 
     /** This method is called from within the constructor to
@@ -42,10 +47,10 @@ public class aboutSoftware extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Information about software");
 
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setBackground(new java.awt.Color(255, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 3, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 3, 24));
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Expo Management");
@@ -53,67 +58,70 @@ public class aboutSoftware extends javax.swing.JFrame {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText("Authors : Group 1 - FPT Greenwich \nYear : 2010\nAddress : Ha Noi - Viet Nam\nEmail : hoabxgc00058@fpt.edu.vn \nPhone : 0953900xxx");
+        jTextArea2.setText("  Authors : Group 1 - FPT Greenwich \n  Year : 2010\n  Address : FPT University - 15B Pham Hung - Ha Noi\n  Country: Viet Nam\n  Email : hoabxgc00058@fpt.edu.vn \n  Phone : 0953900039");
         jTextArea2.setBorder(null);
         jTextArea2.setEnabled(false);
+        jTextArea2.setMargin(new java.awt.Insets(10, 5, 5, 5));
         jScrollPane2.setViewportView(jTextArea2);
 
-        jLabel2.setText("  This is the new program which help us to manage information in the ");
+        jLabel2.setText("This is the new program which help us to manage information in the ");
         jLabel2.setEnabled(false);
 
         jLabel3.setText("efficient and easy way!");
         jLabel3.setEnabled(false);
 
-        jLabel4.setText("THANKS FOR USING ^^!");
+        jLabel4.setText("THANKS FOR USING !");
         jLabel4.setEnabled(false);
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(70, 70, 70)
-                        .add(jLabel1))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jLabel3))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(18, 18, 18)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jLabel4)
-                            .add(jLabel2))))
-                .addContainerGap(37, Short.MAX_VALUE))
-            .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
+                .add(jLabel1)
+                .add(61, 61, 61))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                    .add(jLabel4)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(jLabel3)
+                        .add(jLabel2)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .add(23, 23, 23)
                 .add(jLabel1)
-                .add(4, 4, 4)
+                .add(29, 29, 29)
                 .add(jLabel2)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel3))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(20, 20, 20)
-                        .add(jLabel4)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 153, Short.MAX_VALUE)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel3)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 71, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 111, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();

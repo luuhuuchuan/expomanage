@@ -41,7 +41,6 @@ public class Addbooths extends javax.swing.JDialog {
         int w = Toolkit.getDefaultToolkit().getScreenSize().width;
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
-        ob.buildAllStaff(cbStaff);
         ob.buildAllContactID(cbContact);
         ob.buildAlBoothType(cbBoothType);
         m = (Main)parent;
@@ -59,8 +58,6 @@ public class Addbooths extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        cbStaff = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cbContact = new javax.swing.JComboBox();
@@ -69,10 +66,7 @@ public class Addbooths extends javax.swing.JDialog {
         txtBname = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         txtBmoney = new javax.swing.JTextField();
-        btnYes = new javax.swing.JRadioButton();
-        btnNo = new javax.swing.JRadioButton();
         txtBDate = new com.toedter.calendar.JDateChooser();
         btnReset = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
@@ -82,10 +76,6 @@ public class Addbooths extends javax.swing.JDialog {
         setTitle("Add New Booths");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Booth"));
-
-        jLabel2.setText("Staff :");
-
-        cbStaff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("Contact ID :");
 
@@ -103,15 +93,6 @@ public class Addbooths extends javax.swing.JDialog {
 
         jLabel6.setText("Booth Money :");
 
-        jLabel7.setText("Booth Booker :");
-
-        buttonGroup1.add(btnYes);
-        btnYes.setText("Yes");
-
-        buttonGroup1.add(btnNo);
-        btnNo.setSelected(true);
-        btnNo.setText("No");
-
         txtBDate.setDateFormatString("MM/dd/yyyy");
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
@@ -123,33 +104,22 @@ public class Addbooths extends javax.swing.JDialog {
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
                     .add(jLabel6)
-                    .add(jLabel7)
-                    .add(jLabel2)
                     .add(jLabel3)
                     .add(jLabel4)
                     .add(jLabel1))
-                .add(29, 29, 29)
+                .add(30, 30, 30)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(txtBDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 184, Short.MAX_VALUE)
-                    .add(cbBoothType, 0, 184, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtBname, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3Layout.createSequentialGroup()
-                        .add(btnYes)
-                        .add(35, 35, 35)
-                        .add(btnNo))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtBmoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbStaff, 0, 184, Short.MAX_VALUE))
-                .add(29, 29, 29))
+                    .add(txtBDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, cbContact, 0, 188, Short.MAX_VALUE)
+                    .add(cbBoothType, 0, 188, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtBname, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtBmoney, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(cbStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(cbContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -169,12 +139,7 @@ public class Addbooths extends javax.swing.JDialog {
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel6)
                     .add(txtBmoney, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel7)
-                    .add(btnYes)
-                    .add(btnNo))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/76.png"))); // NOI18N
@@ -206,28 +171,30 @@ public class Addbooths extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
-                        .add(10, 10, 10)
-                        .add(btnAdd)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 58, Short.MAX_VALUE)
-                        .add(btnReset)
+                        .addContainerGap()
+                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
                         .add(40, 40, 40)
+                        .add(btnAdd)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(btnReset)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(btnClose)))
-                .addContainerGap())
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
+                .add(5, 5, 5)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnReset)
                     .add(btnClose)
-                    .add(btnAdd)
-                    .add(btnReset))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .add(btnAdd))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,7 +204,6 @@ public class Addbooths extends javax.swing.JDialog {
         // TODO add your handling code here:
         cbContact.setSelectedIndex(0);
         cbBoothType.setSelectedIndex(0);
-        cbStaff.setSelectedIndex(0);
         txtBname.setText("");
         txtBDate.setDate(null);
         txtBmoney.setText("");
@@ -250,13 +216,12 @@ public class Addbooths extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(ob.checkformBooth(cbStaff, cbContact, cbBoothType, txtBname, txtBmoney)){
+        if(ob.checkformBooth(cbContact, cbBoothType, txtBname, txtBmoney)){
             try {
                 DBHelper db = null;
                 db = new DBHelper();
                 db.openConnection();
                 int BTID = ob.returnBTID(cbBoothType);
-                int SID = ob.returnSID(cbStaff);
                 String CID = cbContact.getSelectedItem().toString();
                 String name = txtBname.getText().trim();
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -265,18 +230,15 @@ public class Addbooths extends javax.swing.JDialog {
                 float money = Float.parseFloat(txtBmoney.getText().trim());
 
                 //tao giao dien de thuc thi store
-                CallableStatement cs = db.getConnection().prepareCall("{call AddBooths (?,?,?,?,?,?,?)}");
+                CallableStatement cs = db.getConnection().prepareCall("{call AddBooths (?,?,?,?,?,?)}");
                 //truyen tham so cho store
                 cs.setInt(1, BTID);
-                cs.setInt(2, SID);
-                cs.setString(3, CID);
-                cs.setString(4, name);
-                cs.setString(5, bdate);
-                cs.setFloat(6, money);
-                if(btnNo.isSelected())
-                    cs.setInt(7, 0);
-                else 
-                    cs.setInt(7, 1);
+                cs.setString(2, CID);
+                cs.setString(3, name);
+                cs.setString(4, bdate);
+                cs.setFloat(5, money);
+                cs.setInt(6, 0);
+
                 //thuc thi store
                 cs.execute();
                 ((Main) m ).LoadBooth();
@@ -297,20 +259,15 @@ public class Addbooths extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
-    private javax.swing.JRadioButton btnNo;
     private javax.swing.JButton btnReset;
-    private javax.swing.JRadioButton btnYes;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbBoothType;
     private javax.swing.JComboBox cbContact;
-    private javax.swing.JComboBox cbStaff;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private com.toedter.calendar.JDateChooser txtBDate;
     private javax.swing.JTextField txtBmoney;

@@ -11,6 +11,7 @@
 
 package product;
 
+import booth.OperationBooths;
 import dataLayer.DBHelper;
 import expomanagement.Main;
 import java.awt.Toolkit;
@@ -28,6 +29,7 @@ public class AddProduct extends javax.swing.JDialog {
     /** Creates new form AddProduct */
     Main m = null;
     OperationProduct op = new OperationProduct();
+    OperationBooths ob = new OperationBooths();
     public AddProduct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         try {
@@ -40,8 +42,7 @@ public class AddProduct extends javax.swing.JDialog {
         int w = Toolkit.getDefaultToolkit().getScreenSize().width;
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
-        op.buildCbExhibitor(cbExhibitor);
-        op.buildCbContact(cbContact);
+        ob.buildAllContactID(cbContact);
         m = (Main)parent;
     }
     /** This method is called from within the constructor to
@@ -61,9 +62,7 @@ public class AddProduct extends javax.swing.JDialog {
         txtNumber = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
-        cbExhibitor = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -104,10 +103,6 @@ public class AddProduct extends javax.swing.JDialog {
 
         jLabel3.setText("Product Number:");
 
-        jLabel7.setText("Exhibitor ID:");
-
-        cbExhibitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel1.setText("Product Name:");
 
         jLabel8.setText("Contact ID:");
@@ -128,7 +123,6 @@ public class AddProduct extends javax.swing.JDialog {
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel8)
-                    .add(jLabel7)
                     .add(jLabel1)
                     .add(jLabel2)
                     .add(jLabel3)
@@ -139,7 +133,6 @@ public class AddProduct extends javax.swing.JDialog {
                         .add(txtPrice, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                         .add(txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                         .add(cbContact, 0, 222, Short.MAX_VALUE)
-                        .add(cbExhibitor, 0, 222, Short.MAX_VALUE)
                         .add(txtNumber, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -148,10 +141,6 @@ public class AddProduct extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(cbExhibitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel7))
-                .add(18, 18, 18)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cbContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel8))
@@ -174,37 +163,34 @@ public class AddProduct extends javax.swing.JDialog {
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(32, 32, 32)
                         .add(jLabel4)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(30, 30, 30)
-                .add(btnAdd)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 52, Short.MAX_VALUE)
-                .add(btnReset)
-                .add(37, 37, 37)
-                .add(btnClose)
-                .add(35, 35, 35))
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(10, 10, 10)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            .add(layout.createSequentialGroup()
+                .add(47, 47, 47)
+                .add(btnAdd)
+                .add(18, 18, 18)
+                .add(btnReset)
+                .add(18, 18, 18)
+                .add(btnClose))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
+                .add(11, 11, 11)
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(11, 11, 11)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(btnAdd)
                     .add(btnReset)
-                    .add(btnClose))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(btnClose)))
         );
 
         pack();
@@ -226,7 +212,7 @@ public class AddProduct extends javax.swing.JDialog {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         String DateP = sdf.format(today);
         
-        int EID = op.returnIdExhibitor(cbExhibitor);
+        int EID = Integer.parseInt(m.getEID().trim());
         String CID = cbContact.getSelectedItem().toString().trim();
 
         String name = txtName.getText().trim();
@@ -258,13 +244,11 @@ public class AddProduct extends javax.swing.JDialog {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-        cbExhibitor.setSelectedIndex(0);
         cbContact.setSelectedIndex(0);
         txtName.setText(null);
         txtPrice.setText(null);
         txtNumber.setText(null);
         txtDescription.setText(null);
-        cbExhibitor.requestFocus();
     }//GEN-LAST:event_btnResetActionPerformed
 
     /**
@@ -276,12 +260,10 @@ public class AddProduct extends javax.swing.JDialog {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReset;
     private javax.swing.JComboBox cbContact;
-    private javax.swing.JComboBox cbExhibitor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -41,6 +41,7 @@ public class AddStaff extends javax.swing.JDialog {
         int w = Toolkit.getDefaultToolkit().getScreenSize().width;
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
+        ost.buildCbBooth(cbBooth);
         ob.buildAllContactID(cbContact);
         m = (Main)parent;
     }
@@ -54,20 +55,29 @@ public class AddStaff extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         txtPhone = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        txtAddress = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         cbContact = new javax.swing.JComboBox();
+        jsAddress = new javax.swing.JScrollPane();
+        txtAddress = new javax.swing.JTextArea();
+        cbBooth = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
         btnReset = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Staff");
@@ -86,6 +96,14 @@ public class AddStaff extends javax.swing.JDialog {
 
         cbContact.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        txtAddress.setColumns(20);
+        txtAddress.setRows(5);
+        jsAddress.setViewportView(txtAddress);
+
+        cbBooth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel6.setText("Booth :");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,18 +111,20 @@ public class AddStaff extends javax.swing.JDialog {
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel2)
                     .add(jLabel3)
                     .add(jLabel4)
                     .add(jLabel1)
+                    .add(jLabel2)
+                    .add(jLabel6)
                     .add(jLabel5))
                 .add(36, 36, 36)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(txtPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .add(txtEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .add(cbContact, 0, 164, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .add(cbContact, 0, 195, Short.MAX_VALUE)
+                    .add(cbBooth, 0, 195, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jsAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                    .add(txtPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -114,23 +134,27 @@ public class AddStaff extends javax.swing.JDialog {
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
                     .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel5)
                     .add(cbContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(35, 35, 35)
+                .add(11, 11, 11)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(txtEmail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(29, 29, 29)
+                    .add(jLabel6)
+                    .add(cbBooth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtEmail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2))
+                .add(18, 18, 18)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(txtPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(27, 27, 27)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel4)
-                    .add(txtAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                    .add(jsAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/75.png"))); // NOI18N
@@ -164,16 +188,16 @@ public class AddStaff extends javax.swing.JDialog {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(28, 28, 28)
+                        .addContainerGap()
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(45, 45, 45)
                         .add(btnAdd)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(btnReset)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(btnClose))
-                    .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .add(btnClose)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -198,7 +222,7 @@ public class AddStaff extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(ost.checkStaff(txtName, txtEmail, txtPhone, txtAddress))
+        if(ost.checkStaff(txtName, txtEmail, txtPhone))
         {
         try {
         DBHelper db = null;
@@ -208,17 +232,18 @@ public class AddStaff extends javax.swing.JDialog {
         String name = txtName.getText().trim();
         String email = txtEmail.getText().trim();
         String phone = txtPhone.getText().trim();
-        String address = txtAddress.getText();
-
+        String address = txtAddress.getText().trim();
+        int BID = ost.returnIdBooth(cbBooth);
         //tao giao dien de thuc thi store
-        CallableStatement cs = db.getConnection().prepareCall("{call AddStaff(?,?,?,?,?)}");
+        CallableStatement cs = db.getConnection().prepareCall("{call AddStaff(?,?,?,?,?,?,?)}");
         //truyen tham so cho store
         cs.setString(1, CID);
         cs.setString(2, name);
         cs.setString(3, email);
         cs.setString(4, phone);
         cs.setString(5, address);
-
+        cs.setInt(6, Integer.parseInt(m.getEID().trim()));
+        cs.setInt(7,BID);
         //thuc thi store
         cs.execute();
         ((Main)m).LoadStaff();
@@ -232,6 +257,8 @@ public class AddStaff extends javax.swing.JDialog {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        cbBooth.setSelectedIndex(0);
+        cbContact.setSelectedIndex(0);
         txtName.setText(null);
         txtEmail.setText(null);
         txtPhone.setText(null);
@@ -247,14 +274,19 @@ public class AddStaff extends javax.swing.JDialog {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReset;
+    private javax.swing.JComboBox cbBooth;
     private javax.swing.JComboBox cbContact;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtAddress;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jsAddress;
+    private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhone;

@@ -26,7 +26,7 @@ import javax.swing.UIManager;
  * @author namh3o
  */
 public class EditboothType extends javax.swing.JDialog {
-
+    int remain,len =0;
     /** Creates new form EditboothType */
     OperationBoothType obt  = new OperationBoothType();
     Main m = null;
@@ -50,8 +50,9 @@ public class EditboothType extends javax.swing.JDialog {
         cbExpo.setSelectedItem(m.getBoothTypeTable().getValueAt(row, 2).toString());
         txtBTHeight.setText(m.getBoothTypeTable().getValueAt(row, 3).toString());
         txtBTWidth.setText(m.getBoothTypeTable().getValueAt(row, 4).toString());
-        txtBremain.setText(m.getBoothTypeTable().getValueAt(row, 5).toString());
-        txtBlength.setText(m.getBoothTypeTable().getValueAt(row, 6).toString());
+        remain = Integer.parseInt(m.getBoothTypeTable().getValueAt(row, 5).toString());
+        len = Integer.parseInt(m.getBoothTypeTable().getValueAt(row, 6).toString());
+        txtBlength.setText(len+"");
 
     }
     /** This method is called from within the constructor to
@@ -71,10 +72,8 @@ public class EditboothType extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         txtBTHeight = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtBTWidth = new javax.swing.JTextField();
-        txtBremain = new javax.swing.JTextField();
         txtBlength = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtBTID = new javax.swing.JTextField();
@@ -95,11 +94,7 @@ public class EditboothType extends javax.swing.JDialog {
 
         jLabel6.setText("BoothType Width :");
 
-        jLabel8.setText("Booth Remain :");
-
         jLabel9.setText("Booth Length :");
-
-        txtBremain.setEditable(false);
 
         jLabel1.setText("BoothType ID :");
 
@@ -109,7 +104,7 @@ public class EditboothType extends javax.swing.JDialog {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel3Layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel3Layout.createSequentialGroup()
@@ -124,22 +119,22 @@ public class EditboothType extends javax.swing.JDialog {
                             .add(org.jdesktop.layout.GroupLayout.LEADING, cbExpo, 0, 198, Short.MAX_VALUE)))
                     .add(jPanel3Layout.createSequentialGroup()
                         .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel9)
-                            .add(jLabel8)
                             .add(jLabel5)
                             .add(jLabel6))
                         .add(31, 31, 31)
                         .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(txtBTWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtBlength, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                            .add(txtBTHeight, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                            .add(txtBremain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))))
+                            .add(txtBTHeight, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .add(jLabel9)
+                        .add(53, 53, 53)
+                        .add(txtBlength, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .add(30, 30, 30)
+            .add(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
                     .add(txtBTID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -159,15 +154,11 @@ public class EditboothType extends javax.swing.JDialog {
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel6)
                     .add(txtBTWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(16, 16, 16)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel8)
-                    .add(txtBremain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel9)
-                    .add(txtBlength, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(15, 15, 15))
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtBlength, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel9))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
@@ -190,24 +181,25 @@ public class EditboothType extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(60, 60, 60)
-                .add(btnEdit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 79, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 99, Short.MAX_VALUE)
-                .add(btnClose)
-                .add(96, 96, 96))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(45, 45, 45))
+            .add(layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .add(82, 82, 82)
+                        .add(btnEdit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 79, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(39, 39, 39)
+                        .add(btnClose)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 317, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(btnClose)
                     .add(btnEdit))
                 .addContainerGap())
@@ -231,7 +223,7 @@ public class EditboothType extends javax.swing.JDialog {
                 float height = Float.parseFloat(txtBTHeight.getText().trim());
                 float width = Float.parseFloat(txtBTWidth.getText().trim());
                 int length = Integer.parseInt(txtBlength.getText().trim());
-                int remain = length;
+                remain += length-len;
                 //tao giao dien de thuc thi store
                 CallableStatement cs = db.getConnection().prepareCall("{call EditBoothType(?,?,?,?,?,?,?)}");
                 //truyen tham so cho store
@@ -275,7 +267,6 @@ public class EditboothType extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txtBTHeight;
@@ -283,7 +274,6 @@ public class EditboothType extends javax.swing.JDialog {
     private javax.swing.JTextField txtBTName;
     private javax.swing.JTextField txtBTWidth;
     private javax.swing.JTextField txtBlength;
-    private javax.swing.JTextField txtBremain;
     // End of variables declaration//GEN-END:variables
 
 }

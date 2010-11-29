@@ -83,16 +83,10 @@ where ExID = @id
 go
 create proc getAllBooths
 as
-select B.CID,B.BID,BT.BTName,S.SName,B.BName,B.BDate,B.BMoney,B.BBooker 
-from Booths B ,BoothType BT ,Staff S
-where B.BTID = BT.BTID and B.SID = S.SID
+select B.CID,B.BID,BT.BTName,B.BName,B.BDate,B.BMoney,B.BBooker 
+from Booths B ,BoothType BT
+where B.BTID = BT.BTID
 
--- Tao Store goi ra cac DL
-go
-create proc get_Sname
-as
-select SName, SID
-from Staff
 
 --
 go
@@ -108,36 +102,38 @@ as
 select BTName , BTID
 from BoothType
 
+go
+create proc get_Booth
+as
+select BName , BID
+from Booths
 
 
 -- Tao Store co tham so de tao Expo
 go
 CREATE PROC AddBooths
 @BTID int,
-@SID int,
 @CID char(10),
 @Name nvarchar(100),
 @Date smalldatetime,
 @money float,
 @booker bit
 AS
-INSERT INTO Booths (BTID, SID, CID, BName, BDate, BMoney, BBooker)
-VALUES(@BTID,@SID,@CID,@Name,@Date,@money,@booker)
+INSERT INTO Booths (BTID, CID, BName, BDate, BMoney, BBooker)
+VALUES(@BTID,@CID,@Name,@Date,@money,@booker)
 
 -- Tao store edit BoothType
 go
 create proc editBooths
 @id int,
 @BTID int,
-@SID int,
 @CID char(10),
 @Name nvarchar(100),
 @Date smalldatetime,
-@money float,
-@booker bit
+@money float
 as
 update Booths
-Set BTID = @BTID,SID = @SID,CID = @CID,BName = @Name,BDate = @Date,BMoney = @money,BBooker = @booker
+Set BTID = @BTID,CID = @CID,BName = @Name,BDate = @Date,BMoney = @money
 where BID = @id
 
 -- Tao store dele Booths
@@ -155,9 +151,9 @@ Create PROC findBooths
 @Key nvarchar(100)
 AS
 Declare @fb nvarchar(200)
-set @fb = 'select B.CID, B.BID, BT.BTName, S.SName, B.BName, B.BDate, B.BMoney, B.BBooker from Booths B ,BoothType BT ,Staff S where B.BTID = BT.BTID and B.SID = S.SID and '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+set @fb = 'select B.CID, B.BID, BT.BTName, B.BName, B.BDate, B.BMoney, B.BBooker from Booths B ,BoothType BT  where B.BTID = BT.BTID and '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
 execute(@fb)
-
+exec findBooths
 ------------------------------------------------BOTHTYPE------------------------------------------
 -- Tao Store goi ra tat ca expo
 go
@@ -294,8 +290,10 @@ Select Max(EID) From Exhibitor
 -- Tao Store goi ra tat ca Products
 go
 create proc getAllProducts
+@EID int
 as
-select * from Products
+select * from Products where EID=@EID
+
 
 -- Tao Store co tham so de tao Products
 go
@@ -321,11 +319,12 @@ DELETE FROM Products WHERE PID = @id
 --Tao Store de tim kiem Product theo ten
 go
 Create PROC findProduct
+@EID varchar,
 @Where nvarchar(50),
 @Key nvarchar(100)
 AS
 Declare @sp nvarchar(200)
-set @sp = 'Select * from Products where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+set @sp = 'Select * from Products where EID='+@EID+' and '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
 execute(@sp)
 
 
@@ -409,10 +408,11 @@ execute(@fs)
 -- Tao Store goi ra tat ca Staff
 go
 create proc getAllStaff
+@EID int
 as
-select S.SID,C.CID,S.SName,S.SEmail,S.SPhone,S.SAddress 
-from Staff S join Contact C
-on S.CID = C.CID
+select S.SID,C.CID,S.SName,S.SEmail,S.SPhone,S.SAddress,B.BName 
+From Staff S,Contact C,Booths B
+where S.CID = C.CID and B.BID = S.BID and S.EID = @EID
 
 
 -- Tao Store co tham so de tao Staff
@@ -422,19 +422,22 @@ CREATE PROC AddStaff
 @Name nvarchar(100),
 @Email nvarchar(100),
 @Phone nvarchar(50),
-@Address ntext
+@Address ntext,
+@EID int,
+@BID int
 AS
-INSERT INTO Staff (CID,SName, SEmail, SPhone, SAddress)
-	VALUES(@CID,@Name,@Email,@Phone,@Address)
+INSERT INTO Staff (CID,SName, SEmail, SPhone, SAddress, EID,BID)
+	VALUES(@CID,@Name,@Email,@Phone,@Address,@EID,@BID)
 
 ----Tao Store tim kiem Staff
 go
-Create PROC findStaff
+create PROC findStaff
+@EID int,
 @Where nvarchar(50),
 @Key nvarchar(100)
 AS
 Declare @sta nvarchar(200)
-set @sta = 'select S.SID,C.CID,S.SName,S.SEmail,S.SPhone,S.SAddress from Staff S join Contact C on S.CID = C.CID where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+set @sta = 'select S.SID,C.CID,S.SName,S.SEmail,S.SPhone,S.SAddress,B.BName from Staff S ,Contact C,Booths B where S.CID = C.CID and S.BID=B.BID and S.EID ='+CAST(@EID AS varchar)+' and '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
 execute(@sta)
 
 --Tao Store de Edit Staff
@@ -445,10 +448,11 @@ Create Proc EditStaff
 @Name nvarchar(100),
 @Email nvarchar(100),
 @Phone nvarchar(50),
-@Address ntext
+@Address ntext,
+@BID int
 AS
 Update Staff
-Set CID = @CID,SName = @Name,SEmail = @Email,SPhone = @Phone,SAddress = @Address
+Set CID = @CID,SName = @Name,SEmail = @Email,SPhone = @Phone,SAddress = @Address,BID = @BID
 Where SID = @ID
 
 --Tao store de xoa staff
@@ -456,7 +460,6 @@ go
 CREATE PROC DeleteStaff
 @id int
 AS
-DELETE FROM Booths WHERE SID = @id
 DELETE FROM Staff WHERE SID = @id
 
 --------------------------------------------------------------------------------------------------
