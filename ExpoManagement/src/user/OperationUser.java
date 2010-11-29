@@ -146,11 +146,14 @@ public class OperationUser {
     }
     public void delUser(String name){
         try{
-        CallableStatement cs = db.getConnection().prepareCall("{call DeleteUser(?)}");
-        //truyen tham so cho store
-        cs.setString(1, name);
-        cs.execute();
-        JOptionPane.showMessageDialog(null, "One User has been deleted !","Delete User",JOptionPane.INFORMATION_MESSAGE);
+            CallableStatement cs = db.getConnection().prepareCall("{call DeleteUser(?)}");
+            //truyen tham so cho store
+            cs.setString(1, name);
+            if(JOptionPane.showConfirmDialog(null, "Do you want to delete the record(s)",
+                    "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                        cs.execute();
+                        JOptionPane.showMessageDialog(null, "One User has been deleted !","Delete User",JOptionPane.INFORMATION_MESSAGE);
+            }
         }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, "Can't delete this User !","Delete User",JOptionPane.ERROR_MESSAGE);
