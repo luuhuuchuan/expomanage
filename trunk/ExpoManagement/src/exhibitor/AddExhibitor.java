@@ -13,6 +13,7 @@ package exhibitor;
 
 import dataLayer.DBHelper;
 import expomanagement.Main;
+import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -38,6 +39,9 @@ public class AddExhibitor extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         initComponents();
+        int w = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int h = Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.setLocation(w/3, h/3);
         m = (Main)parent;
     }
 
