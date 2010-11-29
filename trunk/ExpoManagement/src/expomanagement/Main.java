@@ -319,8 +319,8 @@ public class Main extends javax.swing.JFrame {
         setTitle("Expo Management System");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24));
-        txtTitle.setText("Expo Managenment System");
+        txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtTitle.setText("Expo Management System");
 
         mainTab.setFont(new java.awt.Font("Tahoma", 0, 14));
 
@@ -353,10 +353,10 @@ public class Main extends javax.swing.JFrame {
         mainTab.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/home.png")), TabHome); // NOI18N
 
         SubTabManager.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        SubTabManager.setFont(new java.awt.Font("Tahoma", 0, 12));
 
         TabExpo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        TabExpo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        TabExpo.setFont(new java.awt.Font("Tahoma", 0, 12));
         TabExpo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 TabExpoPropertyChange(evt);
@@ -510,7 +510,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditBT.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnEditBT.setFont(new java.awt.Font("Tahoma", 0, 12));
         btnEditBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/69.png"))); // NOI18N
         btnEditBT.setText("Edit");
         btnEditBT.setMargin(new java.awt.Insets(2, 4, 2, 4));
@@ -1296,7 +1296,7 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabStaffLayout = new org.jdesktop.layout.GroupLayout(TabStaff);
@@ -1440,7 +1440,7 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabProductLayout = new org.jdesktop.layout.GroupLayout(TabProduct);
