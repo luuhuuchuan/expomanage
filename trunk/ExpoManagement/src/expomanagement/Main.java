@@ -17,6 +17,7 @@ import booth.OperationBooths;
 import boothType.AddboothType;
 import boothType.EditboothType;
 import boothType.OperationBoothType;
+import contact.OperationContact;
 import exhibitor.AddExhibitor;
 import exhibitor.EditExhibitor;
 import exhibitor.OperationExhibitor;
@@ -24,6 +25,7 @@ import expo.AddExpo;
 import expo.EditExpo;
 import expo.OperationExpo;
 import java.awt.Frame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
@@ -56,6 +58,7 @@ public class Main extends javax.swing.JFrame {
     OperationBooths ob = new OperationBooths();
     OperationStaff ost = new OperationStaff();
     OperationUser ou = new OperationUser();
+    OperationContact oc = new OperationContact();
     String UserName ="";
     int TypeUser,EID;
     int flag =0;
@@ -197,7 +200,7 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        txtTitle = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         mainTab = new javax.swing.JTabbedPane();
         TabHome = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -340,18 +343,17 @@ public class Main extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
         sentDate1 = new javax.swing.JTextField();
         returnDate1 = new javax.swing.JTextField();
         lastChange1 = new javax.swing.JTextField();
-        paidDate1 = new javax.swing.JTextField();
         tbnChosebooth = new javax.swing.JButton();
         btnSaveContact = new javax.swing.JButton();
         btnDelContact = new javax.swing.JButton();
-        statustxt = new javax.swing.JTextField();
         lbTypeUser = new javax.swing.JLabel();
         lbUser = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
+        jPanel18 = new javax.swing.JPanel();
+        txtTitle = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         mnFile = new javax.swing.JMenu();
         mnUA = new javax.swing.JMenuItem();
@@ -384,16 +386,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24));
-        txtTitle.setText("Expo Management System");
-
         mainTab.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
         jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18));
         jTextArea1.setRows(5);
-        jTextArea1.setText("\n Welcome !\n You using software of Team 1 - GC0501 - FPT GreenWich.\n Hope you work efficiently.\n Thank you for using our software.");
+        jTextArea1.setText("\n Welcome !\n You are using software of Team 1 - GC0501 - FPT GreenWich.\n Hope you work efficiently.\n Thank you for using our software.");
         jTextArea1.setAutoscrolls(false);
         jTextArea1.setFocusable(false);
         jScrollPane2.setViewportView(jTextArea1);
@@ -404,14 +403,14 @@ public class Main extends javax.swing.JFrame {
             TabHomeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(TabHomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
                 .addContainerGap())
         );
         TabHomeLayout.setVerticalGroup(
             TabHomeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(TabHomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -485,7 +484,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindExpo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .add(txtFindExpo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel16)
                 .addContainerGap())
@@ -524,11 +523,11 @@ public class Main extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabExpoLayout = new org.jdesktop.layout.GroupLayout(TabExpo);
@@ -616,7 +615,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereBT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindBT, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .add(txtFindBT, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel12)
                 .addContainerGap())
@@ -659,11 +658,11 @@ public class Main extends javax.swing.JFrame {
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabBoothTypeLayout = new org.jdesktop.layout.GroupLayout(TabBoothType);
@@ -753,7 +752,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereBooth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .add(txtFindBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel11)
                 .addContainerGap())
@@ -791,11 +790,11 @@ public class Main extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+            .add(jScrollPane7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabBoothLayout = new org.jdesktop.layout.GroupLayout(TabBooth);
@@ -883,7 +882,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereSp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtSponsor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .add(txtSponsor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel15)
                 .addContainerGap())
@@ -899,7 +898,7 @@ public class Main extends javax.swing.JFrame {
                     .add(txtSponsor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnEditS)
                     .add(jLabel15))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Sponsor List"));
@@ -921,11 +920,11 @@ public class Main extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+            .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabSponsorLayout = new org.jdesktop.layout.GroupLayout(TabSponsor);
@@ -935,8 +934,8 @@ public class Main extends javax.swing.JFrame {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, TabSponsorLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(TabSponsorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         TabSponsorLayout.setVerticalGroup(
@@ -1013,7 +1012,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindUser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .add(txtFindUser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel9)
                 .addContainerGap())
@@ -1051,11 +1050,11 @@ public class Main extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabAccountLayout = new org.jdesktop.layout.GroupLayout(TabAccount);
@@ -1065,8 +1064,8 @@ public class Main extends javax.swing.JFrame {
             .add(TabAccountLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(TabAccountLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         TabAccountLayout.setVerticalGroup(
@@ -1076,7 +1075,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(234, 234, 234))
+                .addContainerGap())
         );
 
         SubTabManager.addTab(" Account     ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/users.png")), TabAccount); // NOI18N
@@ -1143,7 +1142,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindEhi, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .add(txtFindEhi, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel10)
                 .addContainerGap())
@@ -1181,22 +1180,22 @@ public class Main extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout STabExhibitorLayout = new org.jdesktop.layout.GroupLayout(STabExhibitor);
         STabExhibitor.setLayout(STabExhibitorLayout);
         STabExhibitorLayout.setHorizontalGroup(
             STabExhibitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(STabExhibitorLayout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, STabExhibitorLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(STabExhibitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(STabExhibitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         STabExhibitorLayout.setVerticalGroup(
@@ -1205,8 +1204,8 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(256, 256, 256))
+                .add(jPanel7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         SubTabManager.addTab(" Exhibitor    ", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/exhibitor_man.png")), STabExhibitor); // NOI18N
@@ -1216,14 +1215,14 @@ public class Main extends javax.swing.JFrame {
         TabManagerLayout.setHorizontalGroup(
             TabManagerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(TabManagerLayout.createSequentialGroup()
-                .add(SubTabManager)
+                .add(SubTabManager, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
                 .addContainerGap())
         );
         TabManagerLayout.setVerticalGroup(
             TabManagerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(TabManagerLayout.createSequentialGroup()
-                .add(SubTabManager, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
-                .addContainerGap())
+                .add(SubTabManager, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 476, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         mainTab.addTab("Manager", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/administrator.png")), TabManager); // NOI18N
@@ -1233,7 +1232,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Option"));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel17.setText("Filter");
 
         cbWhereBooths.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -1267,7 +1266,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jLabel22)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbChoseBoothType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 374, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 190, Short.MAX_VALUE)
                 .add(jLabel17)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereBooths, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -1329,11 +1328,11 @@ public class Main extends javax.swing.JFrame {
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tblBooths, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+            .add(tblBooths, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tblBooths, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+            .add(tblBooths, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
         );
 
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder("Booth's Choice"));
@@ -1470,7 +1469,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindStaff, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                .add(txtFindStaff, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jLabel13)
                 .addContainerGap())
@@ -1508,11 +1507,11 @@ public class Main extends javax.swing.JFrame {
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+            .add(jScrollPane12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabStaffLayout = new org.jdesktop.layout.GroupLayout(TabStaff);
@@ -1600,7 +1599,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+                .add(txtPKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel14)
                 .addContainerGap())
@@ -1646,11 +1645,11 @@ public class Main extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+            .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout TabProductLayout = new org.jdesktop.layout.GroupLayout(TabProduct);
@@ -1680,17 +1679,17 @@ public class Main extends javax.swing.JFrame {
         TabExhibitor.setLayout(TabExhibitorLayout);
         TabExhibitorLayout.setHorizontalGroup(
             TabExhibitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1110, Short.MAX_VALUE)
+            .add(0, 926, Short.MAX_VALUE)
             .add(TabExhibitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(TabExhibitorLayout.createSequentialGroup()
-                    .add(SubTabExhibitor)
+                    .add(SubTabExhibitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         TabExhibitorLayout.setVerticalGroup(
             TabExhibitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 591, Short.MAX_VALUE)
+            .add(0, 674, Short.MAX_VALUE)
             .add(TabExhibitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(org.jdesktop.layout.GroupLayout.TRAILING, SubTabExhibitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE))
+                .add(org.jdesktop.layout.GroupLayout.TRAILING, SubTabExhibitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE))
         );
 
         mainTab.addTab("Exhibitor", new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/exhibitor.png")), TabExhibitor); // NOI18N
@@ -1722,11 +1721,11 @@ public class Main extends javax.swing.JFrame {
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1078, Short.MAX_VALUE)
+            .add(tblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+            .add(tblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
         );
 
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("Contract Detail"));
@@ -1750,8 +1749,6 @@ public class Main extends javax.swing.JFrame {
         jLabel40.setText("Contract return date");
 
         jLabel41.setText("Last change");
-
-        jLabel42.setText("Paid date");
 
         tbnChosebooth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/13.png"))); // NOI18N
         tbnChosebooth.setText("Choose Booth");
@@ -1794,7 +1791,6 @@ public class Main extends javax.swing.JFrame {
                             .add(jLabel38))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(statustxt)
                             .add(userCre1)
                             .add(comName1)
                             .add(regDate1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
@@ -1804,15 +1800,13 @@ public class Main extends javax.swing.JFrame {
                         .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel39)
                             .add(jLabel40)
-                            .add(jLabel41)
-                            .add(jLabel42))
+                            .add(jLabel41))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, lastChange1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, returnDate1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, sentDate1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, paidDate1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 165, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(456, 456, 456))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, lastChange1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, returnDate1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, sentDate1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                        .add(257, 257, 257))
                     .add(jPanel24Layout.createSequentialGroup()
                         .add(tbnChosebooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -1844,13 +1838,9 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel36)
-                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(paidDate1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel42))
+                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel37)
-                    .add(statustxt, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jLabel37)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel38)
@@ -1891,12 +1881,33 @@ public class Main extends javax.swing.JFrame {
         lbUser.setFont(new java.awt.Font("Tahoma", 1, 11));
         lbUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        btnLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/28.png"))); // NOI18N
         btnLogOut.setText("Log Out");
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogOutActionPerformed(evt);
             }
         });
+
+        jPanel18.setBackground(new java.awt.Color(77, 155, 201));
+        jPanel18.setAlignmentX(0.0F);
+        jPanel18.setAlignmentY(0.0F);
+
+        txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/banner.jpg"))); // NOI18N
+
+        org.jdesktop.layout.GroupLayout jPanel18Layout = new org.jdesktop.layout.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel18Layout.createSequentialGroup()
+                .add(txtTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, txtTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+        );
 
         mnFile.setText("File");
 
@@ -1906,7 +1917,7 @@ public class Main extends javax.swing.JFrame {
         mnFile.add(mnUA);
 
         mnLogOut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, java.awt.event.InputEvent.ALT_MASK));
-        mnLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/27.png"))); // NOI18N
+        mnLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/28.png"))); // NOI18N
         mnLogOut.setText("Log Out");
         mnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1981,30 +1992,31 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(678, Short.MAX_VALUE)
+                .add(lbTypeUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(lbUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnLogOut)
+                .addContainerGap())
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(mainTab, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
-                    .add(layout.createSequentialGroup()
-                        .add(txtTitle)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 590, Short.MAX_VALUE)
-                        .add(lbTypeUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(lbUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnLogOut)))
+                .add(mainTab, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
+                .add(jPanel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtTitle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 43, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(lbUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnLogOut)
                     .add(lbTypeUser))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(mainTab)
+                .add(mainTab, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -2223,8 +2235,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        new Login(this,true).setVisible(true);
+        logOut();
     }//GEN-LAST:event_btnLogOutActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -2232,42 +2243,55 @@ public class Main extends javax.swing.JFrame {
         lbUser.setText(UserName);
         if(TypeUser==1){
             lbTypeUser.setText("Manager: ");
-            mainTab.setEnabledAt(1, true);
-            mainTab.setEnabledAt(2, false);
+            mainTab.setEnabledAt(1, true);mnManager.setEnabled(true);
+            mainTab.setEnabledAt(2, false);mnExhibitor.setEnabled(false);
+            LoadContact(null);
+            LoadExpo();
+            LoadBoothType();
+            LoadBooth();
+            LoadSponsor();
+            LoadAccount();
+            LoadExhibitor();
             if(flag==0){
                 mainTab.setSelectedIndex(0);
+                oe.buildCbWhereEx(cbWhereExpo);
+                obt.buildCbWhereP(cbWhereBT);
+                ob.buildCbWhereB(cbWhereBooth);
+                os.buildCbWhereSp(cbWhereSp);
+                ou.buildCbUs(cbWhereUser);
+                oex.buildCbEx(cbEx);
                 flag=1;
-            }
-            LoadExpo();oe.buildCbWhereEx(cbWhereExpo);
-            LoadBoothType();obt.buildCbWhereP(cbWhereBT);
-            LoadBooth();ob.buildCbWhereB(cbWhereBooth);
-            LoadSponsor();os.buildCbWhereSp(cbWhereSp);
-            LoadAccount();ou.buildCbUs(cbWhereUser);
-            LoadExhibitor();oex.buildCbEx(cbEx);
+            }           
         }
         else
         {   
             lbTypeUser.setText("Exhibitor: ");
-            mainTab.setEnabledAt(1, false);
-            mainTab.setEnabledAt(2, true);
+            mainTab.setEnabledAt(1, false);mnManager.setEnabled(false);
+            mainTab.setEnabledAt(2, true);mnExhibitor.setEnabled(true);
+            LoadContact(EID+"");
+            LoadStaff();
+            LoadProduct();
             if(flag==1){
                 mainTab.setSelectedIndex(0);
                 flag=0;
+                ost.buildCbStaff(cbWhereStaff);
+                op.buildCbWhereP(cbWhereP);
             }
-            LoadStaff();ost.buildCbStaff(cbWhereStaff);
-            LoadProduct();op.buildCbWhereP(cbWhereP);
+            
         }
     }//GEN-LAST:event_formWindowActivated
 
     private void mnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnLogOutActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        new Login(this,true).setVisible(true);
+        logOut();
     }//GEN-LAST:event_mnLogOutActionPerformed
 
     private void mnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnExitActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        if(JOptionPane.showConfirmDialog(null, "Do you want to exit application ?",
+                "Exit Application",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
     }//GEN-LAST:event_mnExitActionPerformed
 
     private void mnManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnManagerActionPerformed
@@ -2365,6 +2389,10 @@ public class Main extends javax.swing.JFrame {
     {
         os.loadAllSponsor(tblSponsor);
     }
+    public void LoadContact(String EID)
+    {
+        oc.loadAllContact(this,EID, tblContract);
+    }
     public JTable getSponsorTable(){
         return tblSponsor;
     }
@@ -2379,6 +2407,13 @@ public class Main extends javax.swing.JFrame {
     }
     public String getEID(){
         return EID+"";
+    }
+    public void logOut(){
+        if(JOptionPane.showConfirmDialog(null, "Do you want to Log Out now ?",
+                "Log Out System",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        this.dispose();
+        new Login(this,true).setVisible(true);
+        }
     }
 
     /**
@@ -2399,7 +2434,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel NumBooth_lb;
     private javax.swing.JLabel Prio_lb;
     private javax.swing.JPanel STabExhibitor;
-    private javax.swing.JButton Save;
     private javax.swing.JTabbedPane SubTabExhibitor;
     private javax.swing.JTabbedPane SubTabManager;
     private javax.swing.JPanel TabAccount;
@@ -2414,9 +2448,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel TabProduct;
     private javax.swing.JPanel TabSponsor;
     private javax.swing.JPanel TabStaff;
-    private javax.swing.JTextField booth;
     private javax.swing.JTextField booth1;
-    private javax.swing.JButton boothInfo;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddAcc;
     private javax.swing.JButton btnAddB;
@@ -2425,7 +2457,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnAddP;
     private javax.swing.JButton btnAddS;
     private javax.swing.JButton btnAddStaff;
-    private javax.swing.JButton btnAddStaff2;
     private javax.swing.JButton btnDelContact;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDeleteAcc;
@@ -2435,7 +2466,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteP;
     private javax.swing.JButton btnDeleteS;
     private javax.swing.JButton btnDeleteStaff;
-    private javax.swing.JButton btnDeleteStaff2;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditAcc;
     private javax.swing.JButton btnEditB;
@@ -2444,10 +2474,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnEditP;
     private javax.swing.JButton btnEditS;
     private javax.swing.JButton btnEditStaff;
-    private javax.swing.JButton btnEditStaff2;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnSaveContact;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbChoseBoothType;
     private javax.swing.JComboBox cbChoseExpo;
     private javax.swing.JComboBox cbEx;
@@ -2459,13 +2489,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox cbWhereP;
     private javax.swing.JComboBox cbWhereSp;
     private javax.swing.JComboBox cbWhereStaff;
-    private javax.swing.JComboBox cbWhereStaff2;
     private javax.swing.JComboBox cbWhereUser;
-    private javax.swing.JTextField comName;
     private javax.swing.JTextField comName1;
-    private javax.swing.JButton delContract;
-    private javax.swing.JTextField expotxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2477,22 +2502,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -2503,7 +2516,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2524,7 +2536,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2543,7 +2554,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField lastChange;
     private javax.swing.JTextField lastChange1;
     private javax.swing.JLabel lbTypeUser;
     private javax.swing.JLabel lbUser;
@@ -2556,20 +2566,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnLogOut;
     private javax.swing.JMenuItem mnManager;
     private javax.swing.JMenuItem mnUA;
-    private javax.swing.JButton newContract;
-    private javax.swing.JTextField paidDate;
-    private javax.swing.JTextField paidDate1;
-    private javax.swing.JButton productButton;
-    private javax.swing.JTextField regDate;
     private javax.swing.JTextField regDate1;
-    private javax.swing.JButton returnContract;
-    private javax.swing.JTextField returnDate;
     private javax.swing.JTextField returnDate1;
-    private javax.swing.JTextField sentDate;
     private javax.swing.JTextField sentDate1;
-    private javax.swing.JButton staffButton;
-    private javax.swing.JComboBox statuscbb;
-    private javax.swing.JTextField statustxt;
     private javax.swing.JTable tblAccount;
     private javax.swing.JTable tblBooth;
     private javax.swing.JTable tblBoothType;
@@ -2589,13 +2588,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtFindExpo;
     private javax.swing.JTextField txtFindStaff;
     private javax.swing.JTextField txtFindStaff1;
-    private javax.swing.JTextField txtFindStaff2;
     private javax.swing.JTextField txtFindUser;
     private javax.swing.JTextField txtNumBooth;
     private javax.swing.JTextField txtPKeyword;
     private javax.swing.JTextField txtSponsor;
     private javax.swing.JLabel txtTitle;
-    private javax.swing.JTextField userCre;
     private javax.swing.JTextField userCre1;
     // End of variables declaration//GEN-END:variables
 

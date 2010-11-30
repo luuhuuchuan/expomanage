@@ -153,9 +153,9 @@ Create PROC findBooths
 @Key nvarchar(100)
 AS
 Declare @fb nvarchar(200)
-set @fb = 'select B.CID, B.BID, BT.BTName, B.BName, B.BDate, B.BMoney, B.BBooker from Booths B ,BoothType BT  where B.BTID = BT.BTID and '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
+set @fb = 'select B.CID, B.BID, BT.BTName, B.BName, B.BDate, B.BMoney, B.BBooker from Booths B join BoothType BT on B.BTID = BT.BTID where '+ @Where + ' like '+char(39)+'%'  + @Key +'%' + char(39)
 execute(@fb)
-exec findBooths
+
 ------------------------------------------------BOTHTYPE------------------------------------------
 -- Tao Store goi ra tat ca expo
 go
@@ -531,16 +531,24 @@ end
 --------------------------------------------------------------------------------------------------
 ------------------------------------------------CONTACT-------------------------------------------
 --Store GetAllContact
-Create Proc getAllContact
+go
+alter Proc getAllContact
+@EID int
 As
-Select C.CID,C.ExID,C.EID,C.CUserCredential,C.CNumOfBooth,C.CPaid,C.CDateRegister,C.CDateSent,C.CDateReturn,
-C.CDateLastChange,C.CStatus,Pr.PrType
-From Contact as C join Priority as Pr
-on C.PrID = Pr.PrID
-
-exec getAllContact
+Begin
+	if(@EID is null)
+		Select C.CID,C.ExID,C.EID,C.CUserCredential,C.CNumOfBooth,C.CPaid,C.CDateRegister,C.CDateSent,C.CDateReturn,C.CDateLastChange,C.CStatus,Pr.PrType
+		From Contact as C join Priority as Pr
+		on C.PrID = Pr.PrID
+	else
+		Select C.CID,C.ExID,C.EID,C.CUserCredential,C.CNumOfBooth,C.CPaid,C.CDateRegister,C.CDateSent,C.CDateReturn,C.CDateLastChange,C.CStatus,Pr.PrType
+		From Contact as C join Priority as Pr
+		on C.PrID = Pr.PrID
+		where C.EID=@EID
+end
 
 --Store xoa 1 Contact
+go
 Create Proc DeleteContact
 @id int
 As
