@@ -1315,6 +1315,11 @@ public class Main extends javax.swing.JFrame {
         tblBooths.setViewportView(tblChoseBooths);
         tblChoseBooths.getColumnModel().getColumn(0).setMinWidth(50);
         tblChoseBooths.getColumnModel().getColumn(0).setMaxWidth(100);
+        tblChoseBooths.getColumnModel().getColumn(2).setPreferredWidth(30);
+        tblChoseBooths.getColumnModel().getColumn(3).setPreferredWidth(30);
+        tblChoseBooths.getColumnModel().getColumn(4).setMinWidth(80);
+        tblChoseBooths.getColumnModel().getColumn(5).setPreferredWidth(100);
+        tblChoseBooths.getColumnModel().getColumn(6).setResizable(false);
         tblChoseBooths.getColumnModel().getColumn(6).setPreferredWidth(30);
 
         org.jdesktop.layout.GroupLayout jPanel20Layout = new org.jdesktop.layout.GroupLayout(jPanel20);
