@@ -532,7 +532,7 @@ end
 ------------------------------------------------CONTACT-------------------------------------------
 --Store GetAllContact
 go
-alter Proc getAllContact
+create Proc getAllContact
 @EID int
 As
 Begin
@@ -558,9 +558,17 @@ end
 
 
 ---Store Choice Booth
-Create proc showAllInformation
+go
+create proc showAllInformation
 @ID char(10)
 as
-select B.BName, BT.BTName, BT.BoothLength,BT.BoothRemain, B.BDate, B.BMoney, B.BBooker
-from Booths B,BoothType BT,Expo Ex
-where B.BTID = BT.BTID and BT.ExID = Ex.ExID and Ex.ExID = @ID
+if(@ID is null)
+	select B.BID,B.BName, BT.BTName, BT.BoothLength,BT.BoothRemain, B.BMoney, B.BDate, B.BBooker
+	from Booths B join BoothType BT
+	on B.BTID = BT.BTID 
+else
+	select B.BID,B.BName, BT.BTName, BT.BoothLength,BT.BoothRemain, B.BMoney, B.BDate, B.BBooker
+	from Booths B join BoothType BT
+	on B.BTID = BT.BTID 
+	where BT.ExID = @ID
+
