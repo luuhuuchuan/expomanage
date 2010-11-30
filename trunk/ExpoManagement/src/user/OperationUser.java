@@ -62,7 +62,8 @@ public class OperationUser {
         return db.getCallAble(storeName).executeQuery();
     }
     public boolean checkUser(JTextField txtName,JPasswordField txtPass,JTextField txtEmail,String oName){
-        if(oName.equalsIgnoreCase(txtName.getText().trim())){
+        
+        if(oName.length() != txtName.getText().trim().length()){
             boolean status = false;
             try{
             String storeName = "checkUser('"+txtName.getText().trim()+"')";
