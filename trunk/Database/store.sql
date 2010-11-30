@@ -529,3 +529,21 @@ begin
 end
 
 --------------------------------------------------------------------------------------------------
+------------------------------------------------CONTACT-------------------------------------------
+--Store GetAllContact
+Create Proc getAllContact
+As
+Select C.CID,C.ExID,C.EID,C.CUserCredential,C.CNumOfBooth,C.CPaid,C.CDateRegister,C.CDateSent,C.CDateReturn,
+C.CDateLastChange,C.CStatus,Pr.PrType
+From Contact as C join Priority as Pr
+on C.PrID = Pr.PrID
+
+exec getAllContact
+
+--Store xoa 1 Contact
+Create Proc DeleteContact
+@id int
+As
+begin
+DELETE FROM Contact WHERE EID = @id
+end
