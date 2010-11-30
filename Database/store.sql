@@ -33,6 +33,8 @@ create proc deleteExpo
 @ID int
 as
 begin
+	delete from BoothType
+		where ExID = @ID
 	delete from Contact
 		where ExID = @ID
 	delete from Sponsors
