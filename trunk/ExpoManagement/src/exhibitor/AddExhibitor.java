@@ -279,7 +279,7 @@ public class AddExhibitor extends javax.swing.JDialog {
             }  
         rs.close();
         String nameusr = txtName.getText().trim();
-        String pass = new String(txtPass.getPassword().toString().trim());
+        String pass = new String(txtPass.getPassword());
         String email = txtEmail.getText().trim();
         CallableStatement csu = db.getConnection().prepareCall("{call AddUser(?,?,?,?,?)}");
         //truyen tham so cho store

@@ -115,7 +115,7 @@
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="txtPhone" alignment="1" max="32767" attributes="1"/>
                       <Component id="txtAddress" alignment="1" max="32767" attributes="1"/>
@@ -223,7 +223,7 @@
                       <Component id="txtPass" alignment="0" max="32767" attributes="1"/>
                       <Component id="txtNameUser" alignment="0" pref="187" max="32767" attributes="1"/>
                   </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
