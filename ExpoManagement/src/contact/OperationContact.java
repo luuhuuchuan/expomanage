@@ -25,7 +25,7 @@ public class OperationContact {
     DefaultTableModel ContactModel = null;
     Main m = null;
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    public void loadAllContact(java.awt.Frame parent,JTable jTable1){
+    public void loadAllContact(java.awt.Frame parent,String EID,JTable jTable1){
         m = (Main) parent;
         jTable1.setModel(ContactModel = new DefaultTableModel());
         Vector v = new Vector();
@@ -34,7 +34,7 @@ public class OperationContact {
             v.add(s);
         ContactModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getStore("getAllContact");
+            ResultSet rs = getStore("getAllContact("+EID.trim()+")");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getString(1).trim());
