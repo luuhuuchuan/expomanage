@@ -547,3 +547,12 @@ As
 begin
 DELETE FROM Contact WHERE EID = @id
 end
+
+
+---Store Choice Booth
+Create proc showAllInformation
+@ID char(10)
+as
+select B.BName, BT.BTName, BT.BoothLength,BT.BoothRemain, B.BDate, B.BMoney, B.BBooker
+from Booths B,BoothType BT,Expo Ex
+where B.BTID = BT.BTID and BT.ExID = Ex.ExID and Ex.ExID = @ID
