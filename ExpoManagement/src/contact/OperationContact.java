@@ -5,6 +5,7 @@
 
 package contact;
 
+import boothType.OperationBoothType;
 import dataLayer.DBHelper;
 import expomanagement.Main;
 import java.sql.CallableStatement;
@@ -12,8 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,6 +38,8 @@ public class OperationContact {
             v.add(s);
         ContactModel.setColumnIdentifiers(v);
         try{
+
+
             ResultSet rs = getStore("getAllContact("+EID.trim()+")");
             while(rs.next()){
                 v = new Vector();
@@ -72,7 +78,27 @@ public class OperationContact {
             JOptionPane.showMessageDialog(null, "Can't delete this Contact !","Delete Contact",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public void DetailOfContact(String id){
-        
-    }
+    public void DetailOfContact(String CID,JTextField txtregDate,JTextField txtuserCre,JRadioButton rbnPaid,JRadioButton rbnUnPaid,JTextField txtBooths,JTextField txtsentDate,JTextField txtreturnDate,JTextField txtlastChange){
+        try {
+                ResultSet rs = getStore("getDetailContact('"+CID.trim()+"')");
+                if(rs.next()){                    
+                    m.setCbExpo(rs.getString("ExName").trim());
+                    txtuserCre.setText(rs.getString("CUserCredential").trim());
+                    txtBooths.setText(rs.getInt("CNumOfBooth")+"");
+                    if(rs.getBoolean("CPaid")){
+                        rbnPaid.setSelected(true);
+                    }
+                    else{
+                        rbnUnPaid.setSelected(true);
+                    }
+                    txtregDate.setText(formatter.format(rs.getDate("CDateRegister")));
+                    txtsentDate.setText(formatter.format(rs.getDate("CDateSent")));
+                    txtreturnDate.setText(formatter.format(rs.getDate("CDateReturn")));
+                    txtlastChange.setText(formatter.format(rs.getDate("CDateLastChange")));                    
+                }                
+            }catch(SQLException e){
+                e.printStackTrace();
+               }
+           }
+
 }

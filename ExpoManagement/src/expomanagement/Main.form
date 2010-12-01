@@ -380,7 +380,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereExpo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindExpo" pref="414" max="32767" attributes="0"/>
+                                  <Component id="txtFindExpo" pref="417" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -630,7 +630,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereBT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindBT" pref="414" max="32767" attributes="0"/>
+                                  <Component id="txtFindBT" pref="417" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -885,7 +885,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereBooth" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindBooth" pref="414" max="32767" attributes="0"/>
+                                  <Component id="txtFindBooth" pref="417" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1132,7 +1132,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereSp" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtSponsor" pref="414" max="32767" attributes="0"/>
+                                  <Component id="txtSponsor" pref="417" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1379,7 +1379,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereUser" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindUser" pref="414" max="32767" attributes="0"/>
+                                  <Component id="txtFindUser" pref="417" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1626,7 +1626,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbEx" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindEhi" pref="414" max="32767" attributes="0"/>
+                                  <Component id="txtFindEhi" pref="417" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1918,7 +1918,7 @@
                                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbChoseExpo" min="-2" pref="164" max="-2" attributes="0"/>
-                                  <EmptySpace pref="134" max="32767" attributes="0"/>
+                                  <EmptySpace pref="138" max="32767" attributes="0"/>
                                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereBooths" min="-2" max="-2" attributes="0"/>
@@ -2241,7 +2241,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereStaff" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtFindStaff" pref="396" max="32767" attributes="0"/>
+                                  <Component id="txtFindStaff" pref="399" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2488,7 +2488,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cbWhereP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPKeyword" pref="402" max="32767" attributes="0"/>
+                                  <Component id="txtPKeyword" pref="405" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2703,30 +2703,56 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tblContact" alignment="0" pref="874" max="32767" attributes="0"/>
+                      <Component id="JStblContact" alignment="0" pref="874" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tblContact" alignment="0" pref="182" max="32767" attributes="0"/>
+                      <Component id="JStblContact" alignment="0" pref="182" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="tblContact">
+                <Container class="javax.swing.JScrollPane" name="JStblContact">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblContract">
+                    <Component class="javax.swing.JTable" name="tblContact">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="5" rowCount="4">
+                          <Table columnCount="4" rowCount="4">
                             <Column editable="true" title="ContractID" type="java.lang.Integer"/>
-                            <Column editable="true" title="Company" type="java.lang.String"/>
                             <Column editable="true" title="User creadential" type="java.lang.String"/>
                             <Column editable="true" title="Number Booth" type="java.lang.Integer"/>
                             <Column editable="true" title="PriorityPoint" type="java.lang.String"/>
                           </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -2751,10 +2777,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel37" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel36" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel35" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel34" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel33" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel38" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -2762,11 +2787,10 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="userCre1" alignment="0" max="32767" attributes="1"/>
-                                              <Component id="comName1" alignment="0" max="32767" attributes="1"/>
-                                              <Component id="regDate1" alignment="0" pref="191" max="32767" attributes="1"/>
-                                              <Component id="booth1" alignment="0" max="32767" attributes="1"/>
-                                              <Component id="jComboBox1" alignment="0" max="32767" attributes="1"/>
+                                              <Component id="txtuserCre" max="32767" attributes="1"/>
+                                              <Component id="txtregDate" alignment="0" pref="191" max="32767" attributes="1"/>
+                                              <Component id="txtBooths" alignment="0" max="32767" attributes="1"/>
+                                              <Component id="cbExpo" alignment="0" max="32767" attributes="1"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
@@ -2776,9 +2800,9 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lastChange1" alignment="0" pref="364" max="32767" attributes="0"/>
-                                              <Component id="returnDate1" alignment="0" pref="364" max="32767" attributes="1"/>
-                                              <Component id="sentDate1" alignment="0" pref="364" max="32767" attributes="1"/>
+                                              <Component id="txtlastChange" alignment="0" pref="367" max="32767" attributes="0"/>
+                                              <Component id="txtreturnDate" alignment="0" pref="367" max="32767" attributes="1"/>
+                                              <Component id="txtsentDate" alignment="0" pref="367" max="32767" attributes="1"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
                                       </Group>
@@ -2807,28 +2831,35 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="regDate1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtregDate" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="sentDate1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtsentDate" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comName1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="returnDate1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="userCre1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lastChange1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtreturnDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtlastChange" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtuserCre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbExpo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -2839,7 +2870,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="booth1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtBooths" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -2856,11 +2887,6 @@
                 <Component class="javax.swing.JLabel" name="jLabel33">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Register date"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel34">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Company"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel35">
@@ -2883,13 +2909,11 @@
                     <Property name="text" type="java.lang.String" value="Number of booths"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="regDate1">
+                <Component class="javax.swing.JTextField" name="txtregDate">
                 </Component>
-                <Component class="javax.swing.JTextField" name="comName1">
+                <Component class="javax.swing.JTextField" name="txtuserCre">
                 </Component>
-                <Component class="javax.swing.JTextField" name="userCre1">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="cbExpo">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -2901,7 +2925,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="booth1">
+                <Component class="javax.swing.JTextField" name="txtBooths">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel39">
                   <Properties>
@@ -2918,11 +2942,11 @@
                     <Property name="text" type="java.lang.String" value="Last change"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="sentDate1">
+                <Component class="javax.swing.JTextField" name="txtsentDate">
                 </Component>
-                <Component class="javax.swing.JTextField" name="returnDate1">
+                <Component class="javax.swing.JTextField" name="txtreturnDate">
                 </Component>
-                <Component class="javax.swing.JTextField" name="lastChange1">
+                <Component class="javax.swing.JTextField" name="txtlastChange">
                 </Component>
                 <Component class="javax.swing.JButton" name="tbnChosebooth">
                   <Properties>
@@ -2941,6 +2965,7 @@
                       <Image iconType="3" name="/expomanagement/icon_func/22.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Update"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveContactActionPerformed"/>
@@ -2952,6 +2977,7 @@
                       <Image iconType="3" name="/expomanagement/icon_func/14.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Delete contract"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelContactActionPerformed"/>
