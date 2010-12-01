@@ -6,7 +6,7 @@
 package staff;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,10 +26,10 @@ import javax.swing.table.DefaultTableModel;
 public class OperationStaff {
 
     DBHelper db = null;
-    Main m = null;
+    Application m = null;
     DefaultTableModel StaffModel = null;
     public void loadAllStaff(java.awt.Frame parent,JTable jTable1){
-        m = (Main) parent;
+        m = (Application) parent;
         jTable1.setModel(StaffModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"Staff ID","Contact ID","Staff Name","Staff Email","Staff Phone","Staff Address","Booth"};
@@ -93,7 +93,7 @@ public class OperationStaff {
     public void doSearch(java.awt.Frame parent,String Where, String Key, JTable tblStaff){
         try
         {
-        m = (Main) parent;
+        m = (Application) parent;
         String storeName = "findStaff("+m.getEID().trim()+",'" + Where + "','" + Key + "')";
         tblStaff.setModel(StaffModel = new DefaultTableModel());
         Vector v = new Vector();

@@ -13,7 +13,7 @@ package staff;
 
 import booth.OperationBooths;
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 public class EditStaff extends javax.swing.JDialog {
 
     /** Creates new form EditStaff */
-    Main m = null;
+    Application m = null;
     private DBHelper db = null;
     OperationBooths ob = new OperationBooths();
     OperationStaff ost = new OperationStaff();
@@ -39,7 +39,7 @@ public class EditStaff extends javax.swing.JDialog {
         db.openConnection();
         ob.buildAllContactID(cbContact);
         ost.buildCbBooth(cbBooth);
-        m = (Main) parent;
+        m = (Application) parent;
         int row = m.getStaffTable().getSelectedRow();
         cbContact.setSelectedItem(m.getStaffTable().getValueAt(row, 1));
         cbBooth.setSelectedItem(m.getStaffTable().getValueAt(row, 6));
@@ -229,7 +229,7 @@ public class EditStaff extends javax.swing.JDialog {
         if(JOptionPane.showConfirmDialog(null, "Do you want edit this Staff",
                         "Edit Staff",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             cs.execute();
-            ((Main)m).LoadStaff();
+            ((Application)m).LoadStaff();
             JOptionPane.showMessageDialog(null, "One Staff has been Edit","Edit Staff",JOptionPane.INFORMATION_MESSAGE);
             dispose();
         }

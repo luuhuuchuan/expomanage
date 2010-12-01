@@ -5,15 +5,13 @@
 
 package contact;
 
-import boothType.OperationBoothType;
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
@@ -27,10 +25,10 @@ import javax.swing.table.DefaultTableModel;
 public class OperationContact {
     DBHelper db = null;
     DefaultTableModel ContactModel = null;
-    Main m = null;
+    Application m = null;
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public void loadAllContact(java.awt.Frame parent,String EID,JTable jTable1){
-        m = (Main) parent;
+        m = (Application) parent;
         jTable1.setModel(ContactModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"Contact ID","User Credential","Number Booth","Priority Point"};
@@ -38,8 +36,6 @@ public class OperationContact {
             v.add(s);
         ContactModel.setColumnIdentifiers(v);
         try{
-
-
             ResultSet rs = getStore("getAllContact("+EID.trim()+")");
             while(rs.next()){
                 v = new Vector();
@@ -78,26 +74,28 @@ public class OperationContact {
             JOptionPane.showMessageDialog(null, "Can't delete this Contact !","Delete Contact",JOptionPane.ERROR_MESSAGE);
         }
     }
-    public void DetailOfContact(String CID,JTextField txtregDate,JTextField txtuserCre,JRadioButton rbnPaid,JRadioButton rbnUnPaid,JTextField txtBooths,JTextField txtsentDate,JTextField txtreturnDate,JTextField txtlastChange){
+    public void DetailOfContact(String CID,JTextField txtregDate,JTextField txtuserCre,JRadioButton rbnPaid,JRadioButton rbnUnPaid,JTextField txtBooths,JTextField txtsentDate,JTextField txtreturnDate,JTextField txtlastChange,JTextField txtPaid){
         try {
                 ResultSet rs = getStore("getDetailContact('"+CID+"')");
                 if(rs.next()){                    
                     m.setCbExpo(rs.getString("ExName").trim());
                     txtuserCre.setText(rs.getString("CUserCredential").trim());
                     txtBooths.setText(rs.getInt("CNumOfBooth")+"");
-                    if(rs.getBoolean("CPaid")){
+                    txtPaid.setText(rs.getFloat("CPaid")+"");
+                    
+                    txtregDate.setText(formatter.format(rs.getDate("CDateRegister")));
+                    txtsentDate.setText(formatter.format(rs.getDate("CDateSent")));
+                    txtreturnDate.setText(formatter.format(rs.getDate("CDateReturn")));
+                    txtlastChange.setText(formatter.format(rs.getDate("CDateLastChange"))); 
+                    if(rs.getBoolean("CStatus")){
                         rbnPaid.setSelected(true);
                     }
                     else{
                         rbnUnPaid.setSelected(true);
                     }
-                    txtregDate.setText(formatter.format(rs.getDate("CDateRegister")));
-                    txtsentDate.setText(formatter.format(rs.getDate("CDateSent")));
-                    txtreturnDate.setText(formatter.format(rs.getDate("CDateReturn")));
-                    txtlastChange.setText(formatter.format(rs.getDate("CDateLastChange")));                    
                 }                
             }catch(SQLException e){
-               
+               e.printStackTrace();
                }
            }
 

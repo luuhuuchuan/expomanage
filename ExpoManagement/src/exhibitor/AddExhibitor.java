@@ -12,7 +12,7 @@
 package exhibitor;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
@@ -26,7 +26,7 @@ import javax.swing.UIManager;
 public class AddExhibitor extends javax.swing.JDialog {
 
     /** Creates new form AddExhibitor */
-    Main m = null;
+    Application m = null;
 
     OperationExhibitor oex = new OperationExhibitor();
     public AddExhibitor(java.awt.Frame parent, boolean modal) {
@@ -42,7 +42,7 @@ public class AddExhibitor extends javax.swing.JDialog {
         int w = Toolkit.getDefaultToolkit().getScreenSize().width;
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
-        m = (Main)parent;
+        m = (Application)parent;
     }
 
     /** This method is called from within the constructor to

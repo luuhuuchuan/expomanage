@@ -12,7 +12,7 @@
 package expo;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import java.text.SimpleDateFormat;
@@ -26,7 +26,7 @@ import javax.swing.UIManager;
  */
 public class AddExpo extends javax.swing.JDialog {
     OperationExpo oe = new OperationExpo();
-    Main m = null;
+    Application m = null;
     /** Creates new form AddExpo */
 
     public AddExpo(java.awt.Frame parent, boolean modal) {
@@ -41,7 +41,7 @@ public class AddExpo extends javax.swing.JDialog {
         int w = Toolkit.getDefaultToolkit().getScreenSize().width;
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
-        m = (Main)parent;
+        m = (Application)parent;
     }
 
 

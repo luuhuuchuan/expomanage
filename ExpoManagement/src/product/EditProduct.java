@@ -13,7 +13,7 @@ package product;
 
 import booth.OperationBooths;
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 public class EditProduct extends javax.swing.JDialog {
 
     /** Creates new form EditProduct */
-    Main m = null;
+    Application m = null;
     DBHelper db = null;
     OperationProduct op = new OperationProduct();
     OperationBooths ob  = new OperationBooths();
@@ -37,7 +37,7 @@ public class EditProduct extends javax.swing.JDialog {
             db = new DBHelper();
             db.openConnection();
             ob.buildAllContactID(cbContact);
-            m = (Main) parent;
+            m = (Application) parent;
             int row = m.getProductsTable().getSelectedRow();
             cbContact.setSelectedItem(m.getProductsTable().getValueAt(row, 1));
             txtName.setText(m.getProductsTable().getValueAt(row, 2).toString().trim());
@@ -227,7 +227,7 @@ public class EditProduct extends javax.swing.JDialog {
                 if(JOptionPane.showConfirmDialog(null, "Do you want edit this Product",
                         "Edit Product",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                     cs.execute();
-                    ((Main)m).LoadProduct();
+                    ((Application)m).LoadProduct();
                     JOptionPane.showMessageDialog(null, "One Product has been Edit","Edit Product",JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }

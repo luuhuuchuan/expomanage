@@ -12,7 +12,7 @@
 package exhibitor;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 public class EditExhibitor extends javax.swing.JDialog {
 
     /** Creates new form AddExhibitor */
-    Main m = null;
+    Application m = null;
     private DBHelper db = null; 
     OperationExhibitor oex = new OperationExhibitor();
     public EditExhibitor(java.awt.Frame parent, boolean modal) {
@@ -36,7 +36,7 @@ public class EditExhibitor extends javax.swing.JDialog {
         db = new DBHelper();
         db.openConnection();
 
-        m = (Main) parent;
+        m = (Application) parent;
         int row = m.getExhibitorTable().getSelectedRow();
         txtName.setText(m.getExhibitorTable().getValueAt(row, 1).toString().trim());
         txtFax.setText(m.getExhibitorTable().getValueAt(row, 2).toString().trim());
@@ -213,7 +213,7 @@ public class EditExhibitor extends javax.swing.JDialog {
         if(JOptionPane.showConfirmDialog(null, "Do you want edit this Exhibitor",
                         "Edit Exhibitor",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             cs.execute();
-            ((Main)m).LoadExhibitor();
+            ((Application)m).LoadExhibitor();
             JOptionPane.showMessageDialog(null, "One Exhibitor has been Edit","Edit Exhibitor",JOptionPane.INFORMATION_MESSAGE);
             dispose();
         }

@@ -6,7 +6,7 @@
 package product;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,10 +27,10 @@ import javax.swing.table.DefaultTableModel;
 public class OperationProduct {
     DBHelper db = null;
     DefaultTableModel ProductsModel = null;
-    Main m = null;
+    Application m = null;
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public void loadAllProduct(java.awt.Frame parent,JTable jTable1){
-        m = (Main) parent;
+        m = (Application) parent;
         jTable1.setModel(ProductsModel = new DefaultTableModel());
         Vector v = new Vector();
         String [] heading = {"Product Code","Contact ID","Product Name","Product Price","Product Number","Description","Date"};
@@ -65,7 +65,7 @@ public class OperationProduct {
         return db.getCallAble(storeName).executeQuery();
     }
     public void doSearch(java.awt.Frame parent,String Where, String Key, JTable tblProduct){
-        m = (Main) parent;
+        m = (Application) parent;
         try
         {
         String storeName = "findProduct("+m.getEID().trim()+",'" + Where + "','" + Key + "')";

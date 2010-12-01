@@ -13,7 +13,7 @@ package product;
 
 import booth.OperationBooths;
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import java.text.SimpleDateFormat;
@@ -27,7 +27,7 @@ import javax.swing.UIManager;
 public class AddProduct extends javax.swing.JDialog {
 
     /** Creates new form AddProduct */
-    Main m = null;
+    Application m = null;
     OperationProduct op = new OperationProduct();
     OperationBooths ob = new OperationBooths();
     public AddProduct(java.awt.Frame parent, boolean modal) {
@@ -43,7 +43,7 @@ public class AddProduct extends javax.swing.JDialog {
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
         ob.buildAllContactID(cbContact);
-        m = (Main)parent;
+        m = (Application)parent;
     }
     /** This method is called from within the constructor to
      * initialize the form.
@@ -232,7 +232,7 @@ public class AddProduct extends javax.swing.JDialog {
         cs.setString(7,DateP);
         //thuc thi store
         cs.execute();
-        ((Main)m).LoadProduct();
+        ((Application)m).LoadProduct();
         JOptionPane.showMessageDialog(null, "One new Product has been added !","New Product",JOptionPane.INFORMATION_MESSAGE);        
         dispose();
         } catch (Exception ex) {

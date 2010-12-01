@@ -10,7 +10,10 @@ import dataLayer.DBHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Hse7en
  */
 public class ChosenBooth {
+    DBHelper db = null;
     OperationBoothType obt = new OperationBoothType();
     DefaultTableModel BoothsModel = null;
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
@@ -55,8 +59,21 @@ public class ChosenBooth {
             ex.printStackTrace();
         }
     }
-
-    DBHelper db = null;
+    DefaultComboBoxModel CbWhereChoseBooth = null;
+    HashMap hmcb = new HashMap();
+    public void buildCbFindBooth(JComboBox cbWhereBT)
+    {
+        cbWhereBT.setModel(CbWhereChoseBooth = new DefaultComboBoxModel());
+        CbWhereChoseBooth.addElement("BoothType ID");
+        hmcb.put("BoothID","B.BID");
+        CbWhereChoseBooth.addElement("BoothType Name");
+        hmcb.put("BoothType Name","BT.BTName");
+        CbWhereChoseBooth.addElement("Booth Height");
+        hmcb.put("Booth Height","BT.BTHeight");
+        CbWhereChoseBooth.addElement("Booth Width");
+        hmcb.put("Booth Width","BT.BTWidth");
+    }
+    
     public ChosenBooth(){
         db = new DBHelper();
         db.openConnection();

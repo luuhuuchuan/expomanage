@@ -12,7 +12,7 @@
 package user;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 public class EditUser extends javax.swing.JDialog {
 
     /** Creates new form EditUser */
-    Main m = null;
+    Application m = null;
     private DBHelper db = null;
     OperationUser ou = new OperationUser();
     public EditUser(java.awt.Frame parent, boolean modal) {
@@ -36,7 +36,7 @@ public class EditUser extends javax.swing.JDialog {
         db = new DBHelper();
         db.openConnection();
 
-        m = (Main) parent;
+        m = (Application) parent;
         int row = m.getAccountTable().getSelectedRow();
         txtName.setText(m.getAccountTable().getValueAt(row, 0).toString().trim());
         txtPass.setText(m.getAccountTable().getValueAt(row, 1).toString().trim());
