@@ -24,6 +24,8 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -48,25 +50,35 @@ class ImagePanel extends JPanel
   }
 
 }
-public class Login extends javax.swing.JDialog {
-    Main m = null;
+public class Login extends javax.swing.JFrame {
+    
     /** Creates new form Login */
-    public Login(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        int w = Toolkit.getDefaultToolkit().getScreenSize().width;
-        int h = Toolkit.getDefaultToolkit().getScreenSize().height;
-        this.setLocation(w/3, h/3);
-        txtUserName.requestFocus();
-        txtPass.setEchoChar('●');
-        m = (Main) parent;
+    public Login() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            initComponents();
+            int w = Toolkit.getDefaultToolkit().getScreenSize().width;
+            int h = Toolkit.getDefaultToolkit().getScreenSize().height;
+            this.setLocation(w / 3, h / 3);
+            txtUserName.requestFocus();
+            txtPass.setEchoChar('●');
+            // m = (Application) parent;
+            this.addWindowListener(new java.awt.event.WindowAdapter() {
 
-        this.addWindowListener(new java.awt.event.WindowAdapter(){
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-        });
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -227,9 +239,7 @@ public void doLogin(){
             }
             rs.close();
             if (userName.equalsIgnoreCase(DBUser.trim()) && pass.equalsIgnoreCase(DBPass.trim())) {
-                m.setUser(DBUser);
-                m.setTypeUser(TypeUser);
-                m.setEID(EID);
+                Application m = new Application(userName, TypeUser, EID);
                 m.setVisible(true);
                 dispose();
             } else {

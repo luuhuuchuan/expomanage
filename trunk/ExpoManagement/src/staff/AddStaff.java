@@ -13,7 +13,7 @@ package staff;
 
 import booth.OperationBooths;
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
@@ -26,7 +26,7 @@ import javax.swing.UIManager;
 public class AddStaff extends javax.swing.JDialog {
 
     /** Creates new form AddStaff */
-    Main m = null;
+    Application m = null;
     OperationBooths ob = new OperationBooths();
     OperationStaff ost = new OperationStaff();
     public AddStaff(java.awt.Frame parent, boolean modal) {
@@ -43,7 +43,7 @@ public class AddStaff extends javax.swing.JDialog {
         this.setLocation(w/3, h/3);
         ost.buildCbBooth(cbBooth);
         ob.buildAllContactID(cbContact);
-        m = (Main)parent;
+        m = (Application)parent;
     }
 
     /** This method is called from within the constructor to
@@ -246,7 +246,7 @@ public class AddStaff extends javax.swing.JDialog {
         cs.setInt(7,BID);
         //thuc thi store
         cs.execute();
-        ((Main)m).LoadStaff();
+        ((Application)m).LoadStaff();
         JOptionPane.showMessageDialog(null, "One new Staff has been added !","New Staff",JOptionPane.INFORMATION_MESSAGE);
         dispose();
         } catch (Exception ex) {

@@ -12,7 +12,7 @@
 package sponsor;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
@@ -26,7 +26,7 @@ public class AddSponsor extends javax.swing.JDialog {
 
     /** Creates new form AddSponsor */
     OperationSponsor os  = new OperationSponsor();
-    Main m = null;
+    Application m = null;
 
     public AddSponsor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -40,7 +40,7 @@ public class AddSponsor extends javax.swing.JDialog {
         int w = Toolkit.getDefaultToolkit().getScreenSize().width;
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
-        m = (Main) parent;
+        m = (Application) parent;
         os.buildCbExpo(cbExpo);
        
 
@@ -219,7 +219,7 @@ public class AddSponsor extends javax.swing.JDialog {
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Sponsor has been added !","Add new Sponsor",JOptionPane.INFORMATION_MESSAGE);
         dispose();
-        ((Main)m).LoadSponsor();
+        ((Application)m).LoadSponsor();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

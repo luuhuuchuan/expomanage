@@ -12,7 +12,7 @@
 package expo;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import java.text.DateFormat;
@@ -29,7 +29,7 @@ import javax.swing.UIManager;
  * @author Admin
  */
 public class EditExpo extends javax.swing.JDialog {
-    Main m = null;
+    Application m = null;
     DBHelper db = null;
     OperationExpo oe = new OperationExpo();
     /** Creates new form EditExpo */
@@ -45,7 +45,7 @@ public class EditExpo extends javax.swing.JDialog {
         int w = Toolkit.getDefaultToolkit().getScreenSize().width;
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
-        m = (Main)parent;
+        m = (Application)parent;
         int row = m.getExpoTable().getSelectedRow();
         txtName.setText(m.getExpoTable().getValueAt(row, 1).toString().trim());
         txtNumBooth.setText(m.getExpoTable().getValueAt(row, 2).toString().trim());
@@ -240,7 +240,7 @@ public class EditExpo extends javax.swing.JDialog {
         db = new DBHelper();
         db.openConnection();
         int row = m.getExpoTable().getSelectedRow();
-        int id = Integer.parseInt(((Main)m).getExpoTable().getValueAt(row, 0).toString());
+        int id = Integer.parseInt(((Application)m).getExpoTable().getValueAt(row, 0).toString());
         String name = txtName.getText().trim();
         int numBooth = Integer.parseInt(txtNumBooth.getText().trim());
         float cost = Float.parseFloat(txtCost.getText().trim());

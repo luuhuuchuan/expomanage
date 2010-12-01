@@ -12,7 +12,7 @@
 package boothType;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
@@ -29,7 +29,7 @@ public class EditboothType extends javax.swing.JDialog {
     int remain,len =0;
     /** Creates new form EditboothType */
     OperationBoothType obt  = new OperationBoothType();
-    Main m = null;
+    Application m = null;
     public EditboothType(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         try {
@@ -43,9 +43,9 @@ public class EditboothType extends javax.swing.JDialog {
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
         obt.buildCbExpo(cbExpo);
-        m = (Main)parent;
+        m = (Application)parent;
         int row = m.getBoothTypeTable().getSelectedRow();
-        txtBTID.setText(((Main) m).getBoothTypeTable().getValueAt(row, 0).toString());
+        txtBTID.setText(((Application) m).getBoothTypeTable().getValueAt(row, 0).toString());
         txtBTName.setText(m.getBoothTypeTable().getValueAt(row, 1).toString());
         cbExpo.setSelectedItem(m.getBoothTypeTable().getValueAt(row, 2).toString());
         txtBTHeight.setText(m.getBoothTypeTable().getValueAt(row, 3).toString());
@@ -217,7 +217,7 @@ public class EditboothType extends javax.swing.JDialog {
                 db.openConnection();
 
                 int row = m.getBoothTypeTable().getSelectedRow();
-                int id = Integer.parseInt(((Main)m).getBoothTypeTable().getValueAt(row, 0).toString());
+                int id = Integer.parseInt(((Application)m).getBoothTypeTable().getValueAt(row, 0).toString());
                 String name = txtBTName.getText().trim();
                 int EID = obt.returnIdExpo(cbExpo);
                 float height = Float.parseFloat(txtBTHeight.getText().trim());
@@ -238,7 +238,7 @@ public class EditboothType extends javax.swing.JDialog {
                 if(JOptionPane.showConfirmDialog(null, "Do you want to update the record(s)",
                 "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                     cs.execute();
-                    ((Main)m).LoadBoothType();
+                    ((Application)m).LoadBoothType();
                     JOptionPane.showMessageDialog(null, "The record(s) has been updated","Update Result",JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }

@@ -12,7 +12,7 @@
 package booth;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
@@ -32,7 +32,7 @@ public class Editbooths extends javax.swing.JDialog {
 
     /** Creates new form Editbooths */
     OperationBooths ob  = new OperationBooths();
-    Main m = null;
+    Application m = null;
     Frame parentFrame = null;
     public Editbooths(java.awt.Frame parent, boolean modal){
         super(parent, modal);
@@ -49,7 +49,7 @@ public class Editbooths extends javax.swing.JDialog {
         ob.buildAllContactID(cbContact);
         ob.buildAlBoothType(cbBoothType);
         parentFrame = parent;
-        m = (Main)parent;
+        m = (Application)parent;
 
         int row = m.getBoothTable().getSelectedRow();
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
@@ -230,7 +230,7 @@ public class Editbooths extends javax.swing.JDialog {
                 db = new DBHelper();
                 db.openConnection();
                 int row = m.getBoothTable().getSelectedRow();
-                int id = Integer.parseInt(((Main)m).getBoothTable().getValueAt(row, 1).toString());
+                int id = Integer.parseInt(((Application)m).getBoothTable().getValueAt(row, 1).toString());
                 int BTID = ob.returnBTID(cbBoothType);
                 String CID = cbContact.getSelectedItem().toString();
                 String name = txtBname.getText().trim();
@@ -252,7 +252,7 @@ public class Editbooths extends javax.swing.JDialog {
                 if(JOptionPane.showConfirmDialog(null, "Do you want to update the record(s)",
                 "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                     cs.execute();
-                    ((Main)m).LoadBooth();
+                    ((Application)m).LoadBooth();
                     JOptionPane.showMessageDialog(null, "The record(s) has been updated","Update Result",JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }

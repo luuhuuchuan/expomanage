@@ -12,7 +12,7 @@
 package boothType;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
@@ -26,7 +26,7 @@ public class AddboothType extends javax.swing.JDialog {
 
     /** Creates new form AddboothType */
     OperationBoothType ob  = new OperationBoothType();
-    Main m = null;
+    Application m = null;
     public AddboothType(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         try {
@@ -40,7 +40,7 @@ public class AddboothType extends javax.swing.JDialog {
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
         ob.buildCbExpo(cbExpo);
-        m = (Main)parent;
+        m = (Application)parent;
     }
 
     /** This method is called from within the constructor to
@@ -222,7 +222,7 @@ public class AddboothType extends javax.swing.JDialog {
 
                 //thuc thi store
                 cs.execute();
-                ((Main) m ).LoadBoothType();
+                ((Application) m ).LoadBoothType();
                 JOptionPane.showMessageDialog(null, "One new Booth Type has been added","Add new Booth Type",JOptionPane.INFORMATION_MESSAGE);
                 dispose();
 

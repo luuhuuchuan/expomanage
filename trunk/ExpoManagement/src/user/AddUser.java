@@ -12,7 +12,7 @@
 package user;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
@@ -25,7 +25,7 @@ import javax.swing.UIManager;
 public class AddUser extends javax.swing.JDialog {
 
     /** Creates new form AddUser */
-    Main m = null;
+    Application m = null;
     OperationUser ou = new OperationUser();
     public AddUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -39,7 +39,7 @@ public class AddUser extends javax.swing.JDialog {
         int w = Toolkit.getDefaultToolkit().getScreenSize().width;
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
-        m = (Main)parent;
+        m = (Application)parent;
     }
 
     /** This method is called from within the constructor to
@@ -179,7 +179,7 @@ public class AddUser extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(ou.checkUser(txtName, txtPass, txtEmail, null))
+        if(ou.checkUser(txtName, txtPass, txtEmail, ""))
         {
         try {
         DBHelper db = null;

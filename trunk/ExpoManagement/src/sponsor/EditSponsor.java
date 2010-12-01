@@ -12,7 +12,7 @@
 package sponsor;
 
 import dataLayer.DBHelper;
-import expomanagement.Main;
+import expomanagement.Application;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
  */
 
 public class EditSponsor extends javax.swing.JDialog {
-    Main m = null;
+    Application m = null;
     DBHelper db = null;
     OperationSponsor os  = new OperationSponsor();
     /** Creates new form EditSponsor */
@@ -34,13 +34,13 @@ public class EditSponsor extends javax.swing.JDialog {
         int h = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(w/3, h/3);
         os.buildCbExpo(cbExpo);
-        m = (Main) parent;
+        m = (Application) parent;
         int row = m.getSponsorTable().getSelectedRow();
-        txtSpID.setText(((Main) m).getSponsorTable().getValueAt(row, 0).toString().trim());
-        txtSpName.setText(((Main) m).getSponsorTable().getValueAt(row, 1).toString().trim());
-        cbExpo.setSelectedItem(((Main) m).getSponsorTable().getValueAt(row, 2));
-        txtSpMoney.setText(((Main) m).getSponsorTable().getValueAt(row, 3).toString().trim());
-        txtSpDes.setText(((Main) m).getSponsorTable().getValueAt(row, 4).toString().trim());
+        txtSpID.setText(((Application) m).getSponsorTable().getValueAt(row, 0).toString().trim());
+        txtSpName.setText(((Application) m).getSponsorTable().getValueAt(row, 1).toString().trim());
+        cbExpo.setSelectedItem(((Application) m).getSponsorTable().getValueAt(row, 2));
+        txtSpMoney.setText(((Application) m).getSponsorTable().getValueAt(row, 3).toString().trim());
+        txtSpDes.setText(((Application) m).getSponsorTable().getValueAt(row, 4).toString().trim());
     }
 
     /** This method is called from within the constructor to
@@ -200,7 +200,7 @@ public class EditSponsor extends javax.swing.JDialog {
         db = new DBHelper();
         db.openConnection();
         int row = m.getSponsorTable().getSelectedRow();
-        int id = Integer.parseInt(((Main)m).getSponsorTable().getValueAt(row, 0).toString());
+        int id = Integer.parseInt(((Application)m).getSponsorTable().getValueAt(row, 0).toString());
         String name = txtSpName.getText().trim();
         int eid = os.returnIdExpo(cbExpo);
         Float money = Float.parseFloat(txtSpMoney.getText().trim());
@@ -219,7 +219,7 @@ public class EditSponsor extends javax.swing.JDialog {
         if(JOptionPane.showConfirmDialog(null, "Do you want to update the record(s)",
                 "Update Dialog",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             cs.execute();
-            ((Main)m).LoadSponsor();
+            ((Application)m).LoadSponsor();
             dispose();
             }
         }

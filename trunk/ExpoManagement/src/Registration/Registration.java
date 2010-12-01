@@ -36,8 +36,6 @@ public class Registration extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         userField = new javax.swing.JTextField();
         pwlabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        comField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         creField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -47,8 +45,6 @@ public class Registration extends javax.swing.JDialog {
         emailField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         phoneField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        countryField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         expoCbb = new javax.swing.JComboBox();
         passField = new javax.swing.JPasswordField();
@@ -56,8 +52,6 @@ public class Registration extends javax.swing.JDialog {
         typeproField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         comemailField = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        webField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -67,8 +61,6 @@ public class Registration extends javax.swing.JDialog {
         jLabel2.setText("User name");
 
         pwlabel.setText("Password");
-
-        jLabel3.setText("Company");
 
         jLabel4.setText("User Credential");
 
@@ -88,68 +80,62 @@ public class Registration extends javax.swing.JDialog {
 
         jLabel7.setText("Telephone");
 
-        jLabel8.setText("Country");
-
         jLabel9.setText("Expo");
 
         jLabel11.setText("Type of product");
 
         jLabel10.setText("Company email");
 
-        jLabel12.setText("Website");
-
         org.jdesktop.layout.GroupLayout step1PanelLayout = new org.jdesktop.layout.GroupLayout(step1Panel);
         step1Panel.setLayout(step1PanelLayout);
         step1PanelLayout.setHorizontalGroup(
             step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(step1PanelLayout.createSequentialGroup()
-                .add(10, 10, 10)
+                .addContainerGap()
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel10)
-                    .add(jLabel12)
-                    .add(jLabel9)
-                    .add(jLabel7)
-                    .add(jLabel8)
-                    .add(jLabel6)
-                    .add(jLabel4)
-                    .add(jLabel5)
-                    .add(jLabel11)
-                    .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                        .add(jLabel3)
+                    .add(step1PanelLayout.createSequentialGroup()
                         .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel2)
-                            .add(pwlabel))))
-                .add(34, 34, 34)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(expoCbb, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(comField)
-                    .add(passField)
-                    .add(userField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, typeproField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .add(creField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .add(emailField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .add(phoneField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .add(countryField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, comemailField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .add(webField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 242, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(pwlabel))
+                        .add(60, 60, 60)
+                        .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(passField)
+                            .add(userField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, step1PanelLayout.createSequentialGroup()
+                        .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel7)
+                            .add(jLabel6)
+                            .add(jLabel4)
+                            .add(jLabel5)
+                            .add(jLabel11)
+                            .add(jLabel10)
+                            .add(jLabel9))
+                        .add(34, 34, 34)
+                        .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, comemailField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                            .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                .add(org.jdesktop.layout.GroupLayout.TRAILING, typeproField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                .add(creField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                .add(emailField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                .add(phoneField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, expoCbb, 0, 242, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         step1PanelLayout.setVerticalGroup(
             step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(step1PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(userField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel2))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(passField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(pwlabel))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(comField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3))
+                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(step1PanelLayout.createSequentialGroup()
+                        .add(userField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(passField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(step1PanelLayout.createSequentialGroup()
+                        .add(jLabel2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(pwlabel)
+                        .add(7, 7, 7)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(typeproField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -172,24 +158,16 @@ public class Registration extends javax.swing.JDialog {
                     .add(jLabel7))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(countryField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel8))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(comemailField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel10))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(webField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel12))
-                .add(7, 7, 7)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(expoCbb, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel9))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24));
         jLabel1.setText("CREATE CONTACT");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -211,7 +189,7 @@ public class Registration extends javax.swing.JDialog {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 23, Short.MAX_VALUE)
                 .add(step1Panel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -226,39 +204,22 @@ public class Registration extends javax.swing.JDialog {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Registration dialog = new Registration(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea addField;
-    private javax.swing.JTextField comField;
     private javax.swing.JTextField comemailField;
-    private javax.swing.JTextField countryField;
     private javax.swing.JTextField creField;
     private javax.swing.JTextField emailField;
     private javax.swing.JComboBox expoCbb;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPasswordField passField;
@@ -267,7 +228,6 @@ public class Registration extends javax.swing.JDialog {
     private javax.swing.JPanel step1Panel;
     private javax.swing.JTextField typeproField;
     private javax.swing.JTextField userField;
-    private javax.swing.JTextField webField;
     // End of variables declaration//GEN-END:variables
 
 }
