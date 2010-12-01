@@ -191,6 +191,29 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         });
+        tblContact.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet.");
+                int slcRow = tblContact.getSelectedRow();
+                if(slcRow >= 0){
+                    oc.DetailOfContact(tblContact.getValueAt(slcRow,0).toString().trim(),txtregDate, txtuserCre, rbnPaid, rbnUnPaid, txtBooths, txtsentDate, txtreturnDate, txtlastChange);
+                    btnDelContact.setEnabled(true);
+                    btnSaveContact.setEnabled(true);
+                }
+                else{
+                    txtuserCre.setText("");
+                    txtregDate.setText("");
+                    txtBooths.setText("");
+                    txtsentDate.setText("");
+                    txtreturnDate.setText("");
+                    txtlastChange.setText("");
+                    rbnPaid.setSelected(false);
+                    rbnUnPaid.setSelected(false);
+                    btnDelContact.setEnabled(false);
+                    btnSaveContact.setEnabled(false);
+                }
+            }
+        });
     }
 
     /** This method is called from within the constructor to
@@ -327,26 +350,24 @@ public class Main extends javax.swing.JFrame {
         tblProducts = new javax.swing.JTable();
         TabContact = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
-        tblContact = new javax.swing.JScrollPane();
-        tblContract = new javax.swing.JTable();
+        JStblContact = new javax.swing.JScrollPane();
+        tblContact = new javax.swing.JTable();
         jPanel24 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        regDate1 = new javax.swing.JTextField();
-        comName1 = new javax.swing.JTextField();
-        userCre1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        booth1 = new javax.swing.JTextField();
+        txtregDate = new javax.swing.JTextField();
+        txtuserCre = new javax.swing.JTextField();
+        cbExpo = new javax.swing.JComboBox();
+        txtBooths = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        sentDate1 = new javax.swing.JTextField();
-        returnDate1 = new javax.swing.JTextField();
-        lastChange1 = new javax.swing.JTextField();
+        txtsentDate = new javax.swing.JTextField();
+        txtreturnDate = new javax.swing.JTextField();
+        txtlastChange = new javax.swing.JTextField();
         tbnChosebooth = new javax.swing.JButton();
         btnSaveContact = new javax.swing.JButton();
         btnDelContact = new javax.swing.JButton();
@@ -487,7 +508,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindExpo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .add(txtFindExpo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel16)
                 .addContainerGap())
@@ -618,7 +639,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereBT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindBT, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .add(txtFindBT, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel12)
                 .addContainerGap())
@@ -755,7 +776,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereBooth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .add(txtFindBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel11)
                 .addContainerGap())
@@ -885,7 +906,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereSp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtSponsor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .add(txtSponsor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel15)
                 .addContainerGap())
@@ -1015,7 +1036,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindUser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .add(txtFindUser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel9)
                 .addContainerGap())
@@ -1145,7 +1166,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbEx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindEhi, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .add(txtFindEhi, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel10)
                 .addContainerGap())
@@ -1266,7 +1287,7 @@ public class Main extends javax.swing.JFrame {
                 .add(jLabel21)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbChoseExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 164, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 134, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 138, Short.MAX_VALUE)
                 .add(jLabel17)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereBooths, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -1471,7 +1492,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereStaff, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindStaff, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .add(txtFindStaff, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jLabel13)
                 .addContainerGap())
@@ -1601,7 +1622,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtPKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .add(txtPKeyword, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel14)
                 .addContainerGap())
@@ -1698,43 +1719,41 @@ public class Main extends javax.swing.JFrame {
 
         jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder("Contact List"));
 
-        tblContract.setModel(new javax.swing.table.DefaultTableModel(
+        tblContact.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ContractID", "Company", "User creadential", "Number Booth", "PriorityPoint"
+                "ContractID", "User creadential", "Number Booth", "PriorityPoint"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        tblContact.setViewportView(tblContract);
+        JStblContact.setViewportView(tblContact);
 
         org.jdesktop.layout.GroupLayout jPanel22Layout = new org.jdesktop.layout.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
+            .add(JStblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+            .add(JStblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
         );
 
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("Contract Detail"));
 
         jLabel33.setText("Register date");
-
-        jLabel34.setText("Company");
 
         jLabel35.setText("User Credential");
 
@@ -1744,7 +1763,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel38.setText("Number of booths");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbExpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel39.setText("Contract sent date");
 
@@ -1762,6 +1781,7 @@ public class Main extends javax.swing.JFrame {
 
         btnSaveContact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
         btnSaveContact.setText("Update");
+        btnSaveContact.setEnabled(false);
         btnSaveContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveContactActionPerformed(evt);
@@ -1770,6 +1790,7 @@ public class Main extends javax.swing.JFrame {
 
         btnDelContact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/14.png"))); // NOI18N
         btnDelContact.setText("Delete contract");
+        btnDelContact.setEnabled(false);
         btnDelContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDelContactActionPerformed(evt);
@@ -1791,21 +1812,19 @@ public class Main extends javax.swing.JFrame {
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel24Layout.createSequentialGroup()
                         .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel35)
                             .add(jLabel37)
                             .add(jLabel36)
-                            .add(jLabel35)
-                            .add(jLabel34)
                             .add(jLabel33)
                             .add(jLabel38))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel24Layout.createSequentialGroup()
                                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                    .add(userCre1)
-                                    .add(comName1)
-                                    .add(regDate1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                                    .add(booth1)
-                                    .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .add(txtuserCre)
+                                    .add(txtregDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                    .add(txtBooths)
+                                    .add(cbExpo, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .add(56, 56, 56)
                                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                                     .add(jLabel39)
@@ -1813,9 +1832,9 @@ public class Main extends javax.swing.JFrame {
                                     .add(jLabel41))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, lastChange1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, returnDate1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, sentDate1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtlastChange, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtreturnDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, txtsentDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
                                 .add(257, 257, 257))
                             .add(jPanel24Layout.createSequentialGroup()
                                 .add(rbnPaid)
@@ -1835,25 +1854,28 @@ public class Main extends javax.swing.JFrame {
             .add(jPanel24Layout.createSequentialGroup()
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel33)
-                    .add(regDate1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtregDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel39)
-                    .add(sentDate1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel34)
-                    .add(comName1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel40)
-                    .add(returnDate1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel35)
-                    .add(userCre1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel41)
-                    .add(lastChange1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(txtsentDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel24Layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel40)
+                            .add(txtreturnDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel41)
+                            .add(txtlastChange, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(jPanel24Layout.createSequentialGroup()
+                        .add(25, 25, 25)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(txtuserCre, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel35))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel36)
-                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel37)
@@ -1862,7 +1884,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel38)
-                    .add(booth1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(txtBooths, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(tbnChosebooth)
@@ -1913,7 +1935,7 @@ public class Main extends javax.swing.JFrame {
         jPanel18.setAlignmentX(0.0F);
         jPanel18.setAlignmentY(0.0F);
 
-        txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 24));
         txtTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon/banner.png"))); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel18Layout = new org.jdesktop.layout.GroupLayout(jPanel18);
@@ -2265,7 +2287,7 @@ public class Main extends javax.swing.JFrame {
             lbTypeUser.setText("Manager: ");
             mainTab.setEnabledAt(1, true);mnManager.setEnabled(true);
             mainTab.setEnabledAt(2, false);mnExhibitor.setEnabled(false);
-            LoadContact(null);
+            obt.buildCbExpo(cbExpo);
             LoadExpo();oe.buildCbWhereEx(cbWhereExpo);
             LoadBoothType();obt.buildCbWhereP(cbWhereBT);
             LoadBooth();ob.buildCbWhereB(cbWhereBooth);
@@ -2274,6 +2296,7 @@ public class Main extends javax.swing.JFrame {
             LoadExhibitor();oex.buildCbEx(cbEx);
             if(flag==0){
                 mainTab.setSelectedIndex(0);
+                LoadContact("null");
                 flag=1;
             }           
         }
@@ -2282,12 +2305,14 @@ public class Main extends javax.swing.JFrame {
             lbTypeUser.setText("Exhibitor: ");
             mainTab.setEnabledAt(1, false);mnManager.setEnabled(false);
             mainTab.setEnabledAt(2, true);mnExhibitor.setEnabled(true);
-            LoadContact(EID+"");obt.buildCbExpo(cbChoseExpo);
+            obt.buildCbExpo(cbExpo);
+            obt.buildCbExpo(cbChoseExpo);
             LoadStaff();ost.buildCbStaff(cbWhereStaff);
             LoadProduct();op.buildCbWhereP(cbWhereP); 
             }
             if(flag==1){
                 mainTab.setSelectedIndex(0);
+                LoadContact(EID+"");
                 flag=0; 
         }
     }//GEN-LAST:event_formWindowActivated
@@ -2416,10 +2441,13 @@ public class Main extends javax.swing.JFrame {
     }
     public void LoadContact(String EID)
     {
-        oc.loadAllContact(this,EID, tblContract);
+        oc.loadAllContact(this,EID, tblContact);
     }
     public JTable getSponsorTable(){
         return tblSponsor;
+    }
+    public void setCbExpo(String v){
+        cbExpo.setSelectedItem(v);
     }
     public void setUser(String User){
         UserName = User;
@@ -2454,6 +2482,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Contact;
+    private javax.swing.JScrollPane JStblContact;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JMenu MnHelp;
     private javax.swing.JLabel NumBooth_lb;
@@ -2473,7 +2502,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel TabProduct;
     private javax.swing.JPanel TabSponsor;
     private javax.swing.JPanel TabStaff;
-    private javax.swing.JTextField booth1;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddAcc;
     private javax.swing.JButton btnAddB;
@@ -2505,6 +2533,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbChoseExpo;
     private javax.swing.JComboBox cbEx;
+    private javax.swing.JComboBox cbExpo;
     private javax.swing.JComboBox cbPriority;
     private javax.swing.JComboBox cbWhereBT;
     private javax.swing.JComboBox cbWhereBooth;
@@ -2514,8 +2543,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox cbWhereSp;
     private javax.swing.JComboBox cbWhereStaff;
     private javax.swing.JComboBox cbWhereUser;
-    private javax.swing.JTextField comName1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2530,7 +2557,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -2577,7 +2603,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField lastChange1;
     private javax.swing.JLabel lbTypeUser;
     private javax.swing.JLabel lbUser;
     private javax.swing.JTabbedPane mainTab;
@@ -2591,22 +2616,19 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnUA;
     private javax.swing.JRadioButton rbnPaid;
     private javax.swing.JRadioButton rbnUnPaid;
-    private javax.swing.JTextField regDate1;
-    private javax.swing.JTextField returnDate1;
-    private javax.swing.JTextField sentDate1;
     private javax.swing.JTable tblAccount;
     private javax.swing.JTable tblBooth;
     private javax.swing.JTable tblBoothType;
     private javax.swing.JScrollPane tblBooths;
     private javax.swing.JTable tblChoseBooths;
-    private javax.swing.JScrollPane tblContact;
-    private javax.swing.JTable tblContract;
+    private javax.swing.JTable tblContact;
     private javax.swing.JTable tblExhibitor;
     private javax.swing.JTable tblExpo;
     private javax.swing.JTable tblProducts;
     private javax.swing.JTable tblSponsor;
     private javax.swing.JTable tblStaff;
     private javax.swing.JButton tbnChosebooth;
+    private javax.swing.JTextField txtBooths;
     private javax.swing.JTextField txtFindBT;
     private javax.swing.JTextField txtFindBooth;
     private javax.swing.JTextField txtFindEhi;
@@ -2618,7 +2640,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtPKeyword;
     private javax.swing.JTextField txtSponsor;
     private javax.swing.JLabel txtTitle;
-    private javax.swing.JTextField userCre1;
+    private javax.swing.JTextField txtlastChange;
+    private javax.swing.JTextField txtregDate;
+    private javax.swing.JTextField txtreturnDate;
+    private javax.swing.JTextField txtsentDate;
+    private javax.swing.JTextField txtuserCre;
     // End of variables declaration//GEN-END:variables
 
 }
