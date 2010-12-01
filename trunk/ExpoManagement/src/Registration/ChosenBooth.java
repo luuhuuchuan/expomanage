@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Vector;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -23,16 +24,9 @@ import javax.swing.table.DefaultTableModel;
 public class ChosenBooth {
     OperationBoothType obt = new OperationBoothType();
     DefaultTableModel BoothsModel = null;
-    HashMap hm = new HashMap();
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    public void viewCb(JComboBox cbChoiceExpo){
-        obt.buildCbExpo(cbChoiceExpo);
-    }
-    public String returnIdExpo(JComboBox cbExpo)
-    {
-        return hm.get(cbExpo.getSelectedItem().toString().trim()).toString();
-    }
-    public void showInfomation(JComboBox cbChoice,JTable tbshowBooths)
+
+    public void showInfomation(String EID,JTable tbshowBooths)
     {
         tbshowBooths.setModel(BoothsModel = new DefaultTableModel());
         Vector v = new Vector();
@@ -41,7 +35,7 @@ public class ChosenBooth {
             v.add(s);
         BoothsModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getStore("showAllInformation("+returnIdExpo(cbChoice)+")");
+            ResultSet rs = getStore("showAllInformation("+EID+")");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
@@ -49,12 +43,13 @@ public class ChosenBooth {
                 v.add(rs.getString(3).trim());
                 v.add(rs.getInt(4));
                 v.add(rs.getInt(5));
-                v.add(formatter.format(rs.getDate(6)));
-                v.add(rs.getFloat(7));
+                v.add(rs.getFloat(6));
+                v.add(formatter.format(rs.getDate(7)));
                 if(rs.getBoolean(8))
-                    v.add("Yes");
+                    v.add(new JCheckBox());
                 else
-                    v.add("No");
+                    v.add(new JCheckBox());
+                    //v.add(new Boolean(false));
                 BoothsModel.addRow(v);
             }
             rs.close();
