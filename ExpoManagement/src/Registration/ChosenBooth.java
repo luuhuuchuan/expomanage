@@ -10,10 +10,7 @@ import dataLayer.DBHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 import java.util.Vector;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -46,9 +43,9 @@ public class ChosenBooth {
                 v.add(rs.getFloat(6));
                 v.add(formatter.format(rs.getDate(7)));
                 if(rs.getBoolean(8))
-                    v.add(new JCheckBox());
+                    v.add(new javax.swing.JCheckBox("",true));
                 else
-                    v.add(new JCheckBox());
+                    v.add(new javax.swing.JCheckBox("",false));
                     //v.add(new Boolean(false));
                 BoothsModel.addRow(v);
             }

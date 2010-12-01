@@ -196,7 +196,9 @@ public class Main extends javax.swing.JFrame {
                 //throw new UnsupportedOperationException("Not supported yet.");
                 int slcRow = tblContact.getSelectedRow();
                 if(slcRow >= 0){
-                    //JOptionPane.showMessageDialog(null, "abc:"+ tblContact.getValueAt(slcRow,0).toString().trim() ,"Delete deleteBoothType",JOptionPane.ERROR_MESSAGE);
+
+                    JOptionPane.showMessageDialog(null, "row: "+slcRow+" value: " +tblContact.getValueAt(slcRow,0).toString().trim(),"Delete Product",JOptionPane.INFORMATION_MESSAGE);
+                   
                     oc.DetailOfContact(tblContact.getValueAt(slcRow,0).toString().trim(),txtregDate, txtuserCre, rbnPaid, rbnUnPaid, txtBooths, txtsentDate, txtreturnDate, txtlastChange);
                     btnDelContact.setEnabled(true);
                     btnSaveContact.setEnabled(true);
@@ -412,7 +414,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14));
+        mainTab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
@@ -2368,8 +2370,8 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDelContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelContactActionPerformed
         // TODO add your handling code here:
-        int row = tblStaff.getSelectedRow();
-        String id = tblStaff.getValueAt(row, 0).toString();
+        int row = tblChoseBooths.getSelectedRow();
+        String id = tblChoseBooths.getValueAt(row, 0).toString();
         oc.delContact(id);
     }//GEN-LAST:event_btnDelContactActionPerformed
 
@@ -2386,8 +2388,6 @@ public class Main extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_cbChoseExpoItemStateChanged
-
-
     public void LoadExpo()
     {
         oe.loadAllExpo(tblExpo);
