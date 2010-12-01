@@ -80,7 +80,7 @@ public class OperationContact {
     }
     public void DetailOfContact(String CID,JTextField txtregDate,JTextField txtuserCre,JRadioButton rbnPaid,JRadioButton rbnUnPaid,JTextField txtBooths,JTextField txtsentDate,JTextField txtreturnDate,JTextField txtlastChange){
         try {
-                ResultSet rs = getStore("getDetailContact('"+CID.trim()+"')");
+                ResultSet rs = getStore("getDetailContact('"+CID+"')");
                 if(rs.next()){                    
                     m.setCbExpo(rs.getString("ExName").trim());
                     txtuserCre.setText(rs.getString("CUserCredential").trim());
