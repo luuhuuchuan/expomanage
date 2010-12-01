@@ -196,6 +196,7 @@ public class Main extends javax.swing.JFrame {
                 //throw new UnsupportedOperationException("Not supported yet.");
                 int slcRow = tblContact.getSelectedRow();
                 if(slcRow >= 0){
+                    //JOptionPane.showMessageDialog(null, "abc:"+ tblContact.getValueAt(slcRow,0).toString().trim() ,"Delete deleteBoothType",JOptionPane.ERROR_MESSAGE);
                     oc.DetailOfContact(tblContact.getValueAt(slcRow,0).toString().trim(),txtregDate, txtuserCre, rbnPaid, rbnUnPaid, txtBooths, txtsentDate, txtreturnDate, txtlastChange);
                     btnDelContact.setEnabled(true);
                     btnSaveContact.setEnabled(true);
@@ -207,6 +208,7 @@ public class Main extends javax.swing.JFrame {
                     txtsentDate.setText("");
                     txtreturnDate.setText("");
                     txtlastChange.setText("");
+                    cbExpo.setSelectedIndex(0);
                     rbnPaid.setSelected(false);
                     rbnUnPaid.setSelected(false);
                     btnDelContact.setEnabled(false);
@@ -2287,7 +2289,7 @@ public class Main extends javax.swing.JFrame {
             lbTypeUser.setText("Manager: ");
             mainTab.setEnabledAt(1, true);mnManager.setEnabled(true);
             mainTab.setEnabledAt(2, false);mnExhibitor.setEnabled(false);
-            obt.buildCbExpo(cbExpo);
+            LoadContact("null");obt.buildCbExpo(cbExpo);
             LoadExpo();oe.buildCbWhereEx(cbWhereExpo);
             LoadBoothType();obt.buildCbWhereP(cbWhereBT);
             LoadBooth();ob.buildCbWhereB(cbWhereBooth);
@@ -2296,23 +2298,21 @@ public class Main extends javax.swing.JFrame {
             LoadExhibitor();oex.buildCbEx(cbEx);
             if(flag==0){
                 mainTab.setSelectedIndex(0);
-                LoadContact("null");
                 flag=1;
             }           
         }
-        else
+        else if(TypeUser==2)
         {   
             lbTypeUser.setText("Exhibitor: ");
             mainTab.setEnabledAt(1, false);mnManager.setEnabled(false);
             mainTab.setEnabledAt(2, true);mnExhibitor.setEnabled(true);
-            obt.buildCbExpo(cbExpo);
+            LoadContact(EID+"");obt.buildCbExpo(cbExpo);
             obt.buildCbExpo(cbChoseExpo);
             LoadStaff();ost.buildCbStaff(cbWhereStaff);
             LoadProduct();op.buildCbWhereP(cbWhereP); 
             }
             if(flag==1){
-                mainTab.setSelectedIndex(0);
-                LoadContact(EID+"");
+                mainTab.setSelectedIndex(0); 
                 flag=0; 
         }
     }//GEN-LAST:event_formWindowActivated
@@ -2368,6 +2368,9 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDelContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelContactActionPerformed
         // TODO add your handling code here:
+        int row = tblStaff.getSelectedRow();
+        String id = tblStaff.getValueAt(row, 0).toString();
+        oc.delContact(id);
     }//GEN-LAST:event_btnDelContactActionPerformed
 
     private void cbChoseExpoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbChoseExpoItemStateChanged
