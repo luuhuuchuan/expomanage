@@ -81,6 +81,7 @@ public class statistics extends javax.swing.JFrame {
         countC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Statistics of System");
 
         jLabel1.setText(" Expo :");
 
