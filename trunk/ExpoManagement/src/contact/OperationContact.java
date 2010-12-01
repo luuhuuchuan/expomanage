@@ -97,7 +97,7 @@ public class OperationContact {
                     txtlastChange.setText(formatter.format(rs.getDate("CDateLastChange")));                    
                 }                
             }catch(SQLException e){
-                e.printStackTrace();
+               
                }
            }
 
