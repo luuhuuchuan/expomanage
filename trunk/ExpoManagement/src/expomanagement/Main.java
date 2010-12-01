@@ -11,6 +11,7 @@
 
 package expomanagement;
 
+import Registration.ChosenBooth;
 import booth.Addbooths;
 import booth.Editbooths;
 import booth.OperationBooths;
@@ -24,6 +25,7 @@ import exhibitor.OperationExhibitor;
 import expo.AddExpo;
 import expo.EditExpo;
 import expo.OperationExpo;
+import java.awt.Choice;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -50,6 +52,7 @@ import user.OperationUser;
 public class Main extends javax.swing.JFrame {
 
     /** Creates new form Main */
+    ChosenBooth cb = new ChosenBooth();
     OperationExpo oe = new OperationExpo();
     OperationExhibitor oex = new OperationExhibitor();
     OperationProduct op = new OperationProduct();
@@ -1246,6 +1249,11 @@ public class Main extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/65.png"))); // NOI18N
 
         cbChoseExpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbChoseExpo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbChoseExpoItemStateChanged(evt);
+            }
+        });
 
         jLabel21.setText("Expo:");
 
@@ -1258,12 +1266,12 @@ public class Main extends javax.swing.JFrame {
                 .add(jLabel21)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbChoseExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 164, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 134, Short.MAX_VALUE)
                 .add(jLabel17)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbWhereBooths, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtFindStaff1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 327, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(txtFindStaff1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 259, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jLabel18)
                 .addContainerGap())
@@ -1287,21 +1295,17 @@ public class Main extends javax.swing.JFrame {
 
         tblChoseBooths.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "BoothID", "BoothName", "Booth's Length", "Booth's Remain", "Booth's Price", "Date Create", "Order"
+                "BoothID", "BoothName", "BoothType's Name", "Booth's Length", "Booth's Remain", "Booth's Price", "Date Create", "Order"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1315,12 +1319,12 @@ public class Main extends javax.swing.JFrame {
         tblBooths.setViewportView(tblChoseBooths);
         tblChoseBooths.getColumnModel().getColumn(0).setMinWidth(50);
         tblChoseBooths.getColumnModel().getColumn(0).setMaxWidth(100);
-        tblChoseBooths.getColumnModel().getColumn(2).setPreferredWidth(30);
         tblChoseBooths.getColumnModel().getColumn(3).setPreferredWidth(30);
-        tblChoseBooths.getColumnModel().getColumn(4).setMinWidth(80);
-        tblChoseBooths.getColumnModel().getColumn(5).setPreferredWidth(100);
-        tblChoseBooths.getColumnModel().getColumn(6).setResizable(false);
-        tblChoseBooths.getColumnModel().getColumn(6).setPreferredWidth(30);
+        tblChoseBooths.getColumnModel().getColumn(4).setPreferredWidth(30);
+        tblChoseBooths.getColumnModel().getColumn(5).setMinWidth(80);
+        tblChoseBooths.getColumnModel().getColumn(6).setPreferredWidth(100);
+        tblChoseBooths.getColumnModel().getColumn(7).setResizable(false);
+        tblChoseBooths.getColumnModel().getColumn(7).setPreferredWidth(30);
 
         org.jdesktop.layout.GroupLayout jPanel20Layout = new org.jdesktop.layout.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -2262,20 +2266,14 @@ public class Main extends javax.swing.JFrame {
             mainTab.setEnabledAt(1, true);mnManager.setEnabled(true);
             mainTab.setEnabledAt(2, false);mnExhibitor.setEnabled(false);
             LoadContact(null);
-            LoadExpo();
-            LoadBoothType();
-            LoadBooth();
-            LoadSponsor();
-            LoadAccount();
-            LoadExhibitor();
+            LoadExpo();oe.buildCbWhereEx(cbWhereExpo);
+            LoadBoothType();obt.buildCbWhereP(cbWhereBT);
+            LoadBooth();ob.buildCbWhereB(cbWhereBooth);
+            LoadSponsor();os.buildCbWhereSp(cbWhereSp);
+            LoadAccount();ou.buildCbUs(cbWhereUser);
+            LoadExhibitor();oex.buildCbEx(cbEx);
             if(flag==0){
                 mainTab.setSelectedIndex(0);
-                oe.buildCbWhereEx(cbWhereExpo);
-                obt.buildCbWhereP(cbWhereBT);
-                ob.buildCbWhereB(cbWhereBooth);
-                os.buildCbWhereSp(cbWhereSp);
-                ou.buildCbUs(cbWhereUser);
-                oex.buildCbEx(cbEx);
                 flag=1;
             }           
         }
@@ -2284,16 +2282,13 @@ public class Main extends javax.swing.JFrame {
             lbTypeUser.setText("Exhibitor: ");
             mainTab.setEnabledAt(1, false);mnManager.setEnabled(false);
             mainTab.setEnabledAt(2, true);mnExhibitor.setEnabled(true);
-            LoadContact(EID+"");
-            LoadStaff();
-            LoadProduct();
+            LoadContact(EID+"");obt.buildCbExpo(cbChoseExpo);
+            LoadStaff();ost.buildCbStaff(cbWhereStaff);
+            LoadProduct();op.buildCbWhereP(cbWhereP); 
+            }
             if(flag==1){
                 mainTab.setSelectedIndex(0);
-                flag=0;
-                ost.buildCbStaff(cbWhereStaff);
-                op.buildCbWhereP(cbWhereP);
-            }
-            
+                flag=0; 
         }
     }//GEN-LAST:event_formWindowActivated
 
@@ -2349,6 +2344,20 @@ public class Main extends javax.swing.JFrame {
     private void btnDelContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelContactActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDelContactActionPerformed
+
+    private void cbChoseExpoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbChoseExpoItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getItem().toString().trim().equalsIgnoreCase("-- Choose Expo --")){
+            cb.showInfomation(null, tblChoseBooths);
+        }
+        else{
+            if(cbChoseExpo.getSelectedIndex()==0)
+                cb.showInfomation(null, tblChoseBooths);
+            else
+                cb.showInfomation(obt.returnIdExpo(cbChoseExpo)+"", tblChoseBooths);
+        }
+
+    }//GEN-LAST:event_cbChoseExpoItemStateChanged
 
 
     public void LoadExpo()
