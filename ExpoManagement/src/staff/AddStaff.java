@@ -44,6 +44,7 @@ public class AddStaff extends javax.swing.JDialog {
         ost.buildCbBooth(cbBooth);
         ob.buildAllContactID(cbContact);
         m = (Application)parent;
+
     }
 
     /** This method is called from within the constructor to
@@ -242,8 +243,9 @@ public class AddStaff extends javax.swing.JDialog {
         cs.setString(3, email);
         cs.setString(4, phone);
         cs.setString(5, address);
-        cs.setInt(6, Integer.parseInt(m.getEID().trim()));
+        cs.setInt(6,Integer.parseInt(m.getEID()));
         cs.setInt(7,BID);
+
         //thuc thi store
         cs.execute();
         ((Application)m).LoadStaff();
