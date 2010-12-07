@@ -52,7 +52,6 @@ import user.OperationUser;
 public class Application extends javax.swing.JFrame {
 
     /** Creates new form Application */
-    Statistics sta = new Statistics();
     ChosenBooth cb = new ChosenBooth();
     OperationExpo oe = new OperationExpo();
     OperationExhibitor oex = new OperationExhibitor();
@@ -76,7 +75,9 @@ public class Application extends javax.swing.JFrame {
         }
         initComponents();
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
-        sta.statisticsSys(countExpo, countE, countBT, countB, countSp, countS, countP, countC);
+        this.EID = EID;
+        this.TypeUser = TypeUser;
+        new Statistics().statisticsSys(countExpo, countE, countBT, countB, countSp, countS, countP, countC);
         lbUser.setText(UserName);
         if(TypeUser==1){
             mainTab.setSelectedIndex(0);
@@ -93,7 +94,7 @@ public class Application extends javax.swing.JFrame {
             }
         else if(TypeUser==2)
             {
-                sta.statisticsExhibitor(EID+"",countS, countP, sumB, countC);
+                new Statistics().statisticsExhibitor(EID+"",countS1, countP1, sumB, countC1);
                 mainTab.setSelectedIndex(0);
                 lbTypeUser.setText("Exhibitor: ");
                 mainTab.setEnabledAt(1, false);mnManager.setEnabled(false);
@@ -619,7 +620,7 @@ public class Application extends javax.swing.JFrame {
 
         jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder("User's Statistics"));
 
-        countP1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        countP1.setFont(new java.awt.Font("Tahoma", 1, 14));
         countP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         countP1.setText("0");
         countP1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -627,7 +628,7 @@ public class Application extends javax.swing.JFrame {
         jLabel31.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel31.setText("Booths :");
 
-        countC1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        countC1.setFont(new java.awt.Font("Tahoma", 1, 14));
         countC1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         countC1.setText("0");
         countC1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -635,7 +636,7 @@ public class Application extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel32.setText("Contact :");
 
-        countS1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        countS1.setFont(new java.awt.Font("Tahoma", 1, 14));
         countS1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         countS1.setText("0");
         countS1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -643,7 +644,7 @@ public class Application extends javax.swing.JFrame {
         jLabel34.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel34.setText("Staff :");
 
-        sumB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        sumB.setFont(new java.awt.Font("Tahoma", 1, 14));
         sumB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sumB.setText("0");
         sumB.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -2071,7 +2072,7 @@ public class Application extends javax.swing.JFrame {
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(JStblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
+            .add(JStblContact, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -2139,7 +2140,7 @@ public class Application extends javax.swing.JFrame {
         jPanel24Layout.setHorizontalGroup(
             jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel24Layout.createSequentialGroup()
-                .addContainerGap()
+                .add(31, 31, 31)
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel24Layout.createSequentialGroup()
                         .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -2154,17 +2155,18 @@ public class Application extends javax.swing.JFrame {
                                     .add(jLabel37)))
                             .add(jLabel38))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                .add(txtuserCre)
-                                .add(txtregDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel24Layout.createSequentialGroup()
-                                .add(rbnPaid)
-                                .add(18, 18, 18)
-                                .add(rbnUnPaid))
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtBooths, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, cbExpo, 0, 366, Short.MAX_VALUE))
-                        .add(56, 56, 56)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel24Layout.createSequentialGroup()
+                                    .add(rbnPaid)
+                                    .add(18, 18, 18)
+                                    .add(rbnUnPaid))
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, txtBooths, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, cbExpo, 0, 191, Short.MAX_VALUE))
+                            .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, txtuserCre)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, txtregDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 191, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(81, 81, 81)
                         .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel39)
                             .add(jLabel40)
@@ -2173,55 +2175,63 @@ public class Application extends javax.swing.JFrame {
                         .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(txtsentDate)
                             .add(txtlastChange)
-                            .add(txtreturnDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(txtreturnDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(jPanel24Layout.createSequentialGroup()
                         .add(tbnChosebooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnSaveContact, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 130, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnDelContact)
-                        .add(680, 680, 680))))
-            .add(jPanel24Layout.createSequentialGroup()
-                .add(76, 76, 76)
-                .add(jLabel42)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(txtPaid, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                .add(781, 781, 781))
+                        .add(293, 293, 293))
+                    .add(jPanel24Layout.createSequentialGroup()
+                        .add(66, 66, 66)
+                        .add(jLabel42)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(txtPaid, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                        .add(394, 394, 394)))
+                .add(132, 132, 132))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel24Layout.createSequentialGroup()
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel33)
-                    .add(txtregDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel39)
-                    .add(txtsentDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel40)
-                    .add(txtreturnDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel35)
-                    .add(txtuserCre, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel41)
-                    .add(txtlastChange, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel36))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(rbnPaid)
-                    .add(rbnUnPaid)
-                    .add(jLabel37))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtBooths, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel38))
-                .add(5, 5, 5)
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel42)
-                    .add(txtPaid, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel24Layout.createSequentialGroup()
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel33)
+                            .add(txtregDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel35)
+                            .add(txtuserCre, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(cbExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel36))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(rbnPaid)
+                            .add(rbnUnPaid)
+                            .add(jLabel37))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(txtBooths, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel38))
+                        .add(5, 5, 5)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel42)
+                            .add(txtPaid, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(jPanel24Layout.createSequentialGroup()
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel39)
+                            .add(txtsentDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel40)
+                            .add(txtreturnDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel41)
+                            .add(txtlastChange, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .add(18, 18, 18)
                 .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(tbnChosebooth)
@@ -2749,17 +2759,9 @@ public class Application extends javax.swing.JFrame {
     public void setCbExpo(String v){
         cbExpo.setSelectedItem(v);
     }
-    public void setUser(String User){
-        UserName = User;
-    }
-    public void setTypeUser(int TUser){
-        TypeUser = TUser;
-    }
-    public void setEID(int eID){
-        EID = eID;
-    }
+
     public String getEID(){
-        return EID+"";
+        return Integer.toString(EID).trim();
     }
     public void logOut(){
         if(JOptionPane.showConfirmDialog(null, "Do you want to Log Out now ?",
