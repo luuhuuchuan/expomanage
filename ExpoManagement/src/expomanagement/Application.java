@@ -2386,6 +2386,11 @@ public final class Application extends javax.swing.JFrame {
         mnUA.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_TAB, java.awt.event.InputEvent.ALT_MASK));
         mnUA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/user_edit.png"))); // NOI18N
         mnUA.setText("User Account");
+        mnUA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnUAActionPerformed(evt);
+            }
+        });
         mnFile.add(mnUA);
 
         mnLogOut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, java.awt.event.InputEvent.ALT_MASK));
@@ -2792,8 +2797,12 @@ public final class Application extends javax.swing.JFrame {
 
     private void mnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnFileActionPerformed
         // TODO add your handling code here:
-        new EditCurrentAccount(this, true).setVisible(true);
     }//GEN-LAST:event_mnFileActionPerformed
+
+    private void mnUAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUAActionPerformed
+        // TODO add your handling code here:
+        new EditCurrentAccount(this, true).setVisible(true);
+    }//GEN-LAST:event_mnUAActionPerformed
     public void setCbExpoContract(String v)
     {
         cbExpoContract.setSelectedItem(v);
