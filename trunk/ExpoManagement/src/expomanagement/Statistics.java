@@ -22,7 +22,7 @@ public class Statistics {
         db = new DBHelper();
         db.openConnection();
     }
-    
+
     public void statisticsExhibitor(String EID,JLabel countS,JLabel countP,JLabel sumB,JLabel countC){
         try {
             ResultSet rs = db.getCallAble("{Call countExhibitor("+EID+")}").executeQuery();
