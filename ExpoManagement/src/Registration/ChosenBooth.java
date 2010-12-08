@@ -31,7 +31,7 @@ public class ChosenBooth {
     {
         tbshowBooths.setModel(BoothsModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"BID","B.BName","BT.BTName","BT.BoothLength","BT.BoothRemain","B.BDate","B.BMoney","B.BBooker"};
+        String [] heading = {"BID","Name","BoothType","B.BDate","B.BMoney","B.BBooker"};
         for(String s : heading)
             v.add(s);
         BoothsModel.setColumnIdentifiers(v);

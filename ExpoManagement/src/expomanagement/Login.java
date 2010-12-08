@@ -239,8 +239,7 @@ public void doLogin(){
             }
             rs.close();
             if (userName.equalsIgnoreCase(DBUser.trim()) && pass.equalsIgnoreCase(DBPass.trim())) {
-                Application m = new Application(userName, TypeUser, EID);
-                m.setVisible(true);
+                new Application(userName, TypeUser, EID).setVisible(true);
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "The username or password you entered is incorrect!", "Login Application", JOptionPane.ERROR_MESSAGE);
