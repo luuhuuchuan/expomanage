@@ -63,6 +63,7 @@ public class AddUser extends javax.swing.JDialog {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Add New Manager");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add New Manager"));
 
