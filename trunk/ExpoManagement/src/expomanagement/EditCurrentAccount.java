@@ -14,6 +14,10 @@ package expomanagement;
 import dataLayer.DBHelper;
 import java.awt.Toolkit;
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import user.OperationUser;
 
@@ -25,20 +29,27 @@ public class EditCurrentAccount extends javax.swing.JDialog {
 
     /** Creates new form EditCurrentAccount */
     Application m = null;
-    private DBHelper db = null;
+    DBHelper db = null;
     OperationUser ou = new OperationUser();
-    public EditCurrentAccount(java.awt.Frame parent, boolean modal, String userName) {
+    public EditCurrentAccount(java.awt.Frame parent, boolean modal, String userName){
         super(parent, modal);
-        initComponents();
-        int w = Toolkit.getDefaultToolkit().getScreenSize().width;
-        int h = Toolkit.getDefaultToolkit().getScreenSize().height;
-        this.setLocation(w/3, h/3);
-        db = new DBHelper();
-        db.openConnection();
-
-        m = (Application) parent;
-        int row = m.getAccountTable().getSelectedRow();
-        txtName.setText(userName.trim());
+        try {
+            initComponents();
+            int w = Toolkit.getDefaultToolkit().getScreenSize().width;
+            int h = Toolkit.getDefaultToolkit().getScreenSize().height;
+            this.setLocation(w / 3, h / 3);
+            db = new DBHelper();
+            db.openConnection();
+            txtName.setText(userName.trim());
+            ResultSet rs = db.getCallAble("{ call detailInfoAcc('" + userName + "')}").executeQuery();
+            while(rs.next())
+            {
+                txtPass.setText(rs.getString(1).trim());
+                txtEmail.setText(rs.getString(2).trim());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EditCurrentAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** This method is called from within the constructor to

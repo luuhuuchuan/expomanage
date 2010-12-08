@@ -74,6 +74,7 @@ public final class Application extends javax.swing.JFrame {
         }
         initComponents();
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
+        this.UserName = UserName;
         this.EID = EID;
         this.TypeUser = TypeUser;
         new Statistics().statisticsSys(countExpo, countE, countBT, countB, countSp, countS, countP, countC);
@@ -2377,11 +2378,6 @@ public final class Application extends javax.swing.JFrame {
         );
 
         mnFile.setText("File");
-        mnFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnFileActionPerformed(evt);
-            }
-        });
 
         mnUA.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_TAB, java.awt.event.InputEvent.ALT_MASK));
         mnUA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/user_edit.png"))); // NOI18N
@@ -2794,10 +2790,6 @@ public final class Application extends javax.swing.JFrame {
         String id = tblContact.getValueAt(row, 0).toString().trim();
         oc.updateContract(id, obt.returnIdExpo(cbExpoContract), txtuserCre.getText().trim(), Integer.parseInt(txtBooths.getText().trim()));
     }//GEN-LAST:event_btnUpdateContractActionPerformed
-
-    private void mnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnFileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mnFileActionPerformed
 
     private void mnUAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUAActionPerformed
         // TODO add your handling code here:
