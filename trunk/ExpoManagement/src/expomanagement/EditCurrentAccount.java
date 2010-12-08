@@ -27,7 +27,7 @@ public class EditCurrentAccount extends javax.swing.JDialog {
     Application m = null;
     private DBHelper db = null;
     OperationUser ou = new OperationUser();
-    public EditCurrentAccount(java.awt.Frame parent, boolean modal) {
+    public EditCurrentAccount(java.awt.Frame parent, boolean modal, String userName) {
         super(parent, modal);
         initComponents();
         int w = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -38,9 +38,7 @@ public class EditCurrentAccount extends javax.swing.JDialog {
 
         m = (Application) parent;
         int row = m.getAccountTable().getSelectedRow();
-        txtName.setText(m.getAccountTable().getValueAt(row, 0).toString().trim());
-        txtPass.setText(m.getAccountTable().getValueAt(row, 1).toString().trim());
-        txtEmail.setText(m.getAccountTable().getValueAt(row, 3).toString().trim());
+        txtName.setText(userName.trim());
     }
 
     /** This method is called from within the constructor to
@@ -203,19 +201,7 @@ public class EditCurrentAccount extends javax.swing.JDialog {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                EditCurrentAccount dialog = new EditCurrentAccount(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;

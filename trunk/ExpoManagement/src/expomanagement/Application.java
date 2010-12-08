@@ -2801,7 +2801,7 @@ public final class Application extends javax.swing.JFrame {
 
     private void mnUAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUAActionPerformed
         // TODO add your handling code here:
-        new EditCurrentAccount(this, true).setVisible(true);
+        new EditCurrentAccount(this, true, UserName).setVisible(true);
     }//GEN-LAST:event_mnUAActionPerformed
     public void setCbExpoContract(String v)
     {
