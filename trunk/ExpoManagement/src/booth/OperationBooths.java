@@ -33,13 +33,7 @@ public class OperationBooths {
     DefaultComboBoxModel CbBoothTypeModel = null;
     HashMap hm2 = new HashMap();
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    public boolean checkformBooth(JComboBox cbContact, JComboBox cbBoothType, JTextField txtBname, JTextField txtBmoney){
-
-        if(cbContact.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null,"Please,select Contact ID","Check Information",JOptionPane.ERROR_MESSAGE);
-            cbContact.requestFocus();
-            return false;
-        }
+    public boolean checkformBooth(JComboBox cbBoothType, JTextField txtBname, JTextField txtBmoney){
         if(cbBoothType.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null,"Please,select BoothType","Check Information",JOptionPane.ERROR_MESSAGE);
             cbBoothType.requestFocus();
@@ -68,7 +62,7 @@ public class OperationBooths {
     public void loadAllBooths(JTable jTable1){
         jTable1.setModel(BoothsModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Contact","Booth ID","Booth Type","Booth Name","Date","Cost","Booker"};
+        String [] heading = {"Booth ID","Booth Type","Booth Name","Date","Cost","Booker"};
         for(String s : heading)
             v.add(s);
         BoothsModel.setColumnIdentifiers(v);
@@ -76,13 +70,12 @@ public class OperationBooths {
             ResultSet rs = getStore("getAllBooths");
             while(rs.next()){
                 v = new Vector();
-                v.add(rs.getString(1).trim());
-                v.add(rs.getInt(2));
+                v.add(rs.getInt(1));
+                v.add(rs.getString(2).trim());
                 v.add(rs.getString(3).trim());
-                v.add(rs.getString(4).trim());
-                v.add(formatter.format(rs.getDate(5)));
-                v.add(rs.getFloat(6));
-                if(rs.getBoolean(7))
+                v.add(formatter.format(rs.getDate(4)));
+                v.add(rs.getFloat(5));
+                if(rs.getBoolean(6))
                     v.add("Yes");
                 else
                     v.add("No");
@@ -91,7 +84,7 @@ public class OperationBooths {
             rs.close();
         }
         catch(Exception ex){
-            ex.printStackTrace();
+            
         }
     }
     public OperationBooths(){
@@ -117,7 +110,7 @@ public class OperationBooths {
             rs.close();
         }
         catch(Exception ex){
-            ex.printStackTrace();
+            
         }
     }
     public void buildAlBoothType(JComboBox cbBoothType)
@@ -135,7 +128,7 @@ public class OperationBooths {
             rs.close();
         }
         catch(Exception ex){
-            ex.printStackTrace();
+            
         }
     }
     public void delBooth(int id){
@@ -160,20 +153,19 @@ public class OperationBooths {
             String storeName = "findBooths('" + Where + "','" + Key + "')";
             tblBooths.setModel(BoothsModel = new DefaultTableModel());
             Vector v = new Vector();
-            String [] heading = {"Contact","Booth ID","Booth Type","Booth Name","Date","Cost","Booker"};
+            String [] heading = {"Booth ID","Booth Type","Booth Name","Date","Cost","Booker"};
             for(String s : heading)
                 v.add(s);
             BoothsModel.setColumnIdentifiers(v);
             ResultSet rs = getStore(storeName);
             while(rs.next()){
                 v = new Vector();
-                v.add(rs.getString(1).trim());
-                v.add(rs.getInt(2));
+                v.add(rs.getInt(1));
+                v.add(rs.getString(2).trim());
                 v.add(rs.getString(3).trim());
-                v.add(rs.getString(4).trim());
-                v.add(formatter.format(rs.getDate(5)));
-                v.add(rs.getFloat(6));
-                if(rs.getBoolean(7))
+                v.add(formatter.format(rs.getDate(4)));
+                v.add(rs.getFloat(5));
+                if(rs.getBoolean(6))
                     v.add("Yes");
                 else
                     v.add("No");
@@ -182,7 +174,7 @@ public class OperationBooths {
             rs.close();
         }
         catch(Exception ex){
-            ex.printStackTrace();
+            
         }
     }
     DefaultComboBoxModel CbWhereBModel = null;

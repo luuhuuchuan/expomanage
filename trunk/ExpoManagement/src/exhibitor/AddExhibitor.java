@@ -278,7 +278,7 @@ public class AddExhibitor extends javax.swing.JDialog {
                eid = rs.getInt(1);
             }  
         rs.close();
-        String nameusr = txtName.getText().trim();
+        String nameusr = txtNameUser.getText().trim();
         String pass = new String(txtPass.getPassword());
         String email = txtEmail.getText().trim();
         CallableStatement csu = db.getConnection().prepareCall("{call AddUser(?,?,?,?,?)}");

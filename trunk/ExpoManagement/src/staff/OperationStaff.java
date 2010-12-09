@@ -117,7 +117,7 @@ public class OperationStaff {
         }
         catch(SQLException e)
         {
-            e.printStackTrace();
+            
         }
     }
 

@@ -13,6 +13,7 @@ package Registration;
 
 import contract.OperationContract;
 import expomanagement.Application;
+import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,12 +22,15 @@ import java.util.Date;
  * @author Hse7en
  */
 public class Registration extends javax.swing.JDialog {
-    String ExID;
+    String ExID,EID,BoothType;
     Application m =null;
     /** Creates new form Registration */
-    public Registration(java.awt.Frame parent, boolean modal, String NumBooth, String Expo, String ExID, String Pr) {
+    public Registration(java.awt.Frame parent,boolean modal, String EID, String Cost, String NumBooth, String Expo, String ExID, String Pr,String BoothType) {
         m = (Application) parent;
         initComponents();
+        int w = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int h = Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.setLocation(w/3, h/3);
         txtExpo.setText(Expo);
         txtNumBooth.setText(NumBooth);
         txtPr.setText(Pr);
@@ -34,7 +38,10 @@ public class Registration extends javax.swing.JDialog {
         Date today = new Date();
         String Date = formatter.format(today);
         txtDate.setText(Date);
+        txtCost.setText(Cost);
         this.ExID = ExID;
+        this.EID = EID;
+        this.BoothType = BoothType;
     }
 
 
@@ -54,12 +61,14 @@ public class Registration extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         txtNumBooth = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtDate = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtExpo = new javax.swing.JTextField();
         txtPr = new javax.swing.JTextField();
+        txtDate = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtCost = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -78,8 +87,6 @@ public class Registration extends javax.swing.JDialog {
 
         jLabel9.setText("Expo");
 
-        txtDate.setEditable(false);
-
         jLabel11.setText("User Credential");
 
         jLabel3.setText("Priority Point");
@@ -87,6 +94,12 @@ public class Registration extends javax.swing.JDialog {
         txtExpo.setEditable(false);
 
         txtPr.setEditable(false);
+
+        txtDate.setEditable(false);
+
+        jLabel5.setText("Cost");
+
+        txtCost.setEditable(false);
 
         org.jdesktop.layout.GroupLayout step1PanelLayout = new org.jdesktop.layout.GroupLayout(step1Panel);
         step1Panel.setLayout(step1PanelLayout);
@@ -100,15 +113,17 @@ public class Registration extends javax.swing.JDialog {
                     .add(jLabel2)
                     .add(pwlabel)
                     .add(jLabel9)
-                    .add(jLabel3))
+                    .add(jLabel3)
+                    .add(jLabel5))
                 .add(34, 34, 34)
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(txtCost, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                     .add(txtPr, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, txtExpo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                     .add(txtNumBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                     .add(txtUser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtCID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtCID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .add(txtDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
                 .addContainerGap())
         );
         step1PanelLayout.setVerticalGroup(
@@ -119,10 +134,10 @@ public class Registration extends javax.swing.JDialog {
                     .add(jLabel2)
                     .add(txtCID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(pwlabel)
                     .add(txtDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(7, 7, 7)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(txtUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel11))
@@ -138,7 +153,11 @@ public class Registration extends javax.swing.JDialog {
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jLabel3)
                     .add(txtPr, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel5)
+                    .add(txtCost, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24));
@@ -170,13 +189,13 @@ public class Registration extends javax.swing.JDialog {
                         .add(58, 58, 58)
                         .add(jLabel1))
                     .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(step1Panel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
                         .add(57, 57, 57)
                         .add(jButton1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(jButton2)))
+                        .add(jButton2))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(step1Panel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -185,12 +204,12 @@ public class Registration extends javax.swing.JDialog {
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(step1Panel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(step1Panel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton1)
                     .add(jButton2))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -204,12 +223,14 @@ public class Registration extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(txtPr.getText().trim().equalsIgnoreCase("A"))
-            new OperationContract().makeContract(txtCID.getText().trim(), ExID, m.getEID(),"1", txtUser.getText().trim(), txtNumBooth.getText().trim(), txtDate.getText().trim());
+            new OperationContract().makeContract(EID,txtCost.getText().trim(),txtCID.getText().trim(), ExID,"1", txtUser.getText().trim(), txtNumBooth.getText().trim(),BoothType);
         else if(txtPr.getText().trim().equalsIgnoreCase("B"))
-            new OperationContract().makeContract(txtCID.getText().trim(), ExID, m.getEID(),"2", txtUser.getText().trim(), txtNumBooth.getText().trim(), txtDate.getText().trim());
+            new OperationContract().makeContract(EID,txtCost.getText().trim(),txtCID.getText().trim(), ExID,"2", txtUser.getText().trim(), txtNumBooth.getText().trim(),BoothType);
         else if(txtPr.getText().trim().equalsIgnoreCase("C"))
-            new OperationContract().makeContract(txtCID.getText().trim(), ExID, m.getEID(),"3", txtUser.getText().trim(), txtNumBooth.getText().trim(), txtDate.getText().trim());
-    
+            new OperationContract().makeContract(EID,txtCost.getText().trim(),txtCID.getText().trim(), ExID,"3", txtUser.getText().trim(), txtNumBooth.getText().trim(),BoothType);
+        m.setBtnOk();
+        m.LoadContract(EID);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -225,11 +246,13 @@ public class Registration extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel pwlabel;
     private javax.swing.JPanel step1Panel;
     private javax.swing.JTextField txtCID;
-    private javax.swing.JPasswordField txtDate;
+    private javax.swing.JTextField txtCost;
+    private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtExpo;
     private javax.swing.JTextField txtNumBooth;
     private javax.swing.JTextField txtPr;
