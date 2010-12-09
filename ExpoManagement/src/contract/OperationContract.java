@@ -100,9 +100,10 @@ public class OperationContract {
             JOptionPane.showMessageDialog(null, "Can't delete this Contact !","Delete Contact",JOptionPane.ERROR_MESSAGE);
         }
     }
-        public void makeContract(String ID,String ExID,String EID,String PrID,String user,String num,String date ){
+        public void makeContract(String EID,String Cost,String ID,String ExID,String PrID,String user,String num,String BoothType){
         try{
-        CallableStatement cs = db.getConnection().prepareCall("{call makeContract(?,?,?,?,?,?,?)}");
+        Date today = new Date();    
+        CallableStatement cs = db.getConnection().prepareCall("{call makeContract(?,?,?,?,?,?,?,?,?)}");
         //truyen tham so cho store
         cs.setString(1, ID);
         cs.setInt(2, Integer.parseInt(ExID));
@@ -110,13 +111,14 @@ public class OperationContract {
         cs.setInt(4, Integer.parseInt(PrID));
         cs.setString(5, user);
         cs.setInt(6, Integer.parseInt(num));
-        cs.setString(7, date);
+        cs.setFloat(7, Float.parseFloat(Cost));
+        cs.setString(8, formatter.format(today));
+        cs.setString(9, BoothType);
         cs.execute();
-        m.LoadContract(m.getEID());
         JOptionPane.showMessageDialog(null, "One Contact has been made !","Make Contact",JOptionPane.INFORMATION_MESSAGE);
+        
         }
         catch(Exception ex){
-            ex.printStackTrace();
         }
     }
     public void sendContract(String id,String EID){
@@ -135,7 +137,6 @@ public class OperationContract {
         }
         }catch(Exception e)
         {
-           e.printStackTrace();
         }
     }
     public void returnContract(String id,Float Paid){
@@ -155,10 +156,9 @@ public class OperationContract {
         }
         }catch(Exception e)
         {
-           e.printStackTrace();
         }
     }
-        public void updateContract(String id,int ExID,String User,int NumBooth){
+        public void updateContract(String EID,String id,int ExID,String User,int NumBooth){
         try{
         Date today = new Date();
         String ReDate = formatter.format(today);
@@ -172,12 +172,11 @@ public class OperationContract {
         if(JOptionPane.showConfirmDialog(null, "Do you want to update this Contact ?",
                 "Update Contact",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             cs.execute();
-            m.LoadContract(m.getEID().trim());
+            m.LoadContract(EID);
             JOptionPane.showMessageDialog(null, "One Contact has been updated !","Update Contact",JOptionPane.INFORMATION_MESSAGE);
         }
         }catch(Exception e)
         {
-           e.printStackTrace();
         }
     }
     public void DetailOfContract(int typeUser,String EID,String CID,JTextField txtregDate,JTextField txtuserCre,JRadioButton rbnPaid,JRadioButton rbnUnPaid,JTextField txtBooths,JTextField txtsentDate,JTextField txtreturnDate,JTextField txtlastChange,JTextField txtPaid,JButton btnActContract,JButton btnUpdateContract)

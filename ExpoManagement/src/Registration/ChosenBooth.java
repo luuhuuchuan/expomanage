@@ -16,7 +16,6 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -79,7 +78,6 @@ public class ChosenBooth {
             rs.close();
         }
         catch(Exception ex){
-            ex.printStackTrace();
         }
     }
     public void choiceBooth(String ID,boolean book){
@@ -91,10 +89,9 @@ public class ChosenBooth {
         cs.execute();
         }
         catch(Exception ex){
-            ex.printStackTrace();
         }
     }
-
+    
     public void showInfoBT(String Name,JTextField BTName,JTextField BTLength,JTextField BTRemain){
         BoothType bt = new BoothType();
         bt = (BoothType) hm.get(Name);
@@ -102,21 +99,54 @@ public class ChosenBooth {
         BTLength.setText(Integer.toString(bt.getBTLength()));
         BTRemain.setText(Integer.toString(bt.getBTRemain()));
     }
+    public void doSearch(String Where, String Key,String EID,JTable tbshowBooths)
+    {
+        tbshowBooths.setModel(BoothsModel = new DefaultTableModel());
+        Vector v = new Vector();
+        String [] heading = {"BID","Name","BoothType","Date Create","Money","Booked"};
+        for(String s : heading)
+            v.add(s);
+        BoothsModel.setColumnIdentifiers(v);
+        try{
+            ResultSet rs = getStore("findCBooth("+EID+",'"+Where+"','"+Key+"')");
+            while(rs.next()){
+                v = new Vector();
+                v.add(rs.getInt(1));
+                v.add(rs.getString(2).trim());
+                BTName = rs.getString(3).trim();
+                v.add(BTName);
+                v.add(formatter.format(rs.getDate(4)));
+                v.add(rs.getFloat(5));
+                if(rs.getBoolean(6))
+                    v.add("Yes");
+                else
+                    v.add("No");
+                lengthBooth = rs.getInt(7);
+                remainBooth = rs.getInt(8);
+                BoothsModel.addRow(v);
+                hm.put(BTName, new BoothType(BTName, lengthBooth, remainBooth));
+            }
+            rs.close();
+        }
+        catch(Exception ex){
+        }
+    }
     DefaultComboBoxModel CbWhereChoseBooth = null;
     HashMap hmcb = new HashMap();
     public void buildCbFindBooth(JComboBox cbWhereBT)
     {
         cbWhereBT.setModel(CbWhereChoseBooth = new DefaultComboBoxModel());
         CbWhereChoseBooth.addElement("BoothType ID");
-        hmcb.put("BoothID","B.BID");
+        hmcb.put("BoothType ID","B.BID");
         CbWhereChoseBooth.addElement("BoothType Name");
         hmcb.put("BoothType Name","BT.BTName");
-        CbWhereChoseBooth.addElement("Booth Height");
-        hmcb.put("Booth Height","BT.BTHeight");
-        CbWhereChoseBooth.addElement("Booth Width");
-        hmcb.put("Booth Width","BT.BTWidth");
+        CbWhereChoseBooth.addElement("Booth Name");
+        hmcb.put("Booth Name","B.BName");
     }
-    
+    public String returnSearch(JComboBox cbSt)
+    {
+        return hmcb.get(cbSt.getSelectedItem().toString().trim()).toString();
+    }
     public ChosenBooth(){
         db = new DBHelper();
         db.openConnection();
