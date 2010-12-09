@@ -208,13 +208,13 @@ public class AddSponsor extends javax.swing.JDialog {
         String description = txtSpDes.getText().trim();
 
         //tao giao dien de thuc thi store
-        CallableStatement cs = db.getConnection().prepareCall("{call AddSponsor(?,?,?,?)}");
+        CallableStatement cs = db.getConnection().prepareCall("{call AddSponsor(?,?,?,?,?)}");
         //truyen tham so cho store
         cs.setInt(1, EID);
         cs.setString(2, name);
         cs.setFloat(3, money);
         cs.setString(4, description);
-
+        cs.setInt(5, Integer.parseInt(m.getEID())); 
         //thuc thi store
         cs.execute();
         JOptionPane.showMessageDialog(null, "One new Sponsor has been added !","Add new Sponsor",JOptionPane.INFORMATION_MESSAGE);

@@ -6,6 +6,7 @@
 package sponsor;
 
 import dataLayer.DBHelper;
+import expomanagement.Application;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,17 +25,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class OperationSponsor {
  DBHelper db = null;
-
+ Application m = null;
     DefaultTableModel SponsorModel = null;
-    public void loadAllSponsor(JTable jTable1){
+    public void loadAllSponsor(java.awt.Frame parent,JTable jTable1){
+        m = (Application) parent;
         jTable1.setModel(SponsorModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"Sponsers ID","Name","Expo","Money","Description",};
+        String [] heading = {"Sponsers ID","Name","Expo","Money","Description"};
         for(String s : heading)
             v.add(s);
         SponsorModel.setColumnIdentifiers(v);
         try{
-            ResultSet rs = getStore("getAllSponsors");
+            ResultSet rs = getStore("getAllSponsors("+m.getEID()+")");
             while(rs.next()){
                 v = new Vector();
                 v.add(rs.getInt(1));
@@ -123,10 +125,10 @@ public class OperationSponsor {
     public void doSearch(String Where, String Key, JTable tblSponsor){
         try
         {
-            String storeName = "findSponsor('" + Where + "','" + Key + "')";
+            String storeName = "findSponsor("+m.getEID()+",'" + Where + "','" + Key + "')";
             tblSponsor.setModel(SponsorModel = new DefaultTableModel());
             Vector v = new Vector();
-            String [] heading = {"Sponsers ID","Name","Expo","Money","Description",};
+            String [] heading = {"Sponsers ID","Name","Expo","Money","Description"};
             for(String s : heading)
                 v.add(s);
             SponsorModel.setColumnIdentifiers(v);

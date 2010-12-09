@@ -31,8 +31,10 @@ public class EditCurrentAccount extends javax.swing.JDialog {
     Application m = null;
     DBHelper db = null;
     OperationUser ou = new OperationUser();
+    String oName = "";
     public EditCurrentAccount(java.awt.Frame parent, boolean modal, String userName){
         super(parent, modal);
+        m = (Application) parent;
         try {
             initComponents();
             int w = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -40,6 +42,7 @@ public class EditCurrentAccount extends javax.swing.JDialog {
             this.setLocation(w / 3, h / 3);
             db = new DBHelper();
             db.openConnection();
+            oName = userName;
             txtName.setText(userName.trim());
             ResultSet rs = db.getCallAble("{ call detailInfoAcc('" + userName + "')}").executeQuery();
             while(rs.next())
@@ -131,7 +134,7 @@ public class EditCurrentAccount extends javax.swing.JDialog {
                 .add(jPanel1Layout.createSequentialGroup()
                     .add(117, 117, 117)
                     .add(jLabel5)
-                    .addContainerGap(39, Short.MAX_VALUE)))
+                    .addContainerGap(41, Short.MAX_VALUE)))
         );
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/22.png"))); // NOI18N
@@ -146,7 +149,6 @@ public class EditCurrentAccount extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 425, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
@@ -157,11 +159,10 @@ public class EditCurrentAccount extends javax.swing.JDialog {
                         .add(btnSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(107, 107, 107)
                         .add(btnClose)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 253, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -169,8 +170,10 @@ public class EditCurrentAccount extends javax.swing.JDialog {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnClose)
                     .add(btnSave))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("Edit your infomation account");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,8 +185,6 @@ public class EditCurrentAccount extends javax.swing.JDialog {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        int row = m.getAccountTable().getSelectedRow();
-        String oName = m.getAccountTable().getValueAt(row, 0).toString();
         if(ou.checkUser(txtName, txtPass, txtEmail,oName)){
             try{
                 //lay dl
@@ -196,11 +197,11 @@ public class EditCurrentAccount extends javax.swing.JDialog {
                 cs.setString(2, nName);
                 cs.setString(3, pass);
                 cs.setString(4, email);
-                if(JOptionPane.showConfirmDialog(null, "Do you want edit this User",
-                        "Edit User",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                if(JOptionPane.showConfirmDialog(null, "Do you want to change infomation your account",
+                        "Change Infomation Your Account",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                     cs.execute();
-                    m.LoadAccount();
-                    JOptionPane.showMessageDialog(null, "One User has been Edit","Edit User",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Changed successfully.Please! Log In again.","Change Infomation Your Account",JOptionPane.INFORMATION_MESSAGE);
+                    m.logOut();
                     dispose();
                 }
             }catch(Exception ex){
