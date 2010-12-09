@@ -7,6 +7,7 @@ package Registration;
 
 import boothType.OperationBoothType;
 import dataLayer.DBHelper;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -52,7 +53,7 @@ public class ChosenBooth {
     {
         tbshowBooths.setModel(BoothsModel = new DefaultTableModel());
         Vector v = new Vector();
-        String [] heading = {"BID","Name","BoothType","Date Create","Money","Booker"};
+        String [] heading = {"BID","Name","BoothType","Date Create","Money","Booked"};
         for(String s : heading)
             v.add(s);
         BoothsModel.setColumnIdentifiers(v);
@@ -67,10 +68,9 @@ public class ChosenBooth {
                 v.add(formatter.format(rs.getDate(4)));
                 v.add(rs.getFloat(5));
                 if(rs.getBoolean(6))
-                    v.add(new JCheckBox("",true));
+                    v.add("Yes");
                 else
-                    v.add(new JCheckBox("",false));
-                    //v.add(new Boolean(false));
+                    v.add("No");
                 lengthBooth = rs.getInt(7);
                 remainBooth = rs.getInt(8);
                 BoothsModel.addRow(v);
@@ -82,6 +82,19 @@ public class ChosenBooth {
             ex.printStackTrace();
         }
     }
+    public void choiceBooth(String ID,boolean book){
+        try{
+        CallableStatement cs = db.getConnection().prepareCall("{call choiceBooth(?,?)}");
+        //truyen tham so cho store
+        cs.setString(1, ID);
+        cs.setBoolean(2, book);
+        cs.execute();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
     public void showInfoBT(String Name,JTextField BTName,JTextField BTLength,JTextField BTRemain){
         BoothType bt = new BoothType();
         bt = (BoothType) hm.get(Name);
