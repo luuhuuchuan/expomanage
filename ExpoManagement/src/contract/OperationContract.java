@@ -100,6 +100,25 @@ public class OperationContract {
             JOptionPane.showMessageDialog(null, "Can't delete this Contact !","Delete Contact",JOptionPane.ERROR_MESSAGE);
         }
     }
+        public void makeContract(String ID,String ExID,String EID,String PrID,String user,String num,String date ){
+        try{
+        CallableStatement cs = db.getConnection().prepareCall("{call makeContract(?,?,?,?,?,?,?)}");
+        //truyen tham so cho store
+        cs.setString(1, ID);
+        cs.setInt(2, Integer.parseInt(ExID));
+        cs.setInt(3, Integer.parseInt(EID));
+        cs.setInt(4, Integer.parseInt(PrID));
+        cs.setString(5, user);
+        cs.setInt(6, Integer.parseInt(num));
+        cs.setString(7, date);
+        cs.execute();
+        m.LoadContract(m.getEID());
+        JOptionPane.showMessageDialog(null, "One Contact has been made !","Make Contact",JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
     public void sendContract(String id,String EID){
         try{
         Date today = new Date();

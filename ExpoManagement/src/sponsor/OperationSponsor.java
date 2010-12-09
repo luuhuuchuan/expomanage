@@ -73,7 +73,7 @@ public class OperationSponsor {
             return false;
         }
         try {
-            Long.parseLong(txtSpMoney.getText());
+            Float.parseFloat(txtSpMoney.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " Money must Number");
             txtSpMoney.requestFocus();

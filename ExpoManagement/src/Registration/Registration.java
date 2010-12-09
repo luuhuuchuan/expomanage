@@ -11,17 +11,32 @@
 
 package Registration;
 
+import contract.OperationContract;
+import expomanagement.Application;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Hse7en
  */
 public class Registration extends javax.swing.JDialog {
-
+    String ExID;
+    Application m =null;
     /** Creates new form Registration */
-    public Registration(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public Registration(java.awt.Frame parent, boolean modal, String NumBooth, String Expo, String ExID, String Pr) {
+        m = (Application) parent;
         initComponents();
+        txtExpo.setText(Expo);
+        txtNumBooth.setText(NumBooth);
+        txtPr.setText(Pr);
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        Date today = new Date();
+        String Date = formatter.format(today);
+        txtDate.setText(Date);
+        this.ExID = ExID;
     }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -34,57 +49,44 @@ public class Registration extends javax.swing.JDialog {
 
         step1Panel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        userField = new javax.swing.JTextField();
+        txtCID = new javax.swing.JTextField();
         pwlabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        creField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        addField = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
-        emailField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        phoneField = new javax.swing.JTextField();
+        txtNumBooth = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        expoCbb = new javax.swing.JComboBox();
-        passField = new javax.swing.JPasswordField();
+        txtDate = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
-        typeproField = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        comemailField = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtExpo = new javax.swing.JTextField();
+        txtPr = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         step1Panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Exhibitor Information"));
 
-        jLabel2.setText("User name");
+        jLabel2.setText("Contract ID");
 
-        pwlabel.setText("Password");
+        pwlabel.setText("Date ");
 
-        jLabel4.setText("User Credential");
+        jLabel4.setText("Total Booked Booths");
 
-        jLabel5.setText("Address");
-
-        addField.setColumns(20);
-        addField.setRows(5);
-        jScrollPane1.setViewportView(addField);
-
-        jLabel6.setText("Email");
-
-        emailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Telephone");
+        txtNumBooth.setEditable(false);
 
         jLabel9.setText("Expo");
 
-        jLabel11.setText("Type of product");
+        txtDate.setEditable(false);
 
-        jLabel10.setText("Company email");
+        jLabel11.setText("User Credential");
+
+        jLabel3.setText("Priority Point");
+
+        txtExpo.setEditable(false);
+
+        txtPr.setEditable(false);
 
         org.jdesktop.layout.GroupLayout step1PanelLayout = new org.jdesktop.layout.GroupLayout(step1Panel);
         step1Panel.setLayout(step1PanelLayout);
@@ -93,82 +95,70 @@ public class Registration extends javax.swing.JDialog {
             .add(step1PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(step1PanelLayout.createSequentialGroup()
-                        .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(pwlabel))
-                        .add(60, 60, 60)
-                        .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(passField)
-                            .add(userField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, step1PanelLayout.createSequentialGroup()
-                        .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel7)
-                            .add(jLabel6)
-                            .add(jLabel4)
-                            .add(jLabel5)
-                            .add(jLabel11)
-                            .add(jLabel10)
-                            .add(jLabel9))
-                        .add(34, 34, 34)
-                        .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, comemailField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                .add(org.jdesktop.layout.GroupLayout.TRAILING, typeproField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                .add(creField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                .add(emailField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                .add(phoneField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, expoCbb, 0, 242, Short.MAX_VALUE))))
+                    .add(jLabel4)
+                    .add(jLabel11)
+                    .add(jLabel2)
+                    .add(pwlabel)
+                    .add(jLabel9)
+                    .add(jLabel3))
+                .add(34, 34, 34)
+                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(txtPr, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtExpo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .add(txtNumBooth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .add(txtUser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, txtCID, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
                 .addContainerGap())
         );
         step1PanelLayout.setVerticalGroup(
             step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(step1PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(step1PanelLayout.createSequentialGroup()
-                        .add(userField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(passField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(step1PanelLayout.createSequentialGroup()
-                        .add(jLabel2)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(pwlabel)
-                        .add(7, 7, 7)))
+                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel2)
+                    .add(txtCID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(typeproField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(pwlabel)
+                    .add(txtDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(7, 7, 7)
+                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel11))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(creField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtNumBooth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel4))
-                .add(8, 8, 8)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 65, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel5))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(emailField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel6))
+                    .add(jLabel9)
+                    .add(txtExpo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(phoneField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel7))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(comemailField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel10))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(expoCbb, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel9))
+                .add(step1PanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel3)
+                    .add(txtPr, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24));
-        jLabel1.setText("CREATE CONTACT");
+        jLabel1.setText("CREATE CONTRACT");
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/62.png"))); // NOI18N
+        jButton1.setText("Make Contract");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expomanagement/icon_func/33.png"))); // NOI18N
+        jButton2.setText("Cancel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,29 +167,50 @@ public class Registration extends javax.swing.JDialog {
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
+                        .add(58, 58, 58)
+                        .add(jLabel1))
+                    .add(layout.createSequentialGroup()
                         .addContainerGap()
                         .add(step1Panel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
-                        .add(93, 93, 93)
-                        .add(jLabel1)))
+                        .add(57, 57, 57)
+                        .add(jButton1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jButton2)))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(step1Panel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButton1)
+                    .add(jButton2))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-}//GEN-LAST:event_emailFieldActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(txtPr.getText().trim().equalsIgnoreCase("A"))
+            new OperationContract().makeContract(txtCID.getText().trim(), ExID, m.getEID(),"1", txtUser.getText().trim(), txtNumBooth.getText().trim(), txtDate.getText().trim());
+        else if(txtPr.getText().trim().equalsIgnoreCase("B"))
+            new OperationContract().makeContract(txtCID.getText().trim(), ExID, m.getEID(),"2", txtUser.getText().trim(), txtNumBooth.getText().trim(), txtDate.getText().trim());
+        else if(txtPr.getText().trim().equalsIgnoreCase("C"))
+            new OperationContract().makeContract(txtCID.getText().trim(), ExID, m.getEID(),"3", txtUser.getText().trim(), txtNumBooth.getText().trim(), txtDate.getText().trim());
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -207,27 +218,22 @@ public class Registration extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea addField;
-    private javax.swing.JTextField comemailField;
-    private javax.swing.JTextField creField;
-    private javax.swing.JTextField emailField;
-    private javax.swing.JComboBox expoCbb;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPasswordField passField;
-    private javax.swing.JTextField phoneField;
     private javax.swing.JLabel pwlabel;
     private javax.swing.JPanel step1Panel;
-    private javax.swing.JTextField typeproField;
-    private javax.swing.JTextField userField;
+    private javax.swing.JTextField txtCID;
+    private javax.swing.JPasswordField txtDate;
+    private javax.swing.JTextField txtExpo;
+    private javax.swing.JTextField txtNumBooth;
+    private javax.swing.JTextField txtPr;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
 }
